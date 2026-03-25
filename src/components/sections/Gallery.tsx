@@ -1,0 +1,48 @@
+const galleryItems = [
+  { id: 1, area: "Upper Lip", label: "Laser Hair Removal", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/48d85674-ef15-4cc2-87e3-612cc35a1075.png", altText: "Before and after laser hair removal results on upper lip area showing smooth, hair-free skin" },
+  { id: 2, area: "Full Face", label: "IPL Photofacial", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/b77d4fc7-afde-414f-a625-0fed6895aa65.png", altText: "Before and after IPL photofacial results on full face showing reduced sun damage and even skin tone" },
+  { id: 3, area: "Jawline", label: "Dermal Fillers", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/333abc84-f7a5-4aa0-b0ed-eacfb57c67bc.png", altText: "Before and after dermal filler results on jawline showing improved contour and definition" },
+  { id: 4, area: "Forehead", label: "Botox", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/ea4a6fbd-678a-43f6-a8d6-6334c4eee18a.png", altText: "Before and after Botox results on forehead showing smoothed wrinkles and natural expression" },
+  { id: 5, area: "Arms", label: "Laser Hair Removal", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/170ff0d2-3dfa-4505-a365-b44100782d1a.png", altText: "Before and after laser hair removal results on arms showing smooth, hair-free skin" },
+  { id: 6, area: "Skin Texture", label: "ResurFX", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/959969a5-c035-462e-90ea-e40825a157ce.png", altText: "Before and after ResurFX fractional laser results showing improved skin texture and reduced scarring" },
+];
+
+export default function Gallery() {
+  return (
+    <section id="gallery" className="section-padding bg-warm-white" aria-labelledby="gallery-heading">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="text-center mb-14">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-px w-8 bg-gold" aria-hidden="true" />
+            <span className="font-inter text-xs tracking-[0.3em] uppercase text-gold font-medium">Real Results</span>
+            <div className="h-px w-8 bg-gold" aria-hidden="true" />
+          </div>
+          <h2 id="gallery-heading" className="font-playfair text-3xl md:text-4xl font-bold text-[#1A1A1A]">Before &amp; After</h2>
+          <p className="font-inter text-warm-gray mt-3 max-w-md mx-auto text-sm leading-relaxed">
+            See the transformative results our clients experience with our premium treatments.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 max-w-5xl mx-auto" role="list" aria-label="Before and after treatment results gallery">
+          {galleryItems.map((item) => (
+            <figure key={item.id} className="relative rounded-sm overflow-hidden group" role="listitem">
+              <div className="aspect-[4/3]">
+                <img src={item.image} alt={item.altText} className="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <figcaption className="bg-[#1A1A1A] px-4 py-3 flex items-center justify-between">
+                <div>
+                  <p className="font-playfair text-white text-sm font-semibold">{item.area}</p>
+                  <p className="font-inter text-gold text-[10px] tracking-wider uppercase">{item.label}</p>
+                </div>
+                <div className="flex items-center gap-1.5" aria-hidden="true">
+                  <span className="font-inter text-[10px] tracking-wider uppercase text-white/70 border border-white/20 px-2 py-0.5 rounded-sm">Before</span>
+                  <span className="font-inter text-[10px] tracking-wider uppercase text-white bg-gold/80 px-2 py-0.5 rounded-sm">After</span>
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

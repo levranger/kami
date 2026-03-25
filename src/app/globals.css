@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 0 0% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 40 20% 97%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 40 10% 96%;
+    --muted-foreground: 0 0% 42%;
+    --accent: 38 45% 60%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 30 15% 90%;
+    --input: 30 15% 90%;
+    --ring: 38 45% 60%;
+    --radius: 0.5rem;
+    --gold: #C9A96E;
+    --gold-light: #D4B87A;
+    --gold-dark: #B8944F;
+    --warm-white: #FAFAF8;
+    --warm-gray: #6B6B6B;
+    --warm-border: #E8E5E0;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer utilities {
+  .font-playfair { font-family: 'Playfair Display', serif; }
+  .font-inter { font-family: 'Inter', sans-serif; }
+  .text-gold { color: var(--gold); }
+  .bg-gold { background-color: var(--gold); }
+  .border-gold { border-color: var(--gold); }
+  .bg-warm-white { background-color: var(--warm-white); }
+  .text-warm-gray { color: var(--warm-gray); }
+
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  }
+}
+
+/* ADA: Skip to Content */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  background: var(--gold);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border-radius: 0 0 0.25rem 0.25rem;
+  transition: top 0.2s ease;
+}
+.skip-to-content:focus {
+  top: 0;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hover-lift:hover { transform: none; }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--warm-white); }
+::-webkit-scrollbar-thumb { background: var(--warm-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--warm-gray); }
+
+/* Legal pages */
+.prose-legal {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: #3a3a3a;
+}
+.prose-legal p { margin-bottom: 1.25rem; }
+.prose-legal h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+.prose-legal ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.prose-legal ul li { margin-bottom: 0.4rem; }
+.prose-legal address { margin-bottom: 1.25rem; line-height: 1.9; }
+.prose-legal .notice {
+  background: #FAFAF8;
+  border-left: 3px solid var(--gold);
+  padding: 0.875rem 1.25rem;
+  border-radius: 0 0.25rem 0.25rem 0;
+  margin-bottom: 1.25rem;
+}
+
+/* Blog post body */
+.prose-blog {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #2a2a2a;
+}
+.prose-blog p { margin-bottom: 1.4rem; }
+.prose-blog h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-top: 2.5rem;
+  margin-bottom: 0.875rem;
+}
+.prose-blog ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.4rem;
+}
+.prose-blog ul li { margin-bottom: 0.5rem; }
+.prose-blog strong { color: #1A1A1A; font-weight: 600; }
+.prose-blog em { font-style: italic; }

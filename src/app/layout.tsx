@@ -1,0 +1,34 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import { siteSEO } from "@/data/content";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteSEO.baseUrl),
+  title: {
+    default: siteSEO.homeSEO.title,
+    template: "%s | Kami Aesthetics",
+  },
+  description: siteSEO.homeSEO.description,
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
+  openGraph: {
+    siteName: siteSEO.siteName,
+    type: "website",
+    images: [{ url: siteSEO.defaultOgImage, width: 1200, height: 630, alt: "Kami Aesthetics — Laser Hair Removal & Med Spa Aventura" }],
+  },
+  twitter: { card: "summary_large_image" },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}
