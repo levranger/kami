@@ -29,14 +29,14 @@ export default function Gallery() {
               <div className="aspect-[4/3]">
                 <img src={item.image} alt={item.altText} className="w-full h-full object-cover" loading="lazy" />
               </div>
-              <figcaption className="bg-[#1A1A1A] px-4 py-3 flex items-center justify-between">
-                <div>
-                  <p className="font-playfair text-white text-sm font-semibold">{item.area}</p>
-                  <p className="font-inter text-gold text-[10px] tracking-wider uppercase">{item.label}</p>
+              <figcaption className="bg-[#1A1A1A] px-4 py-3 flex items-center justify-between gap-2">
+                <div className="min-w-0">
+                  <p className="font-playfair text-white text-sm font-semibold truncate">{item.area}</p>
+                  <p className="font-inter text-gold text-[10px] tracking-wider uppercase truncate">{item.label}</p>
                 </div>
-                <div className="flex items-center gap-1.5" aria-hidden="true">
-                  <span className="font-inter text-[10px] tracking-wider uppercase text-white/70 border border-white/20 px-2 py-0.5 rounded-sm">Before</span>
-                  <span className="font-inter text-[10px] tracking-wider uppercase text-white bg-gold/80 px-2 py-0.5 rounded-sm">After</span>
+                <div className="flex items-center gap-1 flex-shrink-0" aria-hidden="true">
+                  <span className="font-inter text-[9px] tracking-wider uppercase text-white/70 border border-white/20 px-1.5 py-0.5 rounded-sm hidden sm:inline">Before</span>
+                  <span className="font-inter text-[9px] tracking-wider uppercase text-white bg-gold/80 px-1.5 py-0.5 rounded-sm hidden sm:inline">After</span>
                 </div>
               </figcaption>
             </figure>
