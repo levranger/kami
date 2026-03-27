@@ -223,7 +223,7 @@ export const localBusinessSchema = {
   telephone: "+19544697153",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "2999 NE 191st St, Suite 906, Floor 9",
+    streetAddress: "2999 NE 191st St 906 Floor 9",
     addressLocality: "Aventura",
     addressRegion: "FL",
     postalCode: "33180",

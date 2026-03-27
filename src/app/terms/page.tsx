@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { buildPageMetadata } from "@/lib/seo";
 import { siteSEO } from "@/data/content";
+import { BUSINESS_NAME, ADDRESS, PHONE_HREF, PHONE_NUMBER } from "@/data/constants";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Terms of Service | Kami Aesthetics Aventura",
@@ -14,8 +15,6 @@ export const metadata: Metadata = buildPageMetadata({
 
 const EFFECTIVE_DATE = "March 25, 2026";
 const CONTACT_EMAIL = "info@kamiaesthetics.com";
-const BUSINESS_NAME = "Kami Aesthetics";
-const ADDRESS = "2999 NE 191st St, Suite 906, Aventura, FL 33180";
 
 export default function TermsPage() {
   return (
@@ -67,7 +66,7 @@ export default function TermsPage() {
               </ul>
               <p className="notice">
                 <strong>Important:</strong> Do not submit sensitive medical information, health records, or protected health information through any form on this website. For medical questions, please call us at{" "}
-                <a href="tel:+19544697153" className="text-gold hover:text-gold-dark transition-colors">(954) 469-7153</a>.
+                <a href={PHONE_HREF} className="text-gold hover:text-gold-dark transition-colors">{PHONE_NUMBER}</a>.
               </p>
 
               <h2>4. Intellectual Property</h2>
@@ -105,7 +104,7 @@ export default function TermsPage() {
                 <strong>{BUSINESS_NAME}</strong><br />
                 {ADDRESS}<br />
                 Email: <a href={`mailto:${CONTACT_EMAIL}`} className="text-gold hover:text-gold-dark transition-colors">{CONTACT_EMAIL}</a><br />
-                Phone: <a href="tel:+19544697153" className="text-gold hover:text-gold-dark transition-colors">(954) 469-7153</a>
+                Phone: <a href={PHONE_HREF} className="text-gold hover:text-gold-dark transition-colors">{PHONE_NUMBER}</a>
               </address>
 
             </div>

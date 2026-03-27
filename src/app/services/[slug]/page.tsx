@@ -12,6 +12,7 @@ import TechnologySection from "@/components/sections/TechnologySection";
 import ProcessStepsSection from "@/components/sections/ProcessStepsSection";
 import ResultsGallerySection from "@/components/sections/ResultsGallerySection";
 import { servicePages, newClientOffer, BOOKING_URL, PHONE_NUMBER, PHONE_HREF } from "@/data/content";
+import { ADDRESS_SHORT, CITY_STATE } from "@/data/constants";
 import { buildFAQSchema, buildServiceSchema, buildBreadcrumbSchema, buildPageMetadata } from "@/lib/seo";
 import { siteSEO } from "@/data/content";
 
@@ -210,7 +211,7 @@ export default function ServicePage({ params }: Props) {
                       <span className="font-inter text-sm font-semibold text-white">Visit Us</span>
                     </div>
                     <p className="font-inter text-sm text-white/60 leading-relaxed">
-                      2999 NE 191st St, Floor 9<br />Aventura, FL 33180
+                      {ADDRESS_SHORT}<br />{CITY_STATE}
                     </p>
                     <a href={PHONE_HREF} className="font-inter text-sm text-gold hover:text-gold-light mt-2 inline-block transition-colors">
                       {PHONE_NUMBER}

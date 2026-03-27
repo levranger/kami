@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { MapPin, Phone, Mail, Clock, Instagram } from "lucide-react";
-import { PHONE_NUMBER, PHONE_HREF, ADDRESS_SHORT, CITY_STATE, INSTAGRAM_URL, FACEBOOK_URL, TIKTOK_URL, servicePages } from "@/data/content";
+import { INSTAGRAM_URL, FACEBOOK_URL, TIKTOK_URL, servicePages } from "@/data/content";
+import { BUSINESS_NAME, PHONE_NUMBER, PHONE_HREF, ADDRESS_SHORT, CITY_STATE } from "@/data/constants";
 
 const companyLinks = [
   { label: "About Us", href: "#why-choose" },
@@ -94,7 +95,7 @@ export default function Footer() {
             <address className="not-italic space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 text-gold flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <span className="font-inter text-sm text-white/60">{ADDRESS_SHORT}<br />{CITY_STATE}</span>
+                <span className="font-inter text-sm text-white/60"><span className="text-white/80 font-medium">{BUSINESS_NAME}</span><br />{ADDRESS_SHORT}<br />{CITY_STATE}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-gold flex-shrink-0" aria-hidden="true" />

@@ -12,6 +12,7 @@ import Gallery from "@/components/sections/Gallery";
 import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
+import MapEmbed from "@/components/sections/MapEmbed";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 
@@ -37,6 +38,7 @@ export default function HomePage() {
         <Gallery />
         <Testimonials />
         <FAQ />
+        <MapEmbed />
         <FinalCTA />
       </main>
       <Footer />
