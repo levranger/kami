@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/seo";
 import { siteSEO, servicePages } from "@/data/content";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Site Map | Kami Aesthetics Aventura, FL",
+  title: "Site Map | Kami Aesthetics Aventura",
   description: "Browse all pages on the Kami Aesthetics website — services, blog, and more.",
   canonical: `${siteSEO.baseUrl}/site-map`,
   noIndex: false,

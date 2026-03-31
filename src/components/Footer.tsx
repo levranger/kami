@@ -1,10 +1,8 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
 import { MapPin, Phone, Mail, Clock, Instagram } from "lucide-react";
-import { INSTAGRAM_URL, FACEBOOK_URL, TIKTOK_URL, servicePages } from "@/data/content";
+import { INSTAGRAM_URL, FACEBOOK_URL, TIKTOK_URL } from "@/data/content";
 import { BUSINESS_NAME, PHONE_NUMBER, PHONE_HREF, ADDRESS_SHORT, CITY_STATE } from "@/data/constants";
+import { navServices } from "@/data/nav-services";
 
 const companyLinks = [
   { label: "About Us", href: "#why-choose" },
@@ -15,18 +13,6 @@ const companyLinks = [
 ];
 
 export default function Footer() {
-  const pathname = usePathname();
-  const router = useRouter();
-
-  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    if (pathname === "/") {
-      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      router.push("/" + href);
-    }
-  };
-
   return (
     <footer className="bg-[#1A1A1A] text-white" role="contentinfo">
       <div className="container mx-auto px-4 md:px-8 py-16">
@@ -60,9 +46,9 @@ export default function Footer() {
 
           {/* Services */}
           <nav aria-label="Footer services navigation">
-            <h4 className="font-inter text-sm font-semibold tracking-wider uppercase mb-6">Services</h4>
+            <p className="font-inter text-sm font-semibold tracking-wider uppercase mb-6">Services</p>
             <ul className="space-y-3">
-              {servicePages.map((s) => (
+              {navServices.map((s) => (
                 <li key={s.slug}>
                   <Link href={`/services/${s.slug}`} className="font-inter text-sm text-white/60 hover:text-gold transition-colors duration-200">
                     {s.title}
@@ -74,11 +60,11 @@ export default function Footer() {
 
           {/* Company */}
           <nav aria-label="Footer company navigation">
-            <h4 className="font-inter text-sm font-semibold tracking-wider uppercase mb-6">Company</h4>
+            <p className="font-inter text-sm font-semibold tracking-wider uppercase mb-6">Company</p>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} onClick={(e) => handleAnchorClick(e, link.href)} className="font-inter text-sm text-white/60 hover:text-gold transition-colors duration-200">
+                  <a href={link.href} className="font-inter text-sm text-white/60 hover:text-gold transition-colors duration-200">
                     {link.label}
                   </a>
                 </li>
@@ -94,7 +80,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-inter text-sm font-semibold tracking-wider uppercase mb-6">Contact</h4>
+            <p className="font-inter text-sm font-semibold tracking-wider uppercase mb-6">Contact</p>
             <address className="not-italic space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 text-gold flex-shrink-0 mt-0.5" aria-hidden="true" />

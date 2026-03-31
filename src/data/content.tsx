@@ -20,37 +20,37 @@ const BASE_URL = "https://kamiaesthetics.com";
 // ─── Service Pages with SEO ───
 const seoMap: Record<string, { title: string; description: string; keywords: string[] }> = {
   "laser-hair-removal": {
-    title: "Laser Hair Removal Aventura | Splendor X | Kami Aesthetics",
+    title: "Laser Hair Removal Aventura | Splendor X",
     description:
       "Premium laser hair removal in Aventura, FL with the Lumenis Splendor X. Safe for all skin types. Fast, comfortable, permanent results. Free consultation.",
     keywords: ["laser hair removal aventura", "splendor x laser", "permanent hair removal miami", "laser hair removal all skin types"],
   },
   "ipl-photofacial": {
-    title: "IPL Photofacial Aventura | Stellar M22 | Kami Aesthetics",
+    title: "IPL Photofacial Aventura | Stellar M22",
     description:
       "Advanced IPL photofacial in Aventura, FL with the Lumenis Stellar M22. Treat sun damage, rosacea, and uneven skin tone. Book your consultation today.",
     keywords: ["ipl photofacial aventura", "stellar m22", "sun damage treatment miami", "rosacea treatment aventura"],
   },
   resurfx: {
-    title: "ResurFX Laser Aventura | Skin Resurfacing | Kami Aesthetics",
+    title: "ResurFX Laser Aventura | Skin Resurfacing",
     description:
       "Non-ablative fractional laser resurfacing in Aventura, FL. ResurFX treats acne scars, stretch marks, and fine lines with minimal downtime.",
     keywords: ["resurfx aventura", "fractional laser miami", "acne scar treatment aventura", "skin resurfacing miami"],
   },
   botox: {
-    title: "Botox Aventura | Natural Results | Kami Aesthetics",
+    title: "Botox Aventura | Natural-Looking Results",
     description:
       "Expert Botox injections in Aventura, FL. Natural-looking results that smooth wrinkles while preserving your expressions. No downtime, 15-minute treatment.",
     keywords: ["botox aventura", "botox near me", "natural botox miami", "wrinkle treatment aventura"],
   },
   "dermal-fillers": {
-    title: "Dermal Fillers Aventura | Lip & Cheek Filler | Kami Aesthetics",
+    title: "Dermal Fillers Aventura | Lip & Cheek Filler",
     description:
       "Premium dermal fillers in Aventura, FL. Restore volume, enhance contours, and rejuvenate your look with hyaluronic acid fillers. Immediate results.",
     keywords: ["dermal fillers aventura", "lip filler miami", "cheek filler aventura", "juvederm aventura"],
   },
   "prp-therapy": {
-    title: "PRP Therapy Aventura | Vampire Facial | Kami Aesthetics",
+    title: "PRP Therapy Aventura | Vampire Facial",
     description:
       "PRP therapy and Vampire Facial in Aventura, FL. Natural growth factors for skin rejuvenation and hair restoration. 100% natural, minimal downtime.",
     keywords: ["prp therapy aventura", "vampire facial miami", "prp hair restoration aventura", "platelet rich plasma miami"],
@@ -158,7 +158,7 @@ export const blogPosts: BlogPost[] = [
     image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/3adf3074-75cd-44e0-b72b-c03a717db69d.png",
     body: laserVsWaxingBody,
     seo: {
-      title: "Laser Hair Removal vs Waxing | Kami Aesthetics Aventura",
+      title: "Laser Hair Removal vs Waxing in Aventura",
       description: "Compare laser hair removal and waxing. Learn why Aventura clients choose the Splendor X for permanent, painless hair removal.",
       canonical: `${BASE_URL}/blog/laser-hair-removal-vs-waxing`,
       keywords: ["laser hair removal vs waxing", "laser hair removal aventura", "permanent hair removal miami", "splendor x aventura"],
@@ -174,7 +174,7 @@ export const blogPosts: BlogPost[] = [
     image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/bd12d6b0-a9d3-42d8-8d95-e40bf35522ab.png",
     body: splendorXAllSkinTypesBody,
     seo: {
-      title: "Splendor X Safe for All Skin Types | Kami Aesthetics",
+      title: "Splendor X: Safe Laser for All Skin Types",
       description: "Learn why the Lumenis Splendor X is the safest laser for all skin types, including dark skin tones. BLEND X™ technology explained.",
       canonical: `${BASE_URL}/blog/splendor-x-all-skin-types`,
       keywords: ["splendor x all skin types", "laser hair removal dark skin", "fitzpatrick skin type laser", "blend x technology"],
@@ -190,7 +190,7 @@ export const blogPosts: BlogPost[] = [
     image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/70ec67fd-36a4-4de3-b36c-f3bf71a616d0.png",
     body: iplSunDamageBody,
     seo: {
-      title: "IPL Photofacial for Sun Damage | Kami Aesthetics Aventura",
+      title: "IPL Photofacial for Sun Damage in Aventura",
       description: "Learn how IPL photofacial with the Stellar M22 reverses sun damage, age spots, and rosacea. Aventura's premier skin rejuvenation clinic.",
       canonical: `${BASE_URL}/blog/ipl-photofacial-sun-damage`,
       keywords: ["ipl photofacial sun damage", "stellar m22 aventura", "sun spots treatment miami", "rosacea treatment aventura"],
@@ -206,7 +206,7 @@ export const siteSEO = {
   homeSEO: {
     title: "Kami Aesthetics | Laser Hair Removal & Med Spa Aventura FL",
     description:
-      "Premium laser hair removal & aesthetic treatments in Aventura, FL. Lumenis Splendor X — safe for all skin types. Botox, fillers, IPL, ResurFX. Book free consult.",
+      "Premium laser hair removal & aesthetic treatments in Aventura, FL. Lumenis Splendor X — safe for all skin types. Botox, fillers, IPL, ResurFX. Free consult",
     canonical: BASE_URL,
     keywords: ["med spa aventura", "laser hair removal aventura", "botox aventura", "dermal fillers aventura", "splendor x miami", "kami aesthetics"],
   },

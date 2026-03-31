@@ -15,19 +15,19 @@ export default function Testimonials() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {testimonials.slice(0, 3).map((t, i) => <TestimonialCard key={t.name} testimonial={t} index={i} />)}
+          {testimonials.slice(0, 3).map((t) => <TestimonialCard key={t.name} testimonial={t} />)}
         </div>
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-6">
-          {testimonials.slice(3, 5).map((t, i) => <TestimonialCard key={t.name} testimonial={t} index={i + 3} />)}
+          {testimonials.slice(3, 5).map((t) => <TestimonialCard key={t.name} testimonial={t} />)}
         </div>
       </div>
     </section>
   );
 }
 
-function TestimonialCard({ testimonial, index }: { testimonial: { name: string; rating: number; text: string; treatment: string }; index: number }) {
+function TestimonialCard({ testimonial }: { testimonial: { name: string; rating: number; text: string; treatment: string } }) {
   return (
-    <article className="bg-warm-white border border-warm-border p-8 rounded-sm hover-lift animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }} aria-label={`Review by ${testimonial.name} for ${testimonial.treatment}`}>
+    <article className="bg-warm-white border border-warm-border p-8 rounded-sm hover-lift" aria-label={`Review by ${testimonial.name} for ${testimonial.treatment}`}>
       <div className="flex gap-0.5 mb-4" role="img" aria-label={`${testimonial.rating} out of 5 stars`}>
         {Array.from({ length: testimonial.rating }).map((_, i) => (
           <Star key={i} className="h-4 w-4 fill-gold text-gold" aria-hidden="true" />

@@ -248,10 +248,10 @@ export default function ServicePage({ params }: Props) {
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 {relatedServices.map((t) => (
-                  <Link key={t.slug} href={`/services/${t.slug}`} className="bg-white border border-warm-border p-6 rounded-sm hover-lift group block">
+                  <Link key={t.slug} href={`/services/${t.slug}`} aria-label={`Learn more about ${t.title}`} className="bg-white border border-warm-border p-6 rounded-sm hover-lift group block">
                     <h3 className="font-playfair text-lg font-semibold text-[#1A1A1A] mb-2 group-hover:text-gold transition-colors duration-200">{t.title}</h3>
                     <p className="font-inter text-sm text-warm-gray leading-relaxed mb-4">{t.shortDescription}</p>
-                    <span className="font-inter text-xs tracking-wider uppercase text-gold flex items-center gap-1">
+                    <span className="font-inter text-xs tracking-wider uppercase text-gold flex items-center gap-1" aria-hidden="true">
                       Learn More <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform duration-200" />
                     </span>
                   </Link>
@@ -270,10 +270,10 @@ export default function ServicePage({ params }: Props) {
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 {otherServices.map((t) => (
-                  <Link key={t.slug} href={`/services/${t.slug}`} className="bg-warm-white border border-warm-border p-6 rounded-sm hover-lift group block">
+                  <Link key={t.slug} href={`/services/${t.slug}`} aria-label={`Learn more about ${t.title}`} className="bg-warm-white border border-warm-border p-6 rounded-sm hover-lift group block">
                     <h3 className="font-playfair text-lg font-semibold text-[#1A1A1A] mb-2 group-hover:text-gold transition-colors duration-200">{t.title}</h3>
                     <p className="font-inter text-sm text-warm-gray leading-relaxed mb-4 line-clamp-2">{t.shortDescription}</p>
-                    <span className="font-inter text-xs tracking-wider uppercase text-gold flex items-center gap-1">
+                    <span className="font-inter text-xs tracking-wider uppercase text-gold flex items-center gap-1" aria-hidden="true">
                       Learn More <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform duration-200" />
                     </span>
                   </Link>

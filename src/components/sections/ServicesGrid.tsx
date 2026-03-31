@@ -63,7 +63,7 @@ function ServiceCard({ service }: { service: { slug: string; title: string; shor
       <p className="font-inter text-sm text-warm-gray leading-relaxed mb-4">{service.shortDescription}</p>
       <Link href={`/services/${service.slug}`}>
         <Button variant="link" className="p-0 h-auto font-inter text-xs tracking-wider uppercase text-[#1A1A1A] hover:text-gold group/btn">
-          Learn More
+          Learn More About {service.title}
           <ArrowRight className="ml-1.5 h-3 w-3 group-hover/btn:translate-x-1 transition-transform duration-200" />
         </Button>
       </Link>

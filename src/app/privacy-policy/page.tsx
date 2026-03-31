@@ -3,11 +3,12 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { buildPageMetadata } from "@/lib/seo";
+import "@/app/prose.css";
 import { siteSEO } from "@/data/content";
 import { BUSINESS_NAME, ADDRESS, PHONE_HREF, PHONE_NUMBER } from "@/data/constants";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Privacy Policy | Kami Aesthetics Aventura, FL",
+  title: "Privacy Policy | Kami Aesthetics Aventura",
   description: "Privacy Policy for Kami Aesthetics. Learn how we collect, use, and protect your personal information.",
   canonical: `${siteSEO.baseUrl}/privacy-policy`,
   noIndex: false,

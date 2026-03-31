@@ -1,4 +1,3 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { homepageFAQs } from "@/data/content";
 
 export default function FAQ() {
@@ -15,18 +14,19 @@ export default function FAQ() {
             <h2 id="faq-heading" className="font-playfair text-3xl md:text-4xl font-bold text-[#1A1A1A]">Frequently Asked Questions</h2>
           </div>
 
-          <Accordion type="single" collapsible className="space-y-3">
+          <div className="space-y-3">
             {homepageFAQs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="bg-white border border-warm-border rounded-sm px-6 data-[state=open]:border-gold/50 transition-colors duration-200">
-                <AccordionTrigger className="font-inter text-sm font-semibold text-[#1A1A1A] hover:text-gold py-5 hover:no-underline text-left">
+              <details key={index} className="bg-white border border-warm-border rounded-sm px-6 group open:border-gold/50 transition-colors duration-200">
+                <summary className="font-inter text-sm font-semibold text-[#1A1A1A] hover:text-gold py-5 cursor-pointer list-none flex items-center justify-between gap-4">
                   {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="font-inter text-sm text-warm-gray leading-relaxed pb-5">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
+                  <svg className="h-4 w-4 flex-shrink-0 text-gold transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="font-inter text-sm text-warm-gray leading-relaxed pb-5">{faq.answer}</p>
+              </details>
             ))}
-          </Accordion>
+          </div>
         </div>
       </div>
     </section>

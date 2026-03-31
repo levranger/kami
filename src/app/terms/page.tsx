@@ -3,11 +3,12 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { buildPageMetadata } from "@/lib/seo";
+import "@/app/prose.css";
 import { siteSEO } from "@/data/content";
 import { BUSINESS_NAME, ADDRESS, PHONE_HREF, PHONE_NUMBER } from "@/data/constants";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Terms of Service | Kami Aesthetics Aventura, FL",
+  title: "Terms of Service | Kami Aesthetics Aventura",
   description: "Terms of Service for Kami Aesthetics. Please read these terms before using our website or booking services.",
   canonical: `${siteSEO.baseUrl}/terms`,
   noIndex: false,

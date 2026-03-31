@@ -15,8 +15,7 @@ export const INSTAGRAM_URL = "https://www.instagram.com/kami.aesthetic/";
 export const FACEBOOK_URL = "https://www.facebook.com/kamiaesthetics";
 export const TIKTOK_URL = "https://www.tiktok.com/@kamiaesthetics";
 
-// TODO: Replace with a hosted 1200×630 branded image before launch
-export const DEFAULT_OG_IMAGE = "https://kamiaesthetics.com/og-image.jpg";
+export const DEFAULT_OG_IMAGE = "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/7e10c4d5-fe22-4860-b0f7-096b91bc01e1.png";
 
 export const SPLENDOR_X_IMAGE =
   "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/bd12d6b0-a9d3-42d8-8d95-e40bf35522ab.png";
