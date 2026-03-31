@@ -7,7 +7,7 @@ import { siteSEO } from "@/data/content";
 import { BUSINESS_NAME, ADDRESS, PHONE_HREF, PHONE_NUMBER } from "@/data/constants";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Privacy Policy | Kami Aesthetics Aventura",
+  title: "Privacy Policy | Kami Aesthetics Aventura, FL",
   description: "Privacy Policy for Kami Aesthetics. Learn how we collect, use, and protect your personal information.",
   canonical: `${siteSEO.baseUrl}/privacy-policy`,
   noIndex: false,

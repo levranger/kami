@@ -28,7 +28,7 @@ const seoMap: Record<string, { title: string; description: string; keywords: str
   "ipl-photofacial": {
     title: "IPL Photofacial Aventura | Stellar M22 | Kami Aesthetics",
     description:
-      "Advanced IPL photofacial in Aventura, FL with the Lumenis Stellar M22. Treat sun damage, rosacea, and uneven skin tone. OPT™ technology for superior results.",
+      "Advanced IPL photofacial in Aventura, FL with the Lumenis Stellar M22. Treat sun damage, rosacea, and uneven skin tone. Book your consultation today.",
     keywords: ["ipl photofacial aventura", "stellar m22", "sun damage treatment miami", "rosacea treatment aventura"],
   },
   resurfx: {
@@ -206,7 +206,7 @@ export const siteSEO = {
   homeSEO: {
     title: "Kami Aesthetics | Laser Hair Removal & Med Spa Aventura FL",
     description:
-      "Premium laser hair removal and aesthetic treatments in Aventura, FL. Lumenis Splendor X — safe for all skin types. Botox, fillers, IPL, ResurFX, PRP. Free consultation.",
+      "Premium laser hair removal & aesthetic treatments in Aventura, FL. Lumenis Splendor X — safe for all skin types. Botox, fillers, IPL, ResurFX. Book free consult.",
     canonical: BASE_URL,
     keywords: ["med spa aventura", "laser hair removal aventura", "botox aventura", "dermal fillers aventura", "splendor x miami", "kami aesthetics"],
   },

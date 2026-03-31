@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Phone, ArrowRight } from "lucide-react";
 import { BOOKING_URL, PHONE_NUMBER, PHONE_HREF } from "@/data/content";
@@ -9,7 +10,14 @@ export default function FinalCTA() {
   return (
     <section id="contact" className="relative py-24 md:py-32 overflow-hidden" aria-labelledby="cta-heading">
       <div className="absolute inset-0" aria-hidden="true">
-        <img src={CTA_IMAGE} alt="" className="w-full h-full object-cover" role="presentation" />
+        <Image
+          src={CTA_IMAGE}
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+          loading="lazy"
+        />
         <div className="absolute inset-0 bg-[#1A1A1A]/75" />
       </div>
 

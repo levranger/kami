@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { BOOKING_URL } from "@/data/content";
@@ -9,7 +10,15 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-[90vh] md:min-h-[85vh] flex items-center overflow-hidden" aria-labelledby="hero-heading">
       <div className="absolute inset-0" aria-hidden="true">
-        <img src={HERO_IMAGE} alt="" className="w-full h-full object-cover" role="presentation" fetchPriority="high" />
+        <Image
+          src={HERO_IMAGE}
+          alt=""
+          fill
+          priority
+          fetchPriority="high"
+          className="object-cover"
+          sizes="100vw"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/80 via-[#1A1A1A]/50 to-transparent" />
       </div>
 

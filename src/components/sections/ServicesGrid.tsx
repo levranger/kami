@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -30,7 +31,14 @@ export default function ServicesGrid() {
           </div>
 
           <div className="hidden lg:block relative rounded-sm overflow-hidden">
-            <img src={SERVICES_IMAGE} alt="Luxury treatment environment at Kami Aesthetics Aventura" className="w-full h-full object-cover" />
+            <Image
+              src={SERVICES_IMAGE}
+              alt="Luxury treatment environment at Kami Aesthetics Aventura"
+              fill
+              className="object-cover"
+              sizes="33vw"
+              loading="lazy"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/40 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
               <p className="font-playfair text-white text-lg font-semibold">Where Science<br />Meets Beauty</p>

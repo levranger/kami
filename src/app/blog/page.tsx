@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -43,12 +44,14 @@ export default function BlogIndexPage() {
               {blogPosts.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="bg-white border border-warm-border rounded-sm overflow-hidden hover-lift group block">
                   <article>
-                    <div className="h-48 overflow-hidden bg-[#1A1A1A]">
+                    <div className="h-48 overflow-hidden bg-[#1A1A1A] relative">
                       {post.image ? (
-                        <img
+                        <Image
                           src={post.image}
                           alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           loading="lazy"
                         />
                       ) : (

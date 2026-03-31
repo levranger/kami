@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const galleryItems = [
   { id: 1, area: "Upper Lip", label: "Laser Hair Removal", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/48d85674-ef15-4cc2-87e3-612cc35a1075.png", altText: "Before and after laser hair removal results on upper lip area showing smooth, hair-free skin" },
   { id: 2, area: "Full Face", label: "IPL Photofacial", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/b77d4fc7-afde-414f-a625-0fed6895aa65.png", altText: "Before and after IPL photofacial results on full face showing reduced sun damage and even skin tone" },
@@ -26,8 +28,8 @@ export default function Gallery() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5 max-w-5xl mx-auto" role="list" aria-label="Before and after treatment results gallery">
           {galleryItems.map((item) => (
             <figure key={item.id} className="relative rounded-sm overflow-hidden group" role="listitem">
-              <div className="aspect-[4/3]">
-                <img src={item.image} alt={item.altText} className="w-full h-full object-cover" loading="lazy" />
+              <div className="aspect-[4/3] relative">
+                <Image src={item.image} alt={item.altText} fill className="object-cover" sizes="(max-width: 768px) 50vw, 33vw" loading="lazy" />
               </div>
               <figcaption className="bg-[#1A1A1A] px-4 py-3 flex items-center justify-between gap-2">
                 <div className="min-w-0">

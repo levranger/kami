@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function BeforeAfterSection({
   title,
   subtitle,
@@ -24,8 +26,15 @@ export default function BeforeAfterSection({
           {pairs.map((pair) => (
             <div key={pair.area} className="bg-white border border-warm-border rounded-sm overflow-hidden hover-lift">
               {pair.image && (
-                <div className="relative">
-                  <img src={pair.image} alt={`Before and after ${pair.area}`} className="w-full h-48 object-cover" />
+                <div className="relative h-48">
+                  <Image
+                    src={pair.image}
+                    alt={`Before and after ${pair.area}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    loading="lazy"
+                  />
                   <div className="absolute bottom-0 left-0 right-0 flex justify-between px-3 pb-2">
                     <span className="font-inter text-[10px] tracking-wider uppercase text-white bg-black/50 backdrop-blur-sm px-2 py-0.5 rounded-sm">Before</span>
                     <span className="font-inter text-[10px] tracking-wider uppercase text-white bg-gold/80 backdrop-blur-sm px-2 py-0.5 rounded-sm">After</span>

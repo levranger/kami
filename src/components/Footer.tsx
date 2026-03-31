@@ -86,6 +86,9 @@ export default function Footer() {
               <li>
                 <Link href="/blog" className="font-inter text-sm text-white/60 hover:text-gold transition-colors duration-200">Blog</Link>
               </li>
+              <li>
+                <Link href="/site-map" className="font-inter text-sm text-white/60 hover:text-gold transition-colors duration-200">Site Map</Link>
+              </li>
             </ul>
           </nav>
 

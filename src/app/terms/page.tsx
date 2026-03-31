@@ -7,7 +7,7 @@ import { siteSEO } from "@/data/content";
 import { BUSINESS_NAME, ADDRESS, PHONE_HREF, PHONE_NUMBER } from "@/data/constants";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Terms of Service | Kami Aesthetics Aventura",
+  title: "Terms of Service | Kami Aesthetics Aventura, FL",
   description: "Terms of Service for Kami Aesthetics. Please read these terms before using our website or booking services.",
   canonical: `${siteSEO.baseUrl}/terms`,
   noIndex: false,

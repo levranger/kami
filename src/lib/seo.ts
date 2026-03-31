@@ -66,7 +66,6 @@ export function buildPageMetadata({
   return {
     title,
     description,
-    keywords: keywords?.join(", "),
     robots: noIndex ? "noindex, nofollow" : "index, follow",
     alternates: { canonical },
     openGraph: {
