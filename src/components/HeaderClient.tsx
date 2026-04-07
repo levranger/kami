@@ -59,6 +59,9 @@ export function HeaderNav({
         </button>
         {isOpen && (
           <div id="services-dropdown" role="navigation" aria-label="Services menu" className="absolute top-full left-0 mt-2 w-64 bg-white border border-warm-border shadow-lg rounded-sm py-2 animate-fade-in">
+            <Link href="/services" onClick={() => setIsOpen(false)} className="block px-4 py-2.5 font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold hover:bg-warm-white transition-colors duration-200 border-b border-warm-border mb-1">
+              All Services
+            </Link>
             {navServices.map((s) => (
               <Link key={s.slug} href={`/services/${s.slug}`} onClick={() => setIsOpen(false)} className="block px-4 py-2.5 font-inter text-sm text-[#1A1A1A] hover:text-gold hover:bg-warm-white transition-colors duration-200">
                 {s.title}
@@ -134,6 +137,9 @@ export function HeaderMobile({
         >
           <div className="container mx-auto px-4 py-6 space-y-1">
             <p className="font-inter text-[10px] tracking-wider uppercase text-warm-gray px-2 pt-2 pb-1" aria-hidden="true">Services</p>
+            <Link href="/services" onClick={() => setIsOpen(false)} className="block py-2.5 px-2 font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold border-b border-warm-border/30 transition-colors duration-200">
+              All Services
+            </Link>
             {navServices.map((s) => (
               <Link key={s.slug} href={`/services/${s.slug}`} onClick={() => setIsOpen(false)} className="block py-2.5 px-2 font-inter text-sm text-[#1A1A1A] hover:text-gold border-b border-warm-border/30 transition-colors duration-200">
                 {s.title}
