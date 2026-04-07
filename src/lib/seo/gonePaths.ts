@@ -40,7 +40,6 @@ export const gonePaths = new Set<string>([
   "/ru/faq-ru",
   "/ru/about-kami-laser-ru",
   "/ru/candidate-quiz-ru",
-  "/ru/how-it-works-ru",
 
   // ── Russian: old article pages ────────────────────────────────────────────
   "/ru/laser_hair_removal/laser-hair-removal-tailored-for-bodybuilders-ru",

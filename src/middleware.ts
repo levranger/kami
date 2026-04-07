@@ -60,15 +60,5 @@ export function middleware(request: NextRequest): NextResponse {
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Match all paths EXCEPT:
-     *   - /_next/  (Next.js internals)
-     *   - /api/    (API routes)
-     *   - Static file extensions: images, fonts, icons, css, js, map, txt, xml, webmanifest
-     *
-     * Using a negative lookahead on the full path.
-     */
-    "/((?!_next/|api/|favicon\\.ico|robots\\.txt|sitemap\\.xml|.*\\.(?:png|jpg|jpeg|gif|webp|avif|svg|ico|woff2?|ttf|otf|css|js|map|webmanifest)).*)",
-  ],
+  matcher: ["/((?!_next/|api/).*)",],
 };

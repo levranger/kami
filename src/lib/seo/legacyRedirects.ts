@@ -72,6 +72,7 @@ export const legacyRedirects: Record<string, string> = {
   // ── Language service index pages (judgment call) ──────────────────────────
   // These were the multilingual "all services" index pages. /services is the
   // closest English equivalent — broader intent than a single service page.
+  "/ru/how-it-works-ru": "/services/laser-hair-removal",
   "/ru/services-ru": "/services",
   "/es/services-esp": "/services",
 };

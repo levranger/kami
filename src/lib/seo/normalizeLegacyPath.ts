@@ -9,5 +9,6 @@
  */
 export function normalizePath(pathname: string): string {
   if (pathname === "/") return "/";
-  return pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  const stripped = pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  try { return decodeURIComponent(stripped); } catch { return stripped; }
 }

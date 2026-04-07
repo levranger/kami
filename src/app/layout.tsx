@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
@@ -56,6 +57,7 @@ export default function RootLayout({
       <body>
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPBMWR8S" height="0" width="0" style={{ display: "none", visibility: "hidden" }} /></noscript>
         {children}
+        <Analytics />
       </body>
     </html>
   );
