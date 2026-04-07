@@ -11,50 +11,16 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // General pages
+      // Trailing-slash canonical dedup for /services.
+      // Handled here (not middleware) so it fires before any page render.
+      // Note: permanent:true in Next.js config emits 308, not 301.
+      // All other legacy redirects are handled in middleware.ts with true 301s.
       { source: "/services/", destination: "/services", permanent: true },
-      { source: "/home-page/", destination: "/", permanent: true },
-      { source: "/faq/", destination: "/", permanent: true },
-      { source: "/about-kami-laser/", destination: "/", permanent: true },
-      { source: "/candidate-quiz/", destination: "/", permanent: true },
-      { source: "/how-it-works/", destination: "/services/laser-hair-removal", permanent: true },
-      { source: "/types-of-hair-removal/", destination: "/services/laser-hair-removal", permanent: true },
-
-      // Service area pages
-      { source: "/services_lazer/stomach/", destination: "/services/laser-hair-removal", permanent: true },
-      { source: "/services_lazer/nail-fungus/", destination: "/services/laser-hair-removal", permanent: true },
-      { source: "/services_lazer/legs/", destination: "/services/laser-hair-removal", permanent: true },
-      { source: "/services_lazer/underarms/", destination: "/services/laser-hair-removal", permanent: true },
-      { source: "/services_lazer/full-face/", destination: "/services/laser-hair-removal", permanent: true },
-      { source: "/services_lazer/bikini/", destination: "/services/laser-hair-removal", permanent: true },
-      { source: "/services_lazer/chest/", destination: "/services/laser-hair-removal", permanent: true },
-      { source: "/services_lazer/buttocks/", destination: "/services/laser-hair-removal", permanent: true },
-      { source: "/services_lazer/back/", destination: "/services/laser-hair-removal", permanent: true },
-      { source: "/services_lazer/arms/", destination: "/services/laser-hair-removal", permanent: true },
-
-      // Old blog articles
-      { source: "/laser_hair_removal/laser-hair-removal-tailored-for-bodybuilders/", destination: "/blog", permanent: true },
-      { source: "/laser_hair_removal/laser-hair-removal-for-hidradenitis-suppurativa/", destination: "/blog", permanent: true },
-      { source: "/laser_hair_removal/laser-hair-removal-for-pilonidal-cysts/", destination: "/blog", permanent: true },
-      { source: "/laser_hair_removal/laser-hair-removal-for-transgender-clients/", destination: "/blog", permanent: true },
-      { source: "/laser_hair_removal/laser-hair-removal-for-folliculitis/", destination: "/blog", permanent: true },
-      { source: "/laser_hair_removal/laser-hair-removal-for-brown-skin/", destination: "/blog", permanent: true },
-      { source: "/laser_hair_removal/laser-hair-removal-for-active-lifestyle/", destination: "/blog", permanent: true },
-      { source: "/laser_hair_removal/laser-hair-removal-for-amputees/", destination: "/blog", permanent: true },
-      { source: "/laser_hair_removal/at-home-laser-hair-removal-weighing-the-pros-and-cons/", destination: "/blog", permanent: true },
-
-      // Language catch-alls (after specific rules)
-      { source: "/ru/:path*", destination: "/", permanent: true },
-      { source: "/es/:path*", destination: "/", permanent: true },
     ];
   },
 
   async headers() {
     return [
-      {
-        source: "/:lang(ru|es)/:path*",
-        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
-      },
       {
         source: "/(.*)",
         headers: [
