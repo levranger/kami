@@ -3,8 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Phone, ArrowRight } from "lucide-react";
 import { BOOKING_URL, PHONE_NUMBER, PHONE_HREF } from "@/data/content";
 
-const CTA_IMAGE =
-  "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/9644fd27-0fc8-4ec0-a260-addf6811ffba.png";
+const CTA_IMAGE = "/images/cta-background.png";
 
 export default function FinalCTA() {
   return (
@@ -12,7 +11,7 @@ export default function FinalCTA() {
       <div className="absolute inset-0" aria-hidden="true">
         <Image
           src={CTA_IMAGE}
-          alt=""
+          alt="Kami Aesthetics consultation — book your laser hair removal or aesthetic treatment in Aventura"
           fill
           className="object-cover"
           sizes="100vw"

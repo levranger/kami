@@ -9,8 +9,7 @@ export const treatments: Treatment[] = [
       "Permanent hair reduction with the Splendor X — fast, comfortable, and effective for all skin types.",
     fullDescription:
       "Experience the gold standard in laser hair removal with the Lumenis Splendor X. Our advanced BLEND X™ technology combines Alexandrite (755nm) and Nd:YAG (1064nm) wavelengths simultaneously, delivering superior results on all skin types — from light to dark. The unique square spot shape ensures uniform coverage with no missed spots, while the dual cooling system keeps you comfortable throughout treatment.",
-    heroImage:
-      "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/3adf3074-75cd-44e0-b72b-c03a717db69d.png",
+    heroImage: "/images/service-laser-hair-removal.png",
     heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
     duration: "15–60 min",
     downtime: "None",
@@ -62,8 +61,7 @@ export const treatments: Treatment[] = [
       "The gold standard in IPL technology — target sun damage, redness, vascular lesions, and uneven skin tone with the Lumenis Stellar M22.",
     fullDescription:
       "The Lumenis Stellar M22 is the most powerful and versatile IPL (Intense Pulsed Light) platform available. With multiple applicators and customizable filters, it treats over 30 skin conditions including sun damage, age spots, rosacea, broken capillaries, acne, and uneven pigmentation. The Stellar M22's OPT™ (Optimal Pulse Technology) delivers consistent energy throughout each pulse for safer, more effective treatments with less discomfort.",
-    heroImage:
-      "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/70ec67fd-36a4-4de3-b36c-f3bf71a616d0.png",
+    heroImage: "/images/service-ipl-photofacial.png",
     heroGradient: "from-[#2C1810]/85 via-[#2C1810]/60 to-[#2C1810]/30",
     duration: "20–45 min",
     downtime: "1–3 days mild redness",
@@ -124,8 +122,7 @@ export const treatments: Treatment[] = [
       "Non-ablative fractional laser for skin resurfacing, scars, stretch marks, and texture improvement.",
     fullDescription:
       "ResurFX is a revolutionary non-ablative fractional laser that stimulates your skin's natural healing process to rebuild collagen from within. Unlike ablative lasers, ResurFX treats the deeper layers of skin while leaving the surface intact, resulting in faster healing and less downtime. It's the ideal solution for acne scars, surgical scars, stretch marks, fine lines, and overall skin texture improvement.",
-    heroImage:
-      "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/8c85c11b-b0cb-4e94-b205-2b831f1b7179.png",
+    heroImage: "/images/service-resurfx.png",
     heroGradient: "from-[#1A2A1A]/85 via-[#1A2A1A]/60 to-[#1A2A1A]/30",
     duration: "30–45 min",
     downtime: "1–3 days redness",
@@ -177,8 +174,7 @@ export const treatments: Treatment[] = [
       "Smooth fine lines and wrinkles with precision injections for a refreshed, natural appearance.",
     fullDescription:
       "Botox is the world's most popular non-surgical cosmetic treatment for a reason — it works. Our expert injectors use precise micro-dosing techniques to relax targeted facial muscles, smoothing dynamic wrinkles while preserving your natural expressions. Whether you're looking to soften forehead lines, crow's feet, or frown lines, our approach ensures results that look refreshed, never frozen.",
-    heroImage:
-      "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/cae6cad9-39f8-43b1-ac8e-5da7edf66109.png",
+    heroImage: "/images/service-botox.png",
     heroGradient: "from-[#1A1A2A]/85 via-[#1A1A2A]/60 to-[#1A1A2A]/30",
     duration: "15–20 min",
     downtime: "None",
@@ -229,8 +225,7 @@ export const treatments: Treatment[] = [
       "Restore volume, enhance contours, and rejuvenate your look with premium hyaluronic acid fillers.",
     fullDescription:
       "Dermal fillers are the ultimate tool for facial rejuvenation and enhancement. Using premium hyaluronic acid-based fillers, we restore lost volume, enhance facial contours, and smooth deep lines and folds. From plumping lips to sculpting cheekbones to softening nasolabial folds, our skilled injectors create harmonious, natural-looking results that enhance your unique beauty.",
-    heroImage:
-      "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/4d310f3a-b2a0-4e8b-998d-46df6932f13e.png",
+    heroImage: "/images/service-dermal-fillers.png",
     heroGradient: "from-[#2A1A1A]/85 via-[#2A1A1A]/60 to-[#2A1A1A]/30",
     duration: "30–60 min",
     downtime: "2–5 days mild swelling",
@@ -271,8 +266,7 @@ export const treatments: Treatment[] = [
       "Harness your body's natural healing power for skin rejuvenation, hair restoration, and collagen boost.",
     fullDescription:
       "Platelet-Rich Plasma (PRP) therapy uses your body's own growth factors to stimulate healing and regeneration. We draw a small amount of your blood, process it to concentrate the platelets, and then apply the PRP to target areas. This natural approach stimulates collagen production, accelerates healing, and promotes cellular renewal — making it ideal for facial rejuvenation, hair restoration, and enhancing other treatments.",
-    heroImage:
-      "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/2702b351-0924-4aef-9004-593f019b4070.png",
+    heroImage: "/images/service-prp-therapy.png",
     heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
     duration: "45–60 min",
     downtime: "1–2 days redness",

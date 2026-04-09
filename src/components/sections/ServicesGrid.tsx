@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { servicePages } from "@/data/content";
 
-const SERVICES_IMAGE =
-  "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/e1af882e-f03a-4728-9967-697ac37319ce.png";
+const SERVICES_IMAGE = "/images/services-environment.png";
 
 export default function ServicesGrid() {
   return (

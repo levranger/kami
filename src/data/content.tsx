@@ -155,7 +155,7 @@ export const blogPosts: BlogPost[] = [
     category: "Laser Hair Removal",
     date: "2026-03-15",
     readTime: "5 min read",
-    image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/3adf3074-75cd-44e0-b72b-c03a717db69d.png",
+    image: "/images/service-laser-hair-removal.png",
     body: laserVsWaxingBody,
     seo: {
       title: "Laser Hair Removal vs Waxing in Aventura",
@@ -171,7 +171,7 @@ export const blogPosts: BlogPost[] = [
     category: "Technology",
     date: "2026-03-01",
     readTime: "4 min read",
-    image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/bd12d6b0-a9d3-42d8-8d95-e40bf35522ab.png",
+    image: "/images/splendor-x-laser.png",
     body: splendorXAllSkinTypesBody,
     seo: {
       title: "Splendor X: Safe Laser for All Skin Types",
@@ -187,7 +187,7 @@ export const blogPosts: BlogPost[] = [
     category: "IPL / Skin",
     date: "2026-02-15",
     readTime: "6 min read",
-    image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/70ec67fd-36a4-4de3-b36c-f3bf71a616d0.png",
+    image: "/images/service-ipl-photofacial.png",
     body: iplSunDamageBody,
     seo: {
       title: "IPL Photofacial for Sun Damage in Aventura",

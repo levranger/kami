@@ -3,12 +3,6 @@ const nextConfig = {
   skipTrailingSlashRedirect: true,
   images: {
     formats: ["image/avif", "image/webp"],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "mgx-backend-cdn.metadl.com",
-      },
-    ],
   },
   async redirects() {
     return [
@@ -55,7 +49,7 @@ const nextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: blob: https://mgx-backend-cdn.metadl.com https://www.google-analytics.com https://www.googletagmanager.com",
+              "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com",
               "font-src 'self'",
               "frame-src https://www.google.com https://www.googletagmanager.com https://book.squareup.com",
               "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com",

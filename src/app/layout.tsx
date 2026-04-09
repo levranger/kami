@@ -1,6 +1,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { siteSEO } from "@/data/content";
 
@@ -44,20 +45,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en-US" className={`${inter.variable} ${playfair.variable}`}>
-      <head>
-        <link rel="preconnect" href="https://mgx-backend-cdn.metadl.com" crossOrigin="anonymous" />
-        <link
-          rel="preload"
-          as="image"
-          href="https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/7e10c4d5-fe22-4860-b0f7-096b91bc01e1.png"
-          fetchPriority="high"
-        />
-        <script dangerouslySetInnerHTML={{ __html: `(function(){function l(){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NPBMWR8S');}if(window.requestIdleCallback){requestIdleCallback(l,{timeout:6000});}else{setTimeout(l,4000);}})();` }} />
-      </head>
       <body>
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPBMWR8S" height="0" width="0" style={{ display: "none", visibility: "hidden" }} /></noscript>
         {children}
         <Analytics />
+        <Script
+          id="gtm"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NPBMWR8S');`,
+          }}
+        />
       </body>
     </html>
   );

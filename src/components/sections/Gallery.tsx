@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 const galleryItems = [
-  { id: 1, area: "Upper Lip", label: "Laser Hair Removal", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/48d85674-ef15-4cc2-87e3-612cc35a1075.png", altText: "Before and after laser hair removal results on upper lip area showing smooth, hair-free skin" },
-  { id: 2, area: "Full Face", label: "IPL Photofacial", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/b77d4fc7-afde-414f-a625-0fed6895aa65.png", altText: "Before and after IPL photofacial results on full face showing reduced sun damage and even skin tone" },
-  { id: 3, area: "Jawline", label: "Dermal Fillers", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/333abc84-f7a5-4aa0-b0ed-eacfb57c67bc.png", altText: "Before and after dermal filler results on jawline showing improved contour and definition" },
-  { id: 4, area: "Forehead", label: "Botox", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/ea4a6fbd-678a-43f6-a8d6-6334c4eee18a.png", altText: "Before and after Botox results on forehead showing smoothed wrinkles and natural expression" },
-  { id: 5, area: "Arms", label: "Laser Hair Removal", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/170ff0d2-3dfa-4505-a365-b44100782d1a.png", altText: "Before and after laser hair removal results on arms showing smooth, hair-free skin" },
-  { id: 6, area: "Skin Texture", label: "ResurFX", image: "https://mgx-backend-cdn.metadl.com/generate/images/1059255/2026-03-25/959969a5-c035-462e-90ea-e40825a157ce.png", altText: "Before and after ResurFX fractional laser results showing improved skin texture and reduced scarring" },
+  { id: 1, area: "Upper Lip", label: "Laser Hair Removal", image: "/images/gallery-laser-upper-lip.png", altText: "Before and after laser hair removal results on upper lip area showing smooth, hair-free skin" },
+  { id: 2, area: "Full Face", label: "IPL Photofacial", image: "/images/gallery-ipl-full-face.png", altText: "Before and after IPL photofacial results on full face showing reduced sun damage and even skin tone" },
+  { id: 3, area: "Jawline", label: "Dermal Fillers", image: "/images/gallery-fillers-jawline.png", altText: "Before and after dermal filler results on jawline showing improved contour and definition" },
+  { id: 4, area: "Forehead", label: "Botox", image: "/images/gallery-botox-forehead.png", altText: "Before and after Botox results on forehead showing smoothed wrinkles and natural expression" },
+  { id: 5, area: "Arms", label: "Laser Hair Removal", image: "/images/gallery-laser-arms.png", altText: "Before and after laser hair removal results on arms showing smooth, hair-free skin" },
+  { id: 6, area: "Skin Texture", label: "ResurFX", image: "/images/gallery-resurfx-skin-texture.png", altText: "Before and after ResurFX fractional laser results showing improved skin texture and reduced scarring" },
 ];
 
 export default function Gallery() {

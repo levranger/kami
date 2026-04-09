@@ -59,7 +59,7 @@ export default function ServicePage({ params }: Props) {
         {/* Hero Banner */}
         <section className="relative py-24 md:py-32 overflow-hidden">
           <div className="absolute inset-0" aria-hidden="true">
-            <Image src={service.heroImage} alt="" fill priority className="object-cover" sizes="100vw" />
+            <Image src={service.heroImage} alt={`${service.title} at Kami Aesthetics Aventura — professional ${service.title.toLowerCase()} treatment in Aventura, FL`} fill priority className="object-cover" sizes="100vw" />
             <div className={`absolute inset-0 bg-gradient-to-r ${service.heroGradient}`} />
           </div>
           <div className="relative z-10 container mx-auto px-4 md:px-8">

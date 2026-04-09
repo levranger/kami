@@ -29,7 +29,7 @@ export default function BeforeAfterSection({
                 <div className="relative h-48">
                   <Image
                     src={pair.image}
-                    alt={`Before and after ${pair.area}`}
+                    alt={`Before and after ${pair.area} treatment results at Kami Aesthetics Aventura`}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 33vw"
