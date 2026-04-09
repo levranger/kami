@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { siteSEO } from "@/data/content";
 
 const inter = Inter({
@@ -49,6 +50,7 @@ export default function RootLayout({
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPBMWR8S" height="0" width="0" style={{ display: "none", visibility: "hidden" }} /></noscript>
         {children}
         <Analytics />
+        <SpeedInsights />
         <Script
           id="gtm"
           strategy="lazyOnload"
