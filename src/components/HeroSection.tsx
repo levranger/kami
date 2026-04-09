@@ -1,20 +1,20 @@
-import Image from "next/image";
+"use client";
+
+import HeroImage from "@/components/HeroImage";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { BOOKING_URL } from "@/data/content";
 
-const HERO_IMAGE = "/images/hero-main.png";
+const HERO_IMAGE = "hero-main_mxhbyc";
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-[90vh] md:min-h-[85vh] flex items-center overflow-hidden" aria-labelledby="hero-heading">
       <div className="absolute inset-0" aria-hidden="true">
-        <Image
+        <HeroImage
           src={HERO_IMAGE}
           alt="Kami Aesthetics treatment room in Aventura, Florida — premium laser hair removal and aesthetic services"
           fill
-          priority
-          fetchPriority="high"
           className="object-cover"
           sizes="100vw"
         />

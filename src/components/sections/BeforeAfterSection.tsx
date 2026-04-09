@@ -1,4 +1,6 @@
-import Image from "next/image";
+"use client";
+
+import AppImage from "@/components/AppImage";
 
 export default function BeforeAfterSection({
   title,
@@ -27,7 +29,7 @@ export default function BeforeAfterSection({
             <div key={pair.area} className="bg-white border border-warm-border rounded-sm overflow-hidden hover-lift">
               {pair.image && (
                 <div className="relative h-48">
-                  <Image
+                  <AppImage
                     src={pair.image}
                     alt={`Before and after ${pair.area} treatment results at Kami Aesthetics Aventura`}
                     fill

@@ -1,4 +1,6 @@
-import Image from "next/image";
+"use client";
+
+import AppImage from "@/components/AppImage";
 import { Zap, ShieldCheck, Award, Heart } from "lucide-react";
 import { SPLENDOR_X_IMAGE } from "@/data/content";
 
@@ -16,7 +18,7 @@ export default function WhyChoose() {
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
           <div className="relative order-2 lg:order-1">
             <div className="relative rounded-sm overflow-hidden h-[500px]">
-              <Image
+              <AppImage
                 src={SPLENDOR_X_IMAGE}
                 alt="Lumenis Splendor X laser system — the world's most advanced dual-wavelength laser for hair removal, used at Kami Aesthetics in Aventura"
                 fill

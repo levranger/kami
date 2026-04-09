@@ -1,12 +1,16 @@
-import Image from "next/image";
+"use client";
 
+import AppImage from "@/components/AppImage";
+
+// Switch src values to Cloudinary public IDs (e.g. "kami/gallery-ipl-full-face")
+// once NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME is set and images are uploaded.
 const galleryItems = [
-  { id: 1, area: "Upper Lip", label: "Laser Hair Removal", image: "/images/gallery-laser-upper-lip.png", altText: "Before and after laser hair removal results on upper lip area showing smooth, hair-free skin" },
-  { id: 2, area: "Full Face", label: "IPL Photofacial", image: "/images/gallery-ipl-full-face.png", altText: "Before and after IPL photofacial results on full face showing reduced sun damage and even skin tone" },
-  { id: 3, area: "Jawline", label: "Dermal Fillers", image: "/images/gallery-fillers-jawline.png", altText: "Before and after dermal filler results on jawline showing improved contour and definition" },
-  { id: 4, area: "Forehead", label: "Botox", image: "/images/gallery-botox-forehead.png", altText: "Before and after Botox results on forehead showing smoothed wrinkles and natural expression" },
-  { id: 5, area: "Arms", label: "Laser Hair Removal", image: "/images/gallery-laser-arms.png", altText: "Before and after laser hair removal results on arms showing smooth, hair-free skin" },
-  { id: 6, area: "Skin Texture", label: "ResurFX", image: "/images/gallery-resurfx-skin-texture.png", altText: "Before and after ResurFX fractional laser results showing improved skin texture and reduced scarring" },
+  { id: 1, area: "Upper Lip", label: "Laser Hair Removal", image: "gallery-laser-upper-lip_hfuwpt", altText: "Before and after laser hair removal results on upper lip area showing smooth, hair-free skin" },
+  { id: 2, area: "Full Face", label: "IPL Photofacial", image: "gallery-ipl-full-face_lksa5x", altText: "Before and after IPL photofacial results on full face showing reduced sun damage and even skin tone" },
+  { id: 3, area: "Jawline", label: "Dermal Fillers", image: "gallery-fillers-jawline_yqf3u0", altText: "Before and after dermal filler results on jawline showing improved contour and definition" },
+  { id: 4, area: "Forehead", label: "Botox", image: "gallery-botox-forehead_xzau0g", altText: "Before and after Botox results on forehead showing smoothed wrinkles and natural expression" },
+  { id: 5, area: "Arms", label: "Laser Hair Removal", image: "gallery-laser-arms_z10j9u", altText: "Before and after laser hair removal results on arms showing smooth, hair-free skin" },
+  { id: 6, area: "Skin Texture", label: "ResurFX", image: "gallery-resurfx-skin-texture_dcdhrz", altText: "Before and after ResurFX fractional laser results showing improved skin texture and reduced scarring" },
 ];
 
 export default function Gallery() {
@@ -29,7 +33,7 @@ export default function Gallery() {
           {galleryItems.map((item) => (
             <figure key={item.id} className="relative rounded-sm overflow-hidden group" role="listitem">
               <div className="aspect-[4/3] relative">
-                <Image src={item.image} alt={item.altText} fill className="object-cover" sizes="(max-width: 768px) 50vw, 33vw" loading="lazy" />
+                <AppImage src={item.image} alt={item.altText} fill className="object-cover" sizes="(max-width: 768px) 50vw, 33vw" loading="lazy" />
               </div>
               <figcaption className="bg-[#1A1A1A] px-4 py-3 flex items-center justify-between gap-2">
                 <div className="min-w-0">

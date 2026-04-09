@@ -17,13 +17,13 @@ export const TIKTOK_URL = "https://www.tiktok.com/@kamiaesthetics";
 
 export const DEFAULT_OG_IMAGE = "/images/hero-main.png";
 
-export const SPLENDOR_X_IMAGE = "/images/splendor-x-laser.png";
+export const SPLENDOR_X_IMAGE = "splendor-x-laser_ejquwv";
 
 export const BA_IMAGES = {
-  iplSunspots:     "/images/ba-ipl-sunspots.png",
-  iplRosacea:      "/images/ba-ipl-rosacea.png",
-  iplHands:        "/images/ba-ipl-hands.png",
-  resurfxAcneScars:    "/images/ba-resurfx-acne-scars.png",
-  resurfxStretchMarks: "/images/ba-resurfx-stretch-marks.png",
-  resurfxFineLines:    "/images/ba-resurfx-fine-lines.png",
+  iplSunspots:         "ba-ipl-sunspots_nl9k8g",
+  iplRosacea:          "ba-ipl-rosacea_fi3kjx",
+  iplHands:            "ba-ipl-hands_ton8jq",
+  resurfxAcneScars:    "ba-resurfx-acne-scars_su4gek",
+  resurfxStretchMarks: "ba-resurfx-stretch-marks_gvmt7a",
+  resurfxFineLines:    "ba-resurfx-fine-lines_nhuden",
 };
