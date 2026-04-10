@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { buildPageMetadata, buildFAQSchema } from "@/lib/seo";
 import { siteSEO, localBusinessSchema, homepageFAQs } from "@/data/content";
 import AnnouncementBar from "@/components/AnnouncementBar";
@@ -15,8 +14,7 @@ import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
-
-const MapEmbed = dynamic(() => import("@/components/sections/MapEmbed"), { ssr: false });
+import MapEmbed from "@/components/sections/MapEmbed";
 
 export const metadata: Metadata = buildPageMetadata(siteSEO.homeSEO);
 
