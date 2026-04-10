@@ -44,7 +44,10 @@ export function middleware(request: NextRequest): NextResponse {
   // ── Check gone set ────────────────────────────────────────────────────────
   if (gonePaths.has(normalized)) {
     if (DEV) console.log(`[legacy-gone] 410 ${pathname}`);
-    return new NextResponse("Gone", { status: 410 });
+    return new NextResponse("Gone", {
+      status: 410,
+      headers: { "X-Robots-Tag": "noindex, nofollow" },
+    });
   }
 
   // ── Dead language namespaces ──────────────────────────────────────────────
@@ -53,7 +56,10 @@ export function middleware(request: NextRequest): NextResponse {
   // not 404 — these pages existed and were indexed; 410 accelerates deindexing.
   if (normalized.startsWith("/ru/") || normalized.startsWith("/es/")) {
     if (DEV) console.log(`[legacy-gone] 410 ${pathname} (unknown language namespace)`);
-    return new NextResponse("Gone", { status: 410 });
+    return new NextResponse("Gone", {
+      status: 410,
+      headers: { "X-Robots-Tag": "noindex, nofollow" },
+    });
   }
 
   return NextResponse.next();
