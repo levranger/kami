@@ -82,6 +82,9 @@ export function HeaderNav({
         </a>
       ))}
 
+      <Link href="/faq" className="font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold transition-colors duration-200 tracking-wide">
+        FAQ
+      </Link>
       <Link href="/blog" className="font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold transition-colors duration-200 tracking-wide">
         Blog
       </Link>
@@ -151,6 +154,9 @@ export function HeaderMobile({
                 {link.label}
               </a>
             ))}
+            <Link href="/faq" onClick={() => setIsOpen(false)} className="block py-3 px-2 font-inter text-base text-[#1A1A1A] hover:text-gold border-b border-warm-border/50 transition-colors duration-200">
+              FAQ
+            </Link>
             <Link href="/blog" onClick={() => setIsOpen(false)} className="block py-3 px-2 font-inter text-base text-[#1A1A1A] hover:text-gold border-b border-warm-border/50 transition-colors duration-200">
               Blog
             </Link>

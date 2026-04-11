@@ -8,7 +8,6 @@ import { HeaderNav, HeaderMobile } from "./HeaderClient";
 const anchorLinks = [
   { label: "Results", href: "#gallery" },
   { label: "About", href: "#why-choose" },
-  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
