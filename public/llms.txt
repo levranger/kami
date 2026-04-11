@@ -10,6 +10,7 @@ Kami Aesthetics is a med spa in Aventura, Florida offering laser hair removal, I
 - https://kamiaesthetics.com/services/botox
 - https://kamiaesthetics.com/services/dermal-fillers
 - https://kamiaesthetics.com/services/prp-therapy
+- https://kamiaesthetics.com/faq
 - https://kamiaesthetics.com/blog
 
 ## Notes
