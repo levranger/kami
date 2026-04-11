@@ -10,7 +10,7 @@
  * Paths are stored WITHOUT trailing slash. Middleware normalizes before lookup.
  *
  * Categories:
- *   - Dead informational pages (faq, about, quiz) — no current equivalent
+ *   - Dead informational pages (about, quiz) — no current equivalent
  *   - Redesign/system pages — internal WP artifacts, never had real content
  *   - Old article pages — no sufficiently close replacement exists on the new site
  *   - Multilingual versions of all of the above
@@ -20,7 +20,6 @@
 
 export const gonePaths = new Set<string>([
   // ── English: dead informational/system pages ──────────────────────────────
-  "/faq",
   "/about-kami-laser",
   "/candidate-quiz",
 

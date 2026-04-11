@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { homepageFAQs } from "@/data/content";
 
 export default function FAQ() {
@@ -26,6 +28,16 @@ export default function FAQ() {
                 <p className="font-inter text-sm text-warm-gray leading-relaxed pb-5">{faq.answer}</p>
               </details>
             ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link
+              href="/faq"
+              className="inline-flex items-center gap-2 font-inter text-sm font-medium text-gold hover:text-gold-dark transition-colors duration-200"
+            >
+              See all frequently asked questions
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </div>
