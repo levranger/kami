@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL, PHONE_NUMBER, PHONE_HREF } from "@/data/content";
-import { navServices } from "@/data/nav-services";
+import { navCategories, navServices } from "@/data/nav-services";
 import { HeaderNav, HeaderMobile } from "./HeaderClient";
 
 const anchorLinks = [
@@ -22,7 +22,7 @@ export default function Header() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8" aria-label="Main navigation">
-            <HeaderNav navServices={navServices} anchorLinks={anchorLinks} />
+            <HeaderNav navCategories={navCategories} navServices={navServices} anchorLinks={anchorLinks} />
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
@@ -38,6 +38,7 @@ export default function Header() {
           </div>
 
           <HeaderMobile
+            navCategories={navCategories}
             navServices={navServices}
             anchorLinks={anchorLinks}
             bookingUrl={BOOKING_URL}

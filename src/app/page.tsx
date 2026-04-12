@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildPageMetadata, buildFAQSchema } from "@/lib/seo";
 import { siteSEO, localBusinessSchema, homepageFAQs } from "@/data/content";
+import { getGoogleReviews } from "@/lib/google-reviews";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
@@ -12,14 +13,18 @@ import Gallery from "@/components/sections/Gallery";
 import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
+import AreasWeServe from "@/components/sections/AreasWeServe";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import MapEmbed from "@/components/sections/MapEmbed";
 
 export const metadata: Metadata = buildPageMetadata(siteSEO.homeSEO);
 
-export default function HomePage() {
-  const faqSchema = buildFAQSchema(homepageFAQs);
+export default async function HomePage() {
+  const [faqSchema, place] = await Promise.all([
+    Promise.resolve(buildFAQSchema(homepageFAQs)),
+    getGoogleReviews(),
+  ]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -36,9 +41,10 @@ export default function HomePage() {
         <ServicesGrid />
         <WhyChoose />
         <Gallery />
-        <Testimonials />
+        <Testimonials place={place} />
         <FAQ />
         <MapEmbed />
+        <AreasWeServe />
         <FinalCTA />
       </main>
       <Footer />

@@ -24,12 +24,22 @@ import { NextRequest, NextResponse } from "next/server";
 import { legacyRedirects } from "@/lib/seo/legacyRedirects";
 import { gonePaths } from "@/lib/seo/gonePaths";
 import { normalizePath } from "@/lib/seo/normalizeLegacyPath";
+import { OLD_SERVICE_REDIRECTS } from "@/data/categories";
 
 const DEV = process.env.NODE_ENV === "development";
 
 export function middleware(request: NextRequest): NextResponse {
   const { pathname } = request.nextUrl;
   const normalized = normalizePath(pathname);
+
+  // ── Check service category redirects (old /services/[slug] → new /services/[cat]/[slug]) ──
+  const serviceRedirect = OLD_SERVICE_REDIRECTS[normalized];
+  if (serviceRedirect) {
+    const url = request.nextUrl.clone();
+    url.pathname = serviceRedirect;
+    if (DEV) console.log(`[service-redirect] 301 ${pathname} → ${serviceRedirect}`);
+    return NextResponse.redirect(url, { status: 301 });
+  }
 
   // ── Check redirect map ────────────────────────────────────────────────────
   const redirectTarget = legacyRedirects[normalized];

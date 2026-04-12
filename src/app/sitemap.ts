@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
-import { treatments } from "@/data/treatments";
 import { blogPosts } from "@/data/content";
+import { categoryDefs, SLUG_TO_CATEGORY } from "@/data/categories";
+import { treatments } from "@/data/treatments";
 
 const BASE = "https://kamiaesthetics.com";
 
@@ -16,12 +17,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  const serviceRoutes: MetadataRoute.Sitemap = treatments.map((t) => ({
-    url: `${BASE}/services/${t.slug}`,
+  const categoryRoutes: MetadataRoute.Sitemap = categoryDefs.map((c) => ({
+    url: `${BASE}/services/${c.slug}`,
     lastModified: now,
     changeFrequency: "monthly",
     priority: 0.9,
   }));
+
+  const serviceRoutes: MetadataRoute.Sitemap = treatments
+    .map((t) => {
+      const cat = SLUG_TO_CATEGORY[t.slug];
+      if (!cat) return null;
+      return {
+        url: `${BASE}/services/${cat}/${t.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: 0.85,
+      };
+    })
+    .filter(Boolean) as MetadataRoute.Sitemap;
 
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
     url: `${BASE}/blog/${p.slug}`,
@@ -30,5 +44,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...blogRoutes];
+  return [...staticRoutes, ...categoryRoutes, ...serviceRoutes, ...blogRoutes];
 }

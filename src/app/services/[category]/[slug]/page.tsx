@@ -12,17 +12,22 @@ import BeforeAfterSection from "@/components/sections/BeforeAfterSection";
 import TechnologySection from "@/components/sections/TechnologySection";
 import ProcessStepsSection from "@/components/sections/ProcessStepsSection";
 import ResultsGallerySection from "@/components/sections/ResultsGallerySection";
-import { servicePages, newClientOffer, BOOKING_URL, PHONE_NUMBER, PHONE_HREF } from "@/data/content";
+import AnnouncementBar from "@/components/AnnouncementBar";
+import { servicePages, newClientOffer, BOOKING_URL, PHONE_NUMBER, PHONE_HREF, localBusinessSchema } from "@/data/content";
 import { ADDRESS_SHORT, CITY_STATE } from "@/data/constants";
 import { buildFAQSchema, buildServiceSchema, buildBreadcrumbSchema, buildPageMetadata } from "@/lib/seo";
-import { siteSEO } from "@/data/content";
+import { categoryDefs, SLUG_TO_CATEGORY } from "@/data/categories";
 
 interface Props {
-  params: { slug: string };
+  params: { category: string; slug: string };
 }
 
 export function generateStaticParams() {
-  return servicePages.map((s) => ({ slug: s.slug }));
+  return servicePages.flatMap((s) => {
+    const cat = SLUG_TO_CATEGORY[s.slug];
+    if (!cat) return [];
+    return [{ category: cat, slug: s.slug }];
+  });
 }
 
 export function generateMetadata({ params }: Props): Metadata {
@@ -33,40 +38,49 @@ export function generateMetadata({ params }: Props): Metadata {
 
 export default function ServicePage({ params }: Props) {
   const service = servicePages.find((s) => s.slug === params.slug);
-  if (!service) notFound();
+  const cat = categoryDefs.find((c) => c.slug === params.category);
+  if (!service || !cat || SLUG_TO_CATEGORY[params.slug] !== params.category) notFound();
 
   const relatedServices = servicePages.filter((s) => service.relatedSlugs.includes(s.slug));
-  const otherServices = servicePages.filter((s) => s.slug !== params.slug && !service.relatedSlugs.includes(s.slug));
   const isLaserService = service.slug === "laser-hair-removal";
 
   const faqSchema = buildFAQSchema(service.faq.map((f) => ({ question: f.q, answer: f.a })));
   const serviceSchema = buildServiceSchema(service);
   const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: "Home", url: siteSEO.baseUrl },
-    { name: "Services", url: `${siteSEO.baseUrl}/#services` },
+    { name: "Home", url: "https://kamiaesthetics.com" },
+    { name: "Services", url: "https://kamiaesthetics.com/services" },
+    { name: cat.title, url: cat.seo.canonical },
     { name: service.title, url: service.seo.canonical },
   ]);
 
   return (
     <div className="min-h-screen bg-white">
-      <JsonLd data={[faqSchema, serviceSchema, breadcrumbSchema]} />
-      <a href="#service-main-content" className="skip-to-content">
-        Skip to main content
-      </a>
+      <JsonLd data={[localBusinessSchema, faqSchema, serviceSchema, breadcrumbSchema]} />
+      <a href="#service-main-content" className="skip-to-content">Skip to main content</a>
+      <AnnouncementBar />
       <Header />
 
       <main id="service-main-content" role="main">
         {/* Hero Banner */}
         <section className="relative py-24 md:py-32 overflow-hidden">
           <div className="absolute inset-0" aria-hidden="true">
-            <Image src={service.heroImage} alt={`${service.title} at Kami Aesthetics Aventura — professional ${service.title.toLowerCase()} treatment in Aventura, FL`} fill priority className="object-cover" sizes="100vw" />
+            <Image
+              src={service.heroImage}
+              alt={`${service.title} at Kami Aesthetics Aventura`}
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
             <div className={`absolute inset-0 bg-gradient-to-r ${service.heroGradient}`} />
           </div>
           <div className="relative z-10 container mx-auto px-4 md:px-8">
             <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-8">
               <Link href="/" className="font-inter text-xs text-white/70 hover:text-gold transition-colors">Home</Link>
               <span className="text-white/30" aria-hidden="true">/</span>
-              <span className="font-inter text-xs text-white/70">Services</span>
+              <Link href="/services" className="font-inter text-xs text-white/70 hover:text-gold transition-colors">Services</Link>
+              <span className="text-white/30" aria-hidden="true">/</span>
+              <Link href={`/services/${params.category}`} className="font-inter text-xs text-white/70 hover:text-gold transition-colors">{cat.title}</Link>
               <span className="text-white/30" aria-hidden="true">/</span>
               <span className="font-inter text-xs text-gold">{service.title}</span>
             </nav>
@@ -94,7 +108,7 @@ export default function ServicePage({ params }: Props) {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-gold hover:bg-gold-dark text-white font-inter text-sm tracking-wider px-8 py-6 rounded-none transition-all duration-300 group">
-                    Book {service.title}
+                    Book Now
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
                   </Button>
                 </a>
@@ -174,6 +188,22 @@ export default function ServicePage({ params }: Props) {
 
                 <h3 className="font-playfair text-xl font-bold text-[#1A1A1A] mb-6">Frequently Asked Questions</h3>
                 <ServiceFAQ items={service.faq} />
+
+                {/* Internal links */}
+                <div className="mt-10 pt-8 border-t border-warm-border">
+                  <p className="font-inter text-xs tracking-wider uppercase text-warm-gray mb-4">Explore More</p>
+                  <div className="flex flex-wrap gap-3">
+                    <Link href={`/services/${params.category}`} className="font-inter text-sm text-[#1A1A1A] hover:text-gold transition-colors flex items-center gap-1">
+                      <ArrowLeft className="h-3 w-3" /> All {cat.title}
+                    </Link>
+                    <Link href="/faq" className="font-inter text-sm text-[#1A1A1A] hover:text-gold transition-colors">
+                      FAQ
+                    </Link>
+                    <Link href="/" className="font-inter text-sm text-[#1A1A1A] hover:text-gold transition-colors">
+                      Home
+                    </Link>
+                  </div>
+                </div>
               </div>
 
               {/* Right Sidebar */}
@@ -186,7 +216,7 @@ export default function ServicePage({ params }: Props) {
                     </p>
                     <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="block">
                       <Button className="w-full bg-gold hover:bg-gold-dark text-white font-inter text-sm tracking-wider rounded-none py-6 transition-all duration-300 group">
-                        Book Consultation
+                        Book Now
                         <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
                       </Button>
                     </a>
@@ -244,40 +274,20 @@ export default function ServicePage({ params }: Props) {
                   <div className="h-px w-8 bg-gold" />
                 </div>
                 <h2 className="font-playfair text-3xl font-bold text-[#1A1A1A]">You May Also Like</h2>
-                <p className="font-inter text-sm text-warm-gray mt-2">Enhance your results with complementary treatments</p>
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                {relatedServices.map((t) => (
-                  <Link key={t.slug} href={`/services/${t.slug}`} aria-label={`Learn more about ${t.title}`} className="bg-white border border-warm-border p-6 rounded-sm hover-lift group block">
-                    <h3 className="font-playfair text-lg font-semibold text-[#1A1A1A] mb-2 group-hover:text-gold transition-colors duration-200">{t.title}</h3>
-                    <p className="font-inter text-sm text-warm-gray leading-relaxed mb-4">{t.shortDescription}</p>
-                    <span className="font-inter text-xs tracking-wider uppercase text-gold flex items-center gap-1" aria-hidden="true">
-                      Learn More <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform duration-200" />
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* All Other Services */}
-        {otherServices.length > 0 && (
-          <section className="section-padding bg-white">
-            <div className="container mx-auto px-4 md:px-8">
-              <div className="text-center mb-12">
-                <h2 className="font-playfair text-3xl font-bold text-[#1A1A1A]">Explore All Services</h2>
-              </div>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                {otherServices.map((t) => (
-                  <Link key={t.slug} href={`/services/${t.slug}`} aria-label={`Learn more about ${t.title}`} className="bg-warm-white border border-warm-border p-6 rounded-sm hover-lift group block">
-                    <h3 className="font-playfair text-lg font-semibold text-[#1A1A1A] mb-2 group-hover:text-gold transition-colors duration-200">{t.title}</h3>
-                    <p className="font-inter text-sm text-warm-gray leading-relaxed mb-4 line-clamp-2">{t.shortDescription}</p>
-                    <span className="font-inter text-xs tracking-wider uppercase text-gold flex items-center gap-1" aria-hidden="true">
-                      Learn More <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform duration-200" />
-                    </span>
-                  </Link>
-                ))}
+                {relatedServices.map((t) => {
+                  const relCat = SLUG_TO_CATEGORY[t.slug];
+                  return (
+                    <Link key={t.slug} href={relCat ? `/services/${relCat}/${t.slug}` : `/services/${t.slug}`} aria-label={`Learn more about ${t.title}`} className="bg-white border border-warm-border p-6 rounded-sm hover-lift group block">
+                      <h3 className="font-playfair text-lg font-semibold text-[#1A1A1A] mb-2 group-hover:text-gold transition-colors duration-200">{t.title}</h3>
+                      <p className="font-inter text-sm text-warm-gray leading-relaxed mb-4">{t.shortDescription}</p>
+                      <span className="font-inter text-xs tracking-wider uppercase text-gold flex items-center gap-1" aria-hidden="true">
+                        Learn More <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform duration-200" />
+                      </span>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </section>
