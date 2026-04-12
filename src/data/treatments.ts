@@ -55,7 +55,7 @@ export const treatments: Treatment[] = [
     ],
   },
   {
-    slug: "ipl-photofacial",
+    slug: "ipl-treatments",
     title: "IPL Stellar M22",
     shortDescription:
       "The gold standard in IPL technology — target sun damage, redness, vascular lesions, and uneven skin tone with the Lumenis Stellar M22.",
@@ -258,6 +258,82 @@ export const treatments: Treatment[] = [
         ],
       },
     ],
+  },
+  {
+    slug: "iv-therapy",
+    title: "IV Therapy",
+    shortDescription:
+      "Replenish vitamins, boost energy, and support recovery with customized IV vitamin drip infusions.",
+    fullDescription:
+      "IV therapy delivers vitamins, minerals, and hydration directly into your bloodstream for 100% absorption — far more effective than oral supplements. Our customized drip formulas are designed to boost energy, support immunity, accelerate recovery, improve skin radiance, and promote overall wellness. Each session is administered by trained medical professionals in a relaxing, spa-like environment.",
+    heroImage: "/images/service-prp-therapy.png",
+    heroGradient: "from-[#1A2A1A]/85 via-[#1A2A1A]/60 to-[#1A2A1A]/30",
+    duration: "45–60 min",
+    downtime: "None",
+    resultsTimeline: "During & after session",
+    sessionsNeeded: "As needed / monthly",
+    benefits: [
+      "100% bioavailability — bypasses digestive system",
+      "Immediate energy boost and mental clarity",
+      "Supports immune function and recovery",
+      "Improves skin hydration and radiance",
+      "Customized formulas for your specific goals",
+      "Administered by trained medical professionals",
+    ],
+    areas: ["Full Body Wellness", "Energy & Immunity", "Skin Radiance", "Athletic Recovery", "Hangover Relief"],
+    faq: [
+      {
+        q: "How is IV therapy different from taking supplements?",
+        a: "Oral supplements are absorbed at 20–50% efficiency due to digestion. IV therapy delivers nutrients directly into your bloodstream at 100% absorption, producing faster and more noticeable results.",
+      },
+      {
+        q: "How long does an IV session take?",
+        a: "Most IV drip sessions take 45–60 minutes. You can relax, read, or use your phone during the infusion.",
+      },
+      {
+        q: "How often should I get IV therapy?",
+        a: "This depends on your goals. Some clients come monthly for maintenance, while others schedule sessions before or after travel, illness, or athletic events. We'll recommend a frequency based on your health goals.",
+      },
+    ],
+    uniqueSections: [],
+  },
+  {
+    slug: "weight-loss",
+    title: "Medical Weight Loss",
+    shortDescription:
+      "Medically supervised weight management with personalized protocols, GLP-1 support, and ongoing guidance.",
+    fullDescription:
+      "Our medical weight loss program combines clinical assessment, personalized nutrition guidance, and evidence-based treatments — including GLP-1 receptor agonist support where appropriate — to help you achieve sustainable results. Unlike fad diets, our approach is supervised by medical professionals who monitor your progress and adjust your protocol as your body changes. We treat the root causes of weight gain, not just the symptoms.",
+    heroImage: "/images/service-prp-therapy.png",
+    heroGradient: "from-[#2A1A2A]/85 via-[#2A1A2A]/60 to-[#2A1A2A]/30",
+    duration: "Initial consult 45 min",
+    downtime: "None",
+    resultsTimeline: "4–8 weeks",
+    sessionsNeeded: "Ongoing program",
+    benefits: [
+      "Medically supervised for safety and efficacy",
+      "Personalized protocol based on your health profile",
+      "GLP-1 support available where appropriate",
+      "Ongoing monitoring and adjustments",
+      "Addresses root causes, not just symptoms",
+      "Sustainable, long-term results",
+    ],
+    areas: ["Full Body Composition", "Metabolic Health", "Hormonal Balance"],
+    faq: [
+      {
+        q: "What is GLP-1 therapy?",
+        a: "GLP-1 receptor agonists are FDA-approved medications that regulate appetite and blood sugar. They work by mimicking a natural hormone that signals fullness, reducing hunger and supporting sustainable weight loss.",
+      },
+      {
+        q: "Am I a candidate for medical weight loss?",
+        a: "Most adults with a BMI over 25 who have struggled with traditional diet and exercise may be candidates. We conduct a thorough health assessment during your initial consultation to determine the best approach for you.",
+      },
+      {
+        q: "How quickly will I see results?",
+        a: "Most clients begin seeing measurable results within 4–8 weeks. The pace depends on your starting point, adherence to the protocol, and individual metabolic factors.",
+      },
+    ],
+    uniqueSections: [],
   },
   {
     slug: "prp-therapy",

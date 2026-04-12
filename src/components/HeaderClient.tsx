@@ -4,19 +4,23 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, ChevronRight } from "lucide-react";
 
-type NavService = { slug: string; title: string };
+type NavCategory = { slug: string; title: string; href: string };
+type NavService = { slug: string; title: string; href: string };
 type AnchorLink = { label: string; href: string };
 
 export function HeaderNav({
+  navCategories,
   navServices,
   anchorLinks,
 }: {
+  navCategories: readonly NavCategory[];
   navServices: readonly NavService[];
   anchorLinks: readonly AnchorLink[];
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
@@ -24,7 +28,10 @@ export function HeaderNav({
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setIsOpen(false);
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setIsOpen(false);
+        setActiveCategory(null);
+      }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -39,16 +46,22 @@ export function HeaderNav({
     }
   };
 
+  const categoryServices: Record<string, readonly NavService[]> = {
+    lasers: navServices.filter((s) => ["laser-hair-removal", "ipl-treatments", "resurfx"].includes(s.slug)),
+    injectables: navServices.filter((s) => ["botox", "dermal-fillers"].includes(s.slug)),
+    wellness: navServices.filter((s) => ["prp-therapy", "iv-therapy", "weight-loss"].includes(s.slug)),
+  };
+
   return (
     <>
       <div
         ref={ref}
         className="relative"
-        onKeyDown={(e) => e.key === "Escape" && (setIsOpen(false), btnRef.current?.focus())}
+        onKeyDown={(e) => e.key === "Escape" && (setIsOpen(false), setActiveCategory(null), btnRef.current?.focus())}
       >
         <button
           ref={btnRef}
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => { setIsOpen(!isOpen); setActiveCategory(null); }}
           aria-expanded={isOpen}
           aria-haspopup="true"
           aria-controls="services-dropdown"
@@ -58,17 +71,36 @@ export function HeaderNav({
           <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
         </button>
         {isOpen && (
-          <div id="services-dropdown" role="navigation" aria-label="Services menu" className="absolute top-full left-0 mt-2 w-64 bg-white border border-warm-border shadow-lg rounded-sm py-2 animate-fade-in">
-            <Link href="/services" onClick={() => setIsOpen(false)} className="block px-4 py-2.5 font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold hover:bg-warm-white transition-colors duration-200 border-b border-warm-border mb-1">
+          <div id="services-dropdown" role="navigation" aria-label="Services menu" className="absolute top-full left-0 mt-2 w-56 bg-white border border-warm-border shadow-lg rounded-sm py-2 animate-fade-in">
+            <Link href="/services" onClick={() => { setIsOpen(false); setActiveCategory(null); }} className="block px-4 py-2.5 font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold hover:bg-warm-white transition-colors duration-200 border-b border-warm-border mb-1">
               All Services
             </Link>
-            {navServices.map((s) => (
-              <Link key={s.slug} href={`/services/${s.slug}`} onClick={() => setIsOpen(false)} className="block px-4 py-2.5 font-inter text-sm text-[#1A1A1A] hover:text-gold hover:bg-warm-white transition-colors duration-200">
-                {s.title}
-              </Link>
+            {navCategories.map((cat) => (
+              <div
+                key={cat.slug}
+                className="relative group/cat"
+                onMouseEnter={() => setActiveCategory(cat.slug)}
+                onMouseLeave={() => setActiveCategory(null)}
+              >
+                <div className="flex items-center justify-between px-4 py-2.5 font-inter text-sm text-[#1A1A1A] hover:text-gold hover:bg-warm-white transition-colors duration-200 cursor-pointer">
+                  <Link href={cat.href} onClick={() => { setIsOpen(false); setActiveCategory(null); }} className="flex-1">
+                    {cat.title}
+                  </Link>
+                  <ChevronRight className="h-3.5 w-3.5 text-warm-gray" aria-hidden="true" />
+                </div>
+                {activeCategory === cat.slug && (
+                  <div className="absolute left-full top-0 ml-0.5 w-52 bg-white border border-warm-border shadow-lg rounded-sm py-2 animate-fade-in">
+                    {(categoryServices[cat.slug] ?? []).map((s) => (
+                      <Link key={s.slug} href={s.href} onClick={() => { setIsOpen(false); setActiveCategory(null); }} className="block px-4 py-2.5 font-inter text-sm text-[#1A1A1A] hover:text-gold hover:bg-warm-white transition-colors duration-200">
+                        {s.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <div className="border-t border-warm-border mt-1 pt-1">
-              <a href="#specials" onClick={(e) => { setIsOpen(false); handleAnchor(e, "#specials"); }} className="block px-4 py-2.5 font-inter text-sm text-gold font-medium hover:bg-warm-white transition-colors duration-200">
+              <a href="#specials" onClick={(e) => { setIsOpen(false); setActiveCategory(null); handleAnchor(e, "#specials"); }} className="block px-4 py-2.5 font-inter text-sm text-gold font-medium hover:bg-warm-white transition-colors duration-200">
                 $149 New Client Package ✦
               </a>
             </div>
@@ -93,12 +125,14 @@ export function HeaderNav({
 }
 
 export function HeaderMobile({
+  navCategories,
   navServices,
   anchorLinks,
   bookingUrl,
   phoneHref,
   phoneNumber,
 }: {
+  navCategories: readonly NavCategory[];
   navServices: readonly NavService[];
   anchorLinks: readonly AnchorLink[];
   bookingUrl: string;
@@ -106,6 +140,7 @@ export function HeaderMobile({
   phoneNumber: string;
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -117,6 +152,12 @@ export function HeaderMobile({
     } else {
       router.push("/" + href);
     }
+  };
+
+  const categoryServices: Record<string, readonly NavService[]> = {
+    lasers: navServices.filter((s) => ["laser-hair-removal", "ipl-treatments", "resurfx"].includes(s.slug)),
+    injectables: navServices.filter((s) => ["botox", "dermal-fillers"].includes(s.slug)),
+    wellness: navServices.filter((s) => ["prp-therapy", "iv-therapy", "weight-loss"].includes(s.slug)),
   };
 
   return (
@@ -143,10 +184,30 @@ export function HeaderMobile({
             <Link href="/services" onClick={() => setIsOpen(false)} className="block py-2.5 px-2 font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold border-b border-warm-border/30 transition-colors duration-200">
               All Services
             </Link>
-            {navServices.map((s) => (
-              <Link key={s.slug} href={`/services/${s.slug}`} onClick={() => setIsOpen(false)} className="block py-2.5 px-2 font-inter text-sm text-[#1A1A1A] hover:text-gold border-b border-warm-border/30 transition-colors duration-200">
-                {s.title}
-              </Link>
+            {navCategories.map((cat) => (
+              <div key={cat.slug}>
+                <div className="flex items-center justify-between py-2.5 px-2 border-b border-warm-border/30">
+                  <Link href={cat.href} onClick={() => setIsOpen(false)} className="font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold transition-colors duration-200">
+                    {cat.title}
+                  </Link>
+                  <button
+                    onClick={() => setExpandedCategory(expandedCategory === cat.slug ? null : cat.slug)}
+                    aria-label={`${expandedCategory === cat.slug ? "Collapse" : "Expand"} ${cat.title}`}
+                    className="p-1 text-warm-gray"
+                  >
+                    <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${expandedCategory === cat.slug ? "rotate-180" : ""}`} aria-hidden="true" />
+                  </button>
+                </div>
+                {expandedCategory === cat.slug && (
+                  <div className="pl-4">
+                    {(categoryServices[cat.slug] ?? []).map((s) => (
+                      <Link key={s.slug} href={s.href} onClick={() => setIsOpen(false)} className="block py-2 px-2 font-inter text-sm text-warm-gray hover:text-gold border-b border-warm-border/20 transition-colors duration-200">
+                        {s.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <div className="h-2" />
             {anchorLinks.map((link) => (

@@ -1,7 +1,6 @@
 import type {
   ServicePageContent,
   Promotion,
-  Testimonial,
   BlogPost,
   FAQEntry,
 } from "@/types";
@@ -10,10 +9,12 @@ import { BOOKING_URL, SPLENDOR_X_IMAGE, DEFAULT_OG_IMAGE, INSTAGRAM_URL, FACEBOO
 import { laserVsWaxingBody } from "./blog/laser-vs-waxing";
 import { splendorXAllSkinTypesBody } from "./blog/splendor-x-skin-types";
 import { iplSunDamageBody } from "./blog/ipl-sun-damage";
+import { getServiceUrl } from "./categories";
+
 
 export * from "./constants";
 export { treatments };
-export type { ServicePageContent, Promotion, Testimonial, BlogPost, FAQEntry };
+export type { ServicePageContent, Promotion, BlogPost, FAQEntry };
 
 const BASE_URL = "https://kamiaesthetics.com";
 
@@ -25,10 +26,10 @@ const seoMap: Record<string, { title: string; description: string; keywords: str
       "Premium laser hair removal in Aventura, FL with the Lumenis Splendor X. Safe for all skin types. Fast, comfortable, permanent results. Free consultation.",
     keywords: ["laser hair removal aventura", "splendor x laser", "permanent hair removal miami", "laser hair removal all skin types"],
   },
-  "ipl-photofacial": {
-    title: "IPL Photofacial Aventura | Stellar M22",
+  "ipl-treatments": {
+    title: "IPL Treatments in Aventura FL | Kami Aesthetics",
     description:
-      "Advanced IPL photofacial in Aventura, FL with the Lumenis Stellar M22. Treat sun damage, rosacea, and uneven skin tone. Book your consultation today.",
+      "IPL photofacial treatments in Aventura FL for sun damage, rosacea, and uneven skin tone. Book at Kami Aesthetics today.",
     keywords: ["ipl photofacial aventura", "stellar m22", "sun damage treatment miami", "rosacea treatment aventura"],
   },
   resurfx: {
@@ -55,15 +56,29 @@ const seoMap: Record<string, { title: string; description: string; keywords: str
       "PRP therapy and Vampire Facial in Aventura, FL. Natural growth factors for skin rejuvenation and hair restoration. 100% natural, minimal downtime.",
     keywords: ["prp therapy aventura", "vampire facial miami", "prp hair restoration aventura", "platelet rich plasma miami"],
   },
+  "iv-therapy": {
+    title: "IV Therapy in Aventura FL | Kami Aesthetics",
+    description:
+      "Customized IV vitamin drip therapy in Aventura FL. Boost energy, immunity, and skin radiance with 100% bioavailable nutrients. Book at Kami Aesthetics.",
+    keywords: ["iv therapy aventura", "iv drip aventura fl", "vitamin infusion miami", "iv wellness aventura"],
+  },
+  "weight-loss": {
+    title: "Medical Weight Loss in Aventura FL | Kami Aesthetics",
+    description:
+      "Medically supervised weight loss in Aventura FL. Personalized protocols, GLP-1 support, and ongoing guidance. Book your consultation at Kami Aesthetics.",
+    keywords: ["medical weight loss aventura", "glp-1 aventura fl", "weight management miami", "medically supervised weight loss aventura"],
+  },
 };
 
 const relatedMap: Record<string, string[]> = {
-  "laser-hair-removal": ["ipl-photofacial", "resurfx"],
-  "ipl-photofacial": ["resurfx", "laser-hair-removal"],
-  resurfx: ["ipl-photofacial", "prp-therapy"],
+  "laser-hair-removal": ["ipl-treatments", "resurfx"],
+  "ipl-treatments": ["resurfx", "laser-hair-removal"],
+  resurfx: ["ipl-treatments", "prp-therapy"],
   botox: ["dermal-fillers", "prp-therapy"],
   "dermal-fillers": ["botox", "prp-therapy"],
-  "prp-therapy": ["botox", "resurfx"],
+  "prp-therapy": ["botox", "iv-therapy"],
+  "iv-therapy": ["prp-therapy", "weight-loss"],
+  "weight-loss": ["iv-therapy", "prp-therapy"],
 };
 
 const ctaMap: Record<string, { headline: string; subtext: string }> = {
@@ -71,7 +86,7 @@ const ctaMap: Record<string, { headline: string; subtext: string }> = {
     headline: "Ready for Smooth, Hair-Free Skin?",
     subtext: "Join hundreds of Aventura clients who trust Kami Aesthetics for permanent laser hair removal with the Splendor X.",
   },
-  "ipl-photofacial": {
+  "ipl-treatments": {
     headline: "Reveal Your Clearest, Most Radiant Skin",
     subtext: "Book your IPL Stellar M22 consultation and discover how we can transform sun-damaged, uneven skin.",
   },
@@ -91,16 +106,25 @@ const ctaMap: Record<string, { headline: string; subtext: string }> = {
     headline: "Rejuvenate Naturally With Your Own Growth Factors",
     subtext: "Experience the power of PRP therapy — the safest, most natural approach to skin and hair rejuvenation.",
   },
+  "iv-therapy": {
+    headline: "Recharge From the Inside Out",
+    subtext: "Book your IV therapy session and feel the difference that 100% bioavailable nutrients can make.",
+  },
+  "weight-loss": {
+    headline: "Start Your Medical Weight Loss Journey",
+    subtext: "Book a consultation and get a personalized protocol designed around your body and your goals.",
+  },
 };
 
 export const servicePages: ServicePageContent[] = treatments.map((t) => {
   const seo = seoMap[t.slug];
+  const canonicalPath = getServiceUrl(t.slug);
   return {
     ...t,
     seo: {
       title: seo?.title ?? `${t.title} Aventura | Kami Aesthetics`,
       description: seo?.description ?? t.shortDescription,
-      canonical: `${BASE_URL}/services/${t.slug}`,
+      canonical: `${BASE_URL}${canonicalPath}`,
       keywords: seo?.keywords,
     },
     locationTag: "Aventura, FL",
@@ -126,15 +150,6 @@ export const newClientOffer: Promotion = {
   highlight: true,
   badge: "Most Popular",
 };
-
-// ─── Testimonials ───
-export const testimonials: Testimonial[] = [
-  { name: "Maria S.", rating: 5, text: "I've been to multiple med spas in Miami, and Kami Aesthetics is in a completely different league. The Splendor X laser was virtually painless and the results after just 3 sessions are incredible.", treatment: "Laser Hair Removal", date: "2026-02" },
-  { name: "Jessica L.", rating: 5, text: "The level of professionalism and care here is outstanding. They took the time to explain everything and create a personalized plan. My skin has never looked better after the IPL treatments.", treatment: "IPL Photofacial", date: "2026-01" },
-  { name: "Ana R.", rating: 5, text: "Finally found a place that understands what premium service means. From the moment you walk in, everything feels elevated. The Botox results are so natural — exactly what I wanted.", treatment: "Botox", date: "2026-03" },
-  { name: "Daniela M.", rating: 5, text: "The ResurFX treatment completely transformed my skin texture. The staff is incredibly knowledgeable and made me feel comfortable throughout the entire process. Highly recommend!", treatment: "ResurFX", date: "2025-12" },
-  { name: "Sofia K.", rating: 5, text: "I was nervous about fillers but the team at Kami put me at ease. The results are subtle, natural, and exactly what I envisioned. This is the only place I trust with my face.", treatment: "Dermal Fillers", date: "2026-02" },
-];
 
 // ─── Homepage FAQs ───
 export const homepageFAQs: FAQEntry[] = [
