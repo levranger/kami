@@ -9,6 +9,7 @@ import { BOOKING_URL, SPLENDOR_X_IMAGE, DEFAULT_OG_IMAGE, INSTAGRAM_URL, FACEBOO
 import { laserVsWaxingBody } from "./blog/laser-vs-waxing";
 import { splendorXAllSkinTypesBody } from "./blog/splendor-x-skin-types";
 import { iplSunDamageBody } from "./blog/ipl-sun-damage";
+import { peptideTherapyBody } from "./blog/peptide-therapy-fda-2026";
 import { getServiceUrl } from "./categories";
 
 
@@ -163,6 +164,44 @@ export const homepageFAQs: FAQEntry[] = [
 
 // ─── Blog Posts ───
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "peptide-therapy-fda-2026",
+    title: "Peptides Are Coming Back: What the 2026 FDA Reclassification Means for Aesthetic Clients",
+    excerpt: "The FDA is expected to restore access to 14 previously restricted peptides in 2026. Here's what it means for aesthetic treatments and what Kami Aesthetics in Aventura FL is preparing to offer.",
+    category: "Wellness",
+    date: "2026-04-12",
+    readTime: "4 min read",
+    image: "/images/service-prp-therapy.png",
+    body: peptideTherapyBody,
+    faq: [
+      {
+        question: "What is the 2026 FDA peptide reclassification?",
+        answer: "On February 27, 2026, HHS Secretary RFK Jr. announced that approximately 14 of the 19 peptides previously placed on the FDA Category 2 restricted list are expected to move back to Category 1, restoring legal access through licensed compounding pharmacies with a physician's prescription.",
+      },
+      {
+        question: "Is peptide reclassification the same as FDA approval?",
+        answer: "No. Reclassification to Category 1 means licensed compounding pharmacies can legally prepare these peptides under a physician's prescription. It does not mean they are FDA-approved drugs. They remain off-label therapeutics requiring physician supervision.",
+      },
+      {
+        question: "Which peptides are expected to return to legal compounding in 2026?",
+        answer: "Peptides expected to return include BPC-157, Thymosin Alpha-1, TB-500, CJC-1295, Ipamorelin, AOD-9604, Selank, and Semax among others.",
+      },
+      {
+        question: "Will Kami Aesthetics offer peptide therapy?",
+        answer: "Yes. Kami Aesthetics is actively preparing to incorporate peptide-based wellness treatments as reclassification moves forward. All treatments will be properly supervised and sourced from licensed compounding pharmacies.",
+      },
+      {
+        question: "Where can I get peptide therapy in Aventura FL?",
+        answer: "Kami Aesthetics, located at 2999 NE 191st St Floor 9 Aventura FL 33180, is preparing to offer peptide therapy as the FDA reclassification is finalized. Book a consultation to learn more.",
+      },
+    ],
+    seo: {
+      title: "Peptides Are Coming Back: What the 2026 FDA Reclassification Means for Aesthetic Clients | Kami Aesthetics",
+      description: "The FDA is expected to restore access to 14 previously restricted peptides in 2026. Here's what it means for aesthetic treatments and what Kami Aesthetics in Aventura FL is preparing to offer.",
+      canonical: `${BASE_URL}/blog/peptide-therapy-fda-2026`,
+      keywords: ["peptide therapy aventura", "bpc-157 miami", "fda peptide reclassification 2026", "peptide therapy near me", "compounding pharmacy peptides florida"],
+    },
+  },
   {
     slug: "laser-hair-removal-vs-waxing",
     title: "Laser Hair Removal vs. Waxing: Why Aventura Clients Are Making the Switch",

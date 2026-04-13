@@ -8,7 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { blogPosts, servicePages, BOOKING_URL, siteSEO } from "@/data/content";
-import { buildBreadcrumbSchema, buildPageMetadata } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildFAQSchema, buildPageMetadata } from "@/lib/seo";
 
 interface Props {
   params: { slug: string };
@@ -34,6 +34,23 @@ export default function BlogPostPage({ params }: Props) {
     { name: post.title, url: post.seo.canonical },
   ]);
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { "@type": "Organization", name: "Kami Aesthetics" },
+    publisher: {
+      "@type": "Organization",
+      name: "Kami Aesthetics",
+      logo: { "@type": "ImageObject", url: "https://kamiaesthetics.com/KAMI.svg" },
+    },
+    description: post.seo.description,
+  };
+
+  const schemas = [breadcrumbSchema, articleSchema, ...(post.faq ? [buildFAQSchema(post.faq)] : [])];
+
   const otherPosts = blogPosts.filter((p) => p.slug !== params.slug);
   const relatedServices = servicePages.filter((s) => {
     const cat = post.category.toLowerCase();
@@ -45,7 +62,7 @@ export default function BlogPostPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-white">
-      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={schemas} />
       <a href="#blogpost-main-content" className="skip-to-content">Skip to main content</a>
       <Header />
       <main id="blogpost-main-content" role="main">

@@ -83,6 +83,7 @@ export interface BlogPost {
   image?: string;
   seo: PageSEO;
   body?: React.ReactNode;
+  faq?: { question: string; answer: string }[];
 }
 
 export interface BeforeAfterEntry {
