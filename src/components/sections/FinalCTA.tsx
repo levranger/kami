@@ -37,13 +37,13 @@ export default function FinalCTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-track="booking_click" data-track-location="footer_cta" data-track-service="general">
               <Button size="lg" className="bg-gold hover:bg-gold-dark text-white font-inter text-sm tracking-wider px-10 py-6 rounded-none transition-all duration-300 group">
                 Book Consultation
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
               </Button>
             </a>
-            <a href={PHONE_HREF} className="flex items-center gap-2 font-inter text-sm text-white/80 hover:text-gold transition-colors duration-200" aria-label={`Call us at ${PHONE_NUMBER}`}>
+            <a href={PHONE_HREF} data-track="phone_click" data-track-location="footer_cta" className="flex items-center gap-2 font-inter text-sm text-white/80 hover:text-gold transition-colors duration-200" aria-label={`Call us at ${PHONE_NUMBER}`}>
               <Phone className="h-4 w-4" aria-hidden="true" />
               {PHONE_NUMBER}
             </a>

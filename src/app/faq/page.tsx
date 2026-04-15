@@ -12,14 +12,14 @@ const BOOKING_URL = "https://kami.myaestheticrecord.com/online-booking";
 const CANONICAL = "https://kamiaesthetics.com/faq";
 
 export const metadata: Metadata = {
-  title: "FAQ – Kami Aesthetics | Laser Hair Removal, Botox & More in Aventura FL",
+  title: "FAQ – Kami Aesthetics | Location, Hours & Booking in Aventura FL",
   description:
-    "Got questions about laser hair removal, Botox, fillers, or PRP in Aventura FL? Find answers to the most common questions about treatments at Kami Aesthetics.",
+    "Find answers about visiting Kami Aesthetics in Aventura FL — location, parking, hours, booking, and pricing. For treatment-specific questions, visit each service page.",
   alternates: { canonical: CANONICAL },
   openGraph: {
-    title: "FAQ – Kami Aesthetics | Laser Hair Removal, Botox & More in Aventura FL",
+    title: "FAQ – Kami Aesthetics | Location, Hours & Booking in Aventura FL",
     description:
-      "Got questions about laser hair removal, Botox, fillers, or PRP in Aventura FL? Find answers to the most common questions about treatments at Kami Aesthetics.",
+      "Find answers about visiting Kami Aesthetics in Aventura FL — location, parking, hours, booking, and pricing.",
     url: CANONICAL,
     
     siteName: siteSEO.siteName,
@@ -63,7 +63,7 @@ export default function FAQPage() {
                 Frequently Asked Questions
               </h1>
               <p className="font-inter text-base text-white/60 leading-relaxed max-w-lg mb-8">
-                Everything you need to know about laser hair removal, Botox, fillers, PRP, and IPL treatments at our Aventura clinic.
+                Location, hours, parking, booking, and pricing — everything you need to plan your visit to Kami Aesthetics in Aventura. For treatment-specific questions, visit each service page.
               </p>
               <a
                 href={BOOKING_URL}

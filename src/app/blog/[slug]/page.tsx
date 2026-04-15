@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { blogPosts, servicePages, BOOKING_URL, siteSEO } from "@/data/content";
 import { buildBreadcrumbSchema, buildFAQSchema, buildPageMetadata } from "@/lib/seo";
+import { SLUG_TO_CATEGORY } from "@/data/categories";
 
 interface Props {
   params: { slug: string };
@@ -121,7 +122,7 @@ export default function BlogPostPage({ params }: Props) {
                     <h3 className="font-playfair text-xl font-bold text-[#1A1A1A] mb-6">Related Services</h3>
                     <div className="grid sm:grid-cols-2 gap-4">
                       {relatedServices.map((s) => (
-                        <Link key={s.slug} href={`/services/${s.slug}`} className="bg-warm-white border border-warm-border p-5 rounded-sm hover-lift group block">
+                        <Link key={s.slug} href={`/services/${SLUG_TO_CATEGORY[s.slug] ?? ""}/${s.slug}`} className="bg-warm-white border border-warm-border p-5 rounded-sm hover-lift group block">
                           <h4 className="font-inter text-sm font-semibold text-[#1A1A1A] group-hover:text-gold transition-colors mb-1">{s.title}</h4>
                           <p className="font-inter text-xs text-warm-gray line-clamp-2">{s.shortDescription}</p>
                         </Link>

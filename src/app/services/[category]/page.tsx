@@ -63,6 +63,7 @@ export default function CategoryPage({ params }: Props) {
               alt={`${cat.title} at Kami Aesthetics Aventura`}
               fill
               priority
+              quality={90}
               className="object-cover"
               sizes="100vw"
             />

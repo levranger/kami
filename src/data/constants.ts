@@ -1,13 +1,15 @@
 // ─── Site Constants ───
 export const BOOKING_URL =
-  "https://book.squareup.com/appointments/ikr1wg4h4cumcw/location/LK1V8GFYJGAS7/services";
+  "https://kami.myaestheticrecord.com/online-booking?utm_source=website&utm_medium=organic&utm_campaign=seo";
 
 export const BUSINESS_NAME = "Kami Aesthetics";
 export const PHONE_NUMBER = "(954) 469-7153";
 export const PHONE_HREF = "tel:+19544697153";
 
-export const ADDRESS = "2999 NE 191st St 906 Floor 9, Aventura, FL 33180";
-export const ADDRESS_SHORT = "2999 NE 191st St 906 Floor 9, Aventura, FL 33180";
+export const MAPS_URL = "https://maps.app.goo.gl/DDRGkNyiJhX6JPuZ6";
+
+export const ADDRESS = "2999 NE 191st St, Floor 9, Aventura, FL 33180";
+export const ADDRESS_SHORT = "2999 NE 191st St, Floor 9";
 export const CITY_STATE = "Aventura, FL 33180";
 
 export const INSTAGRAM_URL = "https://www.instagram.com/kami.aesthetic/";

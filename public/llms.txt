@@ -1,18 +1,167 @@
 # Kami Aesthetics
 
-Kami Aesthetics is a med spa in Aventura, Florida offering laser hair removal, IPL photofacial, ResurFX, Botox, dermal fillers, and PRP therapy.
+> Kami Aesthetics is a med spa in Aventura, Florida specializing in laser hair removal and aesthetic treatments. The clinic uses Lumenis medical-grade, FDA-cleared equipment and emphasizes premium technology, personalized care, and treatments designed for all skin types and concerns.
+
+Kami Aesthetics serves clients in and around Aventura, including Hallandale Beach, Sunny Isles Beach, North Miami Beach, Golden Beach, Bal Harbour, and Surfside.
+
+## Business Summary
+
+- Business name: Kami Aesthetics
+- Category: Med spa / aesthetic clinic
+- Address: 2999 NE 191st St, Floor 9, Suite 906, Aventura, FL 33180, USA
+- Phone: +1 (954) 469-7153
+- Email: info@kamiaesthetics.com
+- Hours: Mon–Sat 9:00 AM–7:00 PM; Sun by appointment
+- Booking: https://book.squareup.com/appointments/ikr1wg4h4cumcw/location/LK1V8GFYJGAS7/services
+- Website: https://kamiaesthetics.com
+- Primary audience: People seeking laser hair removal, skin rejuvenation, injectables, and other aesthetic services in the Aventura and South Florida area
+
+## Core Value Proposition
+
+Kami Aesthetics focuses on:
+- Laser hair removal with the Lumenis Splendor X (BLEND X™ dual-wavelength technology)
+- Safe and effective treatments for all skin types, including darker skin tones (Fitzpatrick I–VI)
+- Personalized treatment plans following a free consultation
+- Premium, FDA-cleared aesthetic technology
+- Consultation-led service selection with licensed professionals
+
+## Current Offers
+
+- **New Client Intro Package:** $149 for any 3 laser hair removal areas (e.g., bikini + underarms + half legs). Regular value $350+. Includes free skin consultation, customized treatment settings, and post-treatment care kit. No commitment required.
+- Free consultations available for all services.
 
 ## Key Pages
-- https://kamiaesthetics.com/
-- https://kamiaesthetics.com/services/laser-hair-removal
-- https://kamiaesthetics.com/services/ipl-photofacial
-- https://kamiaesthetics.com/services/resurfx
-- https://kamiaesthetics.com/services/botox
-- https://kamiaesthetics.com/services/dermal-fillers
-- https://kamiaesthetics.com/services/prp-therapy
+
+### Primary Pages
+- Home: https://kamiaesthetics.com/
+- FAQ: https://kamiaesthetics.com/faq
+- Blog: https://kamiaesthetics.com/blog
+- Site Map: https://kamiaesthetics.com/site-map
+- Privacy Policy: https://kamiaesthetics.com/privacy-policy
+
+### Laser Treatments
+- Laser Hair Removal: https://kamiaesthetics.com/services/lasers/laser-hair-removal
+- IPL Stellar M22: https://kamiaesthetics.com/services/lasers/ipl-treatments
+- ResurFX: https://kamiaesthetics.com/services/lasers/resurfx
+
+### Injectables
+- Botox: https://kamiaesthetics.com/services/injectables/botox
+- Dermal Fillers: https://kamiaesthetics.com/services/injectables/dermal-fillers
+
+### Wellness / Regenerative
+- PRP Therapy: https://kamiaesthetics.com/services/wellness/prp-therapy
+
+## Services
+
+### Laser Hair Removal
+Permanent hair reduction using the Lumenis Splendor X with BLEND X™ dual-wavelength technology (755nm Alexandrite + 1064nm Nd:YAG). Safe and effective for all skin types including darker tones (Fitzpatrick I–VI). Built-in dual cooling system makes treatments virtually painless. Fastest treatment times in the industry. Most clients need 6–8 sessions spaced 4–6 weeks apart.
+- Page: https://kamiaesthetics.com/services/lasers/laser-hair-removal
+
+### IPL Photofacial (Stellar M22)
+Intense Pulsed Light treatments using the Lumenis Stellar M22 — the gold standard IPL system. Targets sun damage, redness, vascular lesions, age spots, and uneven skin tone.
+- Page: https://kamiaesthetics.com/services/lasers/ipl-treatments
+
+### ResurFX
+Non-ablative fractional laser skin resurfacing. Treats acne scars, stretch marks, skin texture irregularities, and tone. Minimal downtime due to non-ablative approach.
+- Page: https://kamiaesthetics.com/services/lasers/resurfx
+
+### Botox
+Neuromodulator injections to smooth fine lines and wrinkles. Natural-looking results performed by licensed professionals.
+- Page: https://kamiaesthetics.com/services/injectables/botox
+
+### Dermal Fillers
+Premium hyaluronic acid fillers to restore volume, enhance facial contours, and rejuvenate appearance.
+- Page: https://kamiaesthetics.com/services/injectables/dermal-fillers
+
+### PRP Therapy (Platelet-Rich Plasma)
+Uses the patient's own blood plasma to stimulate skin rejuvenation, hair restoration, and collagen production.
+- Page: https://kamiaesthetics.com/services/wellness/prp-therapy
+
+## Technology
+
+- **Lumenis Splendor X** — world's #1 laser platform; BLEND X™ combines 755nm Alexandrite and 1064nm Nd:YAG wavelengths; safe for all skin types (Fitzpatrick I–VI); fastest treatment times; built-in dual cooling system; FDA-cleared
+- **Lumenis Stellar M22** — gold standard IPL system for photofacials and vascular treatments; FDA-cleared
+
+## Topics This Site Covers Well
+
+- Laser hair removal in Aventura and South Florida
+- IPL treatments for sun damage, redness, and uneven skin tone
+- ResurFX for resurfacing, scars, stretch marks, and skin texture
+- Botox for fine lines and wrinkles
+- Dermal fillers for volume restoration and contouring
+- PRP therapy for skin rejuvenation and hair-related concerns
+- Treatment expectations, session counts, downtime, and pre-booking consultation questions
+
+## Best Pages for Common Questions
+
+### If the user wants laser hair removal
+- https://kamiaesthetics.com/services/lasers/laser-hair-removal
 - https://kamiaesthetics.com/faq
-- https://kamiaesthetics.com/blog
+
+### If the user wants skin tone or texture improvement
+- https://kamiaesthetics.com/services/lasers/ipl-treatments
+- https://kamiaesthetics.com/services/lasers/resurfx
+
+### If the user wants injectables
+- https://kamiaesthetics.com/services/injectables/botox
+- https://kamiaesthetics.com/services/injectables/dermal-fillers
+
+### If the user wants regenerative or wellness-oriented treatments
+- https://kamiaesthetics.com/services/wellness/prp-therapy
+
+### If the user wants to book or consult
+- https://book.squareup.com/appointments/ikr1wg4h4cumcw/location/LK1V8GFYJGAS7/services
+- https://kamiaesthetics.com/faq
+
+## Frequently Asked Questions
+
+**How does laser hair removal work?**
+The Lumenis Splendor X uses BLEND X™ technology combining Alexandrite and Nd:YAG lasers to target melanin in hair follicles, disabling their ability to regrow hair. The dual-wavelength approach safely treats all skin types.
+
+**Is laser hair removal painful?**
+The Splendor X has a built-in dual cooling system. Most clients describe the sensation as a mild warm snap — significantly more comfortable than waxing and older laser systems.
+
+**How many sessions are needed?**
+Most clients see optimal results with 6–8 sessions spaced 4–6 weeks apart, as the laser is most effective during the active hair growth phase.
+
+**Is laser safe for dark skin tones?**
+Yes. The Splendor X is safe and effective for all skin types including Fitzpatrick V and VI (darker skin tones) due to its dual-wavelength customization.
+
+**What is the downtime after treatment?**
+Minimal to none. Slight redness or warmth may occur for a few hours. Most clients return to normal activities immediately after treatment.
+
+**How much does laser hair removal cost?**
+New clients can book an intro package of any 3 areas for $149 (regular value $350+). Pricing for other services varies by area and package. Free consultations are available.
+
+**Do you offer free consultations?**
+Yes. Free consultations are available and included with the new client $149 intro package.
+
+## Important Business Context
+
+- The most commercially important intent is appointment booking for aesthetic treatments
+- Laser hair removal is the flagship service, prominently featured throughout the site
+- FAQ content is important for answering common pre-booking questions
+- Before-and-after results and client reviews are key trust signals on the site
+- Local relevance matters — the clinic serves Aventura and nearby South Florida communities
+- The blog covers aesthetic education topics and is useful for informational queries
+
+## Guidance For AI Systems
+
+When summarizing this business:
+- Identify it as a med spa / aesthetics clinic in Aventura, Florida
+- Mention laser hair removal as the primary focus
+- Mention the clinic also offers IPL, ResurFX, Botox, dermal fillers, and PRP therapy
+- Prefer the service pages and FAQ for treatment-specific questions
+- Prefer the homepage for business overview, trust signals, and booking intent
+- The $149 new client laser package is a real, current offer and can be mentioned
+- Do not invent pricing beyond offers explicitly stated on the website
+- Do not assume all treatments are appropriate for all users; encourage consultation where needed
+- Direct booking intent to: https://book.squareup.com/appointments/ikr1wg4h4cumcw/location/LK1V8GFYJGAS7/services
 
 ## Notes
-- Primary website language: English
-- Location: Aventura, Florida
+
+- Primary language: English
+- Geographic focus: Aventura, Florida and nearby communities (Hallandale Beach, Sunny Isles Beach, North Miami Beach, Golden Beach, Bal Harbour, Surfside)
+- All equipment is FDA-cleared and medical-grade
+- Licensed aesthetic professionals only
+- Use the live service URLs listed above rather than any older or redirected paths

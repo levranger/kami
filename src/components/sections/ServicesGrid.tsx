@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { servicePages } from "@/data/content";
+import { SLUG_TO_CATEGORY } from "@/data/categories";
 
 const SERVICES_IMAGE = "/images/services-environment.png";
 
@@ -56,11 +57,13 @@ export default function ServicesGrid() {
 }
 
 function ServiceCard({ service }: { service: { slug: string; title: string; shortDescription: string } }) {
+  const cat = SLUG_TO_CATEGORY[service.slug];
+  const href = cat ? `/services/${cat}/${service.slug}` : `/services/${service.slug}`;
   return (
     <div className="bg-white border border-warm-border p-6 rounded-sm hover-lift group">
       <h3 className="font-playfair text-lg font-semibold text-[#1A1A1A] mb-2 group-hover:text-gold transition-colors duration-200">{service.title}</h3>
       <p className="font-inter text-sm text-warm-gray leading-relaxed mb-4">{service.shortDescription}</p>
-      <Link href={`/services/${service.slug}`}>
+      <Link href={href}>
         <Button variant="link" className="p-0 h-auto font-inter text-xs tracking-wider uppercase text-[#1A1A1A] hover:text-gold group/btn">
           Learn More About {service.title}
           <ArrowRight className="ml-1.5 h-3 w-3 group-hover/btn:translate-x-1 transition-transform duration-200" />

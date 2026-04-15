@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { buildPageMetadata } from "@/lib/seo";
 import { siteSEO, servicePages } from "@/data/content";
+import { SLUG_TO_CATEGORY } from "@/data/categories";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Site Map | Kami Aesthetics Aventura",
@@ -36,7 +37,7 @@ export default function SiteMapPage() {
             <ul className="space-y-2">
               {servicePages.map((s) => (
                 <li key={s.slug}>
-                  <Link href={`/services/${s.slug}`} className="font-inter text-sm text-[#1A1A1A] hover:text-gold transition-colors">
+                  <Link href={`/services/${SLUG_TO_CATEGORY[s.slug]}/${s.slug}`} className="font-inter text-sm text-[#1A1A1A] hover:text-gold transition-colors">
                     {s.title}
                   </Link>
                 </li>

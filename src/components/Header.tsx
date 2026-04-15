@@ -26,11 +26,11 @@ export default function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
-            <a href={PHONE_HREF} className="flex items-center gap-1.5 text-sm font-inter text-warm-gray hover:text-gold transition-colors duration-200" aria-label={`Call us at ${PHONE_NUMBER}`}>
+            <a href={PHONE_HREF} data-track="phone_click" data-track-location="header" className="flex items-center gap-1.5 text-sm font-inter text-warm-gray hover:text-gold transition-colors duration-200" aria-label={`Call us at ${PHONE_NUMBER}`}>
               <Phone className="h-3.5 w-3.5" aria-hidden="true" />
               {PHONE_NUMBER}
             </a>
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-track="booking_click" data-track-location="header" data-track-service="general">
               <Button className="bg-[#1A1A1A] text-white hover:bg-gold hover:text-white font-inter text-sm tracking-wide px-6 rounded-none transition-all duration-300">
                 Book Consultation
               </Button>

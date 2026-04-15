@@ -14,7 +14,7 @@ import ProcessStepsSection from "@/components/sections/ProcessStepsSection";
 import ResultsGallerySection from "@/components/sections/ResultsGallerySection";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import { servicePages, newClientOffer, BOOKING_URL, PHONE_NUMBER, PHONE_HREF, localBusinessSchema } from "@/data/content";
-import { ADDRESS_SHORT, CITY_STATE } from "@/data/constants";
+import { ADDRESS_SHORT, CITY_STATE, MAPS_URL } from "@/data/constants";
 import { buildFAQSchema, buildServiceSchema, buildBreadcrumbSchema, buildPageMetadata } from "@/lib/seo";
 import { categoryDefs, SLUG_TO_CATEGORY } from "@/data/categories";
 
@@ -69,6 +69,7 @@ export default function ServicePage({ params }: Props) {
               alt={`${service.title} at Kami Aesthetics Aventura`}
               fill
               priority
+              quality={90}
               className="object-cover"
               sizes="100vw"
             />
@@ -214,7 +215,7 @@ export default function ServicePage({ params }: Props) {
                     <p className="font-inter text-sm text-warm-gray leading-relaxed mb-6">
                       Book your {service.title.toLowerCase()} consultation today.
                     </p>
-                    <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="block">
+                    <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-track="booking_click" data-track-location="service_page" data-track-service={params.slug} className="block">
                       <Button className="w-full bg-gold hover:bg-gold-dark text-white font-inter text-sm tracking-wider rounded-none py-6 transition-all duration-300 group">
                         Book Now
                         <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
@@ -223,7 +224,7 @@ export default function ServicePage({ params }: Props) {
                     <div className="mt-4 text-center">
                       <span className="font-inter text-xs text-warm-gray">or call us at</span>
                       <br />
-                      <a href={PHONE_HREF} className="font-inter text-sm font-semibold text-[#1A1A1A] hover:text-gold transition-colors" aria-label={`Call us at ${PHONE_NUMBER}`}>
+                      <a href={PHONE_HREF} data-track="phone_click" data-track-location="service_page" className="font-inter text-sm font-semibold text-[#1A1A1A] hover:text-gold transition-colors" aria-label={`Call us at ${PHONE_NUMBER}`}>
                         {PHONE_NUMBER}
                       </a>
                     </div>
@@ -241,9 +242,9 @@ export default function ServicePage({ params }: Props) {
                       <MapPin className="h-4 w-4 text-gold" aria-hidden="true" />
                       <span className="font-inter text-sm font-semibold text-white">Visit Us</span>
                     </div>
-                    <p className="font-inter text-sm text-white/60 leading-relaxed">
+                    <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="font-inter text-sm text-white/60 hover:text-gold transition-colors duration-200">
                       {ADDRESS_SHORT}<br />{CITY_STATE}
-                    </p>
+                    </a>
                     <a href={PHONE_HREF} className="font-inter text-sm text-gold hover:text-gold-light mt-2 inline-block transition-colors">
                       {PHONE_NUMBER}
                     </a>
@@ -273,7 +274,7 @@ export default function ServicePage({ params }: Props) {
                   <span className="font-inter text-xs tracking-[0.3em] uppercase text-gold font-medium">Related Treatments</span>
                   <div className="h-px w-8 bg-gold" />
                 </div>
-                <h2 className="font-playfair text-3xl font-bold text-[#1A1A1A]">You May Also Like</h2>
+                <p className="font-playfair text-3xl font-bold text-[#1A1A1A]">You May Also Like</p>
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 {relatedServices.map((t) => {
@@ -296,9 +297,9 @@ export default function ServicePage({ params }: Props) {
         {/* Bottom CTA */}
         <section className="py-16 bg-[#1A1A1A]">
           <div className="container mx-auto px-4 md:px-8 text-center">
-            <h2 className="font-playfair text-2xl md:text-3xl font-bold text-white mb-4">{service.ctaHeadline}</h2>
+            <p className="font-playfair text-2xl md:text-3xl font-bold text-white mb-4">{service.ctaHeadline}</p>
             <p className="font-inter text-white/60 text-sm mb-8 max-w-md mx-auto">{service.ctaSubtext}</p>
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-track="booking_click" data-track-location="service_page_bottom" data-track-service={params.slug}>
               <Button size="lg" className="bg-gold hover:bg-gold-dark text-white font-inter text-sm tracking-wider px-10 py-6 rounded-none transition-all duration-300">
                 Book Now <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

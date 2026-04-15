@@ -37,6 +37,18 @@ export const treatments: Treatment[] = [
         q: "How should I prepare for my session?",
         a: "Shave the treatment area 24 hours before your appointment. Avoid sun exposure, tanning, and waxing for 2 weeks prior. Arrive with clean skin free of lotions or deodorant.",
       },
+      {
+        q: "Can laser hair removal be done on dark skin tones?",
+        a: "Yes. The Splendor X is safe and effective for all skin types including deeper complexions (Fitzpatrick I–VI). During your consultation we'll select the safest and most effective settings for your skin tone.",
+      },
+      {
+        q: "How long does a session take?",
+        a: "Small areas like the upper lip take about 5–10 minutes. Larger areas like the back or full legs can take 45–60 minutes.",
+      },
+      {
+        q: "Is there downtime after laser hair removal?",
+        a: "Minimal. You may experience some redness or mild swelling for a few hours, similar to a mild sunburn. You can return to normal activities the same day. Avoid sun exposure and hot showers for 24–48 hours.",
+      },
     ],
     uniqueSections: [
       {
@@ -77,6 +89,10 @@ export const treatments: Treatment[] = [
     ],
     areas: ["Full Face", "Neck", "Chest / Décolletage", "Hands", "Arms"],
     faq: [
+      {
+        q: "What does IPL treat?",
+        a: "IPL treats sun damage, age spots, redness, rosacea, broken capillaries, and uneven skin tone. The Stellar M22 can address all of these in the same treatment series.",
+      },
       {
         q: "How many treatments will I need?",
         a: "A series of 3–5 treatments spaced 3–4 weeks apart is typically recommended for optimal results. Maintenance sessions every 6–12 months help preserve your results.",
@@ -193,6 +209,9 @@ export const treatments: Treatment[] = [
       { q: "How long do results last?", a: "Botox results typically last 3–4 months. With regular treatments, many clients find their results last longer over time as the muscles become trained to relax." },
       { q: "Will I look frozen?", a: "Absolutely not. Our approach focuses on natural-looking results. We use conservative dosing and precise placement to soften lines while maintaining your natural facial expressions." },
       { q: "Is there any downtime?", a: "There's virtually no downtime. You may have slight redness at injection sites for 30 minutes. We recommend avoiding strenuous exercise for 24 hours and not lying flat for 4 hours after treatment." },
+      { q: "What areas can be treated with Botox?", a: "We treat forehead lines, frown lines (between the brows), crow's feet, bunny lines, lip lines, chin dimpling, neck bands, and we also offer Botox for excessive sweating (hyperhidrosis)." },
+      { q: "Who is a good candidate for Botox?", a: "Most healthy adults over 18 who want to reduce the appearance of dynamic wrinkles are good candidates. Botox is not recommended during pregnancy or breastfeeding." },
+      { q: "What should I avoid after Botox?", a: "For 24 hours after treatment avoid touching or rubbing the treated area, lying flat, strenuous exercise, and excessive heat. Do not take blood thinners like aspirin or ibuprofen unless medically necessary." },
     ],
     uniqueSections: [
       {
@@ -244,6 +263,8 @@ export const treatments: Treatment[] = [
       { q: "How long do fillers last?", a: "Depending on the area treated and the product used, results typically last 6–18 months. Lip fillers tend to last 6–9 months, while cheek and jawline fillers can last 12–18 months." },
       { q: "Is the procedure painful?", a: "We use topical numbing cream and most fillers contain lidocaine for comfort. Most clients describe the sensation as mild pressure with minimal discomfort." },
       { q: "What's the recovery like?", a: "You may experience mild swelling and bruising for 2–5 days. Most clients return to normal activities immediately. We recommend avoiding strenuous exercise for 24 hours." },
+      { q: "What is the difference between Botox and fillers?", a: "Botox relaxes the muscles that cause wrinkles from facial expressions. Fillers add volume to areas that have lost fullness — such as lips, cheeks, and under-eye hollows. They can be used together for a more complete result." },
+      { q: "Are dermal fillers safe?", a: "Yes, when administered by a trained professional. We use FDA-approved hyaluronic acid fillers which are biocompatible and reversible with hyaluronidase if needed." },
     ],
     uniqueSections: [
       {
@@ -361,6 +382,8 @@ export const treatments: Treatment[] = [
       { q: "How does PRP work?", a: "PRP contains concentrated growth factors that signal your body to repair and regenerate tissue. When applied to the skin or scalp, these growth factors stimulate new collagen, blood vessels, and cellular renewal." },
       { q: "How many sessions do I need?", a: "For facial rejuvenation, 3 sessions spaced 4–6 weeks apart is recommended. For hair restoration, 3–4 sessions with monthly maintenance. Results improve progressively over several months." },
       { q: "Is PRP safe?", a: "PRP is one of the safest aesthetic treatments available since it uses your own blood. There's virtually no risk of allergic reaction or rejection. Mild redness and swelling are normal for 1–2 days." },
+      { q: "What is PRP used for at Kami Aesthetics?", a: "We offer PRP for facial rejuvenation (the Vampire Facial), under-eye treatment, and hair loss restoration." },
+      { q: "Is PRP painful?", a: "A topical numbing cream is applied before the procedure to minimize discomfort. Most clients find it very tolerable." },
     ],
     uniqueSections: [
       {
