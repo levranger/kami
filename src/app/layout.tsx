@@ -5,6 +5,7 @@ import Script from "next/script";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { siteSEO } from "@/data/content";
+import TrackingListener from "@/components/TrackingListener";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -53,6 +54,7 @@ export default function RootLayout({
       <body>
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPBMWR8S" height="0" width="0" style={{ display: "none", visibility: "hidden" }} /></noscript>
         {children}
+        <TrackingListener />
         <Analytics />
         <SpeedInsights />
         <Script

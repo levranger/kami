@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { buildPageMetadata } from "@/lib/seo";
 import "@/app/prose.css";
 import { siteSEO } from "@/data/content";
-import { BUSINESS_NAME, ADDRESS, PHONE_HREF, PHONE_NUMBER } from "@/data/constants";
+import { BUSINESS_NAME, ADDRESS, PHONE_HREF, PHONE_NUMBER, MAPS_URL } from "@/data/constants";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Privacy Policy | Kami Aesthetics Aventura",
@@ -115,7 +115,7 @@ export default function PrivacyPolicyPage() {
               <h2>11. Contact Us</h2>
               <address className="not-italic">
                 <strong>{BUSINESS_NAME}</strong><br />
-                {ADDRESS}<br />
+                <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-dark transition-colors">{ADDRESS}</a><br />
                 Email: <a href={`mailto:${CONTACT_EMAIL}`} className="text-gold hover:text-gold-dark transition-colors">{CONTACT_EMAIL}</a><br />
                 Phone: <a href={PHONE_HREF} className="text-gold hover:text-gold-dark transition-colors">{PHONE_NUMBER}</a>
               </address>

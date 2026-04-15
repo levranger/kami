@@ -41,6 +41,8 @@ export default function Testimonials({ place }: { place: PlaceData | null }) {
             href={`https://search.google.com/local/reviews?placeid=${place.placeId}`}
             target="_blank"
             rel="noopener noreferrer"
+            data-track="directions_click"
+            data-track-location="reviews_section"
             className="font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold transition-colors duration-200 flex items-center gap-2"
           >
             <svg className="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">

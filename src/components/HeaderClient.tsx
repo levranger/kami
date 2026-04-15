@@ -222,11 +222,11 @@ export function HeaderMobile({
               Blog
             </Link>
             <div className="pt-4 space-y-3">
-              <a href={phoneHref} className="flex items-center gap-2 py-2 px-2 font-inter text-sm text-warm-gray" aria-label={`Call us at ${phoneNumber}`}>
+              <a href={phoneHref} data-track="phone_click" data-track-location="header" className="flex items-center gap-2 py-2 px-2 font-inter text-sm text-warm-gray" aria-label={`Call us at ${phoneNumber}`}>
                 <Phone className="h-4 w-4" aria-hidden="true" />
                 {phoneNumber}
               </a>
-              <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
+              <a href={bookingUrl} target="_blank" rel="noopener noreferrer" data-track="booking_click" data-track-location="header" data-track-service="general">
                 <Button className="w-full bg-[#1A1A1A] text-white hover:bg-gold font-inter tracking-wide rounded-none py-6">
                   Book Consultation
                 </Button>

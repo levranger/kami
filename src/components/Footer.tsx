@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, Clock, Instagram } from "lucide-react";
 import { INSTAGRAM_URL, FACEBOOK_URL, TIKTOK_URL } from "@/data/content";
-import { BUSINESS_NAME, PHONE_NUMBER, PHONE_HREF, ADDRESS_SHORT, CITY_STATE } from "@/data/constants";
+import { BUSINESS_NAME, PHONE_NUMBER, PHONE_HREF, ADDRESS_SHORT, CITY_STATE, MAPS_URL } from "@/data/constants";
 import { navServices } from "@/data/nav-services";
 
 const companyLinks = [
@@ -50,7 +50,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {navServices.map((s) => (
                 <li key={s.slug}>
-                  <Link href={`/services/${s.slug}`} className="font-inter text-sm text-white/60 hover:text-gold transition-colors duration-200">
+                  <Link href={s.href} className="font-inter text-sm text-white/60 hover:text-gold transition-colors duration-200">
                     {s.title}
                   </Link>
                 </li>
@@ -84,15 +84,17 @@ export default function Footer() {
             <address className="not-italic space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 text-gold flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <span className="font-inter text-sm text-white/60"><span className="text-white/80 font-medium">{BUSINESS_NAME}</span><br />{ADDRESS_SHORT}<br />{CITY_STATE}</span>
+                <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" data-track="directions_click" data-track-location="footer" className="font-inter text-sm text-white/60 hover:text-gold transition-colors duration-200">
+                  <span className="text-white/80 font-medium">{BUSINESS_NAME}</span><br />{ADDRESS_SHORT}<br />{CITY_STATE}
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-gold flex-shrink-0" aria-hidden="true" />
-                <a href={PHONE_HREF} className="font-inter text-sm text-white/60 hover:text-gold transition-colors duration-200" aria-label={`Call us at ${PHONE_NUMBER}`}>{PHONE_NUMBER}</a>
+                <a href={PHONE_HREF} data-track="phone_click" data-track-location="footer" className="font-inter text-sm text-white/60 hover:text-gold transition-colors duration-200" aria-label={`Call us at ${PHONE_NUMBER}`}>{PHONE_NUMBER}</a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-gold flex-shrink-0" aria-hidden="true" />
-                <a href="mailto:info@kamiaesthetics.com" className="font-inter text-sm text-white/60 hover:text-gold transition-colors duration-200">info@kamiaesthetics.com</a>
+                <a href="mailto:info@kamiaesthetics.com" data-track="email_click" data-track-location="footer" className="font-inter text-sm text-white/60 hover:text-gold transition-colors duration-200">info@kamiaesthetics.com</a>
               </div>
               <div className="flex items-start gap-3">
                 <Clock className="h-4 w-4 text-gold flex-shrink-0 mt-0.5" aria-hidden="true" />

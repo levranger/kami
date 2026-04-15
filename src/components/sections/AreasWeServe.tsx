@@ -25,12 +25,12 @@ export default function AreasWeServe() {
             </h2>
           </div>
 
-          <p className="font-inter text-sm text-warm-gray leading-relaxed mb-8 max-w-xl mx-auto">
-            Located at 2999 NE 191st St in Aventura, we're minutes away from
-            Hallandale Beach, Sunny Isles Beach, North Miami Beach, and Golden
-            Beach — making us the premier med spa for clients across Miami-Dade
-            and Broward County.
-          </p>
+            <a href="https://maps.app.goo.gl/DDRGkNyiJhX6JPuZ6" target="_blank" rel="noopener noreferrer" className="font-inter text-sm text-warm-gray hover:text-gold transition-colors duration-200 leading-relaxed mb-8 max-w-xl mx-auto block">
+              Located at 2999 NE 191st St in Aventura, we&apos;re minutes away from
+              Hallandale Beach, Sunny Isles Beach, North Miami Beach, and Golden
+              Beach — making us the premier med spa for clients across Miami-Dade
+              and Broward County.
+            </a>
 
           <ul
             className="flex flex-wrap justify-center gap-2"
