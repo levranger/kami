@@ -12,7 +12,7 @@ Kami Aesthetics serves clients in and around Aventura, including Hallandale Beac
 - Phone: +1 (954) 469-7153
 - Email: info@kamiaesthetics.com
 - Hours: Mon–Sat 9:00 AM–7:00 PM; Sun by appointment
-- Booking: https://book.squareup.com/appointments/ikr1wg4h4cumcw/location/LK1V8GFYJGAS7/services
+- Booking: https://kami.myaestheticrecord.com/online-booking?utm_source=website&utm_medium=organic&utm_campaign=seo
 - Website: https://kamiaesthetics.com
 - Primary audience: People seeking laser hair removal, skin rejuvenation, injectables, and other aesthetic services in the Aventura and South Florida area
 
@@ -110,7 +110,7 @@ Uses the patient's own blood plasma to stimulate skin rejuvenation, hair restora
 - https://kamiaesthetics.com/services/wellness/prp-therapy
 
 ### If the user wants to book or consult
-- https://book.squareup.com/appointments/ikr1wg4h4cumcw/location/LK1V8GFYJGAS7/services
+- https://kami.myaestheticrecord.com/online-booking?utm_source=website&utm_medium=organic&utm_campaign=seo
 - https://kamiaesthetics.com/faq
 
 ## Frequently Asked Questions
@@ -156,7 +156,7 @@ When summarizing this business:
 - The $149 new client laser package is a real, current offer and can be mentioned
 - Do not invent pricing beyond offers explicitly stated on the website
 - Do not assume all treatments are appropriate for all users; encourage consultation where needed
-- Direct booking intent to: https://book.squareup.com/appointments/ikr1wg4h4cumcw/location/LK1V8GFYJGAS7/services
+- Direct booking intent to: https://kami.myaestheticrecord.com/online-booking?utm_source=website&utm_medium=organic&utm_campaign=seo
 
 ## Notes
 
@@ -165,3 +165,4 @@ When summarizing this business:
 - All equipment is FDA-cleared and medical-grade
 - Licensed aesthetic professionals only
 - Use the live service URLs listed above rather than any older or redirected paths
+- AI Info (HTML): https://kamiaesthetics.com/llm-info
