@@ -10,6 +10,9 @@ import { laserVsWaxingBody } from "./blog/laser-vs-waxing";
 import { splendorXAllSkinTypesBody } from "./blog/splendor-x-skin-types";
 import { iplSunDamageBody } from "./blog/ipl-sun-damage";
 import { peptideTherapyBody } from "./blog/peptide-therapy-fda-2026";
+import { laserHairRemovalCostBody } from "./blog/laser-hair-removal-cost";
+import { botoxCostBody } from "./blog/botox-cost";
+import { botoxHowLongBody } from "./blog/botox-how-long-does-it-last";
 import { getServiceUrl } from "./categories";
 
 
@@ -200,6 +203,54 @@ export const blogPosts: BlogPost[] = [
       description: "The FDA is expected to restore access to 14 previously restricted peptides in 2026. Here's what it means for aesthetic treatments and what Kami Aesthetics in Aventura FL is preparing to offer.",
       canonical: `${BASE_URL}/blog/peptide-therapy-fda-2026`,
       keywords: ["peptide therapy aventura", "bpc-157 miami", "fda peptide reclassification 2026", "peptide therapy near me", "compounding pharmacy peptides florida"],
+    },
+  },
+  {
+    slug: "laser-hair-removal-cost",
+    title: "The Real Cost of Laser Hair Removal (And Why It's Less Than You Think)",
+    excerpt: "Wondering what laser hair removal costs and whether it's worth it? Get a clear breakdown of pricing, sessions, and long-term value before you book.",
+    category: "Laser Hair Removal",
+    date: "2026-04-20",
+    readTime: "6 min read",
+    image: "/images/service-laser-hair-removal.png",
+    body: laserHairRemovalCostBody,
+    seo: {
+      title: "Laser Hair Removal Cost: Is It Worth It?",
+      description: "Wondering what laser hair removal costs and whether it's worth it? Get a clear breakdown of pricing, sessions, and long-term value before you book.",
+      canonical: `${BASE_URL}/blog/laser-hair-removal-cost`,
+      keywords: ["laser hair removal cost", "how much does laser hair removal cost", "laser hair removal price aventura", "laser hair removal worth it", "laser hair removal vs waxing cost"],
+    },
+  },
+  {
+    slug: "botox-cost",
+    title: "So, How Much Does Botox Actually Cost?",
+    excerpt: "Botox pricing varies more than most people expect. Learn what drives the cost, how many units you need, and what a fair price actually looks like.",
+    category: "Injectables",
+    date: "2026-04-20",
+    readTime: "6 min read",
+    image: "/images/service-botox.png",
+    body: botoxCostBody,
+    seo: {
+      title: "How Much Does Botox Cost?",
+      description: "Botox pricing varies more than most people expect. Learn what drives the cost, how many units you need, and what a fair price actually looks like.",
+      canonical: `${BASE_URL}/blog/botox-cost`,
+      keywords: ["how much does botox cost", "botox price per unit", "botox cost aventura", "botox units by area", "botox worth it"],
+    },
+  },
+  {
+    slug: "how-long-does-botox-last",
+    title: "How Long Does Botox Really Last? The Honest Answer",
+    excerpt: "Botox results don't last forever, but how long exactly? Learn what affects your timeline, which areas fade fastest, and when to rebook.",
+    category: "Injectables",
+    date: "2026-04-20",
+    readTime: "6 min read",
+    image: "/images/service-botox.png",
+    body: botoxHowLongBody,
+    seo: {
+      title: "How Long Does Botox Last?",
+      description: "Botox results don't last forever, but how long exactly? Learn what affects your timeline, which areas fade fastest, and when to rebook.",
+      canonical: `${BASE_URL}/blog/how-long-does-botox-last`,
+      keywords: ["how long does botox last", "botox duration", "botox wear off", "botox timeline", "how often do you need botox"],
     },
   },
   {
