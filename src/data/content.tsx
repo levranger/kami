@@ -307,7 +307,7 @@ export const blogPosts: BlogPost[] = [
 export const siteSEO = {
   siteName: "Kami Aesthetics",
   baseUrl: BASE_URL,
-  defaultOgImage: DEFAULT_OG_IMAGE,
+  defaultOgImage: `${BASE_URL}${DEFAULT_OG_IMAGE}`,
   homeSEO: {
     title: "Kami Aesthetics | Laser Hair Removal & Med Spa Aventura FL",
     description:
