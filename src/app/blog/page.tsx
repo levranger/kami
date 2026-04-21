@@ -8,7 +8,7 @@ import { blogPosts, siteSEO, INSTAGRAM_URL } from "@/data/content";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Laser & Skin Care Blog | Aventura",
+  title: "Laser & Skin Care Blog | Aventura | Kami Aesthetics",
   description:
     "Expert insights on laser hair removal, skin rejuvenation, Botox, fillers, and aesthetic treatments in Aventura, FL.",
   canonical: `${siteSEO.baseUrl}/blog`,
