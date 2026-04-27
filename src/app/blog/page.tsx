@@ -41,7 +41,7 @@ export default function BlogIndexPage() {
         <section className="section-padding bg-warm-white">
           <div className="container mx-auto px-4 md:px-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {blogPosts.map((post) => (
+              {[...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="bg-white border border-warm-border rounded-sm overflow-hidden hover-lift group block">
                   <article>
                     <div className="h-48 overflow-hidden bg-[#1A1A1A] relative">

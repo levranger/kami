@@ -13,6 +13,11 @@ import { peptideTherapyBody } from "./blog/peptide-therapy-fda-2026";
 import { laserHairRemovalCostBody } from "./blog/laser-hair-removal-cost";
 import { botoxCostBody } from "./blog/botox-cost";
 import { botoxHowLongBody } from "./blog/botox-how-long-does-it-last";
+import { doesLaserHurtBody } from "./blog/does-laser-hair-removal-hurt";
+import { isLaserPermanentBody } from "./blog/is-laser-hair-removal-permanent";
+import { lipFillerCostBody } from "./blog/lip-filler-cost";
+import { whatIsBotoxBody } from "./blog/what-is-botox";
+import { brazilianLaserGuideBody } from "./blog/brazilian-laser-hair-removal";
 import { getServiceUrl } from "./categories";
 
 
@@ -203,6 +208,86 @@ export const blogPosts: BlogPost[] = [
       description: "The FDA is expected to restore access to 14 previously restricted peptides in 2026. Here's what it means for aesthetic treatments and what Kami Aesthetics in Aventura FL is preparing to offer.",
       canonical: `${BASE_URL}/blog/peptide-therapy-fda-2026`,
       keywords: ["peptide therapy aventura", "bpc-157 miami", "fda peptide reclassification 2026", "peptide therapy near me", "compounding pharmacy peptides florida"],
+    },
+  },
+  {
+    slug: "does-laser-hair-removal-hurt",
+    title: "Does Laser Hair Removal Hurt? Here's What Nobody Tells You",
+    excerpt: "Worried laser hair removal will hurt? Here's what it really feels like, what affects pain levels, and how to make every session more comfortable.",
+    category: "Laser Hair Removal",
+    date: "2026-04-27",
+    readTime: "6 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1777310666/farhad-ibrahimzade-szpFxaqS658-unsplash_zwf1md.jpg",
+    body: doesLaserHurtBody,
+    seo: {
+      title: "Does Laser Hair Removal Hurt?",
+      description: "Worried laser hair removal will hurt? Here's what it really feels like, what affects pain levels, and how to make every session more comfortable.",
+      canonical: `${BASE_URL}/blog/does-laser-hair-removal-hurt`,
+      keywords: ["does laser hair removal hurt", "laser hair removal pain", "laser hair removal uncomfortable", "laser hair removal vs waxing pain", "laser hair removal aventura"],
+    },
+  },
+  {
+    slug: "is-laser-hair-removal-permanent",
+    title: "Is Laser Hair Removal Permanent? Let's Set the Record Straight",
+    excerpt: "Is laser hair removal really permanent, or is the marketing oversold? Get the honest answer about long-term results and what to actually expect.",
+    category: "Laser Hair Removal",
+    date: "2026-04-25",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1777310763/dynamic-wang-cu4i3YN3Y-4-unsplash_rb4dhb.jpg",
+    body: isLaserPermanentBody,
+    seo: {
+      title: "Is Laser Hair Removal Permanent?",
+      description: "Is laser hair removal really permanent, or is the marketing oversold? Get the honest answer about long-term results and what to actually expect.",
+      canonical: `${BASE_URL}/blog/is-laser-hair-removal-permanent`,
+      keywords: ["is laser hair removal permanent", "laser hair removal permanent reduction", "laser hair removal long term results", "does laser hair removal last", "laser hair removal aventura"],
+    },
+  },
+  {
+    slug: "lip-filler-cost",
+    title: "Lip Filler Cost: What You're Actually Paying For",
+    excerpt: "Lip filler prices vary more than people realize. Learn what affects the cost, what's included, and how to get natural results without overpaying.",
+    category: "Injectables",
+    date: "2026-04-24",
+    readTime: "6 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1777311047/IMG_7820_dolalp.jpg",
+    body: lipFillerCostBody,
+    seo: {
+      title: "Lip Filler Cost: What to Expect",
+      description: "Lip filler prices vary more than people realize. Learn what affects the cost, what's included, and how to get natural results without overpaying.",
+      canonical: `${BASE_URL}/blog/lip-filler-cost`,
+      keywords: ["lip filler cost", "how much does lip filler cost", "lip filler price aventura", "lip filler miami", "lip filler worth it"],
+    },
+  },
+  {
+    slug: "what-is-botox",
+    title: "What Is Botox, Really? The Beginner's Guide Worth Reading",
+    excerpt: "New to Botox? Learn exactly what it is, how it works, what it treats, and what to expect before booking your first appointment.",
+    category: "Injectables",
+    date: "2026-04-23",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1777311073/IMG_5848_xebot5.jpg",
+    body: whatIsBotoxBody,
+    seo: {
+      title: "What Is Botox? A Beginner's Guide",
+      description: "New to Botox? Learn exactly what it is, how it works, what it treats, and what to expect before booking your first appointment.",
+      canonical: `${BASE_URL}/blog/what-is-botox`,
+      keywords: ["what is botox", "how does botox work", "botox for beginners", "first time botox", "botox aventura"],
+    },
+  },
+  {
+    slug: "brazilian-laser-hair-removal",
+    title: "Brazilian Laser Hair Removal: Everything You Were Too Afraid to Ask",
+    excerpt: "Considering a Brazilian laser hair removal? Get an honest look at what it involves, how many sessions you need, and what to expect from start to finish.",
+    category: "Laser Hair Removal",
+    date: "2026-04-20",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1777311540/farhad-ibrahimzade-_A0jYQvTm9M-unsplash_azlayf.jpg",
+    body: brazilianLaserGuideBody,
+    seo: {
+      title: "Brazilian Laser Hair Removal Guide",
+      description: "Considering a Brazilian laser hair removal? Get an honest look at what it involves, how many sessions you need, and what to expect from start to finish.",
+      canonical: `${BASE_URL}/blog/brazilian-laser-hair-removal`,
+      keywords: ["brazilian laser hair removal", "brazilian laser aventura", "full brazilian laser", "bikini laser hair removal miami", "brazilian laser hair removal guide"],
     },
   },
   {
