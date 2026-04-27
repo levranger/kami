@@ -101,6 +101,15 @@ export default function BlogPostPage({ params }: Props) {
           <div className="container mx-auto px-4 md:px-8">
             <div className="grid lg:grid-cols-3 gap-16 max-w-6xl mx-auto">
               <article className="lg:col-span-2" aria-labelledby="blogpost-title">
+                {post.image && (
+                  <div className="relative w-full aspect-[16/9] mb-8 overflow-hidden rounded-sm">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
                 {post.body ? (
                   <div className="prose-blog">{post.body}</div>
                 ) : (
