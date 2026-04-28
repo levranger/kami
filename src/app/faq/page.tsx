@@ -8,7 +8,7 @@ import { buildFAQSchema, buildBreadcrumbSchema } from "@/lib/seo";
 import { siteSEO } from "@/data/content";
 import { faqCategories, allFAQsForSchema } from "@/data/faq";
 
-const BOOKING_URL = "https://kami.myaestheticrecord.com/online-booking";
+const BOOKING_URL = "https://booking.mangomint.com/kami";
 const CANONICAL = "https://kamiaesthetics.com/faq";
 
 export const metadata: Metadata = {

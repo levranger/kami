@@ -40,8 +40,8 @@ export const faqCategories: FAQCategory[] = [
     questions: [
       {
         q: "How do I book an appointment?",
-        a: "You can book online at https://kami.myaestheticrecord.com/online-booking or call us at (954) 469-7153.",
-        node: <>You can <a href="https://kami.myaestheticrecord.com/online-booking?utm_source=website&utm_medium=organic&utm_campaign=seo" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-dark underline underline-offset-2 transition-colors duration-150">book online</a> or call us at <a href="tel:+19544697153" className="text-gold hover:text-gold-dark underline underline-offset-2 transition-colors duration-150">(954) 469-7153</a>.</>,
+        a: "You can book online at https://booking.mangomint.com/kami or call us at (954) 469-7153.",
+        node: <>You can <a href="https://booking.mangomint.com/kami" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-dark underline underline-offset-2 transition-colors duration-150">book online</a> or call us at <a href="tel:+19544697153" className="text-gold hover:text-gold-dark underline underline-offset-2 transition-colors duration-150">(954) 469-7153</a>.</>,
       },
       {
         q: "What are your hours?",
