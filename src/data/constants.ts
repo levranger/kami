@@ -1,5 +1,5 @@
 // ─── Site Constants ───
-export const BOOKING_URL = "https://booking.mangomint.com/kami";
+export const BOOKING_URL = "https://booking.mangomint.com/757197";
 
 export const BUSINESS_NAME = "Kami Aesthetics";
 export const PHONE_NUMBER = "(954) 469-7153";
