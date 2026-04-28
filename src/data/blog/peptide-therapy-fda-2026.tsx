@@ -55,7 +55,7 @@ export const peptideTherapyBody = (
 
     <h2>Ready to find out if peptide therapy is right for you?</h2>
     <p>
-      We&apos;re taking <L href="https://booking.mangomint.com/kami" external>consultations</L> now. Call us directly at{" "}
+      We&apos;re taking <L href="https://booking.mangomint.com/757197" external>consultations</L> now. Call us directly at{" "}
       <a href="tel:+19544697153" className="text-gold hover:text-gold-dark underline underline-offset-2 transition-colors duration-150">(954) 469-7153</a>{" "}
       — our team will tell you what&apos;s available, what fits your goals, and what the timeline looks like as these compounds come back online.
     </p>

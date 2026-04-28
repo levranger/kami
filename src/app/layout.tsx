@@ -53,6 +53,14 @@ export default function RootLayout({
     <html lang="en-US" className={`${inter.variable} ${playfair.variable}`}>
       <head>
         <Script
+          id="mangomint-config"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.Mangomint = window.Mangomint || {}; window.Mangomint.CompanyId = 757197;`,
+          }}
+        />
+        <Script src="https://booking.mangomint.com/app.js" strategy="afterInteractive" />
+        <Script
           id="gtm"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
