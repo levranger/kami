@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import { Search, X } from "lucide-react";
 import type { FAQCategory } from "@/data/faq";
 
-const BOOKING_URL = "https://kami.myaestheticrecord.com/online-booking";
+const BOOKING_URL = "https://booking.mangomint.com/kami";
 
 export default function FAQPageClient({ categories }: { categories: FAQCategory[] }) {
   const [search, setSearch] = useState("");
