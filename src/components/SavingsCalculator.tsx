@@ -1,9 +1,39 @@
 "use client";
 
 import { useState } from "react";
+import { Minus, Plus } from "lucide-react";
 import { BOOKING_URL } from "@/data/constants";
 
 const LASER_COST = 1200;
+
+function Stepper({
+  label, value, onDecrement, onIncrement, display,
+}: {
+  label: string; value: number; onDecrement: () => void; onIncrement: () => void; display: string;
+}) {
+  return (
+    <div className="flex items-center justify-between gap-4">
+      <span className="font-inter text-sm text-[#1A1A1A]">{label}</span>
+      <div className="flex items-center gap-3">
+        <button
+          onClick={onDecrement}
+          className="w-8 h-8 flex items-center justify-center border border-warm-border hover:border-[#1A1A1A] transition-colors duration-200"
+          aria-label={`Decrease ${label}`}
+        >
+          <Minus className="h-3 w-3" />
+        </button>
+        <span className="font-inter text-sm font-semibold text-gold w-14 text-center">{display}</span>
+        <button
+          onClick={onIncrement}
+          className="w-8 h-8 flex items-center justify-center border border-warm-border hover:border-[#1A1A1A] transition-colors duration-200"
+          aria-label={`Increase ${label}`}
+        >
+          <Plus className="h-3 w-3" />
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export default function SavingsCalculator() {
   const [method, setMethod] = useState<"waxing" | "shaving" | "both">("waxing");
@@ -51,50 +81,34 @@ export default function SavingsCalculator() {
 
         {/* Waxing inputs */}
         {["waxing", "both"].includes(method) && (
-          <>
-            <div>
-              <label className="font-inter text-sm font-semibold text-[#1A1A1A] block mb-1">
-                Waxing sessions per month: <span className="text-gold">{waxSessions}</span>
-              </label>
-              <input
-                type="range" min={1} max={4} value={waxSessions}
-                onChange={(e) => setWaxSessions(Number(e.target.value))}
-                className="w-full accent-[#C9A96E]"
-              />
-              <div className="flex justify-between font-inter text-xs text-warm-gray mt-1">
-                <span>1</span><span>4</span>
-              </div>
-            </div>
-            <div>
-              <label className="font-inter text-sm font-semibold text-[#1A1A1A] block mb-1">
-                Cost per waxing session: <span className="text-gold">${waxCost}</span>
-              </label>
-              <input
-                type="range" min={30} max={150} step={5} value={waxCost}
-                onChange={(e) => setWaxCost(Number(e.target.value))}
-                className="w-full accent-[#C9A96E]"
-              />
-              <div className="flex justify-between font-inter text-xs text-warm-gray mt-1">
-                <span>$30</span><span>$150</span>
-              </div>
-            </div>
-          </>
+          <div className="space-y-4 border border-warm-border p-4">
+            <Stepper
+              label="Waxing sessions per month"
+              value={waxSessions}
+              display={`${waxSessions}x`}
+              onDecrement={() => setWaxSessions((v) => Math.max(1, v - 1))}
+              onIncrement={() => setWaxSessions((v) => Math.min(4, v + 1))}
+            />
+            <Stepper
+              label="Cost per session"
+              value={waxCost}
+              display={`$${waxCost}`}
+              onDecrement={() => setWaxCost((v) => Math.max(30, v - 5))}
+              onIncrement={() => setWaxCost((v) => Math.min(150, v + 5))}
+            />
+          </div>
         )}
 
         {/* Shaving inputs */}
         {["shaving", "both"].includes(method) && (
-          <div>
-            <label className="font-inter text-sm font-semibold text-[#1A1A1A] block mb-1">
-              Razors & products per month: <span className="text-gold">${shavingCost}</span>
-            </label>
-            <input
-              type="range" min={5} max={50} step={5} value={shavingCost}
-              onChange={(e) => setShavingCost(Number(e.target.value))}
-              className="w-full accent-[#C9A96E]"
+          <div className="border border-warm-border p-4">
+            <Stepper
+              label="Razors & products per month"
+              value={shavingCost}
+              display={`$${shavingCost}`}
+              onDecrement={() => setShavingCost((v) => Math.max(5, v - 5))}
+              onIncrement={() => setShavingCost((v) => Math.min(50, v + 5))}
             />
-            <div className="flex justify-between font-inter text-xs text-warm-gray mt-1">
-              <span>$5</span><span>$50</span>
-            </div>
           </div>
         )}
 

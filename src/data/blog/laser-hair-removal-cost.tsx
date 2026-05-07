@@ -84,6 +84,13 @@ export const laserHairRemovalCostBody = (
     <p>
       Shaving carries a lower per-use cost but no endpoint. When you factor in razors, shaving products, the time spent, and the skin irritation that comes with regular shaving, the cumulative figure over a decade is more significant than it appears.
     </p>
+    <p>
+      Want to see the numbers for your own routine?{" "}
+      <Link href="/services/lasers/laser-hair-removal#savings-calculator">
+        Try our savings calculator
+      </Link>{" "}
+      to compare your current waxing or shaving costs against a one-time laser package.
+    </p>
 
     <h2>How Many Sessions Will You Actually Need?</h2>
     <p>
