@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import ServiceFAQ from "@/components/sections/ServiceFAQ";
+import SavingsCalculator from "@/components/SavingsCalculator";
 import BeforeAfterSection from "@/components/sections/BeforeAfterSection";
 import TechnologySection from "@/components/sections/TechnologySection";
 import ProcessStepsSection from "@/components/sections/ProcessStepsSection";
@@ -189,6 +190,12 @@ export default function ServicePage({ params }: Props) {
 
                 <h3 className="font-playfair text-xl font-bold text-[#1A1A1A] mb-6">Frequently Asked Questions</h3>
                 <ServiceFAQ items={service.faq} />
+
+                {isLaserService && (
+                  <div id="savings-calculator" className="mt-12">
+                    <SavingsCalculator />
+                  </div>
+                )}
 
                 {/* Internal links */}
                 <div className="mt-10 pt-8 border-t border-warm-border">

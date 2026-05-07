@@ -17,6 +17,7 @@ import AreasWeServe from "@/components/sections/AreasWeServe";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import MapEmbed from "@/components/sections/MapEmbed";
+import CalculatorTeaser from "@/components/sections/CalculatorTeaser";
 
 export const metadata: Metadata = buildPageMetadata(siteSEO.homeSEO);
 
@@ -39,6 +40,7 @@ export default async function HomePage() {
         <TrustStrip />
         <NewClientOffer />
         <ServicesGrid />
+        <CalculatorTeaser />
         <WhyChoose />
         <Gallery />
         <Testimonials place={place} />
