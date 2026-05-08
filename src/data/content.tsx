@@ -18,6 +18,11 @@ import { isLaserPermanentBody } from "./blog/is-laser-hair-removal-permanent";
 import { lipFillerCostBody } from "./blog/lip-filler-cost";
 import { whatIsBotoxBody } from "./blog/what-is-botox";
 import { brazilianLaserGuideBody } from "./blog/brazilian-laser-hair-removal";
+import { botoxHowLongToWorkBody } from "./blog/botox-how-long-to-work";
+import { bikiniLaserBody } from "./blog/bikini-laser-hair-removal";
+import { isBotoxSafeBody } from "./blog/is-botox-safe";
+import { underarmLaserBody } from "./blog/underarm-laser-hair-removal";
+import { botoxLipFlipBody } from "./blog/botox-lip-flip";
 import { getServiceUrl } from "./categories";
 
 
@@ -172,6 +177,191 @@ export const homepageFAQs: FAQEntry[] = [
 
 // ─── Blog Posts ───
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "botox-how-long-to-work",
+    title: "How Long Does Botox Take to Work? Your Day-by-Day Breakdown",
+    excerpt: "Botox results don't appear overnight. Learn exactly when to expect changes, what influences the timeline, and how to get the best outcome.",
+    category: "Injectables",
+    date: "2026-05-01",
+    readTime: "6 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1778263433/botox_pic_AdobeStock_225081708_ub9flf.jpg",
+    body: botoxHowLongToWorkBody,
+    faq: [
+      {
+        question: "How long does Botox take to work?",
+        answer: "Most patients begin noticing early changes between days 3 and 5. Full results are typically visible by days 10 to 14 after treatment.",
+      },
+      {
+        question: "Why is my Botox not working after 3 days?",
+        answer: "This is completely normal. Botox takes time to bind to nerve terminals and inhibit muscle contractions. Visible results usually begin around day 3–5 and reach their peak at 10–14 days.",
+      },
+      {
+        question: "What factors affect how fast Botox kicks in?",
+        answer: "Metabolism, muscle mass, injection technique, and dosage all influence onset speed. People with faster metabolisms or stronger facial muscles may take slightly longer to see full results.",
+      },
+      {
+        question: "How long do Botox results last?",
+        answer: "Results typically last 3 to 4 months, though this varies by individual. Consistent treatment over time can extend the interval between appointments.",
+      },
+      {
+        question: "When should I book Botox before an event?",
+        answer: "Book at least 3 weeks before a significant event. This allows full results to appear and any minor bruising to resolve before your date.",
+      },
+    ],
+    seo: {
+      title: "How Long Does Botox Take to Work?",
+      description: "Botox results don't appear overnight. Learn exactly when to expect changes, what influences the timeline, and how to get the best outcome.",
+      canonical: `${BASE_URL}/blog/botox-how-long-to-work`,
+      keywords: ["how long does botox take to work", "botox timeline", "when does botox kick in", "botox results days", "botox aventura"],
+    },
+  },
+  {
+    slug: "bikini-laser-hair-removal",
+    title: "Bikini Laser Hair Removal: What to Know",
+    excerpt: "Considering bikini laser hair removal? Learn what it covers, how it differs from a Brazilian, and what to expect from your sessions.",
+    category: "Laser Hair Removal",
+    date: "2026-05-02",
+    readTime: "6 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1778275072/bikini_Adobe_315338719_pneqcq.jpg",
+    faq: [
+      {
+        question: "What is the difference between bikini and Brazilian laser hair removal?",
+        answer: "A bikini laser targets hair visible outside a swimsuit — the front bikini line and upper inner thighs. A Brazilian removes all hair in the intimate area, front to back. An extended bikini falls between the two.",
+      },
+      {
+        question: "How many sessions does bikini laser hair removal take?",
+        answer: "Most patients need six to eight sessions spaced four to six weeks apart to achieve permanent hair reduction in the bikini area.",
+      },
+      {
+        question: "Does bikini laser hair removal hurt?",
+        answer: "The bikini line is more sensitive than the legs or arms, but modern devices with integrated cooling keep the experience manageable. Most patients describe it as a brief warm snap with each pulse.",
+      },
+      {
+        question: "How much does bikini laser hair removal cost?",
+        answer: "A complete six-to-eight session bikini package at a quality clinic typically ranges from $400 to $700. Single sessions run between $75 and $200 depending on the clinic.",
+      },
+      {
+        question: "Who is a good candidate for bikini laser hair removal?",
+        answer: "Bikini laser works best for patients with darker hair and lighter to medium skin tones, though modern Nd:YAG lasers make it safe for darker skin tones too. It is not suitable during pregnancy.",
+      },
+    ],
+    seo: {
+      title: "Bikini Laser Hair Removal: What to Know",
+      description: "Considering bikini laser hair removal? Learn what it covers, how it differs from a Brazilian, and what to expect from your sessions.",
+      canonical: `${BASE_URL}/blog/bikini-laser-hair-removal`,
+      keywords: ["bikini laser hair removal", "bikini laser aventura", "bikini vs brazilian laser", "bikini line laser hair removal", "laser hair removal bikini miami"],
+    },
+  },
+  {
+    slug: "is-botox-safe",
+    title: "Is Botox Safe? Here's What the Science Actually Says",
+    excerpt: "Is Botox really safe? Get a clear, science-based answer about how it works, what the research shows, and how to choose the right provider.",
+    category: "Injectables",
+    date: "2026-05-03",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1778275217/AdobeStock_402181304_gzvurk.jpg",
+    body: isBotoxSafeBody,
+    faq: [
+      {
+        question: "Is Botox safe?",
+        answer: "Yes, when administered by a qualified provider using authentic product. Botox has over four decades of clinical research behind it and one of the most extensive safety profiles of any aesthetic treatment.",
+      },
+      {
+        question: "What are the risks of Botox?",
+        answer: "Common side effects include minor bruising, brief redness, and occasional mild headache. Less common effects like temporary asymmetry or eyelid drooping are almost always linked to injector technique and resolve as the Botox wears off.",
+      },
+      {
+        question: "Who should not get Botox?",
+        answer: "Botox is not appropriate for pregnant or breastfeeding patients, those with neuromuscular disorders like myasthenia gravis, patients with active skin infections at the injection site, or those with known allergies to the formulation.",
+      },
+      {
+        question: "How do I choose a safe Botox provider?",
+        answer: "Look for board-certified physicians or highly trained nurse practitioners, ask about their experience and product sourcing, and ensure a thorough consultation is conducted before any injection. Avoid pop-up clinics and deeply discounted offers.",
+      },
+    ],
+    seo: {
+      title: "Is Botox Safe? What You Should Know",
+      description: "Is Botox really safe? Get a clear, science-based answer about how it works, what the research shows, and how to choose the right provider.",
+      canonical: `${BASE_URL}/blog/is-botox-safe`,
+      keywords: ["is botox safe", "botox safety", "botox side effects", "botox risks", "is botox safe aventura"],
+    },
+  },
+  {
+    slug: "underarm-laser-hair-removal",
+    title: "Underarm Laser Hair Removal: The Five-Minute Treatment That Changes Your Routine",
+    excerpt: "Underarm laser hair removal is one of the easiest treatments to start with. Learn what to expect, how many sessions, and what it actually costs.",
+    category: "Laser Hair Removal",
+    date: "2026-05-04",
+    readTime: "6 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1778275332/AdobeStock_504029612_oh8lve.jpg",
+    body: underarmLaserBody,
+    faq: [
+      {
+        question: "How many sessions does underarm laser hair removal take?",
+        answer: "Most patients need six to eight sessions spaced four to six weeks apart. The underarms are one of the most responsive areas, and many patients see significant reduction by the third or fourth session.",
+      },
+      {
+        question: "How much does underarm laser hair removal cost?",
+        answer: "A complete six-to-eight session package typically costs between $300 and $600 at a quality clinic. Single sessions run between $75 and $150.",
+      },
+      {
+        question: "Does underarm laser hair removal hurt?",
+        answer: "The underarm area is sensitive, but sessions are only five to ten minutes long. Most patients describe the sensation as a brief warm snap with each pulse. Modern lasers with integrated cooling make the experience very manageable.",
+      },
+      {
+        question: "Is underarm laser hair removal permanent?",
+        answer: "Laser hair removal delivers permanent hair reduction, not guaranteed permanent removal. Most patients achieve 80–95% reduction after a full course and require only occasional maintenance sessions.",
+      },
+      {
+        question: "Can I use deodorant after underarm laser hair removal?",
+        answer: "Avoid deodorant or antiperspirant for the first 24 hours after each session to prevent irritation. After that, normal use can resume.",
+      },
+    ],
+    seo: {
+      title: "Underarm Laser Hair Removal Guide",
+      description: "Underarm laser hair removal is one of the easiest treatments to start with. Learn what to expect, how many sessions, and what it actually costs.",
+      canonical: `${BASE_URL}/blog/underarm-laser-hair-removal`,
+      keywords: ["underarm laser hair removal", "armpit laser hair removal", "underarm laser aventura", "laser hair removal underarms cost", "underarm laser hair removal sessions"],
+    },
+  },
+  {
+    slug: "botox-lip-flip",
+    title: "The Botox Lip Flip: A Subtle Way to Enhance Your Lips Without Filler",
+    excerpt: "Curious about the Botox lip flip? Learn what it does, how it differs from filler, how long it lasts, and whether it's right for you.",
+    category: "Injectables",
+    date: "2026-05-05",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1778275427/AdobeStock_362873263_b4wxtu.jpg",
+    body: botoxLipFlipBody,
+    faq: [
+      {
+        question: "What is a Botox lip flip?",
+        answer: "A Botox lip flip uses 4–6 units of Botox injected into the upper lip muscle to relax it slightly, causing the upper lip to roll outward. The result is a more visible, subtly fuller-looking upper lip without adding volume.",
+      },
+      {
+        question: "How long does a lip flip last?",
+        answer: "A lip flip typically lasts two to three months. The lip area is highly mobile and metabolizes Botox more quickly than less active facial muscles.",
+      },
+      {
+        question: "How much does a Botox lip flip cost?",
+        answer: "A lip flip typically costs between $80 and $150, depending on the clinic's unit price. It is significantly less expensive than lip filler.",
+      },
+      {
+        question: "What is the difference between a lip flip and lip filler?",
+        answer: "A lip flip relaxes the upper lip muscle to make the lip appear more visible — it does not add volume. Lip filler physically adds volume and shape using hyaluronic acid. Filler lasts 6–12 months; a lip flip lasts 2–3 months.",
+      },
+      {
+        question: "Does a lip flip affect speech or eating?",
+        answer: "With proper dosing and placement, no. Overdosing or improper placement can cause temporary mild difficulty with certain sounds or drinking from a straw, which is why choosing an experienced injector matters.",
+      },
+    ],
+    seo: {
+      title: "Botox Lip Flip: What to Expect",
+      description: "Curious about the Botox lip flip? Learn what it does, how it differs from filler, how long it lasts, and whether it's right for you.",
+      canonical: `${BASE_URL}/blog/botox-lip-flip`,
+      keywords: ["botox lip flip", "lip flip vs lip filler", "botox lip flip aventura", "lip flip cost", "what is a lip flip"],
+    },
+  },
   {
     slug: "peptide-therapy-fda-2026",
     title: "Peptides Are Coming Back: What the 2026 FDA Reclassification Means for Aesthetic Clients",

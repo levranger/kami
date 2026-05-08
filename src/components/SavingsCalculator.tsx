@@ -48,12 +48,16 @@ export default function SavingsCalculator() {
   const savings = currentTotal - LASER_COST;
 
   return (
-    <div className="bg-white border border-warm-border rounded-sm p-6 md:p-8">
+    <div className="border-2 border-gold rounded-sm p-6 md:p-8 bg-white">
+      <div className="flex items-center gap-3 mb-2">
+        <div className="h-px w-8 bg-gold" />
+        <span className="font-inter text-xs tracking-[0.3em] uppercase text-gold font-medium">Free Calculator</span>
+      </div>
       <h2 className="font-playfair text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-2">
-        Hair Removal Savings Calculator
+        How Much Will You Save With Laser?
       </h2>
       <p className="font-inter text-sm text-warm-gray mb-8">
-        See how much you could save by switching to laser hair removal.
+        Enter what you currently spend on waxing or shaving — see how fast laser pays for itself.
       </p>
 
       <div className="space-y-6">
