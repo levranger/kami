@@ -23,6 +23,11 @@ import { bikiniLaserBody } from "./blog/bikini-laser-hair-removal";
 import { isBotoxSafeBody } from "./blog/is-botox-safe";
 import { underarmLaserBody } from "./blog/underarm-laser-hair-removal";
 import { botoxLipFlipBody } from "./blog/botox-lip-flip";
+import { laserHairRemovalPCOSBody } from "./blog/laser-hair-removal-pcos";
+import { botoxForeheadLinesBody } from "./blog/botox-forehead-lines";
+import { whatNotToDoAfterBotoxBody } from "./blog/what-not-to-do-after-botox";
+import { laserVsWaxing2Body } from "./blog/laser-hair-removal-vs-waxing-2";
+import { lipFillerSwellingBody } from "./blog/lip-filler-swelling";
 import { getServiceUrl } from "./categories";
 
 
@@ -177,6 +182,184 @@ export const homepageFAQs: FAQEntry[] = [
 
 // ─── Blog Posts ───
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "laser-hair-removal-pcos",
+    title: "Laser Hair Removal for PCOS: An Honest Guide to What Actually Works",
+    excerpt: "Laser hair removal can help manage PCOS hair growth, but expectations matter. Learn what works, what doesn't, and how to plan realistic treatment.",
+    category: "Laser Hair Removal",
+    date: "2026-05-08",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1778872166/alexander-krivitskiy-Cdw0oTj90_8-unsplash_zspb79.jpg",
+    body: laserHairRemovalPCOSBody,
+    faq: [
+      {
+        question: "Does laser hair removal work for PCOS?",
+        answer: "Yes, laser hair removal significantly reduces hair density and coarseness in PCOS patients. However, because PCOS is hormonally driven, more sessions are needed and ongoing maintenance is typical. Most patients see meaningful improvement even if complete permanent removal is less likely than in non-PCOS patients.",
+      },
+      {
+        question: "How many laser sessions does a PCOS patient need?",
+        answer: "PCOS patients typically need 10 to 12 initial sessions rather than the standard 6 to 8, followed by maintenance sessions every 3 to 6 months depending on how well the underlying hormonal condition is managed.",
+      },
+      {
+        question: "What areas does PCOS hair growth affect most?",
+        answer: "The most commonly affected areas include the chin, upper lip, jawline, neck, chest, lower abdomen, and inner thighs — all androgen-sensitive zones that respond to elevated testosterone levels.",
+      },
+      {
+        question: "Should I treat my PCOS before starting laser hair removal?",
+        answer: "Ideally yes. Patients with well-managed PCOS see significantly better laser results. Working with a medical provider on hormonal management alongside laser treatment produces the best long-term outcomes.",
+      },
+    ],
+    seo: {
+      title: "Laser Hair Removal for PCOS",
+      description: "Laser hair removal can help manage PCOS hair growth, but expectations matter. Learn what works, what doesn't, and how to plan realistic treatment.",
+      canonical: `${BASE_URL}/blog/laser-hair-removal-pcos`,
+      keywords: ["laser hair removal pcos", "pcos hair removal", "hirsutism laser treatment", "laser hair removal hormonal hair growth", "pcos facial hair laser aventura"],
+    },
+  },
+  {
+    slug: "botox-forehead-lines",
+    title: "Botox for Forehead Lines: How to Get Natural Results That Last",
+    excerpt: "Botox for forehead lines is one of the most popular treatments worldwide. Learn how it works, how many units you need, and what natural results look like.",
+    category: "Injectables",
+    date: "2026-05-11",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1778872477/ehsan-ahmadi-7oM0L9yqcds-unsplash_vuebi1.jpg",
+    body: botoxForeheadLinesBody,
+    faq: [
+      {
+        question: "How many units of Botox do I need for forehead lines?",
+        answer: "Forehead Botox typically requires 10 to 20 units depending on your muscle size, strength, and aesthetic goals. Men generally need more than women. An experienced injector will assess your facial movement before recommending a unit count.",
+      },
+      {
+        question: "Will forehead Botox make me look frozen?",
+        answer: "Not with proper dosing and placement. A skilled injector relaxes the frontalis muscle enough to soften lines while preserving natural movement. The goal is a refreshed appearance, not an expressionless one.",
+      },
+      {
+        question: "Should I treat my forehead and glabella together?",
+        answer: "Usually yes. Treating the forehead alone without the glabella can cause the brows to drop or feel heavy, as the frown muscles pull downward unopposed. Most experienced injectors treat both areas together as a coordinated upper face protocol.",
+      },
+      {
+        question: "How long does forehead Botox last?",
+        answer: "Forehead Botox typically lasts 3 to 4 months. Patients with stronger, more expressive foreheads may see movement return closer to 2.5 months, while those with smaller muscle groups may enjoy results up to 5 months.",
+      },
+    ],
+    seo: {
+      title: "Botox for Forehead Lines",
+      description: "Botox for forehead lines is one of the most popular treatments worldwide. Learn how it works, how many units you need, and what natural results look like.",
+      canonical: `${BASE_URL}/blog/botox-forehead-lines`,
+      keywords: ["botox forehead lines", "botox for forehead", "forehead botox units", "botox forehead aventura", "how many units botox forehead"],
+    },
+  },
+  {
+    slug: "what-not-to-do-after-botox",
+    title: "What Not to Do After Botox: 7 Mistakes That Ruin Your Results",
+    excerpt: "Want the best Botox results? Avoid these common mistakes in the first 24 hours and beyond that can affect how your treatment settles.",
+    category: "Injectables",
+    date: "2026-05-13",
+    readTime: "6 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1778872596/look-studio-KUjVATctN1I-unsplash_eomi50.jpg",
+    body: whatNotToDoAfterBotoxBody,
+    faq: [
+      {
+        question: "Can I lie down after Botox?",
+        answer: "Avoid lying flat for at least four hours after your appointment. After that, normal activity resumes, though sleeping face-down is best avoided the first night.",
+      },
+      {
+        question: "Can I exercise after Botox?",
+        answer: "Skip intense exercise for the rest of the day after your appointment. Light walking is fine. You can resume normal workouts the following day.",
+      },
+      {
+        question: "Can I drink alcohol after Botox?",
+        answer: "Avoid alcohol for 24 hours before and after your appointment. Alcohol thins the blood and increases the likelihood of bruising at injection sites.",
+      },
+      {
+        question: "When will I see my Botox results?",
+        answer: "Most patients begin noticing changes between days 3 and 5. Full results are visible around days 10 to 14. Do not assess your outcome before the two-week mark.",
+      },
+      {
+        question: "Can I touch my face after Botox?",
+        answer: "Avoid pressing, rubbing, or massaging the treated area for the first 24 hours. Gentle skincare is fine after a few hours, applied with light pressure.",
+      },
+    ],
+    seo: {
+      title: "What Not to Do After Botox",
+      description: "Want the best Botox results? Avoid these common mistakes in the first 24 hours and beyond that can affect how your treatment settles.",
+      canonical: `${BASE_URL}/blog/what-not-to-do-after-botox`,
+      keywords: ["what not to do after botox", "botox aftercare", "after botox instructions", "botox recovery tips", "botox dos and don'ts"],
+    },
+  },
+  {
+    slug: "laser-hair-removal-vs-waxing-guide",
+    title: "Laser Hair Removal vs. Waxing: Which One Is Actually Worth It?",
+    excerpt: "Laser hair removal vs. waxing: which is actually worth it? Compare cost, pain, results, and convenience to decide what's right for you.",
+    category: "Laser Hair Removal",
+    date: "2026-05-15",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1778873043/womanizer-toys-1mqYa4ajqtU-unsplash_hradn6.jpg",
+    body: laserVsWaxing2Body,
+    faq: [
+      {
+        question: "Is laser hair removal better than waxing?",
+        answer: "For most patients, yes. Laser permanently reduces hair growth after a complete course, while waxing only removes hair temporarily and must be repeated indefinitely. Laser is also less painful and more cost-effective over time.",
+      },
+      {
+        question: "How much does laser hair removal cost compared to waxing?",
+        answer: "A complete laser package for one area typically costs $800–$1,500 upfront. Waxing the same area costs $400–$640 per year indefinitely. Laser becomes the more economical choice within 2–3 years.",
+      },
+      {
+        question: "Does laser hair removal hurt more than waxing?",
+        answer: "Most patients find laser significantly less painful than waxing, particularly for the Brazilian area. Laser delivers brief pulses with integrated cooling, while waxing pulls hair from the root across the entire area at once.",
+      },
+      {
+        question: "Who should choose waxing over laser?",
+        answer: "Patients with very light, blonde, grey, or red hair may find laser less effective since it targets pigment. Those who are pregnant, want only temporary removal, or prefer not to commit to multiple sessions may also prefer waxing.",
+      },
+    ],
+    seo: {
+      title: "Laser Hair Removal vs. Waxing",
+      description: "Laser hair removal vs. waxing: which is actually worth it? Compare cost, pain, results, and convenience to decide what's right for you.",
+      canonical: `${BASE_URL}/blog/laser-hair-removal-vs-waxing-guide`,
+      keywords: ["laser hair removal vs waxing", "laser vs waxing cost", "is laser better than waxing", "laser hair removal worth it", "waxing vs laser aventura"],
+    },
+  },
+  {
+    slug: "lip-filler-swelling",
+    title: "Lip Filler Swelling: Your Day-by-Day Recovery Timeline",
+    excerpt: "Lip filler swelling can be alarming if you don't know what's normal. Here's a day-by-day breakdown of what to expect and when results settle.",
+    category: "Injectables",
+    date: "2026-05-17",
+    readTime: "6 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1778873290/trew-v40lRmz-fNQ-unsplash_hu4elw.jpg",
+    body: lipFillerSwellingBody,
+    faq: [
+      {
+        question: "How long does lip filler swelling last?",
+        answer: "Swelling peaks around day one and subsides significantly by the end of the first week. Your true result is visible at the two-week mark when all residual swelling has resolved.",
+      },
+      {
+        question: "Is it normal for lips to look uneven after filler?",
+        answer: "Yes. Asymmetry in the first few days is very common and almost always resolves on its own as the filler integrates and swelling subsides. Assess your result at two weeks, not two days.",
+      },
+      {
+        question: "How do I reduce lip filler swelling?",
+        answer: "Apply cold compresses gently for the first 24 hours, sleep with your head elevated, avoid heat, alcohol, and intense exercise for 24–48 hours, and do not press or massage the lips during the first week.",
+      },
+      {
+        question: "When should I be concerned about lip filler swelling?",
+        answer: "Contact your provider if swelling is severe, asymmetric, and worsening after day three, if you have persistent or increasing pain, or if you notice white, blue, or mottled skin discoloration — these can indicate a vascular complication requiring immediate attention.",
+      },
+      {
+        question: "When will I see my real lip filler results?",
+        answer: "Your true result is visible at the two-week mark, once the filler has fully integrated and all swelling has resolved. Do not assess your outcome before then.",
+      },
+    ],
+    seo: {
+      title: "Lip Filler Swelling: Day-by-Day Timeline",
+      description: "Lip filler swelling can be alarming if you don't know what's normal. Here's a day-by-day breakdown of what to expect and when results settle.",
+      canonical: `${BASE_URL}/blog/lip-filler-swelling`,
+      keywords: ["lip filler swelling", "lip filler recovery", "lip filler swelling timeline", "how long does lip filler swelling last", "lip filler aftercare"],
+    },
+  },
   {
     slug: "botox-how-long-to-work",
     title: "How Long Does Botox Take to Work? Your Day-by-Day Breakdown",
