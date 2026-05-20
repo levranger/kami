@@ -84,7 +84,7 @@ export const doesLaserHurtBody = (
     <h2>How Laser Compares to Waxing in Terms of Pain</h2>
 
     <p>
-      If you have been waxing for any length of time, the honest comparison is that<Link href="/services/lasers/laser-hair-removal" className="text-gold hover:text-gold-dark transition-colors">laser hair removal is significantly less painful than a Brazilian wax</Link> in particular. Waxing involves the physical pulling of hair from the root across an entire treatment area at once, while laser delivers brief, targeted pulses with cooling integrated throughout.
+      If you have been waxing for any length of time, the honest comparison is that<Link href="/services/lasers/laser-hair-removal" className="text-gold hover:text-gold-dark transition-colors">laser hair removal</Link>  is significantly less painful than a Brazilian wax in particular. Waxing involves the physical pulling of hair from the root across an entire treatment area at once, while laser delivers brief, targeted pulses with cooling integrated throughout.
     </p>
 
     <p>
