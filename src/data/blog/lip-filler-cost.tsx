@@ -64,7 +64,7 @@ export const lipFillerCostBody = (
     <h2>How Long Lip Filler Lasts</h2>
 
     <p>
-      Most hyaluronic acid<Link href="/services/injectables/dermal-fillers" className="text-gold hover:text-gold-dark transition-colors">lip fillers</Link> last between six and twelve months, depending on the specific product, your metabolism, and the area treated. The lips are highly mobile, and that constant movement gradually breaks down filler more quickly than in less active areas of the face.
+      Most hyaluronic acid <Link href="/services/injectables/dermal-fillers" className="text-gold hover:text-gold-dark transition-colors">lip fillers</Link> last between six and twelve months, depending on the specific product, your metabolism, and the area treated. The lips are highly mobile, and that constant movement gradually breaks down filler more quickly than in less active areas of the face.
     </p>
 
     <p>

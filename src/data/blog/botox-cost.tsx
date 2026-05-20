@@ -82,7 +82,7 @@ export const botoxCostBody = (
     </p>
 
     <p>
-      According to guidance published by the <a href="https://www.aad.org/public/cosmetic/wrinkles/botulinum-toxin-overview" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-dark transition-colors">American Academy of Dermatology</a>&lt;/a&gt;, dosing should always be individualized based on muscle mass, movement patterns, and the patient's aesthetic goals rather than applied as a standard formula.
+      According to guidance published by the <a href="https://www.aad.org/public/cosmetic/wrinkles/botulinum-toxin-overview" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-dark transition-colors">American Academy of Dermatology</a>, dosing should always be individualized based on muscle mass, movement patterns, and the patient's aesthetic goals rather than applied as a standard formula.
     </p>
 
     <h3>Why Dosage Varies Person to Person</h3>
