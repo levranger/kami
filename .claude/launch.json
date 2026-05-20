@@ -2,6 +2,12 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "kami-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000
+    },
+    {
       "name": "kami-prod",
       "runtimeExecutable": "node",
       "runtimeArgs": ["-e", "const {execSync} = require('child_process'); process.chdir('/Users/levpolshkov/kami'); execSync('npx next start', {stdio:'inherit'})"],

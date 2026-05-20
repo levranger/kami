@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-export const botoxHowLongBodyMeta = {
+export const howLongBotoxLastMeta = {
   title: "How Long Does Botox Last?",
   description: "Botox results don't last forever, but how long exactly? Learn what affects your timeline, which areas fade fastest, and when to rebook.",
 };
 
-export const botoxHowLongBody = (
+export const howLongBotoxLast = (
   <>
     <p>
       One of the first questions people ask after their first Botox appointment is how long before they need to come back. It is a practical question, and the honest answer is that it depends on more variables than most providers take the time to explain. Understanding those variables puts you in a much better position to plan your treatments, budget appropriately, and get consistently good results rather than cycling between looking great and looking like you need a top-up.
@@ -50,7 +50,7 @@ export const botoxHowLongBody = (
     <h3>Dosage and Injection Technique</h3>
 
     <p>
-      Underdosing is one of the most common and least discussed reasons Botox seems to wear off quickly. When insufficient units are used, the muscle is never fully relaxed to begin with, and the partial effect fades faster than a properly dosed treatment would. According to research published on <a href="https://pubmed.ncbi.nlm.nih.gov/39616095/" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-dark transition-colors">PubMed examining botulinum toxin outcomes</a>, dosage accuracy and injection placement are among the strongest predictors of both result quality and longevity. Choosing an experienced, medically trained injector is not just about safety. It is directly tied to how long your results last.
+      Underdosing is one of the most common and least discussed reasons Botox seems to wear off quickly. When insufficient units are used, the muscle is never fully relaxed to begin with, and the partial effect fades faster than a properly dosed treatment would. According to research published on <a href="https://pubmed.ncbi.nlm.nih.gov/28236344/" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-dark transition-colors">PubMed examining botulinum toxin outcomes</a>, dosage accuracy and injection placement are among the strongest predictors of both result quality and longevity. Choosing an experienced, medically trained injector is not just about safety. It is directly tied to how long your results last.
     </p>
 
     <h2>What Makes Botox Last Longer</h2>
@@ -66,7 +66,7 @@ export const botoxHowLongBody = (
     </p>
 
     <p>
-      The <a href="https://www.aad.org/public/cosmetic/wrinkles/botulinum-toxin-overview" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-dark transition-colors">American Academy of Dermatology notes</a> that consistent neuromodulator use over time can lead to a softening of existing lines and a slowing of new line formation, reinforcing the case for treating Botox as a maintenance routine rather than a one-off procedure.
+      The <a href="https://www.aad.org/public/cosmetic/wrinkles/botulinum-toxin-injections" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-dark transition-colors">American Academy of Dermatology notes</a> that consistent neuromodulator use over time can lead to a softening of existing lines and a slowing of new line formation, reinforcing the case for treating Botox as a maintenance routine rather than a one-off procedure.
     </p>
 
     <h3>Skincare and Sun Protection</h3>

@@ -406,6 +406,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-05-02",
     readTime: "6 min read",
     image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1778275072/bikini_Adobe_315338719_pneqcq.jpg",
+    body: bikiniLaserBody,
     faq: [
       {
         question: "What is the difference between bikini and Brazilian laser hair removal?",
