@@ -15,6 +15,13 @@ export const metadata: Metadata = buildPageMetadata({
   keywords: ["med spa blog aventura", "laser hair removal tips", "skin care aventura", "aesthetic treatments guide"],
 });
 
+function formatBlogDate(date: string, format: Intl.DateTimeFormatOptions) {
+  return new Date(date).toLocaleDateString("en-US", {
+    ...format,
+    timeZone: "UTC",
+  });
+}
+
 export default function BlogIndexPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -72,7 +79,7 @@ export default function BlogIndexPage() {
                         <div className="flex items-center gap-3 text-warm-gray">
                           <span className="flex items-center gap-1 font-inter text-xs">
                             <Calendar className="h-3 w-3" aria-hidden="true" />
-                            {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                            {formatBlogDate(post.date, { month: "short", day: "numeric", year: "numeric" })}
                           </span>
                           <span className="flex items-center gap-1 font-inter text-xs">
                             <Clock className="h-3 w-3" aria-hidden="true" />

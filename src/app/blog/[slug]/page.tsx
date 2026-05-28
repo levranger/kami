@@ -15,6 +15,13 @@ interface Props {
   params: { slug: string };
 }
 
+function formatBlogDate(date: string, format: Intl.DateTimeFormatOptions) {
+  return new Date(date).toLocaleDateString("en-US", {
+    ...format,
+    timeZone: "UTC",
+  });
+}
+
 export function generateStaticParams() {
   return blogPosts.map((p) => ({ slug: p.slug }));
 }
@@ -86,7 +93,7 @@ export default function BlogPostPage({ params }: Props) {
               <div className="flex items-center gap-4 text-white/70">
                 <span className="flex items-center gap-1.5 font-inter text-sm">
                   <Calendar className="h-3.5 w-3.5" />
-                  {new Date(post.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                  {formatBlogDate(post.date, { month: "long", day: "numeric", year: "numeric" })}
                 </span>
                 <span className="flex items-center gap-1.5 font-inter text-sm">
                   <Clock className="h-3.5 w-3.5" />

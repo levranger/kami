@@ -28,6 +28,11 @@ import { botoxForeheadLinesBody } from "./blog/botox-forehead-lines";
 import { whatNotToDoAfterBotoxBody } from "./blog/what-not-to-do-after-botox";
 import { laserVsWaxing2Body } from "./blog/laser-hair-removal-vs-waxing-2";
 import { lipFillerSwellingBody } from "./blog/lip-filler-swelling";
+import { botoxForeheadBeforeAfterBody } from "./blog/botox-forehead-before-and-after";
+import { facialLaserHairRemovalWomenBody } from "./blog/facial-laser-hair-removal-women";
+import { fullBodyLaserHairRemovalBody } from "./blog/full-body-laser-hair-removal";
+import { laserHairRemovalForMenBody } from "./blog/laser-hair-removal-for-men";
+import { preventativeBotoxBody } from "./blog/preventative-botox";
 import { getServiceUrl } from "./categories";
 
 
@@ -182,6 +187,86 @@ export const homepageFAQs: FAQEntry[] = [
 
 // ─── Blog Posts ───
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "preventative-botox",
+    title: "Preventative Botox in Your 20s and 30s: Smart Strategy or Marketing Hype?",
+    excerpt: "Preventative Botox in your 20s and 30s is increasingly popular, but is it smart or oversold? Here's the honest case for and against starting early.",
+    category: "Injectables",
+    date: "2026-05-27",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1780000913/botox-12_xacfux.jpg",
+    body: preventativeBotoxBody,
+    seo: {
+      title: "Preventative Botox: Is It Worth It?",
+      description: "Preventative Botox in your 20s and 30s is increasingly popular, but is it smart or oversold? Here's the honest case for and against starting early.",
+      canonical: `${BASE_URL}/blog/preventative-botox`,
+      keywords: ["preventative botox", "baby botox", "botox in your 20s", "when to start botox", "preventative botox aventura"],
+    },
+  },
+  {
+    slug: "laser-hair-removal-for-men",
+    title: "Laser Hair Removal for Men: The Grooming Upgrade Worth Considering",
+    excerpt: "More men are choosing laser hair removal than ever. Learn which areas work best, what to expect, and why it's worth considering for your routine.",
+    category: "Laser Hair Removal",
+    date: "2026-05-25",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1780001146/mika-ruusunen-M6z4XBIcUSk-unsplash_n9y5zu.jpg",
+    body: laserHairRemovalForMenBody,
+    seo: {
+      title: "Laser Hair Removal for Men",
+      description: "More men are choosing laser hair removal than ever. Learn which areas work best, what to expect, and why it's worth considering for your routine.",
+      canonical: `${BASE_URL}/blog/laser-hair-removal-for-men`,
+      keywords: ["laser hair removal for men", "men's laser hair removal", "back laser hair removal men", "male laser hair removal aventura", "beard line laser hair removal"],
+    },
+  },
+  {
+    slug: "full-body-laser-hair-removal",
+    title: "Full Body Laser Hair Removal: Is It Really Worth the Investment?",
+    excerpt: "Thinking about full body laser hair removal? Here's what it actually includes, how long it takes, what it costs, and whether it's worth the investment.",
+    category: "Laser Hair Removal",
+    date: "2026-05-23",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1780001652/dynamic-wang-cu4i3YN3Y-4-unsplash_1_rjsp5k.jpg",
+    body: fullBodyLaserHairRemovalBody,
+    seo: {
+      title: "Full Body Laser Hair Removal",
+      description: "Thinking about full body laser hair removal? Here's what it actually includes, how long it takes, what it costs, and whether it's worth the investment.",
+      canonical: `${BASE_URL}/blog/full-body-laser-hair-removal`,
+      keywords: ["full body laser hair removal", "full body laser hair removal cost", "laser hair removal package", "full body laser aventura", "is full body laser worth it"],
+    },
+  },
+  {
+    slug: "facial-laser-hair-removal-women",
+    title: "Facial Laser Hair Removal for Women: A Permanent Solution to Unwanted Hair",
+    excerpt: "Facial laser hair removal for women is one of the most confidence-restoring treatments available. Learn which areas it treats and what to realistically expect.",
+    category: "Laser Hair Removal",
+    date: "2026-05-21",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1780001550/look-studio-HtXyytr9304-unsplash_bxogp0.jpg",
+    body: facialLaserHairRemovalWomenBody,
+    seo: {
+      title: "Laser Hair Removal for Women's Faces",
+      description: "Facial laser hair removal for women is one of the most confidence-restoring treatments available. Learn which areas it treats and what to realistically expect.",
+      canonical: `${BASE_URL}/blog/facial-laser-hair-removal-women`,
+      keywords: ["facial laser hair removal women", "female facial hair laser", "upper lip laser hair removal", "chin laser hair removal women", "facial laser hair removal aventura"],
+    },
+  },
+  {
+    slug: "botox-forehead-before-and-after",
+    title: "Botox Forehead Before and After: What Realistic Results Actually Look Like",
+    excerpt: "What do real Botox forehead results look like? Learn what changes, what stays the same, and how to set honest expectations before your appointment.",
+    category: "Injectables",
+    date: "2026-05-19",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1780000950/botox-forehead_u2xrky.jpg",
+    body: botoxForeheadBeforeAfterBody,
+    seo: {
+      title: "Botox Before and After: Forehead",
+      description: "What do real Botox forehead results look like? Learn what changes, what stays the same, and how to set honest expectations before your appointment.",
+      canonical: `${BASE_URL}/blog/botox-forehead-before-and-after`,
+      keywords: ["botox forehead before and after", "forehead botox results", "botox before and after forehead", "forehead botox aventura", "natural forehead botox"],
+    },
+  },
   {
     slug: "laser-hair-removal-pcos",
     title: "Laser Hair Removal for PCOS: An Honest Guide to What Actually Works",
