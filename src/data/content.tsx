@@ -33,6 +33,11 @@ import { facialLaserHairRemovalWomenBody } from "./blog/facial-laser-hair-remova
 import { fullBodyLaserHairRemovalBody } from "./blog/full-body-laser-hair-removal";
 import { laserHairRemovalForMenBody } from "./blog/laser-hair-removal-for-men";
 import { preventativeBotoxBody } from "./blog/preventative-botox";
+import { botoxVsFillerBody } from "./blog/botox-vs-filler";
+import { underEyeFillerBody } from "./blog/under-eye-filler";
+import { jawlineFillerBody } from "./blog/jawline-filler";
+import { howLongLipFillerBody } from "./blog/how-long-does-lip-filler-last";
+import { cheekFillerBody } from "./blog/cheek-filler-before-and-after";
 import { getServiceUrl } from "./categories";
 
 
@@ -201,6 +206,86 @@ export const blogPosts: BlogPost[] = [
       description: "Preventative Botox in your 20s and 30s is increasingly popular, but is it smart or oversold? Here's the honest case for and against starting early.",
       canonical: `${BASE_URL}/blog/preventative-botox`,
       keywords: ["preventative botox", "baby botox", "botox in your 20s", "when to start botox", "preventative botox aventura"],
+    },
+  },
+  {
+    slug: "botox-vs-filler",
+    title: "Botox vs. Filler: Which One Do You Actually Need?",
+    excerpt: "Botox vs. filler — confused about the difference? Learn how each works, what they treat, and how to know which one is right for your goals.",
+    category: "Injectables",
+    date: "2026-05-29",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1781297632/julia-koblitz-6u8SbtZ0q1c-unsplash_fzzoba.jpg",
+    body: botoxVsFillerBody,
+    seo: {
+      title: "Botox vs. Filler: Which One Do You Need?",
+      description: "Botox vs. filler — confused about the difference? Learn how each works, what they treat, and how to know which one is right for your goals.",
+      canonical: `${BASE_URL}/blog/botox-vs-filler`,
+      keywords: ["botox vs filler", "botox or filler", "difference between botox and filler", "filler vs botox aventura", "which injectable is right for me"],
+    },
+  },
+  {
+    slug: "under-eye-filler",
+    title: "Under Eye Filler: Is It Right for You?",
+    excerpt: "Under eye filler can reduce hollows and dark shadows, but it's one of the most technique-sensitive treatments. Here's what you need to know first.",
+    category: "Injectables",
+    date: "2026-05-31",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1781297408/amanda-dalbjorn-fvInY-Gh7sc-unsplash_ocjopc.jpg",
+    body: underEyeFillerBody,
+    seo: {
+      title: "Under Eye Filler: Is It Right for You?",
+      description: "Under eye filler can reduce hollows and dark shadows, but it's one of the most technique-sensitive treatments. Here's what you need to know first.",
+      canonical: `${BASE_URL}/blog/under-eye-filler`,
+      keywords: ["under eye filler", "tear trough filler", "dark circles filler", "under eye filler aventura", "tear trough treatment"],
+    },
+  },
+  {
+    slug: "jawline-filler",
+    title: "Jawline Filler: What to Expect Before and After",
+    excerpt: "Jawline filler can sharpen and define your profile without surgery. Here's what it involves, what results look like, and how long it lasts.",
+    category: "Injectables",
+    date: "2026-06-02",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1781297484/alexander-krivitskiy-ks7b752oXhw-unsplash_rgm8e0.jpg",
+    body: jawlineFillerBody,
+    seo: {
+      title: "Jawline Filler: What to Expect",
+      description: "Jawline filler can sharpen and define your profile without surgery. Here's what it involves, what results look like, and how long it lasts.",
+      canonical: `${BASE_URL}/blog/jawline-filler`,
+      keywords: ["jawline filler", "jawline filler aventura", "jaw filler before and after", "jaw contouring filler", "non surgical jawline"],
+    },
+  },
+  {
+    slug: "how-long-does-lip-filler-last",
+    title: "How Long Does Lip Filler Last?",
+    excerpt: "Lip filler doesn't last forever. Learn how long results typically hold, what affects longevity, and how to maintain your look over time.",
+    category: "Injectables",
+    date: "2026-06-04",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1781297514/michal-binkiewicz-LrXd_-dgwbk-unsplash_f0qlb9.jpg",
+    body: howLongLipFillerBody,
+    seo: {
+      title: "How Long Does Lip Filler Last?",
+      description: "Lip filler doesn't last forever. Learn how long results typically hold, what affects longevity, and how to maintain your look over time.",
+      canonical: `${BASE_URL}/blog/how-long-does-lip-filler-last`,
+      keywords: ["how long does lip filler last", "lip filler longevity", "lip filler duration", "lip filler maintenance aventura", "how often to get lip filler"],
+    },
+  },
+  {
+    slug: "cheek-filler-before-and-after",
+    title: "Cheek Filler Before and After: What Realistic Results Look Like",
+    excerpt: "Curious about cheek filler results? Here's an honest look at before and after outcomes, what changes, and what realistic expectations look like.",
+    category: "Injectables",
+    date: "2026-06-06",
+    readTime: "7 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1781297564/ehsan-ahmadi-SotFdA_TAIA-unsplash_xksa3m.jpg",
+    body: cheekFillerBody,
+    seo: {
+      title: "Cheek Filler Before and After: Real Results",
+      description: "Curious about cheek filler results? Here's an honest look at before and after outcomes, what changes, and what realistic expectations look like.",
+      canonical: `${BASE_URL}/blog/cheek-filler-before-and-after`,
+      keywords: ["cheek filler before and after", "cheek filler aventura", "cheek filler results", "midface filler", "cheekbone filler"],
     },
   },
   {
