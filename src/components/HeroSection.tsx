@@ -13,7 +13,7 @@ export default function HeroSection() {
       <div className="absolute inset-0" aria-hidden="true">
         <HeroImage
           src={HERO_IMAGE}
-          alt="Kami Aesthetics treatment room in Aventura, Florida — premium laser hair removal and aesthetic services"
+          alt="Kami Aesthetics med spa treatment room in Aventura, Florida — advanced laser and aesthetic services"
           fill
           className="object-cover"
           sizes="100vw"
@@ -29,16 +29,19 @@ export default function HeroSection() {
           </div>
 
           <h1 id="hero-heading" className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            Laser Hair Removal
+            Medical Aesthetics
             <br />
-            <span className="text-gold" aria-hidden="true">&amp;</span>
-            <span className="sr-only"> and </span> Aesthetic
+            <span className="text-gold">&amp;</span> Med Spa
             <br />
-            Treatments
+            in Aventura
           </h1>
 
           <p className="font-inter text-base md:text-lg text-white/80 leading-relaxed mb-10 max-w-lg animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            Experience premium results with the Lumenis Splendor X — the gold standard in laser technology. Advanced treatments for every skin type, delivered with precision and care.
+            Botox, fillers, IPL, ResurFX, and{" "}
+            <a href="/services/lasers/laser-hair-removal" className="text-gold hover:text-gold/80 underline underline-offset-2 transition-colors">
+              laser hair removal in Aventura
+            </a>{" "}
+            — powered by the Lumenis Splendor X. Advanced treatments for every skin type, delivered with precision and care.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: "0.4s" }}>

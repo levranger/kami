@@ -15,7 +15,7 @@ export default function CalculatorTeaser() {
             </div>
             <div>
               <p className="font-inter text-sm font-semibold text-[#1A1A1A]">
-                See how much laser hair removal saves you
+                See how much you save with laser hair removal
               </p>
               <p className="font-inter text-xs text-warm-gray">
                 Compare your current waxing or shaving costs in seconds.

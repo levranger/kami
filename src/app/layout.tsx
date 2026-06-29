@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: siteSEO.siteName,
     type: "website",
-    images: [{ url: siteSEO.defaultOgImage, width: 1200, height: 630, alt: "Kami Aesthetics — Laser Hair Removal & Med Spa Aventura" }],
+    images: [{ url: siteSEO.defaultOgImage, width: 1200, height: 630, alt: "Kami Aesthetics | Med Spa in Aventura, FL" }],
   },
   twitter: { card: "summary_large_image" },
 };

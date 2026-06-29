@@ -25,7 +25,7 @@ export default function Footer() {
               <span className="font-inter text-[10px] tracking-[0.3em] uppercase text-white/50">Aesthetics</span>
             </div>
             <p className="font-inter text-sm text-white/60 leading-relaxed mb-6">
-              Premium laser hair removal and aesthetic treatments in Aventura, Florida. Featuring the Lumenis Splendor X — advanced technology safe for all skin types.
+              Premium medical aesthetics and med spa in Aventura, Florida. Laser treatments, Botox, fillers, IPL &amp; more — advanced technology safe for all skin types.
             </p>
             <div className="flex gap-3" role="list" aria-label="Social media links">
               <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors duration-200" aria-label="Follow us on Instagram" role="listitem">

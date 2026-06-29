@@ -50,10 +50,10 @@ const BASE_URL = "https://kamiaesthetics.com";
 // ─── Service Pages with SEO ───
 const seoMap: Record<string, { title: string; description: string; keywords: string[] }> = {
   "laser-hair-removal": {
-    title: "Laser Hair Removal Aventura | Splendor X",
+    title: "Laser Hair Removal in Aventura, FL | Kami Aesthetics",
     description:
-      "Premium laser hair removal in Aventura, FL with the Lumenis Splendor X. Safe for all skin types. Fast, comfortable, permanent results. Free consultation.",
-    keywords: ["laser hair removal aventura", "splendor x laser", "permanent hair removal miami", "laser hair removal all skin types"],
+      "Permanent laser hair removal in Aventura, FL with the Lumenis Splendor X. Safe for all skin types. Bikini, legs, underarms & more. Book your $149 new-client session.",
+    keywords: ["laser hair removal aventura", "laser hair removal aventura fl", "splendor x laser", "permanent hair removal miami", "laser hair removal all skin types"],
   },
   "ipl-treatments": {
     title: "IPL Treatments in Aventura FL | Kami Aesthetics",
@@ -182,12 +182,12 @@ export const newClientOffer: Promotion = {
 
 // ─── Homepage FAQs ───
 export const homepageFAQs: FAQEntry[] = [
-  { question: "How does laser hair removal work?", answer: "Our Lumenis Splendor X uses BLEND X™ technology, combining Alexandrite and Nd:YAG lasers to target hair follicles beneath the skin. The laser energy is absorbed by the melanin in the hair, disabling the follicle's ability to grow new hair. This dual-wavelength approach allows us to safely and effectively treat all skin types.", category: "Laser Hair Removal" },
-  { question: "Is the treatment painful?", answer: "The Splendor X features a built-in cooling system that keeps the skin comfortable throughout treatment. Most clients describe the sensation as a mild, warm snap. It's significantly more comfortable than older laser systems, and many clients find it far less painful than waxing.", category: "Laser Hair Removal" },
-  { question: "How many sessions will I need?", answer: "Most clients see optimal results with 6–8 sessions, spaced 4–6 weeks apart. Hair grows in cycles, and the laser is most effective during the active growth phase. During your consultation, we'll create a personalized treatment plan based on your hair type, skin type, and treatment area.", category: "Laser Hair Removal" },
-  { question: "Is it safe for all skin types?", answer: "Yes! The Splendor X is one of the few laser systems that is safe and effective for all skin types, including darker skin tones (Fitzpatrick I–VI). The dual-wavelength technology allows us to customize settings for each individual client.", category: "Safety" },
-  { question: "What is the downtime after treatment?", answer: "There is minimal to no downtime. You may experience slight redness or warmth in the treated area for a few hours, similar to a mild sunburn. Most clients return to their normal activities immediately after treatment. We'll provide aftercare instructions to ensure the best results.", category: "Recovery" },
-  { question: "How much does treatment cost?", answer: "Pricing varies based on the treatment area and package selected. We offer competitive pricing for our premium technology, and package deals provide significant savings. Schedule a free consultation to receive a personalized quote and learn about our current specials.", category: "Pricing" },
+  { question: "What treatments does Kami Aesthetics offer?", answer: "Kami Aesthetics is a medical aesthetics studio in Aventura, FL offering laser and light treatments (laser hair removal, IPL photofacial, ResurFX skin resurfacing), injectables (Botox and dermal fillers), PRP therapy, IV therapy, and medical weight loss. Every treatment is performed with medical-grade technology in a boutique spa environment.", category: "General" },
+  { question: "Where is Kami Aesthetics located?", answer: "We are located at 2999 NE 191st St, Floor 9, Aventura, FL 33180. We serve clients from Aventura, Hallandale Beach, Sunny Isles Beach, North Miami Beach, Bal Harbour, and the surrounding Miami-Dade and Broward County areas.", category: "General" },
+  { question: "What is Botox and what does it treat?", answer: "Botox is a purified protein that temporarily relaxes targeted facial muscles to smooth dynamic wrinkles. It is most commonly used for forehead lines, frown lines (the 11s), and crow's feet. Treatments take about 15 minutes with no downtime, and results typically last 3–4 months.", category: "Injectables" },
+  { question: "How do dermal fillers work?", answer: "Dermal fillers use hyaluronic acid to restore lost volume, enhance facial contours, and smooth deep folds. Common treatment areas include the lips, cheeks, jawline, and under-eyes. Results are visible immediately and last 6–18 months depending on the area and product used.", category: "Injectables" },
+  { question: "What is IPL photofacial and what does it help with?", answer: "IPL (Intense Pulsed Light) photofacial uses broad-spectrum light to target pigmentation, sun damage, rosacea, and broken capillaries. We use the Lumenis Stellar M22, one of the most advanced IPL platforms available. A series of 3–5 treatments produces clear, more even-toned skin with minimal downtime.", category: "Skin" },
+  { question: "Do you offer laser hair removal?", answer: "Yes. Laser hair removal is one of our signature services, performed with the Lumenis Splendor X — safe for all skin types including darker complexions. Visit our laser hair removal page for full details on areas treated, sessions needed, and pricing.", category: "Laser Hair Removal" },
 ];
 
 // ─── Blog Posts ───
@@ -938,11 +938,11 @@ export const siteSEO = {
   baseUrl: BASE_URL,
   defaultOgImage: `${BASE_URL}${DEFAULT_OG_IMAGE}`,
   homeSEO: {
-    title: "Kami Aesthetics | Laser Hair Removal & Med Spa Aventura FL",
+    title: "Kami Aesthetics | Med Spa in Aventura, FL",
     description:
-      "Premium laser hair removal & aesthetic treatments in Aventura, FL. Lumenis Splendor X — safe for all skin types. Botox, fillers, IPL, ResurFX. Free consult",
+      "Medical aesthetics & med spa in Aventura, FL. Laser treatments, skin rejuvenation, Botox, fillers, IPL & more. Powered by Lumenis Splendor X. Free consult.",
     canonical: BASE_URL,
-    keywords: ["med spa aventura", "laser hair removal aventura", "botox aventura", "dermal fillers aventura", "splendor x miami", "kami aesthetics"],
+    keywords: ["med spa aventura", "medical aesthetics aventura", "botox aventura", "dermal fillers aventura", "skin rejuvenation aventura", "kami aesthetics"],
   },
 };
 
