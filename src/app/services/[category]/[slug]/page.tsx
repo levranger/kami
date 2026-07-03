@@ -43,7 +43,7 @@ export default function ServicePage({ params }: Props) {
   if (!service || !cat || SLUG_TO_CATEGORY[params.slug] !== params.category) notFound();
 
   const relatedServices = servicePages.filter((s) => service.relatedSlugs.includes(s.slug));
-  const isLaserService = service.slug === "laser-hair-removal";
+  const isLaserService = ["laser-hair-removal", "arm-hair-removal", "back-hair-removal", "bikini-hair-removal"].includes(service.slug);
 
   const faqSchema = buildFAQSchema(service.faq.map((f) => ({ question: f.q, answer: f.a })));
   const serviceSchema = buildServiceSchema(service);

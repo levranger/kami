@@ -48,7 +48,7 @@ export const categoryDefs: CategoryDef[] = [
       canonical: `${BASE}/services/lasers`,
       keywords: ["laser treatments aventura", "laser hair removal aventura", "ipl photofacial aventura", "resurfx aventura"],
     },
-    serviceSlugs: ["laser-hair-removal", "ipl-treatments", "resurfx"],
+    serviceSlugs: ["laser-hair-removal", "arm-hair-removal", "back-hair-removal", "bikini-hair-removal", "ipl-treatments", "resurfx"],
   },
   {
     slug: "injectables",
@@ -91,6 +91,9 @@ export const categoryDefs: CategoryDef[] = [
 // ─── Slug → Category lookup ───────────────────────────────────────────────────
 export const SLUG_TO_CATEGORY: Record<string, CategorySlug> = {
   "laser-hair-removal": "lasers",
+  "arm-hair-removal": "lasers",
+  "back-hair-removal": "lasers",
+  "bikini-hair-removal": "lasers",
   "ipl-treatments": "lasers",
   resurfx: "lasers",
   botox: "injectables",

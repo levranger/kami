@@ -29,6 +29,7 @@ export interface Treatment {
   slug: string;
   title: string;
   shortDescription: string;
+  heroValueProp?: string;
   fullDescription: string;
   heroImage: string;
   heroGradient: string;

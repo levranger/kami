@@ -281,6 +281,198 @@ export const treatments: Treatment[] = [
     ],
   },
   {
+    slug: "arm-hair-removal",
+    title: "Arm Laser Hair Removal",
+    shortDescription:
+      "Smooth, hair-free arms all year — no more razors, no more stubble. Fast, comfortable sessions with the Lumenis Splendor X.",
+    fullDescription:
+      "In South Florida's warm, humid climate, bare arms aren't seasonal — they're a year-round reality. Arm laser hair removal at Kami Aesthetics uses the Lumenis Splendor X to target hair at the follicle, delivering smoother, softer skin with far less upkeep than shaving or waxing. Sessions are quick and comfortable, with dual cooling technology keeping you at ease throughout. Clients throughout Aventura, Miami Beach, and the surrounding South Florida area typically notice visibly finer, sparser regrowth within just a few visits, with full arm and half arm options available.",
+    heroImage: "/images/gallery-laser-arms.png",
+    heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
+    duration: "20–30 min",
+    downtime: "None",
+    resultsTimeline: "After 2–3 sessions",
+    sessionsNeeded: "6–8 sessions",
+    benefits: [
+      "No more daily shaving",
+      "Smoother skin, longer-lasting results",
+      "Reduces ingrown hairs and irritation",
+      "Comfortable, quick in-office visits",
+      "Safe for all skin tones",
+      "Confidence in sleeveless, South Florida heat",
+    ],
+    areas: ["Full Arms", "Half Arms (Upper Arm)", "Forearms", "Underarm add-on available"],
+    faq: [
+      {
+        q: "How much does arm laser hair removal cost?",
+        a: "Pricing depends on the area treated (full arm vs. half arm) and the number of sessions in your package. We will give you an exact quote at your complimentary consultation based on your hair density and goals.",
+      },
+      {
+        q: "How many sessions will I need?",
+        a: "Most clients need 6–8 sessions spaced about 4–6 weeks apart to see full results, since hair grows in cycles and laser only targets active follicles. You will notice visibly less hair after just 2–3 visits.",
+      },
+      {
+        q: "Does laser hair removal on the arms hurt?",
+        a: "Most clients describe it as a quick, warm snapping sensation, well tolerated thanks to the Splendor X's built-in cooling. Discomfort is minimal, especially compared to waxing.",
+      },
+      {
+        q: "What kind of before and after results can I expect?",
+        a: "By the end of a full session package, most clients see a significant, lasting reduction in arm hair density and thickness. Individual results vary with hair color, thickness, and hormonal factors, and we will review realistic expectations at your consult.",
+      },
+      {
+        q: "How should I prepare for my appointment?",
+        a: "Shave the treatment area 24 hours before your visit and skip sun exposure, self-tanner, and lotion the day of. Avoid tweezing or waxing the arms between sessions so the follicle stays intact for treatment.",
+      },
+      {
+        q: "What should I expect after treatment?",
+        a: "Mild redness or warmth is normal and typically fades within a few hours. There is no downtime, so you can return to your normal routine right away. We recommend avoiding direct sun on the treated area and using SPF while it settles.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "technology",
+        title: "Powered by Lumenis Splendor X",
+        subtitle: "Advanced Dual-Wavelength Technology for Arm Hair Removal",
+        content:
+          "The Lumenis Splendor X uses BLEND X™ technology to combine Alexandrite (755nm) and Nd:YAG (1064nm) wavelengths in a single pass, delivering thorough follicle targeting across all arm hair types and skin tones.",
+        items: [
+          { label: "Dual Wavelength (755nm + 1064nm)", description: "Alexandrite and Nd:YAG target hair at different depths for more complete results." },
+          { label: "BLEND X™ Technology", description: "Combines both wavelengths for optimal energy delivery in a single pass." },
+          { label: "Square Spot Design", description: "Covers more surface area per pulse for faster, more even treatment on larger areas like the arms." },
+          { label: "Dual Cooling (Cryo-Touch + Cryo-Air)", description: "Keeps skin comfortable throughout, even during Florida's warmer months." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "back-hair-removal",
+    title: "Back Laser Hair Removal",
+    shortDescription:
+      "A smoother back for beach days, boat days, and everywhere in between. Effective on coarse, dense hair with zero downtime.",
+    fullDescription:
+      "Between beach afternoons, boat trips, and Aventura's warm climate, back hair is one of the hardest things to manage on your own. Back laser hair removal targets the follicle directly, using the Lumenis Splendor X's dual wavelengths to treat coarse, dense hair effectively — including on tanned or deeper skin tones. With no downtime, you can walk out and go straight back to your day. Clients across Aventura, Miami, and South Florida typically see a meaningful reduction in density and regrowth within the first few sessions, whether treating the full back, lower back, or back and shoulders together.",
+    heroImage: "/images/service-laser-hair-removal.png",
+    heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
+    duration: "30–45 min",
+    downtime: "None",
+    resultsTimeline: "Noticeable after 3 sessions",
+    sessionsNeeded: "6–8 sessions",
+    benefits: [
+      "No more waxing appointments",
+      "Handles coarse, dense hair well",
+      "Comfortable for larger treatment areas",
+      "Reduces itching and ingrown hairs",
+      "Long-lasting smoothness",
+      "Confidence shirt off at the beach",
+    ],
+    areas: ["Full Back", "Lower Back", "Back & Shoulders combo", "Neckline touch-up available"],
+    faq: [
+      {
+        q: "Does hair grow back after laser hair removal?",
+        a: "Laser hair removal is designed to significantly reduce hair over time, not just remove it temporarily. This is often called \"permanent hair reduction,\" meaning most clients enjoy long-term, dramatically thinner regrowth after a full package, though a small percentage of finer, lighter hairs may eventually return.",
+      },
+      {
+        q: "Does laser hair removal make hair grow back thicker?",
+        a: "No. This is a common myth. Laser hair removal targets and weakens the follicle over repeated sessions, so hair typically grows back finer and sparser, not thicker.",
+      },
+      {
+        q: "How much does back laser hair removal cost?",
+        a: "Cost depends on the area (full back, lower back, or back and shoulders) and your package size. We will walk you through exact pricing at your consultation once we have assessed your hair density and goals.",
+      },
+      {
+        q: "How many sessions are needed for back hair?",
+        a: "Back hair tends to be coarser and denser, so most clients need the full 6–8 session series for best results, spaced 4–6 weeks apart to catch hair across its full growth cycle.",
+      },
+      {
+        q: "Is back laser hair removal only for men?",
+        a: "Not at all. While back hair removal is especially popular with men, we treat all genders and hair types on the back, tailoring the approach to your specific hair and skin.",
+      },
+      {
+        q: "What should I do to prepare?",
+        a: "Shave the back the day before your appointment and avoid sun exposure, tanning, or self-tanner beforehand. Skip waxing or plucking between sessions so we can target the follicle at each visit.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "technology",
+        title: "Powered by Lumenis Splendor X",
+        subtitle: "Built for Large Areas and Coarse Hair",
+        content:
+          "The Splendor X's square spot design covers more surface area per pulse, making it ideal for the back — one of the largest and most hair-dense treatment zones. BLEND X™ technology ensures consistent energy delivery across coarse, thick follicles on any skin tone.",
+        items: [
+          { label: "Dual Wavelength (755nm + 1064nm)", description: "Alexandrite and Nd:YAG effectively treat coarse, dense back hair." },
+          { label: "BLEND X™ Technology", description: "Delivers both wavelengths together for consistent results across a large treatment area." },
+          { label: "Square Spot Design", description: "Larger coverage per pulse means faster sessions on bigger areas like the back." },
+          { label: "Safe for All Skin Types", description: "Including sun-kissed, tanned skin common in South Florida, across Fitzpatrick I–VI." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "bikini-hair-removal",
+    title: "Bikini Laser Hair Removal",
+    shortDescription:
+      "Swimsuit-ready confidence, every day of Florida's endless summer. Quick, discreet sessions with the Lumenis Splendor X.",
+    fullDescription:
+      "With beach days a year-round habit in Aventura, staying swimsuit-ready shouldn't mean constant upkeep. Bikini laser hair removal uses the Lumenis Splendor X to target hair at the follicle for smoother, longer-lasting results than shaving or waxing — with far less irritation. South Florida's heat and humidity make this a common trouble spot for ingrown hairs and sweat-related irritation, and laser treatment helps reduce that over time. Clients from Aventura to Miami Beach choose from bikini line, full bikini, or Brazilian coverage, with sessions that are quick, discreet, and comfortable.",
+    heroImage: "/images/service-laser-hair-removal.png",
+    heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
+    duration: "10–20 min",
+    downtime: "None",
+    resultsTimeline: "After 2–3 sessions",
+    sessionsNeeded: "6–8 sessions",
+    benefits: [
+      "Fewer ingrown hairs and bumps",
+      "No more mid-summer waxing appointments",
+      "Smoother skin, less irritation",
+      "Quick, discreet in-office visits",
+      "Customizable to your coverage preference",
+      "Swimsuit confidence, year-round",
+    ],
+    areas: ["Bikini Line", "Full Bikini", "Brazilian"],
+    faq: [
+      {
+        q: "How much is bikini laser hair removal?",
+        a: "Pricing varies by coverage (bikini line, full bikini, or Brazilian) and by your session package. We will confirm exact pricing at your consultation based on the area and your hair and skin type.",
+      },
+      {
+        q: "Does bikini laser hair removal hurt?",
+        a: "Most clients describe mild discomfort, often compared to a quick warm snap, and it is generally more tolerable than waxing. The Splendor X's dual cooling technology helps keep the area comfortable, and topical numbing is available on request for sensitive clients.",
+      },
+      {
+        q: "What's the difference between bikini line, full bikini, and Brazilian?",
+        a: "Bikini line treats just the edges visible in a swimsuit, full bikini covers the front and sides more completely, and Brazilian removes hair from front to back, including everything in between. We will help you choose the right coverage at your consult.",
+      },
+      {
+        q: "How many sessions will I need, and how long does each one take?",
+        a: "Most clients need the full 6–8 session series, spaced 4–6 weeks apart, since laser only targets hair in its active growth phase. Sessions themselves are quick — typically 10 to 20 minutes depending on coverage — and many clients notice visibly reduced hair after the first 2–3 visits.",
+      },
+      {
+        q: "Is bikini laser hair removal safe for sensitive skin?",
+        a: "Yes. The Splendor X is designed to safely treat sensitive areas across all skin types, Fitzpatrick I through VI, with cooling technology that minimizes irritation during and after treatment.",
+      },
+      {
+        q: "What should I do to prepare?",
+        a: "Shave the area the day before your appointment and avoid sun exposure or tanning beforehand. Skip waxing or plucking between sessions so we can target the follicle directly at each visit.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "technology",
+        title: "Powered by Lumenis Splendor X",
+        subtitle: "Gentle, Effective Technology for Sensitive Areas",
+        content:
+          "The Splendor X's dual cooling system makes it one of the most comfortable options for bikini laser hair removal. BLEND X™ technology delivers thorough results across all skin tones without sacrificing comfort in this sensitive zone.",
+        items: [
+          { label: "Dual Wavelength (755nm + 1064nm)", description: "Alexandrite and Nd:YAG for thorough, effective treatment." },
+          { label: "BLEND X™ Technology", description: "Combines both wavelengths in a single pass for consistent results." },
+          { label: "Dual Cooling (Cryo-Touch + Cryo-Air)", description: "Keeps this sensitive area comfortable throughout." },
+          { label: "Safe for All Skin Types", description: "Effective and gentle across Fitzpatrick I–VI." },
+        ],
+      },
+    ],
+  },
+  {
     slug: "iv-therapy",
     title: "IV Therapy",
     shortDescription:

@@ -55,6 +55,24 @@ const seoMap: Record<string, { title: string; description: string; keywords: str
       "Permanent laser hair removal in Aventura, FL with the Lumenis Splendor X. Safe for all skin types. Bikini, legs, underarms & more. Book your $149 new-client session.",
     keywords: ["laser hair removal aventura", "laser hair removal aventura fl", "splendor x laser", "permanent hair removal miami", "laser hair removal all skin types"],
   },
+  "arm-hair-removal": {
+    title: "Arm Laser Hair Removal in Aventura, FL | Kami",
+    description:
+      "Get smooth, hair-free arms with arm laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
+    keywords: ["arm laser hair removal aventura", "arm hair removal aventura fl", "laser hair removal arms miami", "smooth arms laser"],
+  },
+  "back-hair-removal": {
+    title: "Back Laser Hair Removal in Aventura, FL | Kami",
+    description:
+      "Smooth, hair-free back with laser hair removal at Kami Aesthetics in Aventura, FL. Confidence, shirt off or on. Book today.",
+    keywords: ["back laser hair removal aventura", "back hair removal aventura fl", "laser hair removal back miami", "back hair removal men aventura"],
+  },
+  "bikini-hair-removal": {
+    title: "Bikini Laser Hair Removal in Aventura, FL | Kami",
+    description:
+      "Swimsuit-ready, year-round. Bikini laser hair removal at Kami Aesthetics in Aventura, FL. Comfortable, discreet, effective. Book now.",
+    keywords: ["bikini laser hair removal aventura", "brazilian laser hair removal aventura fl", "bikini hair removal miami", "laser bikini aventura"],
+  },
   "ipl-treatments": {
     title: "IPL Treatments in Aventura FL | Kami Aesthetics",
     description:
@@ -100,7 +118,10 @@ const seoMap: Record<string, { title: string; description: string; keywords: str
 };
 
 const relatedMap: Record<string, string[]> = {
-  "laser-hair-removal": ["ipl-treatments", "resurfx"],
+  "laser-hair-removal": ["arm-hair-removal", "bikini-hair-removal", "back-hair-removal"],
+  "arm-hair-removal": ["laser-hair-removal", "bikini-hair-removal", "back-hair-removal"],
+  "back-hair-removal": ["laser-hair-removal", "arm-hair-removal", "bikini-hair-removal"],
+  "bikini-hair-removal": ["laser-hair-removal", "arm-hair-removal", "back-hair-removal"],
   "ipl-treatments": ["resurfx", "laser-hair-removal"],
   resurfx: ["ipl-treatments", "prp-therapy"],
   botox: ["dermal-fillers", "prp-therapy"],
@@ -114,6 +135,18 @@ const ctaMap: Record<string, { headline: string; subtext: string }> = {
   "laser-hair-removal": {
     headline: "Ready for Smooth, Hair-Free Skin?",
     subtext: "Join hundreds of Aventura clients who trust Kami Aesthetics for permanent laser hair removal with the Splendor X.",
+  },
+  "arm-hair-removal": {
+    headline: "Ready for Smooth, Hair-Free Arms?",
+    subtext: "Say goodbye to razors and hello to effortlessly smooth skin — made for South Florida living.",
+  },
+  "back-hair-removal": {
+    headline: "Ready to Ditch the Razor for Good?",
+    subtext: "Get a smoother back, made for boat days, beach days, and South Florida heat.",
+  },
+  "bikini-hair-removal": {
+    headline: "Ready for Swimsuit-Ready Confidence?",
+    subtext: "Smoother, low-maintenance skin — made for South Florida's year-round beach season.",
   },
   "ipl-treatments": {
     headline: "Reveal Your Clearest, Most Radiant Skin",
