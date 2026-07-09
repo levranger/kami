@@ -473,6 +473,618 @@ export const treatments: Treatment[] = [
     ],
   },
   {
+    slug: "chest-hair-removal",
+    title: "Chest Laser Hair Removal",
+    shortDescription:
+      "Smoother, more confident, with a lot less upkeep. Fast, comfortable sessions with the Lumenis Splendor X.",
+    fullDescription:
+      "Chest laser hair removal is one of the most requested grooming treatments among men in Aventura, and it delivers results that trimming and waxing simply can't match. Using the Lumenis Splendor X, we target hair at the follicle to reduce density and thickness over a series of sessions, leaving skin smoother with far less irritation than waxing. Whether you're treating the chest alone or combining it with the stomach or back, most clients notice visibly softer, sparser regrowth within just a few visits.",
+    heroImage: "/images/service-laser-hair-removal.png",
+    heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
+    duration: "15–20 min",
+    downtime: "None",
+    resultsTimeline: "Visible after 2–3 sessions",
+    sessionsNeeded: "6–8 sessions",
+    benefits: [
+      "No more razor burn or ingrown hairs",
+      "Softer, less noticeable regrowth",
+      "Comfortable for larger treatment areas",
+      "Combine with stomach or back for full coverage",
+      "Safe for all skin tones",
+      "Low-maintenance grooming, year-round",
+    ],
+    areas: ["Chest Only", "Chest & Stomach combo", "Chest & Back combo"],
+    faq: [
+      {
+        q: "Does laser hair removal actually work on chest hair?",
+        a: "Yes. Chest hair tends to be thick and coarse, which actually responds very well to laser treatment since the follicle has plenty of pigment for the laser to target. Most clients see a significant reduction in density after their first few sessions.",
+      },
+      {
+        q: "How much is chest laser hair removal?",
+        a: "Pricing depends on whether you're treating the chest alone or adding the stomach or back, along with your session package size. We'll confirm exact pricing at your consultation based on your hair density and goals.",
+      },
+      {
+        q: "How many sessions will I need for chest hair?",
+        a: "Because chest hair is often coarse and dense, most clients need the full 6–8 session series, spaced 4–6 weeks apart, to catch hair across its full growth cycle.",
+      },
+      {
+        q: "Will I have any skin reactions or downtime?",
+        a: "Mild redness or warmth right after treatment is normal and usually fades within a few hours. There's no real downtime, so you can go straight back to your day.",
+      },
+      {
+        q: "How should I prepare for treatment?",
+        a: "Shave the chest the day before your appointment and avoid sun exposure or self-tanner beforehand. Skip waxing or plucking between sessions so the follicle stays intact for the laser to target.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "technology",
+        title: "Powered by Lumenis Splendor X",
+        subtitle: "Advanced Technology for Chest Hair Removal",
+        content:
+          "The Lumenis Splendor X combines Alexandrite (755nm) and Nd:YAG (1064nm) wavelengths with BLEND X™ technology to effectively treat coarse, dense chest hair. The square spot design covers more surface area per pulse for faster sessions.",
+        items: [
+          { label: "Dual Wavelength (755nm + 1064nm)", description: "Alexandrite and Nd:YAG effectively treat coarse, dense chest hair." },
+          { label: "BLEND X™ Technology", description: "Delivers both wavelengths together for consistent, even results." },
+          { label: "Square Spot Design", description: "Larger coverage per pulse for faster sessions on a bigger area." },
+          { label: "Safe for All Skin Types", description: "Across Fitzpatrick I–VI, including tanned skin." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "ear-hair-removal",
+    title: "Laser Ear Hair Removal",
+    shortDescription:
+      "A cleaner, more permanent solution than tweezers or trimmers. Quick, precise sessions with the Lumenis Splendor X.",
+    fullDescription:
+      "Ear hair is a stubborn, ongoing grooming concern for many men, and trimming only offers a temporary fix. Laser ear hair removal at Kami Aesthetics uses the Lumenis Splendor X to target hair at the follicle along the outer ear, reducing regrowth over a series of quick, precise sessions. Because the treatment is fast and highly targeted, it fits easily into a busy Aventura schedule, with most clients noticing visibly less hair after just a few visits.",
+    heroImage: "/images/service-laser-hair-removal.png",
+    heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
+    duration: "5–10 min",
+    downtime: "None",
+    resultsTimeline: "Visible after 2–3 sessions",
+    sessionsNeeded: "6–8 sessions",
+    benefits: [
+      "Longer-lasting than trimming or tweezing",
+      "Quick, precise sessions",
+      "Reduces stray, unwanted regrowth",
+      "Comfortable, low-irritation treatment",
+      "Safe, targeted approach near the ear",
+      "One less grooming task to think about",
+    ],
+    areas: ["Outer Ear", "Ear Canal Opening (external hair only)"],
+    faq: [
+      {
+        q: "Why is laser better than trimming or waxing for ear hair?",
+        a: "Trimming and waxing only address hair that's already visible, so it grows back quickly and often coarser. Laser targets the follicle itself, leading to a lasting reduction in regrowth rather than a temporary fix.",
+      },
+      {
+        q: "How much does laser ear hair removal cost?",
+        a: "Cost depends on your session package. Since this is a smaller, quicker treatment area, we'll walk you through pricing at your consultation.",
+      },
+      {
+        q: "Is laser hair removal safe around the ear canal?",
+        a: "Yes. We only treat external, visible hair and take care to protect the delicate skin and canal opening throughout the session, using precise, controlled technique.",
+      },
+      {
+        q: "Is the result permanent?",
+        a: "Laser hair removal provides long-term hair reduction rather than complete permanent removal. Most clients maintain their results with occasional touch-up sessions after completing the initial series.",
+      },
+      {
+        q: "How many sessions will I need?",
+        a: "Most clients complete 6–8 sessions, spaced 4–6 weeks apart, to see full results, since laser only targets hair that's actively growing at the time of treatment.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "technology",
+        title: "Powered by Lumenis Splendor X",
+        subtitle: "Precise, Controlled Technology for Ear Hair Removal",
+        content:
+          "The Splendor X's square spot design allows for controlled, accurate targeting in a smaller area like the ear. Dual cooling keeps the sensitive ear area comfortable throughout.",
+        items: [
+          { label: "Dual Wavelength (755nm + 1064nm)", description: "Alexandrite and Nd:YAG for precise, effective treatment." },
+          { label: "Square Spot Design", description: "Allows for controlled, accurate targeting in a smaller area." },
+          { label: "Dual Cooling (Cryo-Touch + Cryo-Air)", description: "Keeps the sensitive ear area comfortable." },
+          { label: "Safe for All Skin Types", description: "Across Fitzpatrick I–VI." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "eyebrow-hair-removal",
+    title: "Eyebrow Laser Hair Removal",
+    shortDescription:
+      "Defined brows, with far less tweezing and touch-up work. Fast, precise sessions with the Lumenis Splendor X.",
+    fullDescription:
+      "Maintaining sharp, defined brows usually means constant tweezing, especially in the space between the brows. Eyebrow laser hair removal at Kami Aesthetics uses the Lumenis Splendor X to precisely target unwanted hair along the brow border and between the brows, reducing regrowth so your shape holds longer between touch-ups. Treatment is fast, closely controlled, and performed with protective eyewear throughout, making it a safe option for defining your natural brow shape over time.",
+    heroImage: "/images/service-laser-hair-removal.png",
+    heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
+    duration: "5–10 min",
+    downtime: "None",
+    resultsTimeline: "Visible after 2–3 sessions",
+    sessionsNeeded: "6–8 sessions",
+    benefits: [
+      "Cleaner, more defined brow shape",
+      "Less frequent tweezing between visits",
+      "Fast, precise, targeted sessions",
+      "Reduces stray hairs between the brows",
+      "Performed with full eye protection",
+      "Long-lasting shape maintenance",
+    ],
+    areas: ["Between the Brows (unibrow area)", "Brow Border Shaping"],
+    faq: [
+      {
+        q: "Can you get laser hair removal on your eyebrows?",
+        a: "Yes, though treatment is limited to defining the brow border and clearing hair between the brows. We avoid removing hair from within the brow itself so your natural shape stays intact.",
+      },
+      {
+        q: "How much does eyebrow laser hair removal cost?",
+        a: "Pricing is based on your session package. Since this is a small, quick treatment area, we'll confirm exact cost at your consultation.",
+      },
+      {
+        q: "Is laser hair removal safe near the eyes?",
+        a: "Yes. We use protective eyewear throughout every session and closely control the treatment area to keep the skin around your eyes safe and comfortable.",
+      },
+      {
+        q: "How many sessions will I need?",
+        a: "Most clients see the best long-term shaping results after 6–8 sessions, spaced 4–6 weeks apart, since laser targets hair only while it's in an active growth phase.",
+      },
+      {
+        q: "Am I a good candidate for eyebrow laser hair removal?",
+        a: "This treatment works well for anyone looking to maintain a defined brow border or clear the space between the brows with less ongoing upkeep. We'll assess your hair and skin type at your consultation to confirm candidacy.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "technology",
+        title: "Powered by Lumenis Splendor X",
+        subtitle: "Precision Technology for Eyebrow Shaping",
+        content:
+          "The Splendor X's square spot design enables accurate targeting along a small, defined brow border. Dual cooling keeps this delicate area comfortable throughout the session.",
+        items: [
+          { label: "Dual Wavelength (755nm + 1064nm)", description: "Alexandrite and Nd:YAG for precise, controlled treatment." },
+          { label: "Square Spot Design", description: "Enables accurate targeting along a small, defined border." },
+          { label: "Dual Cooling (Cryo-Touch + Cryo-Air)", description: "Keeps this delicate area comfortable." },
+          { label: "Safe for All Skin Types", description: "Across Fitzpatrick I–VI." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "facial-hair-removal",
+    title: "Facial Laser Hair Removal",
+    shortDescription:
+      "Smoother skin and fewer touch-ups, for a face that's ready for anything. Comfortable sessions with the Lumenis Splendor X.",
+    fullDescription:
+      "Facial hair removal is one of our most popular treatments, and for good reason: it addresses everything from upper lip and chin hair to beard line shaping, without the daily upkeep of plucking or shaving. Using the Lumenis Splendor X, we target hair at the follicle across the upper lip, chin, cheeks, and sideburns, with results that hold up far better than shaving or waxing in Aventura's humidity. Because facial hair is often influenced by hormones, some clients, including those managing PCOS, may need a slightly longer session series to see their best results.",
+    heroImage: "/images/gallery-laser-upper-lip.png",
+    heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
+    duration: "15–20 min",
+    downtime: "None",
+    resultsTimeline: "Visible after 2–3 sessions",
+    sessionsNeeded: "8–10 sessions",
+    benefits: [
+      "Smoother skin across lip, chin, and cheeks",
+      "Fewer ingrown hairs and less irritation",
+      "Defined beard line for men",
+      "Comfortable for daily makeup wearers",
+      "Safe, precise treatment near the face",
+      "Long-term reduction, not a quick fix",
+    ],
+    areas: ["Upper Lip", "Chin", "Cheeks", "Sideburns", "Beard Line Shaping (men)"],
+    faq: [
+      {
+        q: "How much is facial laser hair removal?",
+        a: "Pricing depends on which areas you're treating (upper lip, chin, cheeks, sideburns, or a combination) and your session package. We'll confirm exact pricing at your consultation.",
+      },
+      {
+        q: "Is facial laser hair removal safe, and does it hurt?",
+        a: "Yes, it's safe when performed by trained providers, and most clients describe only mild, brief discomfort thanks to the Splendor X's built-in cooling. This is generally far more comfortable than repeated waxing.",
+      },
+      {
+        q: "Is laser better than electrolysis for facial hair?",
+        a: "Laser treats larger areas faster and is generally more comfortable, making it a great option for coarser, darker facial hair. Electrolysis can be more effective on very fine, light, or gray hairs that don't respond as well to laser, and we're happy to talk through which approach fits your hair type.",
+      },
+      {
+        q: "Does laser hair removal work on blonde or gray facial hair?",
+        a: "Laser targets pigment in the hair follicle, so it works best on darker, coarser hair. Very light blonde, gray, or red hair may respond less predictably, and we'll be upfront about expected results for your hair type at your consultation.",
+      },
+      {
+        q: "How many sessions will I need?",
+        a: "Most clients need 8–10 sessions for the face, since facial hair growth cycles and hormonal factors, including PCOS, can mean a longer series is needed to see lasting results.",
+      },
+      {
+        q: "How should I prepare for treatment?",
+        a: "Shave the treatment area the day before your appointment and avoid sun exposure, self-tanner, and retinol products beforehand. We'll go over full prep instructions specific to your skin at your consult.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "technology",
+        title: "Powered by Lumenis Splendor X",
+        subtitle: "Effective Technology for All Facial Hair Types",
+        content:
+          "The Lumenis Splendor X combines Alexandrite (755nm) and Nd:YAG (1064nm) wavelengths with BLEND X™ technology for consistent results on delicate facial skin. Dual cooling keeps the face comfortable throughout every session.",
+        items: [
+          { label: "Dual Wavelength (755nm + 1064nm)", description: "Effective treatment across a range of facial hair types." },
+          { label: "BLEND X™ Technology", description: "Combines both wavelengths for consistent results on delicate facial skin." },
+          { label: "Dual Cooling (Cryo-Touch + Cryo-Air)", description: "Keeps the face comfortable throughout." },
+          { label: "Safe for All Skin Types", description: "Across Fitzpatrick I–VI, including deeper skin tones." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "leg-hair-removal",
+    title: "Leg Laser Hair Removal",
+    shortDescription:
+      "Smooth, ready-for-anything legs, without the daily razor routine. Fast sessions with the Lumenis Splendor X.",
+    fullDescription:
+      "Between beach days, boat days, and South Florida's year-round warm weather, shaved legs are a daily habit for a lot of Aventura clients — and it doesn't have to be. Leg laser hair removal uses the Lumenis Splendor X to target hair at the follicle across the full leg, half leg, or lower legs, reducing density and thickness over a series of sessions. Many clients also come to us for strawberry legs, the dark follicle dots left behind by shaving, since laser treatment addresses the root cause rather than masking it.",
+    heroImage: "/images/service-laser-hair-removal.png",
+    heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
+    duration: "30–45 min",
+    downtime: "None",
+    resultsTimeline: "Visible after 2–3 sessions",
+    sessionsNeeded: "8–10 sessions",
+    benefits: [
+      "No more daily or weekly shaving",
+      "Helps reduce strawberry legs",
+      "Smoother skin with less irritation",
+      "Options for full, half, or lower legs",
+      "Safe for all skin tones",
+      "Confidence in shorts and swimwear, year-round",
+    ],
+    areas: ["Full Legs", "Half Legs (Upper or Lower)", "Lower Legs Only"],
+    faq: [
+      {
+        q: "How much does leg laser hair removal cost?",
+        a: "Pricing depends on the area you choose (full leg, half leg, or lower leg) and your session package size. We'll confirm exact pricing at your consultation based on your hair density and goals.",
+      },
+      {
+        q: "Does laser hair removal help with strawberry legs?",
+        a: "Yes. Strawberry legs are often caused by hair follicles that appear as dark dots after shaving, and laser hair removal reduces the hair at the follicle itself, which can significantly improve their appearance over a full session series.",
+      },
+      {
+        q: "How many sessions will I need for legs?",
+        a: "Legs are a larger treatment area, so most clients need 8–10 sessions, spaced 4–6 weeks apart, to see full results across the entire growth cycle.",
+      },
+      {
+        q: "How long does a leg treatment take?",
+        a: "A full leg session typically takes 30 to 45 minutes, while half leg or lower leg treatments are quicker. We'll give you a specific time estimate based on your chosen area.",
+      },
+      {
+        q: "What is half leg laser hair removal?",
+        a: "Half leg treatments cover either the upper leg (thigh) or lower leg (knee to ankle), giving you a more targeted option if you don't need the full leg treated.",
+      },
+      {
+        q: "How should I prepare, and what's aftercare like?",
+        a: "Shave your legs the day before your appointment and avoid sun exposure or self-tanner beforehand. Afterward, apply sunscreen diligently, since South Florida sun exposure on freshly treated skin can increase sensitivity.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "technology",
+        title: "Powered by Lumenis Splendor X",
+        subtitle: "Built for Large Areas Like the Legs",
+        content:
+          "The Splendor X's square spot design covers more surface area per pulse, making it ideal for larger treatment zones like full legs. BLEND X™ technology delivers consistent, even results across all skin tones.",
+        items: [
+          { label: "Dual Wavelength (755nm + 1064nm)", description: "Thorough treatment across a large area." },
+          { label: "BLEND X™ Technology", description: "Delivers both wavelengths together for consistent, even results." },
+          { label: "Square Spot Design", description: "Covers more surface area per pulse, ideal for a larger treatment zone like the legs." },
+          { label: "Safe for All Skin Types", description: "Across Fitzpatrick I–VI." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "upper-lip-hair-removal",
+    title: "Upper Lip Laser Hair Removal",
+    shortDescription:
+      "Smoother, more defined, with far less plucking and touch-up. Quick, precise sessions with the Lumenis Splendor X.",
+    fullDescription:
+      "The upper lip is one of the most requested areas for laser hair removal, and one of the most sensitive — so precision matters. Using the Lumenis Splendor X, we target hair at the follicle to reduce fine or coarse upper lip hair over a series of quick, closely controlled sessions. Many clients pair this treatment with the chin for a complete lip and chin combo. Because upper lip hair growth is often influenced by hormones, we take extra care to set realistic expectations for clients managing PCOS or similar conditions.",
+    heroImage: "/images/gallery-laser-upper-lip.png",
+    heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
+    duration: "5–10 min",
+    downtime: "None",
+    resultsTimeline: "Visible after 2–3 sessions",
+    sessionsNeeded: "6–8 sessions",
+    benefits: [
+      "Smoother skin, less noticeable regrowth",
+      "Fewer touch-ups between waxing appointments",
+      "Fast, precise sessions",
+      "Combine with chin for full coverage",
+      "Careful approach for sensitive, delicate skin",
+      "Reduces irritation from frequent shaving or waxing",
+    ],
+    areas: ["Upper Lip Only", "Upper Lip & Chin combo"],
+    faq: [
+      {
+        q: "How much does upper lip laser hair removal cost?",
+        a: "Pricing depends on whether you're treating the upper lip alone or adding the chin, along with your session package. We'll confirm exact pricing at your consultation.",
+      },
+      {
+        q: "Does upper lip laser hair removal hurt?",
+        a: "The upper lip is a sensitive area, so most clients feel a brief warm or stinging sensation during treatment, but it's short-lived thanks to the Splendor X's cooling technology. Many describe it as more comfortable than repeated waxing.",
+      },
+      {
+        q: "Should I shave my upper lip before my appointment?",
+        a: "Yes. Shave the area about 24 hours before your session so the follicle is accessible without excess surface hair. Avoid waxing, plucking, or threading between sessions, since laser needs the follicle intact to work effectively.",
+      },
+      {
+        q: "How many sessions will I need?",
+        a: "Most clients need 6–8 sessions, spaced 4–6 weeks apart, to see full results, since hair grows in cycles and laser only targets follicles that are actively growing.",
+      },
+      {
+        q: "Are there risks of dark spots or discoloration?",
+        a: "When performed with the right technology and settings, laser hair removal is generally safe for a range of skin tones. We tailor treatment settings to your specific skin type to minimize any risk of hyperpigmentation, especially on deeper skin tones.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "technology",
+        title: "Powered by Lumenis Splendor X",
+        subtitle: "Precise Technology for Delicate Areas",
+        content:
+          "The Splendor X's square spot design allows accurate targeting on a small, delicate area like the upper lip. Dual cooling keeps this sensitive zone comfortable throughout.",
+        items: [
+          { label: "Dual Wavelength (755nm + 1064nm)", description: "Precise, effective treatment on fine or coarse upper lip hair." },
+          { label: "Square Spot Design", description: "Allows accurate targeting on a small, delicate area." },
+          { label: "Dual Cooling (Cryo-Touch + Cryo-Air)", description: "Keeps this sensitive area comfortable throughout." },
+          { label: "Safe for All Skin Types", description: "Across Fitzpatrick I–VI." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "neck-hair-removal",
+    title: "Neck Laser Hair Removal",
+    shortDescription:
+      "A cleaner neckline and beard line, with far less daily upkeep. Fast, precise sessions with the Lumenis Splendor X.",
+    fullDescription:
+      "Neck hair removal serves two very different needs: women looking to clean up fine hair along the hairline or nape, and men wanting a sharper, more defined beard line. Using the Lumenis Splendor X, we target hair at the follicle to reduce regrowth across the neck, with settings tailored to your hair type and skin tone. Many clients combine this treatment with the face for a complete face and neck package, cutting down on daily grooming and touch-ups.",
+    heroImage: "/images/service-laser-hair-removal.png",
+    heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
+    duration: "10–15 min",
+    downtime: "None",
+    resultsTimeline: "Visible after 2–3 sessions",
+    sessionsNeeded: "6–8 sessions",
+    benefits: [
+      "Cleaner, more defined beard line",
+      "Smoother nape and hairline",
+      "Combine with face for full coverage",
+      "Reduces daily shaving or trimming",
+      "Safe for a range of skin tones",
+      "Fast, precise sessions",
+    ],
+    areas: ["Neckline / Hairline (women)", "Beard Line & Neck Beard Cleanup (men)", "Face & Neck combo"],
+    faq: [
+      {
+        q: "How much is neck laser hair removal?",
+        a: "Pricing depends on the specific area (neckline, beard line, or a face and neck combo) and your session package. We'll confirm exact pricing at your consultation.",
+      },
+      {
+        q: "Is this treatment different for women versus men?",
+        a: "Yes. For women, we typically focus on fine hair along the hairline or nape, while for men, treatment often centers on shaping and cleaning up the beard line and neck beard. We tailor the approach to your specific goals either way.",
+      },
+      {
+        q: "Can I combine neck treatment with facial hair removal?",
+        a: "Absolutely. Face and neck combo packages are one of our most popular options, since many clients want a consistent, defined line from the jaw down through the neck.",
+      },
+      {
+        q: "How many sessions will I need?",
+        a: "Most clients need 6–8 sessions, spaced 4–6 weeks apart, to see full results across the neck's growth cycle.",
+      },
+      {
+        q: "Is laser hair removal safe on the neck for darker skin tones?",
+        a: "Yes. The Splendor X's Nd:YAG wavelength is specifically effective and safe for deeper skin tones, which makes the neck — a common trouble spot for irritation from shaving — a great candidate area regardless of your skin type.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "technology",
+        title: "Powered by Lumenis Splendor X",
+        subtitle: "Effective for All Hair and Skin Types on the Neck",
+        content:
+          "The Splendor X's BLEND X™ technology combines both wavelengths for consistent results across the neck, regardless of skin tone. Dual cooling keeps every session comfortable.",
+        items: [
+          { label: "Dual Wavelength (755nm + 1064nm)", description: "Effective treatment across hair and skin types on the neck." },
+          { label: "BLEND X™ Technology", description: "Combines both wavelengths for consistent results." },
+          { label: "Dual Cooling (Cryo-Touch + Cryo-Air)", description: "Keeps the neck comfortable throughout." },
+          { label: "Safe for All Skin Types", description: "Across Fitzpatrick I–VI." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "stomach-hair-removal",
+    title: "Stomach Laser Hair Removal",
+    shortDescription:
+      "Smoother skin, from the happy trail to the full abdomen. Comfortable sessions with the Lumenis Splendor X.",
+    fullDescription:
+      "Stomach hair removal is a popular treatment for both women looking to address the stomach line — sometimes called the happy trail — and men who want a smoother, low-maintenance abdomen. Using the Lumenis Splendor X, we target hair at the follicle to reduce density over a series of sessions, with gentle, comfortable settings suited to the sensitive skin of the abdomen. Many clients choose to combine stomach treatment with the chest for complete, consistent results.",
+    heroImage: "/images/service-laser-hair-removal.png",
+    heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
+    duration: "15–20 min",
+    downtime: "None",
+    resultsTimeline: "Visible after 2–3 sessions",
+    sessionsNeeded: "6–8 sessions",
+    benefits: [
+      "Smoother abdomen with less upkeep",
+      "Addresses the stomach line comfortably",
+      "Combine with chest for full coverage",
+      "Gentle approach for sensitive abdominal skin",
+      "Reduces irritation from shaving or waxing",
+      "Safe for all skin tones",
+    ],
+    areas: ["Stomach Only", "Stomach & Chest combo"],
+    faq: [
+      {
+        q: "Can you get laser hair removal on your stomach?",
+        a: "Yes. The stomach responds well to laser treatment, and we adjust settings for the more sensitive skin in this area to keep sessions comfortable.",
+      },
+      {
+        q: "How much is stomach laser hair removal?",
+        a: "Pricing depends on whether you're treating the stomach alone or combining it with the chest, along with your session package. We'll confirm exact pricing at your consultation.",
+      },
+      {
+        q: "Is the stomach a sensitive area to treat?",
+        a: "The abdomen can be more sensitive than areas like the arms or legs, so we use the Splendor X's cooling technology to keep sessions comfortable throughout.",
+      },
+      {
+        q: "How many sessions will I need?",
+        a: "Most clients need 6–8 sessions, spaced 4–6 weeks apart, to see full results, since laser only targets hair that's actively growing at the time of treatment.",
+      },
+      {
+        q: "How should I prepare for treatment?",
+        a: "Shave the stomach the day before your appointment and avoid sun exposure or self-tanner beforehand. Skip waxing or plucking between sessions so the follicle stays intact for the laser to target.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "technology",
+        title: "Powered by Lumenis Splendor X",
+        subtitle: "Comfortable Technology for Sensitive Abdominal Skin",
+        content:
+          "The Splendor X's BLEND X™ technology and dual cooling system make it well-suited for the abdomen, where skin sensitivity is higher. Consistent results across all skin tones.",
+        items: [
+          { label: "Dual Wavelength (755nm + 1064nm)", description: "Effective, comfortable treatment on the stomach." },
+          { label: "BLEND X™ Technology", description: "Combines both wavelengths for consistent results." },
+          { label: "Dual Cooling (Cryo-Touch + Cryo-Air)", description: "Keeps sensitive abdominal skin comfortable." },
+          { label: "Safe for All Skin Types", description: "Across Fitzpatrick I–VI." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "underarm-hair-removal",
+    title: "Underarm Laser Hair Removal",
+    shortDescription:
+      "Smoother, brighter underarms, with one of our fastest treatment areas. Quick, comfortable sessions with the Lumenis Splendor X.",
+    fullDescription:
+      "Underarm laser hair removal is one of the fastest and most requested treatments at Kami Aesthetics, and it's easy to see why in South Florida's warm, humid climate. Using the Lumenis Splendor X, we target hair at the follicle to reduce regrowth and ingrown hairs, while also helping to brighten skin that's become darkened from years of shaving or waxing. Sessions are quick and comfortable, and most clients notice visibly smoother, softer underarms after just a few visits.",
+    heroImage: "/images/service-laser-hair-removal.png",
+    heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
+    duration: "10–15 min",
+    downtime: "None",
+    resultsTimeline: "Visible after 2–3 sessions",
+    sessionsNeeded: "6–8 sessions",
+    benefits: [
+      "One of our fastest treatment areas",
+      "Helps brighten darkened underarm skin",
+      "Reduces ingrown hairs and razor bumps",
+      "No more daily or weekly shaving",
+      "Comfortable, quick sessions",
+      "Confidence in tank tops and sleeveless styles",
+    ],
+    areas: ["Full Underarms"],
+    faq: [
+      {
+        q: "How much does underarm laser hair removal cost?",
+        a: "Pricing is based on your session package size. Since underarms are typically one of our fastest treatment areas, we'll confirm exact pricing at your consultation.",
+      },
+      {
+        q: "Does laser hair removal whiten or brighten the underarms?",
+        a: "Many clients notice their underarms appear brighter over time, since laser hair removal reduces the shadowing effect of dark hair follicles and cuts down on skin irritation from shaving. It's not a whitening treatment on its own, but skin tone often looks more even as hair reduction progresses.",
+      },
+      {
+        q: "Does underarm laser hair removal hurt?",
+        a: "Most clients describe only mild, brief discomfort, and this is typically one of the more tolerable areas to treat thanks to the Splendor X's built-in cooling. Numbing options are available on request for sensitive clients.",
+      },
+      {
+        q: "How many sessions will I need?",
+        a: "Underarms tend to respond quickly, and most clients complete their series in 6–8 sessions spaced 4–6 weeks apart, since laser only targets hair that's actively growing.",
+      },
+      {
+        q: "How should I prepare for my appointment?",
+        a: "Shave the underarms the day before your visit and skip deodorant or antiperspirant on the day of treatment, since these can irritate freshly treated skin. Avoid waxing or plucking between sessions so the follicle stays intact.",
+      },
+      {
+        q: "Is underarm laser hair removal permanent?",
+        a: "It provides long-term hair reduction rather than complete permanent removal. Most clients maintain smooth results with occasional touch-up sessions after finishing their initial series.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "technology",
+        title: "Powered by Lumenis Splendor X",
+        subtitle: "Fast, Effective Technology for the Underarms",
+        content:
+          "The Splendor X's square spot design covers the underarm efficiently in a shorter session. Dual cooling keeps this sensitive area comfortable throughout.",
+        items: [
+          { label: "Dual Wavelength (755nm + 1064nm)", description: "Fast, effective treatment for underarm hair." },
+          { label: "Square Spot Design", description: "Covers the underarm efficiently in a shorter session." },
+          { label: "Dual Cooling (Cryo-Touch + Cryo-Air)", description: "Keeps this sensitive area comfortable." },
+          { label: "Safe for All Skin Types", description: "Across Fitzpatrick I–VI." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "laser-hair-removal-dark-skin",
+    title: "Laser Hair Removal for Brown & Dark Skin",
+    shortDescription:
+      "Safe, effective hair removal, built for every skin tone. The Lumenis Splendor X — the gold standard for Fitzpatrick IV–VI.",
+    fullDescription:
+      "Laser hair removal for dark skin has long been misunderstood, and outdated technology is usually the reason why. At Kami Aesthetics, we use the Lumenis Splendor X, which includes an Nd:YAG (1064nm) wavelength — considered the gold standard for treating Fitzpatrick skin types IV through VI safely and effectively. In a South Florida community as diverse as Aventura and Miami, having technology built for every skin tone isn't optional, it's essential. Clients with brown and dark skin can safely treat nearly any area of the body with dramatically reduced risk of burns or discoloration.",
+    heroImage: "/images/service-laser-hair-removal.png",
+    heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
+    duration: "Varies by area (5–45 min)",
+    downtime: "None",
+    resultsTimeline: "Visible after 2–3 sessions",
+    sessionsNeeded: "6–8 sessions",
+    benefits: [
+      "Technology built for deeper skin tones",
+      "Reduced risk of burns or hyperpigmentation",
+      "Effective on all Fitzpatrick skin types, I–VI",
+      "Safe treatment across nearly any body area",
+      "Dual cooling for added comfort",
+      "Backed by trained, experienced providers",
+    ],
+    areas: ["Available for all body areas, including face, legs, arms, bikini, underarms, and back"],
+    faq: [
+      {
+        q: "Does laser hair removal actually work on dark skin?",
+        a: "Yes, when the right technology is used. Older laser systems struggled to distinguish between hair pigment and skin pigment on darker tones, but Nd:YAG technology like the Splendor X targets hair follicles more safely and effectively on deeper skin.",
+      },
+      {
+        q: "Is laser hair removal safe for dark or brown skin?",
+        a: "Yes, with the right equipment and settings. The Nd:YAG wavelength bypasses much of the surface melanin in the skin, reducing the risk of burns or dark spots that can occur with lasers not designed for deeper skin tones.",
+      },
+      {
+        q: "Why does laser hair removal sometimes not work on dark skin?",
+        a: "This usually comes down to outdated technology rather than skin tone itself. Older lasers can struggle to tell the difference between the hair follicle and surrounding skin, leading to inconsistent results or an increased risk of burns.",
+      },
+      {
+        q: "What is the Fitzpatrick skin type scale?",
+        a: "It's a classification system providers use to describe skin tone and its relationship to sun sensitivity, ranging from Type I (very fair) to Type VI (deeply pigmented). It helps us select the safest, most effective laser settings for your specific skin.",
+      },
+      {
+        q: "Can I get laser hair removal on any part of my body?",
+        a: "Yes. With the right technology, brown and dark-skinned clients can safely treat the same range of areas as anyone else, from the face and underarms to the legs, bikini area, and back.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "technology",
+        title: "Powered by Lumenis Splendor X",
+        subtitle: "The Gold Standard for Dark Skin Laser Hair Removal",
+        content:
+          "The Splendor X's Nd:YAG (1064nm) wavelength is widely regarded as the gold standard for safely treating Fitzpatrick skin types IV through VI. BLEND X™ combines Alexandrite and Nd:YAG wavelengths for effective treatment across the full range of skin tones.",
+        items: [
+          { label: "Nd:YAG Wavelength (1064nm)", description: "The gold standard for safely treating Fitzpatrick skin types IV through VI." },
+          { label: "BLEND X™ Technology", description: "Combines Alexandrite and Nd:YAG wavelengths for effective treatment across a range of skin tones." },
+          { label: "Dual Cooling (Cryo-Touch + Cryo-Air)", description: "Adds comfort and helps protect the skin during treatment." },
+          { label: "Trained, Experienced Providers", description: "Settings are customized to your specific skin tone and hair type, not a one-size-fits-all approach." },
+        ],
+      },
+    ],
+  },
+  {
     slug: "iv-therapy",
     title: "IV Therapy",
     shortDescription:

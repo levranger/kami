@@ -73,6 +73,66 @@ const seoMap: Record<string, { title: string; description: string; keywords: str
       "Swimsuit-ready, year-round. Bikini laser hair removal at Kami Aesthetics in Aventura, FL. Comfortable, discreet, effective. Book now.",
     keywords: ["bikini laser hair removal aventura", "brazilian laser hair removal aventura fl", "bikini hair removal miami", "laser bikini aventura"],
   },
+  "chest-hair-removal": {
+    title: "Chest Laser Hair Removal in Aventura, FL | Kami",
+    description:
+      "Smooth, low-maintenance results with chest laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
+    keywords: ["chest laser hair removal aventura", "chest hair removal aventura fl", "laser hair removal chest miami", "men chest hair removal"],
+  },
+  "ear-hair-removal": {
+    title: "Laser Ear Hair Removal in Aventura, FL | Kami",
+    description:
+      "Skip the trimmer. Laser ear hair removal at Kami Aesthetics in Aventura, FL offers lasting results. Book your consult today.",
+    keywords: ["laser ear hair removal aventura", "ear hair removal aventura fl", "ear hair laser miami", "permanent ear hair removal"],
+  },
+  "eyebrow-hair-removal": {
+    title: "Eyebrow Laser Hair Removal in Aventura, FL | Kami",
+    description:
+      "Precise, lasting results with eyebrow laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
+    keywords: ["eyebrow laser hair removal aventura", "unibrow laser removal aventura fl", "brow shaping laser miami", "eyebrow hair removal aventura"],
+  },
+  "facial-hair-removal": {
+    title: "Facial Laser Hair Removal in Aventura, FL | Kami",
+    description:
+      "Smoother, hair-free skin with facial laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
+    keywords: ["facial laser hair removal aventura", "upper lip laser hair removal aventura fl", "chin hair removal laser miami", "face laser hair removal aventura"],
+  },
+  "leg-hair-removal": {
+    title: "Leg Laser Hair Removal in Aventura, FL | Kami",
+    description:
+      "Smooth, hair-free legs year-round with laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
+    keywords: ["leg laser hair removal aventura", "leg hair removal aventura fl", "laser hair removal legs miami", "strawberry legs laser treatment aventura"],
+  },
+  "upper-lip-hair-removal": {
+    title: "Upper Lip Laser Hair Removal in Aventura, FL | Kami",
+    description:
+      "Smooth, hair-free results with upper lip laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
+    keywords: ["upper lip laser hair removal aventura", "lip hair removal aventura fl", "laser upper lip miami", "upper lip hair removal aventura"],
+  },
+  "neck-hair-removal": {
+    title: "Neck Laser Hair Removal in Aventura, FL | Kami",
+    description:
+      "Cleaner lines and smoother skin with neck laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
+    keywords: ["neck laser hair removal aventura", "neck hair removal aventura fl", "beard line laser miami", "neck hair removal aventura"],
+  },
+  "stomach-hair-removal": {
+    title: "Stomach Laser Hair Removal in Aventura, FL | Kami",
+    description:
+      "Smooth, confident skin with stomach laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
+    keywords: ["stomach laser hair removal aventura", "abdomen hair removal aventura fl", "happy trail laser removal miami", "stomach hair removal aventura"],
+  },
+  "underarm-hair-removal": {
+    title: "Underarm Laser Hair Removal in Aventura, FL | Kami",
+    description:
+      "Smooth, brighter underarms with underarm laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
+    keywords: ["underarm laser hair removal aventura", "underarm hair removal aventura fl", "armpit laser hair removal miami", "underarm hair removal aventura"],
+  },
+  "laser-hair-removal-dark-skin": {
+    title: "Laser Hair Removal for Dark Skin | Aventura, FL",
+    description:
+      "Safe, effective laser hair removal for dark and brown skin at Kami Aesthetics in Aventura, FL. Book your consult today.",
+    keywords: ["laser hair removal dark skin aventura", "laser hair removal brown skin aventura fl", "laser hair removal fitzpatrick iv v vi miami", "dark skin laser hair removal aventura"],
+  },
   "ipl-treatments": {
     title: "IPL Treatments in Aventura FL | Kami Aesthetics",
     description:
@@ -118,10 +178,20 @@ const seoMap: Record<string, { title: string; description: string; keywords: str
 };
 
 const relatedMap: Record<string, string[]> = {
-  "laser-hair-removal": ["arm-hair-removal", "bikini-hair-removal", "back-hair-removal"],
-  "arm-hair-removal": ["laser-hair-removal", "bikini-hair-removal", "back-hair-removal"],
-  "back-hair-removal": ["laser-hair-removal", "arm-hair-removal", "bikini-hair-removal"],
-  "bikini-hair-removal": ["laser-hair-removal", "arm-hair-removal", "back-hair-removal"],
+  "laser-hair-removal": ["arm-hair-removal", "leg-hair-removal", "bikini-hair-removal"],
+  "arm-hair-removal": ["laser-hair-removal", "leg-hair-removal", "back-hair-removal"],
+  "back-hair-removal": ["laser-hair-removal", "chest-hair-removal", "arm-hair-removal"],
+  "bikini-hair-removal": ["laser-hair-removal", "leg-hair-removal", "underarm-hair-removal"],
+  "chest-hair-removal": ["back-hair-removal", "stomach-hair-removal", "laser-hair-removal"],
+  "ear-hair-removal": ["eyebrow-hair-removal", "facial-hair-removal", "neck-hair-removal"],
+  "eyebrow-hair-removal": ["ear-hair-removal", "facial-hair-removal", "upper-lip-hair-removal"],
+  "facial-hair-removal": ["upper-lip-hair-removal", "neck-hair-removal", "eyebrow-hair-removal"],
+  "leg-hair-removal": ["laser-hair-removal", "bikini-hair-removal", "underarm-hair-removal"],
+  "upper-lip-hair-removal": ["facial-hair-removal", "eyebrow-hair-removal", "neck-hair-removal"],
+  "neck-hair-removal": ["facial-hair-removal", "upper-lip-hair-removal", "ear-hair-removal"],
+  "stomach-hair-removal": ["chest-hair-removal", "back-hair-removal", "laser-hair-removal"],
+  "underarm-hair-removal": ["laser-hair-removal", "bikini-hair-removal", "arm-hair-removal"],
+  "laser-hair-removal-dark-skin": ["laser-hair-removal", "bikini-hair-removal", "leg-hair-removal"],
   "ipl-treatments": ["resurfx", "laser-hair-removal"],
   resurfx: ["ipl-treatments", "prp-therapy"],
   botox: ["dermal-fillers", "prp-therapy"],
@@ -147,6 +217,46 @@ const ctaMap: Record<string, { headline: string; subtext: string }> = {
   "bikini-hair-removal": {
     headline: "Ready for Swimsuit-Ready Confidence?",
     subtext: "Smoother, low-maintenance skin — made for South Florida's year-round beach season.",
+  },
+  "chest-hair-removal": {
+    headline: "Ready for Smoother, Lower-Maintenance Skin?",
+    subtext: "Skip the razor and the redness, and let laser do the work instead.",
+  },
+  "ear-hair-removal": {
+    headline: "Ready to Skip the Trimmer for Good?",
+    subtext: "Get a cleaner, longer-lasting solution to unwanted ear hair.",
+  },
+  "eyebrow-hair-removal": {
+    headline: "Ready for Cleaner, More Defined Brows?",
+    subtext: "Spend less time tweezing and more time enjoying a brow shape that holds.",
+  },
+  "facial-hair-removal": {
+    headline: "Ready for Smoother, More Confident Skin?",
+    subtext: "Less upkeep, longer-lasting results, and a face that's ready for anything South Florida throws at it.",
+  },
+  "leg-hair-removal": {
+    headline: "Ready for Smooth, Confident Legs?",
+    subtext: "Skip the razor and step into swimsuit season with skin that's ready year-round.",
+  },
+  "upper-lip-hair-removal": {
+    headline: "Ready for a Smoother Upper Lip?",
+    subtext: "Skip the daily plucking and get results that actually last.",
+  },
+  "neck-hair-removal": {
+    headline: "Ready for a Cleaner, More Defined Neckline?",
+    subtext: "Less daily upkeep, sharper lines, and skin that feels smoother every day.",
+  },
+  "stomach-hair-removal": {
+    headline: "Ready for Smoother, More Confident Skin?",
+    subtext: "Less upkeep for the stomach and chest, with results that actually last.",
+  },
+  "underarm-hair-removal": {
+    headline: "Ready for Smoother, Brighter Underarms?",
+    subtext: "One of our quickest treatments, with results you'll notice fast.",
+  },
+  "laser-hair-removal-dark-skin": {
+    headline: "Ready for Safe, Effective Results, Built for Your Skin?",
+    subtext: "Experience laser hair removal designed with every skin tone in mind.",
   },
   "ipl-treatments": {
     headline: "Reveal Your Clearest, Most Radiant Skin",

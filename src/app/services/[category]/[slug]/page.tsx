@@ -43,7 +43,7 @@ export default function ServicePage({ params }: Props) {
   if (!service || !cat || SLUG_TO_CATEGORY[params.slug] !== params.category) notFound();
 
   const relatedServices = servicePages.filter((s) => service.relatedSlugs.includes(s.slug));
-  const isLaserService = ["laser-hair-removal", "arm-hair-removal", "back-hair-removal", "bikini-hair-removal"].includes(service.slug);
+  const isLaserService = ["laser-hair-removal", "arm-hair-removal", "back-hair-removal", "bikini-hair-removal", "chest-hair-removal", "ear-hair-removal", "eyebrow-hair-removal", "facial-hair-removal", "leg-hair-removal", "upper-lip-hair-removal", "neck-hair-removal", "stomach-hair-removal", "underarm-hair-removal", "laser-hair-removal-dark-skin"].includes(service.slug);
 
   const faqSchema = buildFAQSchema(service.faq.map((f) => ({ question: f.q, answer: f.a })));
   const serviceSchema = buildServiceSchema(service);
