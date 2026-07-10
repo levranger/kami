@@ -1,0 +1,36 @@
+/* Botox Booking Flow - Custom Styles */
+
+/* Safe area support for mobile sticky footer */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Before/After comparison - placeholder for future drag handle */
+.before-after-slider {
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .before-after-slider,
+  .before-after-slider * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Custom scrollbar for date/time grids */
+.booking-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.booking-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.booking-scroll::-webkit-scrollbar-thumb {
+  background: #d4a574;
+  border-radius: 2px;
+}

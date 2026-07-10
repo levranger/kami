@@ -1,0 +1,1 @@
+export { default as LaserHairRemovalBookingFlow } from "./LaserHairRemovalBookingFlow";

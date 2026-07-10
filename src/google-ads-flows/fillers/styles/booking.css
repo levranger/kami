@@ -1,0 +1,9 @@
+/* Filler Booking Flow - Custom Styles */
+
+@media (prefers-reduced-motion: reduce) {
+  .filler-gallery,
+  .filler-gallery * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
