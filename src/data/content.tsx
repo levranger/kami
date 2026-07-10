@@ -56,79 +56,79 @@ const seoMap: Record<string, { title: string; description: string; keywords: str
     keywords: ["laser hair removal aventura", "laser hair removal aventura fl", "splendor x laser", "permanent hair removal miami", "laser hair removal all skin types"],
   },
   "arm-hair-removal": {
-    title: "Arm Laser Hair Removal in Aventura, FL | Kami",
+    title: "Arm Laser Hair Removal in Aventura, FL",
     description:
       "Get smooth, hair-free arms with arm laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
     keywords: ["arm laser hair removal aventura", "arm hair removal aventura fl", "laser hair removal arms miami", "smooth arms laser"],
   },
   "back-hair-removal": {
-    title: "Back Laser Hair Removal in Aventura, FL | Kami",
+    title: "Back Laser Hair Removal in Aventura, FL",
     description:
       "Smooth, hair-free back with laser hair removal at Kami Aesthetics in Aventura, FL. Confidence, shirt off or on. Book today.",
     keywords: ["back laser hair removal aventura", "back hair removal aventura fl", "laser hair removal back miami", "back hair removal men aventura"],
   },
   "bikini-hair-removal": {
-    title: "Bikini Laser Hair Removal in Aventura, FL | Kami",
+    title: "Bikini Laser Hair Removal in Aventura, FL",
     description:
       "Swimsuit-ready, year-round. Bikini laser hair removal at Kami Aesthetics in Aventura, FL. Comfortable, discreet, effective. Book now.",
     keywords: ["bikini laser hair removal aventura", "brazilian laser hair removal aventura fl", "bikini hair removal miami", "laser bikini aventura"],
   },
   "chest-hair-removal": {
-    title: "Chest Laser Hair Removal in Aventura, FL | Kami",
+    title: "Chest Laser Hair Removal in Aventura, FL",
     description:
       "Smooth, low-maintenance results with chest laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
     keywords: ["chest laser hair removal aventura", "chest hair removal aventura fl", "laser hair removal chest miami", "men chest hair removal"],
   },
   "ear-hair-removal": {
-    title: "Laser Ear Hair Removal in Aventura, FL | Kami",
+    title: "Laser Ear Hair Removal in Aventura, FL",
     description:
       "Skip the trimmer. Laser ear hair removal at Kami Aesthetics in Aventura, FL offers lasting results. Book your consult today.",
     keywords: ["laser ear hair removal aventura", "ear hair removal aventura fl", "ear hair laser miami", "permanent ear hair removal"],
   },
   "eyebrow-hair-removal": {
-    title: "Eyebrow Laser Hair Removal in Aventura, FL | Kami",
+    title: "Eyebrow Laser Hair Removal in Aventura, FL",
     description:
       "Precise, lasting results with eyebrow laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
     keywords: ["eyebrow laser hair removal aventura", "unibrow laser removal aventura fl", "brow shaping laser miami", "eyebrow hair removal aventura"],
   },
   "facial-hair-removal": {
-    title: "Facial Laser Hair Removal in Aventura, FL | Kami",
+    title: "Facial Laser Hair Removal in Aventura, FL",
     description:
       "Smoother, hair-free skin with facial laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
     keywords: ["facial laser hair removal aventura", "upper lip laser hair removal aventura fl", "chin hair removal laser miami", "face laser hair removal aventura"],
   },
   "leg-hair-removal": {
-    title: "Leg Laser Hair Removal in Aventura, FL | Kami",
+    title: "Leg Laser Hair Removal in Aventura, FL",
     description:
       "Smooth, hair-free legs year-round with laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
     keywords: ["leg laser hair removal aventura", "leg hair removal aventura fl", "laser hair removal legs miami", "strawberry legs laser treatment aventura"],
   },
   "upper-lip-hair-removal": {
-    title: "Upper Lip Laser Hair Removal in Aventura, FL | Kami",
+    title: "Upper Lip Laser Hair Removal in Aventura, FL",
     description:
       "Smooth, hair-free results with upper lip laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
     keywords: ["upper lip laser hair removal aventura", "lip hair removal aventura fl", "laser upper lip miami", "upper lip hair removal aventura"],
   },
   "neck-hair-removal": {
-    title: "Neck Laser Hair Removal in Aventura, FL | Kami",
+    title: "Neck Laser Hair Removal in Aventura, FL",
     description:
       "Cleaner lines and smoother skin with neck laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
     keywords: ["neck laser hair removal aventura", "neck hair removal aventura fl", "beard line laser miami", "neck hair removal aventura"],
   },
   "stomach-hair-removal": {
-    title: "Stomach Laser Hair Removal in Aventura, FL | Kami",
+    title: "Stomach Laser Hair Removal in Aventura, FL",
     description:
       "Smooth, confident skin with stomach laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
     keywords: ["stomach laser hair removal aventura", "abdomen hair removal aventura fl", "happy trail laser removal miami", "stomach hair removal aventura"],
   },
   "underarm-hair-removal": {
-    title: "Underarm Laser Hair Removal in Aventura, FL | Kami",
+    title: "Underarm Laser Hair Removal in Aventura, FL",
     description:
       "Smooth, brighter underarms with underarm laser hair removal at Kami Aesthetics in Aventura, FL. Book your consult today.",
     keywords: ["underarm laser hair removal aventura", "underarm hair removal aventura fl", "armpit laser hair removal miami", "underarm hair removal aventura"],
   },
   "laser-hair-removal-dark-skin": {
-    title: "Laser Hair Removal for Dark Skin | Aventura, FL",
+    title: "Laser Hair Removal for Dark Skin in Aventura, FL",
     description:
       "Safe, effective laser hair removal for dark and brown skin at Kami Aesthetics in Aventura, FL. Book your consult today.",
     keywords: ["laser hair removal dark skin aventura", "laser hair removal brown skin aventura fl", "laser hair removal fitzpatrick iv v vi miami", "dark skin laser hair removal aventura"],
