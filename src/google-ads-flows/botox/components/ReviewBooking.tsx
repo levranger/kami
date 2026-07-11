@@ -171,18 +171,7 @@ export function ReviewBooking({
           <p className="text-sm text-slate-700">{state.marketingConsent ? "Opted in" : "Not opted in"}</p>
         </div>
 
-        {/* Deposit */}
-        <div className="rounded-lg bg-amber-50 border border-amber-200 p-3">
-          <p className="text-xs font-medium uppercase text-amber-600">Payment</p>
-          <p className="text-sm text-amber-800">
-            No payment is collected through this demo. We'll send a deposit link after confirming your appointment.
-          </p>
-          {state.estimateSummary && (
-            <p className="mt-1 text-xs text-amber-600">
-              Estimated treatment: {formatEstimateRange(state.estimateSummary.estimatedPrice, "$")} · Final price confirmed after provider assessment
-            </p>
-          )}
-        </div>
+
       </div>
 
       <div className="flex gap-3">

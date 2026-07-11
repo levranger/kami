@@ -28,40 +28,25 @@ export function calculateBaseSessionPrice(selectedAreas: TreatmentArea[]): numbe
  */
 export function getDiscountPercentage(packageType: PackageType): number {
   switch (packageType) {
-    case "single":
-      return 0;
-    case "six":
-      return 25;
-    case "twelve":
-      return 33;
+    case "single": return 0;
+    case "four":   return 15;
+    case "six":    return 25;
   }
 }
 
-/**
- * Get the session count for a given package type.
- */
 export function getSessionCount(packageType: PackageType): number {
   switch (packageType) {
-    case "single":
-      return 1;
-    case "six":
-      return 6;
-    case "twelve":
-      return 12;
+    case "single": return 1;
+    case "four":   return 4;
+    case "six":    return 6;
   }
 }
 
-/**
- * Get the discount multiplier for a given package type.
- */
 function getDiscountMultiplier(packageType: PackageType): number {
   switch (packageType) {
-    case "single":
-      return 1.0;
-    case "six":
-      return 0.75;
-    case "twelve":
-      return 0.67;
+    case "single": return 1.0;
+    case "four":   return 0.85;
+    case "six":    return 0.75;
   }
 }
 

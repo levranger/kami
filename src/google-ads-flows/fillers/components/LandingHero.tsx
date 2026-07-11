@@ -33,12 +33,6 @@ export function LandingHero({ onGetEstimate }: LandingHeroProps) {
           >
             Get My Estimate
           </button>
-          <a
-            href="tel:+13055551234"
-            className="w-full rounded-lg border border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition hover:border-rose-600 hover:text-rose-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 sm:w-auto"
-          >
-            Book a Consultation
-          </a>
         </div>
         <div className="mt-10 grid grid-cols-2 gap-3 text-left text-sm text-slate-600 md:grid-cols-3">
           {[

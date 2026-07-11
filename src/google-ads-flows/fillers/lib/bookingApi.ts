@@ -6,24 +6,13 @@ import type {
   EstimateSummary,
 } from "../types/booking";
 
-type ApiMode = "mock" | "production";
-const MODE: ApiMode = "mock";
-
 function generateId(prefix: string): string {
   return `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 }
 
-const mockAdapter: BookingApiAdapter = {
-  async submitPartialLead(data: {
-    contactInfo: ContactInfo;
-    areas: string[];
-    goal: TreatmentGoal | null;
-    attributionToken: string | null;
-  }) {
-    await new Promise((r) => setTimeout(r, 800));
-    if (process.env.NODE_ENV === "development") {
-      console.log("[Mock API] Partial lead:", { name: data.contactInfo.fullName, areas: data.areas });
-    }
+const adapter: BookingApiAdapter = {
+  async submitPartialLead(_data) {
+    // Fire-and-forget partial lead — no API call needed at this stage
     return { leadId: generateId("lead") };
   },
 
@@ -38,19 +27,26 @@ const mockAdapter: BookingApiAdapter = {
     attributionToken: string | null;
     estimateSummary: EstimateSummary | null;
   }) {
-    await new Promise((r) => setTimeout(r, 1200));
-    if (process.env.NODE_ENV === "development") {
-      console.log("[Mock API] Booking request:", { name: data.contactInfo.fullName, date: data.selectedDate, time: data.selectedTime });
-    }
-    return { bookingRequestId: generateId("filler") };
+    const bookingRequestId = generateId("filler");
+
+    const res = await fetch("/api/booking/fillers", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...data,
+        bookingRequestId,
+        selectedAreas: data.areas,
+        selectedGoal: data.goal,
+        attribution: { attributionToken: data.attributionToken },
+      }),
+    });
+
+    if (!res.ok) throw new Error(`Fillers booking API error: ${res.status}`);
+
+    return { bookingRequestId };
   },
 };
 
-const productionAdapter: BookingApiAdapter = {
-  async submitPartialLead() { throw new Error("Production integration not implemented."); },
-  async submitBookingRequest() { throw new Error("Production integration not implemented."); },
-};
-
 export function getBookingApi(): BookingApiAdapter {
-  return MODE === "mock" ? mockAdapter : productionAdapter;
+  return adapter;
 }

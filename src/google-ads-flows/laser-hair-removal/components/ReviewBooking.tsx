@@ -29,8 +29,8 @@ export default function ReviewBooking({
 }: ReviewBookingProps) {
   const packageLabels: Record<PackageType, string> = {
     single: "Single Session",
+    four: "4 Sessions",
     six: "6 Sessions",
-    twelve: "12 Sessions",
   };
 
   const formatDate = (dateStr: string) => {

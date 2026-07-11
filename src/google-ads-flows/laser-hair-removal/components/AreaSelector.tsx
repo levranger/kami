@@ -4,22 +4,16 @@ import type { TreatmentArea } from "../types/booking";
 import { formatCurrency } from "../lib/pricing";
 
 const treatmentAreas: TreatmentArea[] = [
-  { id: "upper-lip", name: "Upper Lip", category: "Face", price: 49 },
-  { id: "chin", name: "Chin", category: "Face", price: 59 },
-  { id: "full-face", name: "Full Face", category: "Face", price: 149 },
-  { id: "underarms", name: "Underarms", category: "Upper Body", price: 99 },
-  { id: "half-arms", name: "Half Arms", category: "Upper Body", price: 109 },
-  { id: "full-arms", name: "Full Arms", category: "Upper Body", price: 149 },
-  { id: "chest", name: "Chest", category: "Upper Body", price: 199 },
-  { id: "back", name: "Back", category: "Upper Body", price: 249 },
-  { id: "bikini", name: "Bikini Line", category: "Lower Body", price: 149 },
-  { id: "brazilian", name: "Brazilian", category: "Lower Body", price: 199 },
-  { id: "lower-legs", name: "Lower Legs", category: "Lower Body", price: 199 },
-  { id: "full-legs", name: "Full Legs", category: "Lower Body", price: 299 },
-  { id: "full-body", name: "Full Body", category: "Bundles", price: 599 },
+  { id: "underarms",  name: "Underarms",      category: "Body", price: 60  },
+  { id: "brazilian",  name: "Full Brazilian",  category: "Body", price: 109 },
+  { id: "half-legs",  name: "Half Legs",       category: "Body", price: 120 },
+  { id: "full-legs",  name: "Full Legs",       category: "Body", price: 210 },
+  { id: "full-arms",  name: "Full Arms",       category: "Body", price: 130 },
+  { id: "full-face",  name: "Full Face",       category: "Body", price: 70  },
+  { id: "full-body",  name: "Full Body",       category: "Body", price: 600 },
 ];
 
-const categories = ["Face", "Upper Body", "Lower Body", "Bundles"];
+const categories = ["Body"];
 
 interface AreaSelectorProps {
   selectedAreas: TreatmentArea[];
@@ -35,23 +29,17 @@ export default function AreaSelector({ selectedAreas, onAreasChange, errors }: A
 
   const handleToggle = (area: TreatmentArea) => {
     setShowError(false);
-
     if (area.id === "full-body") {
-      // Full body: deselect all others, toggle full-body
-      if (isSelected(area)) {
-        onAreasChange([]);
-      } else {
-        onAreasChange([area]);
-      }
+      // Full body is exclusive — deselect everything else
+      onAreasChange(isSelected(area) ? [] : [area]);
     } else {
-      // Individual area: deselect full-body if selected
+      // Individual area — deselect full-body if active, then toggle this area
       const withoutFullBody = selectedAreas.filter((a) => a.id !== "full-body");
-
-      if (isSelected(area)) {
-        onAreasChange(withoutFullBody.filter((a) => a.id !== area.id));
-      } else {
-        onAreasChange([...withoutFullBody, area]);
-      }
+      onAreasChange(
+        isSelected(area)
+          ? withoutFullBody.filter((a) => a.id !== area.id)
+          : [...withoutFullBody, area]
+      );
     }
   };
 
@@ -83,9 +71,6 @@ export default function AreaSelector({ selectedAreas, onAreasChange, errors }: A
           const categoryAreas = treatmentAreas.filter((a) => a.category === category);
           return (
             <div key={category}>
-              <h3 className="font-inter text-xs font-semibold tracking-wider uppercase text-warm-gray mb-3">
-                {category}
-              </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {categoryAreas.map((area) => {
                   const selected = isSelected(area);

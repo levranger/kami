@@ -6,30 +6,9 @@ const slides: BeforeAfterSlide[] = [
   {
     id: "underarms-1",
     area: "Underarms",
-    beforeImage: "/images/laser/underarms-before.webp",
-    afterImage: "/images/laser/underarms-after.webp",
+    beforeImage: "https://res.cloudinary.com/dnuxtgg11/image/upload/v1783737588/lhr1_zfimfu.jpg",
+    afterImage: "https://res.cloudinary.com/dnuxtgg11/image/upload/v1783737590/lhr2_tvowku.jpg",
     testimonial: "Noticeably smoother after completing my treatment plan.",
-  },
-  {
-    id: "bikini-1",
-    area: "Bikini Line",
-    beforeImage: "/images/laser/bikini-before.webp",
-    afterImage: "/images/laser/bikini-after.webp",
-    testimonial: "So much more confident — wish I'd done this sooner.",
-  },
-  {
-    id: "legs-1",
-    area: "Lower Legs",
-    beforeImage: "/images/laser/legs-before.webp",
-    afterImage: "/images/laser/legs-after.webp",
-    testimonial: "No more razor bumps or ingrown hairs. Life-changing.",
-  },
-  {
-    id: "face-1",
-    area: "Upper Lip",
-    beforeImage: "/images/laser/face-before.webp",
-    afterImage: "/images/laser/face-after.webp",
-    testimonial: "Quick sessions, amazing results. Highly recommend.",
   },
 ];
 
@@ -81,27 +60,25 @@ export default function BeforeAfterSlider() {
         aria-valuemax={100}
         aria-valuenow={Math.round(sliderPosition)}
       >
-        {/* After (full width background) */}
+        {/* After — full size, sits behind */}
         <img
           src={slide.afterImage}
           alt={`After laser hair removal treatment on ${slide.area}`}
           className="absolute inset-0 w-full h-full object-cover"
           loading="lazy"
+          draggable={false}
         />
 
-        {/* Before (clipped) */}
-        <div
-          className="ba-slider__before"
-          style={{ width: `${sliderPosition}%` }}
-        >
-          <img
-            src={slide.beforeImage}
-            alt={`Before laser hair removal treatment on ${slide.area}`}
-            className="w-full h-full object-cover"
-            style={{ width: sliderRef.current?.offsetWidth || "100%" }}
-            loading="lazy"
-          />
-        </div>
+        {/* Before — same full size, clipped from the right by clip-path.
+            Both images are identical dimensions; only the reveal changes. */}
+        <img
+          src={slide.beforeImage}
+          alt={`Before laser hair removal treatment on ${slide.area}`}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+          loading="lazy"
+          draggable={false}
+        />
 
         {/* Handle */}
         <div
@@ -127,13 +104,15 @@ export default function BeforeAfterSlider() {
 
       {/* Controls + Testimonial */}
       <div className="mt-4 flex items-center justify-between">
-        <button
-          onClick={prevSlide}
-          className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-gold hover:border-gold transition-colors"
-          aria-label="Previous before and after example"
-        >
-          <ChevronLeft className="h-4 w-4" />
-        </button>
+        {slides.length > 1 && (
+          <button
+            onClick={prevSlide}
+            className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-gold hover:border-gold transition-colors"
+            aria-label="Previous before and after example"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+        )}
 
         <div className="text-center flex-1 px-4">
           <p className="font-inter text-sm text-white/80 italic">
@@ -142,28 +121,32 @@ export default function BeforeAfterSlider() {
           <p className="font-inter text-xs text-gold mt-1">{slide.area}</p>
         </div>
 
-        <button
-          onClick={nextSlide}
-          className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-gold hover:border-gold transition-colors"
-          aria-label="Next before and after example"
-        >
-          <ChevronRight className="h-4 w-4" />
-        </button>
+        {slides.length > 1 && (
+          <button
+            onClick={nextSlide}
+            className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-gold hover:border-gold transition-colors"
+            aria-label="Next before and after example"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        )}
       </div>
 
       {/* Dots */}
-      <div className="flex justify-center gap-2 mt-3" aria-hidden="true">
-        {slides.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrentSlide(idx)}
-            className={`w-2 h-2 rounded-full transition-colors ${
-              idx === currentSlide ? "bg-gold" : "bg-white/30"
-            }`}
-            aria-label={`Go to slide ${idx + 1}`}
-          />
-        ))}
-      </div>
+      {slides.length > 1 && (
+        <div className="flex justify-center gap-2 mt-3" aria-hidden="true">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentSlide(idx)}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                idx === currentSlide ? "bg-gold" : "bg-white/30"
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Disclaimer */}
       <p className="font-inter text-[10px] text-white/40 text-center mt-3">

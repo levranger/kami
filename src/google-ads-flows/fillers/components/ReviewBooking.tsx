@@ -115,10 +115,7 @@ export function ReviewBooking({ state, onBack, onEditAreas, onEditGoal, onEditEs
           <p className="text-sm text-slate-700">{state.marketingConsent ? "Opted in" : "Not opted in"}</p>
         </div>
 
-        <div className="rounded-lg bg-rose-50 border border-rose-200 p-3">
-          <p className="text-xs font-medium uppercase text-rose-600">Payment</p>
-          <p className="text-sm text-rose-800">No payment is collected through this demo. We'll send deposit instructions after reviewing and confirming your appointment request.</p>
-        </div>
+
       </div>
 
       <div className="flex gap-3">

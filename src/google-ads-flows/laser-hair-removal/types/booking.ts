@@ -1,6 +1,6 @@
 export type BookingStep = 1 | 2 | 3 | 4 | 5;
 
-export type PackageType = "single" | "six" | "twelve";
+export type PackageType = "single" | "four" | "six";
 
 export interface TreatmentArea {
   id: string;
