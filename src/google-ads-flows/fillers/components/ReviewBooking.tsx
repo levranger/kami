@@ -4,6 +4,7 @@ import { fillerTreatmentAreas } from "../lib/config";
 import { formatSyringeRange, formatCurrencyRange } from "../lib/estimates";
 import { formatPhoneUS } from "../lib/phone";
 import { getBookingApi } from "../lib/bookingApi";
+import { fillersAnalytics } from "../lib/analytics";
 import { mockAvailabilityProvider } from "../lib/availability";
 
 interface ReviewBookingProps {
@@ -43,9 +44,15 @@ export function ReviewBooking({ state, onBack, onEditAreas, onEditGoal, onEditEs
         attributionToken: state.attributionToken,
         estimateSummary: state.estimateSummary,
       });
+      fillersAnalytics.trackBookingCompleted({
+        appointmentType: state.appointmentType,
+        depositAmount: state.estimateSummary?.depositAmount,
+      });
       onComplete(result.bookingRequestId);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "We couldn't submit your request. Please try again.");
+      const message = err instanceof Error ? err.message : "We couldn't submit your request. Please try again.";
+      setError(message);
+      fillersAnalytics.trackBookingError(message);
     } finally { setSubmitting(false); }
   }
 

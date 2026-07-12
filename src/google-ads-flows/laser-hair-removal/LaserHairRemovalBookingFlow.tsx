@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef } from "react";
 import { useBookingState } from "./hooks/useBookingState";
 import { useAttributionTracking } from "./hooks/useAttributionTracking";
-import { analytics, buildAttributionProps } from "./lib/analytics";
+import { laserAnalytics } from "./lib/analytics";
 import { validateAreas, validatePackage, validateContact, validateDateTime, validateReview } from "./lib/validation";
 import { savePartialLead, submitBookingRequest } from "./lib/bookingApi";
 import { clearBookingState } from "./lib/storage";
@@ -35,7 +35,7 @@ export default function LaserHairRemovalBookingFlow() {
 
   const handleStartBooking = useCallback(() => {
     setShowFunnel(true);
-    analytics.track("laser_booking_flow_started", buildAttributionProps(state.attribution));
+    laserAnalytics.trackFlowStarted(state.attribution);
     setTimeout(() => {
       funnelRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
@@ -52,31 +52,26 @@ export default function LaserHairRemovalBookingFlow() {
       case 1:
         stepErrors = validateAreas(state.selectedAreas);
         if (stepErrors.length === 0) {
-          analytics.track("laser_area_selected", {
-            step: 1,
-            areaIds: state.selectedAreas.map((a) => a.id),
-            numberOfAreas: state.selectedAreas.length,
-          });
+          laserAnalytics.trackAreaSelected(state.selectedAreas.map((a) => a.id));
         }
         break;
       case 2:
         stepErrors = validatePackage(state.selectedPackage);
         if (stepErrors.length === 0) {
-          analytics.track("laser_package_selected", {
-            step: 2,
-            packageType: state.selectedPackage!,
-            packageTotal: state.pricingSummary.packageTotal,
-          });
+          laserAnalytics.trackPackageSelected(
+            state.selectedPackage!,
+            state.pricingSummary.sessionCount,
+            state.pricingSummary.packageTotal
+          );
         }
         break;
       case 3:
         stepErrors = validateContact(state.contactInfo);
         if (stepErrors.length === 0) {
-          analytics.track("laser_contact_completed", {
-            step: 3,
-            isNewPatient: state.contactInfo.isNewPatient,
-            screeningReviewRequired: state.screeningFlags.sensitiveSkin || state.screeningFlags.recentlyTanned,
-          });
+          laserAnalytics.trackContactInfoEntered(
+            state.contactInfo.isNewPatient,
+            state.screeningFlags.sensitiveSkin || state.screeningFlags.recentlyTanned
+          );
 
           // Save partial lead
           setIsLeadSaving(true);
@@ -102,11 +97,7 @@ export default function LaserHairRemovalBookingFlow() {
       case 4:
         stepErrors = validateDateTime(state.selectedDate, state.selectedTime);
         if (stepErrors.length === 0) {
-          analytics.track("laser_slot_selected", {
-            step: 4,
-            dateSelected: state.selectedDate!,
-            timeSelected: state.selectedTime!,
-          });
+          laserAnalytics.trackDateTimeSelected(state.selectedDate!, state.selectedTime!);
         }
         break;
       case 5:
@@ -138,14 +129,6 @@ export default function LaserHairRemovalBookingFlow() {
     setIsSubmitting(true);
     setSubmitError(null);
 
-    analytics.track("laser_booking_request_submitted", {
-      step: 5,
-      packageType: state.selectedPackage!,
-      packageTotal: state.pricingSummary.packageTotal,
-      depositAmount: state.pricingSummary.depositAmount,
-      ...buildAttributionProps(state.attribution),
-    });
-
     try {
       const result = await submitBookingRequest({
         selectedAreas: state.selectedAreas,
@@ -165,16 +148,13 @@ export default function LaserHairRemovalBookingFlow() {
       state.setBookingRequestId(result.bookingRequestId);
       clearBookingState();
 
-      analytics.track("laser_booking_request_completed", {
+      laserAnalytics.trackBookingCompleted({
         packageType: state.selectedPackage!,
         packageTotal: state.pricingSummary.packageTotal,
       });
     } catch {
       setSubmitError("We couldn't submit your request. Your selections are still saved. Please try again.");
-      analytics.track("laser_booking_error", {
-        step: 5,
-        errorMessage: "submission_failed",
-      });
+      laserAnalytics.trackBookingError("submission_failed");
     } finally {
       setIsSubmitting(false);
     }

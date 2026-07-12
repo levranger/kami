@@ -1,98 +1,60 @@
-import type { PackageType, AttributionData } from "../types/booking";
+import { track } from "@/lib/track";
+import type { AttributionData, PackageType } from "../types/booking";
 
-/**
- * Analytics event names for the laser booking funnel.
- */
-export type AnalyticsEvent =
-  | "laser_booking_flow_started"
-  | "laser_area_selected"
-  | "laser_package_selected"
-  | "laser_contact_completed"
-  | "laser_slot_selected"
-  | "laser_review_viewed"
-  | "laser_booking_request_submitted"
-  | "laser_booking_request_completed"
-  | "laser_booking_error";
+export const laserAnalytics = {
+  trackFlowStarted: (attribution: AttributionData) => {
+    track("laser_booking_flow_started", {
+      gclid: attribution.gclid,
+      gbraid: attribution.gbraid,
+      wbraid: attribution.wbraid,
+    });
+  },
 
-/**
- * Allowed event properties — never includes PII.
- */
-export interface AnalyticsEventProperties {
-  step?: number;
-  areaIds?: string[];
-  numberOfAreas?: number;
-  packageType?: PackageType;
-  packageTotal?: number;
-  depositAmount?: number;
-  dateSelected?: string;
-  timeSelected?: string;
-  isNewPatient?: boolean;
-  screeningReviewRequired?: boolean;
-  gclid?: string;
-  gbraid?: string;
-  wbraid?: string;
-  errorMessage?: string;
-}
+  trackAreaSelected: (areaIds: string[]) => {
+    track("laser_area_selected", { areaIds, numberOfAreas: areaIds.length });
+  },
 
-/**
- * Analytics interface — can be swapped with real GA4 implementation.
- */
-interface AnalyticsAdapter {
-  track(event: AnalyticsEvent, properties?: AnalyticsEventProperties): void;
-}
+  trackPackageSelected: (packageType: PackageType, sessionsCount: number, totalPrice: number) => {
+    track("laser_package_selected", { packageType, sessions: sessionsCount, totalPrice });
+  },
 
-/**
- * No-op analytics implementation for environments without GA.
- */
-class NoOpAnalytics implements AnalyticsAdapter {
-  track(_event: AnalyticsEvent, _properties?: AnalyticsEventProperties): void {
-    // No-op
-  }
-}
+  trackStepCompleted: (step: number, timeSeconds: number, data?: Record<string, string | number | boolean>) => {
+    track("laser_step_completed", { step, time_on_step_seconds: timeSeconds, ...data });
+  },
 
-/**
- * Development analytics that logs to console.
- */
-class DevAnalytics implements AnalyticsAdapter {
-  track(event: AnalyticsEvent, properties?: AnalyticsEventProperties): void {
-    if (process.env.NODE_ENV === "development") {
-      console.log(`[Analytics] ${event}`, properties || {});
-    }
-  }
-}
+  trackContactInfoEntered: (isNewPatient: boolean, screeningReviewRequired: boolean) => {
+    track("laser_contact_info_entered", { isNewPatient, screeningReviewRequired });
+  },
 
-/**
- * GA4 analytics adapter (placeholder for production).
- */
-class GA4Analytics implements AnalyticsAdapter {
-  track(event: AnalyticsEvent, properties?: AnalyticsEventProperties): void {
-    if (typeof window !== "undefined" && "gtag" in window) {
-      (window as unknown as { gtag: (...args: unknown[]) => void }).gtag("event", event, properties);
-    }
-  }
-}
+  trackDateTimeSelected: (date: string, time: string) => {
+    track("laser_datetime_selected", { appointment_date: date, appointment_time: time });
+  },
 
-/**
- * Create the appropriate analytics adapter based on environment.
- */
-function createAnalytics(): AnalyticsAdapter {
-  if (typeof window === "undefined") return new NoOpAnalytics();
-  if (process.env.NODE_ENV === "development") return new DevAnalytics();
-  if ("gtag" in window) return new GA4Analytics();
-  return new NoOpAnalytics();
-}
+  trackBookingCompleted: (data: { packageType: PackageType; packageTotal: number }) => {
+    track("laser_booking_completed", { ...data });
+  },
 
-export const analytics = createAnalytics();
+  trackBookingError: (errorMessage: string) => {
+    track("laser_booking_error", { error_message: errorMessage });
+  },
 
-/**
- * Helper to build attribution properties for events.
- */
-export function buildAttributionProps(
-  attribution: AttributionData
-): Pick<AnalyticsEventProperties, "gclid" | "gbraid" | "wbraid"> {
-  return {
-    gclid: attribution.gclid,
-    gbraid: attribution.gbraid,
-    wbraid: attribution.wbraid,
-  };
-}
+  trackPageExit: (step: number, timeOnPageSeconds: number) => {
+    track("laser_page_exit", { step, time_on_page_seconds: timeOnPageSeconds });
+  },
+
+  trackScrollDepth: (depth: number) => {
+    track("laser_scroll_depth", { depth_percent: depth });
+  },
+
+  trackFormFieldFocus: (fieldName: string) => {
+    track("laser_form_field_focus", { field_name: fieldName });
+  },
+
+  trackFormFieldChange: (fieldName: string) => {
+    track("laser_form_field_change", { field_name: fieldName });
+  },
+
+  trackFormError: (fieldName: string, error: string) => {
+    track("laser_form_error", { field_name: fieldName, error_message: error });
+  },
+};

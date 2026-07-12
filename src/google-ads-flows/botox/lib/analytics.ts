@@ -1,66 +1,60 @@
-type BotoxEventName =
-  | "botox_booking_flow_started"
-  | "botox_concern_selected"
-  | "botox_goal_selected"
-  | "botox_estimate_viewed"
-  | "botox_contact_completed"
-  | "botox_screening_completed"
-  | "botox_slot_selected"
-  | "botox_review_viewed"
-  | "botox_booking_request_submitted"
-  | "botox_booking_request_completed"
-  | "botox_booking_error";
+import { track } from "@/lib/track";
+import type { AttributionData } from "../types/booking";
 
-interface EventProperties {
-  step?: number;
-  concernIds?: string[];
-  concernCount?: number;
-  treatmentGoal?: string;
-  productPreference?: string;
-  estimatedUnitBucket?: string;
-  estimatedPriceBucket?: string;
-  appointmentType?: string;
-  depositAmount?: number;
-  providerReviewRequired?: boolean;
-  isNewPatient?: boolean;
-  gclid?: string;
-  gbraid?: string;
-  wbraid?: string;
-  errorMessage?: string;
-}
+export const botoxAnalytics = {
+  trackFlowStarted: (attribution: AttributionData) => {
+    track("botox_booking_flow_started", {
+      gclid: attribution.gclid,
+      gbraid: attribution.gbraid,
+      wbraid: attribution.wbraid,
+    });
+  },
 
-function isGAAvailable(): boolean {
-  return typeof window !== "undefined" && typeof (window as unknown as Record<string, unknown>).gtag === "function";
-}
+  trackConcernSelected: (concernIds: string[]) => {
+    track("botox_concern_selected", { concernIds, concernCount: concernIds.length });
+  },
 
-export function trackEvent(eventName: BotoxEventName, properties?: EventProperties): void {
-  if (isGAAvailable()) {
-    (window as unknown as { gtag: (...args: unknown[]) => void }).gtag("event", eventName, properties);
-  } else if (process.env.NODE_ENV === "development") {
-    console.log(`[Analytics] ${eventName}`, properties);
-  }
-}
+  trackGoalSelected: (goal: string) => {
+    track("botox_goal_selected", { goal });
+  },
 
-export function trackFlowStarted(attribution: { gclid?: string; gbraid?: string; wbraid?: string }): void {
-  trackEvent("botox_booking_flow_started", { ...attribution });
-}
+  trackStepCompleted: (step: number, timeSeconds: number, data?: Record<string, string | number | boolean>) => {
+    track("botox_step_completed", { step, time_on_step_seconds: timeSeconds, ...data });
+  },
 
-export function trackConcernSelected(concernIds: string[]): void {
-  trackEvent("botox_concern_selected", { concernIds, concernCount: concernIds.length });
-}
+  trackContactInfoEntered: () => {
+    track("botox_contact_info_entered");
+  },
 
-export function trackGoalSelected(goal: string): void {
-  trackEvent("botox_goal_selected", { treatmentGoal: goal });
-}
+  trackDateTimeSelected: (date: string, time: string) => {
+    track("botox_datetime_selected", { appointment_date: date, appointment_time: time });
+  },
 
-export function trackEstimateViewed(priceBucket: string, unitBucket: string): void {
-  trackEvent("botox_estimate_viewed", { estimatedPriceBucket: priceBucket, estimatedUnitBucket: unitBucket });
-}
+  trackBookingCompleted: (data: { appointmentType: string; depositAmount: number }) => {
+    track("botox_booking_completed", { ...data });
+  },
 
-export function trackBookingCompleted(appointmentType: string, depositAmount: number): void {
-  trackEvent("botox_booking_request_completed", { appointmentType, depositAmount });
-}
+  trackBookingError: (errorMessage: string) => {
+    track("botox_booking_error", { error_message: errorMessage });
+  },
 
-export function trackBookingError(errorMessage: string): void {
-  trackEvent("botox_booking_error", { errorMessage });
-}
+  trackPageExit: (step: number, timeOnPageSeconds: number) => {
+    track("botox_page_exit", { step, time_on_page_seconds: timeOnPageSeconds });
+  },
+
+  trackScrollDepth: (depth: number) => {
+    track("botox_scroll_depth", { depth_percent: depth });
+  },
+
+  trackFormFieldFocus: (fieldName: string) => {
+    track("botox_form_field_focus", { field_name: fieldName });
+  },
+
+  trackFormFieldChange: (fieldName: string) => {
+    track("botox_form_field_change", { field_name: fieldName });
+  },
+
+  trackFormError: (fieldName: string, error: string) => {
+    track("botox_form_error", { field_name: fieldName, error_message: error });
+  },
+};

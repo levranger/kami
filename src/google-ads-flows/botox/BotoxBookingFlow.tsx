@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useAttributionTracking } from "./hooks/useAttributionTracking";
 import { useBotoxBookingState } from "./hooks/useBotoxBookingState";
 import { validateStep } from "./lib/validation";
-import { trackFlowStarted, trackConcernSelected, trackGoalSelected } from "./lib/analytics";
+import { botoxAnalytics } from "./lib/analytics";
 import { getBookingApi } from "./lib/bookingApi";
 import { clearState } from "./lib/storage";
 import { LandingHero } from "./components/LandingHero";
@@ -32,7 +32,7 @@ export function BotoxBookingFlow() {
 
   function startFunnel() {
     setShowFunnel(true);
-    trackFlowStarted(attribution);
+    botoxAnalytics.trackFlowStarted(attribution);
     setTimeout(() => {
       funnelRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
@@ -53,6 +53,9 @@ export function BotoxBookingFlow() {
 
   function handleNext() {
     if (handleStepValidation(booking.currentStep)) {
+      if (booking.currentStep === 5 && booking.selectedDate && booking.selectedTime) {
+        botoxAnalytics.trackDateTimeSelected(booking.selectedDate, booking.selectedTime);
+      }
       setErrors([]);
       booking.nextStep();
     }
@@ -66,6 +69,7 @@ export function BotoxBookingFlow() {
   async function handleContactContinue() {
     if (!handleStepValidation(4)) return;
     setErrors([]);
+    botoxAnalytics.trackContactInfoEntered();
 
     // Partial lead capture
     try {
@@ -129,7 +133,7 @@ export function BotoxBookingFlow() {
               selectedConcerns={booking.selectedConcerns}
               onSelect={(c) => {
                 booking.setSelectedConcerns(c);
-                trackConcernSelected(c);
+                botoxAnalytics.trackConcernSelected(c);
               }}
               onContinue={handleNext}
               error={errors[0]}
@@ -142,7 +146,7 @@ export function BotoxBookingFlow() {
               selectedGoal={booking.selectedGoal}
               onSelect={(g) => {
                 booking.setSelectedGoal(g);
-                trackGoalSelected(g);
+                botoxAnalytics.trackGoalSelected(g);
               }}
               onContinue={handleNext}
               onBack={booking.previousStep}

@@ -3,6 +3,7 @@ import { useAttributionToken } from "./hooks/useAttributionToken";
 import { useFillerBookingState } from "./hooks/useFillerBookingState";
 import { validateStep } from "./lib/validation";
 import { getBookingApi } from "./lib/bookingApi";
+import { fillersAnalytics } from "./lib/analytics";
 import { formatCurrencyRange } from "./lib/estimates";
 import { LandingHero } from "./components/LandingHero";
 import { ProgressIndicator } from "./components/ProgressIndicator";
@@ -47,7 +48,13 @@ export function FillerBookingFlow() {
   }
 
   function handleNext() {
-    if (validate(booking.currentStep)) { setErrors([]); booking.nextStep(); }
+    if (validate(booking.currentStep)) {
+      if (booking.currentStep === 5 && booking.selectedDate && booking.selectedTime) {
+        fillersAnalytics.trackDateTimeSelected(booking.selectedDate, booking.selectedTime);
+      }
+      setErrors([]);
+      booking.nextStep();
+    }
   }
 
   function goTo(step: BookingStep) { setErrors([]); booking.goToStep(step); }
@@ -55,6 +62,7 @@ export function FillerBookingFlow() {
   async function handleContactContinue() {
     if (!validate(4)) return;
     setErrors([]);
+    fillersAnalytics.trackContactInfoEntered();
     try {
       const api = getBookingApi();
       await api.submitPartialLead({ contactInfo: booking.contactInfo, areas: booking.selectedAreas, goal: booking.selectedGoal, attributionToken: booking.attributionToken });
@@ -90,11 +98,28 @@ export function FillerBookingFlow() {
           <ProgressIndicator currentStep={booking.currentStep} />
 
           {booking.currentStep === 1 && (
-            <TreatmentAreaSelector selectedAreas={booking.selectedAreas} onSelect={booking.setSelectedAreas} onContinue={handleNext} error={errors[0]} />
+            <TreatmentAreaSelector
+              selectedAreas={booking.selectedAreas}
+              onSelect={(areas) => {
+                booking.setSelectedAreas(areas);
+                fillersAnalytics.trackAreaSelected(areas);
+              }}
+              onContinue={handleNext}
+              error={errors[0]}
+            />
           )}
 
           {booking.currentStep === 2 && (
-            <TreatmentGoalSelector selectedGoal={booking.selectedGoal} onSelect={booking.setSelectedGoal} onContinue={handleNext} onBack={booking.previousStep} error={errors[0]} />
+            <TreatmentGoalSelector
+              selectedGoal={booking.selectedGoal}
+              onSelect={(goal) => {
+                booking.setSelectedGoal(goal);
+                fillersAnalytics.trackGoalSelected(goal);
+              }}
+              onContinue={handleNext}
+              onBack={booking.previousStep}
+              error={errors[0]}
+            />
           )}
 
           {booking.currentStep === 3 && booking.estimateSummary && (

@@ -3,7 +3,7 @@ import type { BookingState } from "../types/booking";
 import { concerns, formatEstimateRange, getProductLabel } from "../lib/estimates";
 import { formatPhoneUS } from "../lib/phone";
 import { getBookingApi } from "../lib/bookingApi";
-import { trackBookingCompleted, trackBookingError } from "../lib/analytics";
+import { botoxAnalytics } from "../lib/analytics";
 
 interface ReviewBookingProps {
   state: BookingState;
@@ -68,12 +68,15 @@ export function ReviewBooking({
         estimateSummary: state.estimateSummary,
       });
 
-      trackBookingCompleted(state.appointmentType, state.estimateSummary?.depositAmount ?? 0);
+      botoxAnalytics.trackBookingCompleted({
+        appointmentType: state.appointmentType,
+        depositAmount: state.estimateSummary?.depositAmount ?? 0,
+      });
       onComplete(result.bookingRequestId);
     } catch (err) {
       const message = err instanceof Error ? err.message : "We couldn't submit your request. Your selections are still saved.";
       setError(message);
-      trackBookingError(message);
+      botoxAnalytics.trackBookingError(message);
     } finally {
       setSubmitting(false);
     }
