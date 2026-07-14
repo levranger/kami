@@ -1,7 +1,7 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { useBookingState } from "./hooks/useBookingState";
 import { useAttributionTracking } from "./hooks/useAttributionTracking";
-import { laserAnalytics } from "./lib/analytics";
+import { laserAnalytics, STEP_VIEW_NAMES } from "./lib/analytics";
 import { validateAreas, validatePackage, validateContact, validateDateTime, validateReview } from "./lib/validation";
 import { savePartialLead, submitBookingRequest } from "./lib/bookingApi";
 import { clearBookingState } from "./lib/storage";
@@ -29,9 +29,37 @@ export default function LaserHairRemovalBookingFlow() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isLeadSaving, setIsLeadSaving] = useState(false);
   const funnelRef = useRef<HTMLDivElement>(null);
+  const lastViewedStepRef = useRef<string | null>(null);
+  const hasFiredLandingViewRef = useRef(false);
 
   // Attribution tracking
   useAttributionTracking(state.attribution, state.setAttribution);
+
+  // Fire laser_landing_view exactly once on mount — before the user can
+  // click the CTA. Reads gclid/gbraid/wbraid straight from the URL instead
+  // of state.attribution, since that's set asynchronously by the effect
+  // above and wouldn't be populated yet on this same first render.
+  useEffect(() => {
+    if (hasFiredLandingViewRef.current) return;
+    hasFiredLandingViewRef.current = true;
+    const params = new URLSearchParams(window.location.search);
+    laserAnalytics.trackLandingView({
+      gclid: params.get("gclid") || undefined,
+      gbraid: params.get("gbraid") || undefined,
+      wbraid: params.get("wbraid") || undefined,
+    });
+  }, []);
+
+  // Fire laser_step_viewed once per distinct step (dedupes re-renders and
+  // React 18 StrictMode's dev-only double effect invocation).
+  useEffect(() => {
+    if (!showFunnel) return;
+    const stepNumber = state.bookingRequestId ? 6 : state.currentStep;
+    const stepName = STEP_VIEW_NAMES[stepNumber];
+    if (lastViewedStepRef.current === stepName) return;
+    lastViewedStepRef.current = stepName;
+    laserAnalytics.trackStepViewed(stepName, stepNumber);
+  }, [showFunnel, state.currentStep, state.bookingRequestId]);
 
   const handleStartBooking = useCallback(() => {
     setShowFunnel(true);
@@ -150,7 +178,10 @@ export default function LaserHairRemovalBookingFlow() {
 
       laserAnalytics.trackBookingCompleted({
         packageType: state.selectedPackage!,
+        sessions: state.pricingSummary.sessionCount,
         packageTotal: state.pricingSummary.packageTotal,
+        areaIds: state.selectedAreas.map((a) => a.id),
+        isNewPatient: state.contactInfo.isNewPatient,
       });
     } catch {
       setSubmitError("We couldn't submit your request. Your selections are still saved. Please try again.");
