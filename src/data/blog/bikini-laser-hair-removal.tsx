@@ -18,7 +18,7 @@ export const bikiniLaserBody = (
     <h2>What Bikini Laser Hair Removal Covers</h2>
 
     <p>
-      A standard bikini laser treatment targets the hair that would be visible outside a swimsuit, including the front of the bikini line and the area along the upper inner thighs. It does not include the labial area, the perianal region, or the full intimate zone, which fall under what is typically called a full Brazilian.
+      A standard <Link href="/services/lasers/bikini-hair-removal" className="text-gold hover:text-gold-dark transition-colors">bikini hair removal</Link> treatment targets the hair that would be visible outside a swimsuit, including the front of the bikini line and the area along the upper inner thighs. It does not include the labial area, the perianal region, or the full intimate zone, which fall under what is typically called a full Brazilian.
     </p>
 
     <p>
@@ -66,7 +66,7 @@ export const bikiniLaserBody = (
     </p>
 
     <p>
-      Patients with darker hair against lighter to medium skin tones tend to see the fastest, most consistent results. Patients with darker skin tones can be treated safely and effectively with the appropriate Nd:YAG wavelength laser, which a quality clinic will use as a standard option. Patients with very fine, blonde, or grey hair will see less predictable results, and an honest consultation should clarify this before any package is purchased.
+      Patients with darker hair against lighter to medium skin tones tend to see the fastest, most consistent results. Patients with darker skin tones can be treated safely and effectively with <Link href="/services/lasers/laser-hair-removal-dark-skin" className="text-gold hover:text-gold-dark transition-colors">laser hair removal for dark skin</Link>, using the appropriate Nd:YAG wavelength laser, which a quality clinic will use as a standard option. Patients with very fine, blonde, or grey hair will see less predictable results, and an honest consultation should clarify this before any package is purchased.
     </p>
 
     <p>

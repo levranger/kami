@@ -46,7 +46,7 @@ export const splendorXAllSkinTypesBody = (
 
     <h2>What This Means for Aventura Clients</h2>
     <p>
-      Aventura and the broader Miami area have one of the most diverse populations in the country. Skin tones range across the entire Fitzpatrick spectrum, and many clients have previously been told they&apos;re &ldquo;not a good candidate&rdquo; for laser hair removal by clinics using older technology.
+      Aventura and the broader Miami area have one of the most diverse populations in the country. Skin tones range across the entire Fitzpatrick spectrum, and many clients have previously been told they&apos;re &ldquo;not a good candidate&rdquo; for <Link href="/services/lasers/laser-hair-removal-dark-skin" className="text-gold hover:text-gold-dark transition-colors">laser hair removal for dark skin</Link> by clinics using older technology.
     </p>
     <p>
       At Kami Aesthetics, we treat every skin type. The Splendor X makes that possible safely and effectively. During your consultation, we assess your Fitzpatrick type, hair color, and treatment area, then configure the exact wavelength blend and energy settings for your skin.

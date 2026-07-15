@@ -18,7 +18,7 @@ export const underarmLaserBody = (
     <h2>Why the Underarms Respond So Well to Laser</h2>
 
     <p>
-      The underarm area is one of the most laser-responsive zones on the body. The hair tends to be dark, coarse, and densely populated, which is exactly the profile that laser energy targets most effectively. Patients with this hair and skin combination typically see noticeable reduction after the first two or three sessions, and most reach their full result within the standard six-to-eight session course.
+      <Link href="/services/lasers/underarm-hair-removal" className="text-gold hover:text-gold-dark transition-colors">Underarm hair removal</Link> is one of the most laser-responsive treatments on the body. The hair tends to be dark, coarse, and densely populated, which is exactly the profile that laser energy targets most effectively. Patients with this hair and skin combination typically see noticeable reduction after the first two or three sessions, and most reach their full result within the standard six-to-eight session course.
     </p>
 
     <p>
@@ -68,7 +68,7 @@ export const underarmLaserBody = (
     <h2>Who Underarm Laser Is Best For</h2>
 
     <p>
-      Underarm laser is well suited for patients with darker hair against light to medium skin tones, who form the majority of the most laser-responsive group. Patients with darker skin tones can be treated safely with the appropriate Nd:YAG wavelength technology, which any quality clinic will offer as a standard option. Patients with very light or grey hair will see less predictable results, since laser targets pigment in the follicle.
+      Underarm laser is well suited for patients with darker hair against light to medium skin tones, who form the majority of the most laser-responsive group. Patients with darker skin tones can be treated safely with <Link href="/services/lasers/laser-hair-removal-dark-skin" className="text-gold hover:text-gold-dark transition-colors">laser hair removal for dark skin</Link>, using the appropriate Nd:YAG wavelength technology, which any quality clinic will offer as a standard option. Patients with very light or grey hair will see less predictable results, since laser targets pigment in the follicle.
     </p>
 
     <p>

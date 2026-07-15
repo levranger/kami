@@ -30,25 +30,25 @@ export const laserHairRemovalForMenBody = (
     <h3>Back and Shoulders</h3>
 
     <p>
-      The back is consistently the most requested treatment area among male patients. It is an area that is genuinely impossible to manage alone with shaving, awkward and painful to wax, and one where the cosmetic benefit of laser treatment is immediately obvious. A full back session using a medical-grade laser typically takes 20 to 30 minutes, and most men see significant reduction within four to six sessions.
+      The back is consistently the most requested treatment area among male patients seeking <Link href="/services/lasers/back-hair-removal" className="text-gold hover:text-gold-dark transition-colors">back hair removal</Link>. It is an area that is genuinely impossible to manage alone with shaving, awkward and painful to wax, and one where the cosmetic benefit of laser treatment is immediately obvious. A full back session using a medical-grade laser typically takes 20 to 30 minutes, and most men see significant reduction within four to six sessions.
     </p>
 
     <h3>Chest and Abdomen</h3>
 
     <p>
-      Chest laser is popular among men who wear athletic gear regularly and find body hair creates friction and irritation, as well as those who simply prefer a cleaner aesthetic. The chest and abdomen are large treatment areas but respond well to laser, and most men find the sensation considerably more manageable than they expected.
+      <Link href="/services/lasers/chest-hair-removal" className="text-gold hover:text-gold-dark transition-colors">Chest hair removal</Link> is popular among men who wear athletic gear regularly and find body hair creates friction and irritation, as well as those who simply prefer a cleaner aesthetic. The chest and abdomen are large treatment areas, and <Link href="/services/lasers/stomach-hair-removal" className="text-gold hover:text-gold-dark transition-colors">stomach hair removal</Link> is often addressed in the same session, but both respond well to laser and most men find the sensation considerably more manageable than they expected.
     </p>
 
     <h3>Beard Line and Neck</h3>
 
     <p>
-      Beard shaping is one of the most practical laser applications for men. Laser can permanently define the beard line, clean up the neck below it, and eliminate the razor burn and ingrown hairs that come with daily shaving in those zones. Rather than shaping your beard line with a razor every day, laser locks that line in permanently, reducing the daily shaving burden to the beard itself.
+      Beard shaping is one of the most practical laser applications for men. Laser can permanently define the beard line, and <Link href="/services/lasers/neck-hair-removal" className="text-gold hover:text-gold-dark transition-colors">neck hair removal</Link> cleans up the area below it, eliminating the razor burn and ingrown hairs that come with daily shaving in those zones. Rather than shaping your beard line with a razor every day, laser locks that line in permanently, reducing the daily shaving burden to the beard itself.
     </p>
 
     <h3>Shoulders, Arms, and Hands</h3>
 
     <p>
-      Some men prefer to reduce rather than eliminate hair on the arms, shoulders, or hands. Modern laser settings allow for significant thinning and reduction in these areas without full removal, which is a more natural-looking outcome for men who want manageable rather than completely smooth arms.
+      Some men prefer <Link href="/services/lasers/arm-hair-removal" className="text-gold hover:text-gold-dark transition-colors">arm hair removal</Link> that reduces rather than eliminates hair on the arms, shoulders, or hands. Modern laser settings allow for significant thinning and reduction in these areas without full removal, which is a more natural-looking outcome for men who want manageable rather than completely smooth arms.
     </p>
 
     <h2>Does It Hurt More for Men?</h2>

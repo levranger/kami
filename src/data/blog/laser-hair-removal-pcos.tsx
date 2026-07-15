@@ -22,7 +22,7 @@ export const laserHairRemovalPCOSBody = (
     </p>
 
     <p>
-      The most affected areas typically include the chin, upper lip, jawline, neck, chest, lower abdomen, and inner thighs. This pattern of growth is hormonally driven, meaning the underlying source of new hair production remains active as long as the hormonal imbalance is present. This single fact shapes everything about how laser hair removal should be approached in PCOS patients.
+      The most affected areas typically include <Link href="/services/lasers/facial-hair-removal" className="text-gold hover:text-gold-dark transition-colors">facial hair removal</Link> zones such as the chin, upper lip, and jawline, as well as the neck, areas addressed by <Link href="/services/lasers/chest-hair-removal" className="text-gold hover:text-gold-dark transition-colors">chest hair removal</Link>, <Link href="/services/lasers/stomach-hair-removal" className="text-gold hover:text-gold-dark transition-colors">stomach hair removal</Link> for the lower abdomen, and inner thighs. This pattern of growth is hormonally driven, meaning the underlying source of new hair production remains active as long as the hormonal imbalance is present. This single fact shapes everything about how laser hair removal should be approached in PCOS patients.
     </p>
 
     <h2>How Laser Hair Removal Works in PCOS Patients</h2>

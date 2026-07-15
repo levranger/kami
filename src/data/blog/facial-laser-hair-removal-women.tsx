@@ -12,7 +12,7 @@ export const facialLaserHairRemovalWomenBody = (
     </p>
 
     <p>
-      Laser hair removal offers a genuine, long-term solution for many of these concerns. This article covers which facial areas respond best to laser treatment, what realistic expectations look like, how many sessions to plan for, and what makes facial laser different from treating the body.
+      Laser hair removal offers a genuine, long-term solution for many of these concerns. This article covers <Link href="/services/lasers/facial-hair-removal" className="text-gold hover:text-gold-dark transition-colors">facial hair removal</Link> for women, including which facial areas respond best to laser treatment, what realistic expectations look like, how many sessions to plan for, and what makes facial laser different from treating the body.
     </p>
 
     <h2>Which Facial Areas Laser Can Treat</h2>
@@ -20,7 +20,7 @@ export const facialLaserHairRemovalWomenBody = (
     <h3>Upper Lip</h3>
 
     <p>
-      The upper lip is one of the most commonly requested facial laser areas. Fine or dark hair above the lip can create a shadow that is visible in photographs and in certain lighting, and the daily maintenance of threading, waxing, or bleaching becomes its own source of frustration. Laser delivers permanent reduction in this area over a complete treatment course, and most patients see results after just two to three sessions.
+      <Link href="/services/lasers/upper-lip-hair-removal" className="text-gold hover:text-gold-dark transition-colors">Upper lip hair removal</Link> is one of the most commonly requested facial laser treatments. Fine or dark hair above the lip can create a shadow that is visible in photographs and in certain lighting, and the daily maintenance of threading, waxing, or bleaching becomes its own source of frustration. Laser delivers permanent reduction in this area over a complete treatment course, and most patients see results after just two to three sessions.
     </p>
 
     <h3>Chin and Jawline</h3>
@@ -38,7 +38,7 @@ export const facialLaserHairRemovalWomenBody = (
     <h3>Neck and Under the Chin</h3>
 
     <p>
-      Hair on the front of the neck, under the chin, and on the lower jaw is common and often accompanied by chronic ingrown hairs from regular shaving or tweezing. Laser eliminates the follicle activity driving the ingrowns and produces a permanently cleaner neckline over the course of treatment.
+      <Link href="/services/lasers/neck-hair-removal" className="text-gold hover:text-gold-dark transition-colors">Neck hair removal</Link> addresses hair on the front of the neck, under the chin, and on the lower jaw, which is common and often accompanied by chronic ingrown hairs from regular shaving or tweezing. Laser eliminates the follicle activity driving the ingrowns and produces a permanently cleaner neckline over the course of treatment.
     </p>
 
     <h2>How Facial Laser Differs from Body Laser</h2>

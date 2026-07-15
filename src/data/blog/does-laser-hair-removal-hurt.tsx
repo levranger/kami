@@ -38,7 +38,7 @@ export const doesLaserHurtBody = (
     <h3>The Treatment Area</h3>
 
     <p>
-      Some areas are simply more sensitive than others. The bikini line, upper lip, and underarms tend to be reported as the more uncomfortable zones because the skin is thinner and the hair follicles are denser. The legs, arms, and back are generally described as much milder by comparison. The face involves smaller treatment windows and shorter overall sessions, which also affects perception of discomfort.
+      Some areas are simply more sensitive than others. The bikini line, <Link href="/services/lasers/upper-lip-hair-removal" className="text-gold hover:text-gold-dark transition-colors">upper lip hair removal</Link>, and <Link href="/services/lasers/underarm-hair-removal" className="text-gold hover:text-gold-dark transition-colors">underarm hair removal</Link> tend to be reported as the more uncomfortable zones because the skin is thinner and the hair follicles are denser. <Link href="/services/lasers/leg-hair-removal" className="text-gold hover:text-gold-dark transition-colors">Leg hair removal</Link> and <Link href="/services/lasers/arm-hair-removal" className="text-gold hover:text-gold-dark transition-colors">arm hair removal</Link> are generally described as much milder by comparison, along with the back. The face involves smaller treatment windows and shorter overall sessions, which also affects perception of discomfort.
     </p>
 
     <h3>Hair Color and Density</h3>

@@ -38,7 +38,7 @@ export const fullBodyLaserHairRemovalBody = (
     <h2>How Many Sessions Each Area Needs</h2>
 
     <p>
-      One of the most important practical realities of full body laser is that different areas respond at different rates. The underarms and bikini line tend to show the fastest results, often responding well within six sessions. The legs and back, with their larger surface areas and varied hair density, typically benefit from the full eight sessions. Hormonally influenced areas may need additional sessions beyond the standard course.
+      One of the most important practical realities of full body laser is that different areas respond at different rates. The underarms and bikini line tend to show the fastest results, often responding well within six sessions. <Link href="/services/lasers/leg-hair-removal" className="text-gold hover:text-gold-dark transition-colors">Leg hair removal</Link> and back treatments, with their larger surface areas and varied hair density, typically benefit from the full eight sessions. Hormonally influenced areas may need additional sessions beyond the standard course.
     </p>
 
     <p>
