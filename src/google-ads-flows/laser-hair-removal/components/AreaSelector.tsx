@@ -19,9 +19,17 @@ interface AreaSelectorProps {
   selectedAreas: TreatmentArea[];
   onAreasChange: (areas: TreatmentArea[]) => void;
   errors: string[];
+  title?: string;
+  description?: string;
 }
 
-export default function AreaSelector({ selectedAreas, onAreasChange, errors }: AreaSelectorProps) {
+export default function AreaSelector({
+  selectedAreas,
+  onAreasChange,
+  errors,
+  title = "Select Treatment Areas",
+  description = "Choose one or more areas for your laser hair removal treatment.",
+}: AreaSelectorProps) {
   const [showError, setShowError] = useState(false);
 
   const isSelected = (area: TreatmentArea) =>
@@ -48,10 +56,10 @@ export default function AreaSelector({ selectedAreas, onAreasChange, errors }: A
   return (
     <div>
       <h2 className="font-playfair text-xl md:text-2xl font-bold text-[#1A1A1A] mb-2">
-        Select Treatment Areas
+        {title}
       </h2>
       <p className="font-inter text-sm text-warm-gray mb-6">
-        Choose one or more areas for your laser hair removal treatment.
+        {description}
       </p>
 
       {/* Error message */}

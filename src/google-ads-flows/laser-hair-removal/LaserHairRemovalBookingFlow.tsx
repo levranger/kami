@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useBookingState } from "./hooks/useBookingState";
 import { useAttributionTracking } from "./hooks/useAttributionTracking";
@@ -6,10 +8,11 @@ import { validateAreas, validatePackage, validateContact, validateDateTime, vali
 import { savePartialLead, submitBookingRequest } from "./lib/bookingApi";
 import { clearBookingState } from "./lib/storage";
 import { formatCurrency } from "./lib/pricing";
-import type { BookingStep, PackageType } from "./types/booking";
+import type { BookingStep, PackageType, EntryMode } from "./types/booking";
 import type { ValidationError } from "./lib/validation";
 
 import LandingHero from "./components/LandingHero";
+import CompactTrustHeader from "./components/CompactTrustHeader";
 import ProgressIndicator from "./components/ProgressIndicator";
 import AreaSelector from "./components/AreaSelector";
 import PackageSelector from "./components/PackageSelector";
@@ -21,9 +24,22 @@ import MobileStickyFooter from "./components/MobileStickyFooter";
 
 import "./styles/booking.css";
 
-export default function LaserHairRemovalBookingFlow() {
+interface LaserHairRemovalBookingFlowProps {
+  // Set at the page level from the `?start=booking` query param, before the
+  // client ever renders — this is what lets Step 1 be the first paint for
+  // paid traffic with no hero flash. Defaults to "landing" for any other
+  // consumer that doesn't pass it explicitly.
+  initialEntryMode?: EntryMode;
+}
+
+export default function LaserHairRemovalBookingFlow({
+  initialEntryMode = "landing",
+}: LaserHairRemovalBookingFlowProps) {
+  // Entry mode is fixed for the lifetime of this mount — it's derived once
+  // from the URL at the page/server level, not re-derived on the client.
+  const [entryMode] = useState<EntryMode>(initialEntryMode);
   const state = useBookingState();
-  const [showFunnel, setShowFunnel] = useState(false);
+  const [showFunnel, setShowFunnel] = useState(entryMode === "booking");
   const [errors, setErrors] = useState<ValidationError[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -31,6 +47,7 @@ export default function LaserHairRemovalBookingFlow() {
   const funnelRef = useRef<HTMLDivElement>(null);
   const lastViewedStepRef = useRef<string | null>(null);
   const hasFiredLandingViewRef = useRef(false);
+  const hasAutoStartedRef = useRef(false);
 
   // Attribution tracking
   useAttributionTracking(state.attribution, state.setAttribution);
@@ -50,6 +67,28 @@ export default function LaserHairRemovalBookingFlow() {
     });
   }, []);
 
+  // For paid traffic entering directly at Step 1 (?start=booking), there's
+  // no "Start Booking" click to fire laser_booking_flow_started from — so
+  // fire it automatically, exactly once, right after the landing view.
+  // Reads attribution straight from the URL for the same reason as the
+  // landing-view effect above: state.attribution is set asynchronously by
+  // useAttributionTracking's effect and isn't populated yet on this same
+  // first render.
+  useEffect(() => {
+    if (entryMode !== "booking") return;
+    if (hasAutoStartedRef.current) return;
+    hasAutoStartedRef.current = true;
+    const params = new URLSearchParams(window.location.search);
+    laserAnalytics.trackFlowStarted(
+      {
+        gclid: params.get("gclid") || undefined,
+        gbraid: params.get("gbraid") || undefined,
+        wbraid: params.get("wbraid") || undefined,
+      },
+      entryMode
+    );
+  }, [entryMode]);
+
   // Fire laser_step_viewed once per distinct step (dedupes re-renders and
   // React 18 StrictMode's dev-only double effect invocation).
   useEffect(() => {
@@ -58,16 +97,16 @@ export default function LaserHairRemovalBookingFlow() {
     const stepName = STEP_VIEW_NAMES[stepNumber];
     if (lastViewedStepRef.current === stepName) return;
     lastViewedStepRef.current = stepName;
-    laserAnalytics.trackStepViewed(stepName, stepNumber);
-  }, [showFunnel, state.currentStep, state.bookingRequestId]);
+    laserAnalytics.trackStepViewed(stepName, stepNumber, stepNumber === 1 ? entryMode : undefined);
+  }, [showFunnel, state.currentStep, state.bookingRequestId, entryMode]);
 
   const handleStartBooking = useCallback(() => {
     setShowFunnel(true);
-    laserAnalytics.trackFlowStarted(state.attribution);
+    laserAnalytics.trackFlowStarted(state.attribution, entryMode);
     setTimeout(() => {
       funnelRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
-  }, [state.attribution]);
+  }, [state.attribution, entryMode]);
 
   const handleNext = useCallback(async () => {
     setErrors([]);
@@ -249,13 +288,18 @@ export default function LaserHairRemovalBookingFlow() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Landing Hero */}
+      {/* Landing Hero — only for normal/direct traffic that hasn't started the funnel yet */}
       {!showFunnel && <LandingHero onStartBooking={handleStartBooking} />}
 
       {/* Funnel */}
       {showFunnel && (
         <div ref={funnelRef} className="pb-24">
           <div className="max-w-2xl mx-auto px-4 py-8">
+            {/* Compact reassurance header — replaces the large hero for paid
+                traffic entering directly at Step 1, so the area selector
+                stays near the top of the viewport. */}
+            {entryMode === "booking" && <CompactTrustHeader />}
+
             {/* Progress */}
             <div className="mb-8">
               <ProgressIndicator currentStep={state.currentStep} />
@@ -281,6 +325,12 @@ export default function LaserHairRemovalBookingFlow() {
                   selectedAreas={state.selectedAreas}
                   onAreasChange={state.setSelectedAreas}
                   errors={errors.filter((e) => e.field === "areas").map((e) => e.message)}
+                  title={entryMode === "booking" ? "How much does laser hair removal cost?" : undefined}
+                  description={
+                    entryMode === "booking"
+                      ? "Select the areas you would like treated to see your package options and pricing."
+                      : undefined
+                  }
                 />
               )}
 

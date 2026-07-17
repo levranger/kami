@@ -1,5 +1,5 @@
 import { track } from "@/lib/track";
-import type { AttributionData, PackageType } from "../types/booking";
+import type { AttributionData, PackageType, EntryMode } from "../types/booking";
 
 // Centralized experiment metadata for the current laser funnel A/B test.
 export const LASER_EXPERIMENT_ID = "laser_step_order_v1";
@@ -14,6 +14,22 @@ function getVariantId(): string {
 
 function experimentParams() {
   return { experiment_id: LASER_EXPERIMENT_ID, variant_id: getVariantId() };
+}
+
+// Separate, independent A/B test: does paid traffic convert better skipping
+// straight to Step 1 (?start=booking) vs. seeing the marketing hero first?
+// Kept distinct from LASER_EXPERIMENT_ID above (that one tests step order
+// *within* the funnel) — this one only tags the entry-point events.
+export const ENTRY_EXPERIMENT_ID = "laser_entry_page_v1";
+export const ENTRY_VARIANT_DIRECT_TO_AREA_SELECTION = "direct_to_area_selection";
+export const ENTRY_VARIANT_HERO_BEFORE_BOOKING = "hero_before_booking";
+
+function entryExperimentParams(entryMode: EntryMode) {
+  return {
+    experiment_id: ENTRY_EXPERIMENT_ID,
+    variant_id:
+      entryMode === "booking" ? ENTRY_VARIANT_DIRECT_TO_AREA_SELECTION : ENTRY_VARIANT_HERO_BEFORE_BOOKING,
+  };
 }
 
 // Names/numbers used for laser_step_viewed, keyed by BookingStep (1-5) plus
@@ -38,12 +54,12 @@ export const laserAnalytics = {
     });
   },
 
-  trackFlowStarted: (attribution: AttributionData) => {
+  trackFlowStarted: (attribution: AttributionData, entryMode: EntryMode) => {
     track("laser_booking_flow_started", {
       gclid: attribution.gclid,
       gbraid: attribution.gbraid,
       wbraid: attribution.wbraid,
-      ...experimentParams(),
+      ...entryExperimentParams(entryMode),
     });
   },
 
@@ -110,11 +126,14 @@ export const laserAnalytics = {
     track("laser_booking_error", { error_message: errorMessage, ...experimentParams() });
   },
 
-  trackStepViewed: (stepName: string, stepNumber: number) => {
+  // `entryMode` is only meaningful (and only passed) for step 1 — that's the
+  // screen affected by the hero-vs-direct entry test. Later steps keep the
+  // step-order experiment tag via experimentParams(), unchanged.
+  trackStepViewed: (stepName: string, stepNumber: number, entryMode?: EntryMode) => {
     track("laser_step_viewed", {
       step_name: stepName,
       step_number: stepNumber,
-      ...experimentParams(),
+      ...(stepNumber === 1 && entryMode ? entryExperimentParams(entryMode) : experimentParams()),
     });
   },
 

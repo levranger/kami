@@ -1,5 +1,10 @@
 export type BookingStep = 1 | 2 | 3 | 4 | 5;
 
+// "landing" = marketing hero shown first, user clicks "Start Booking".
+// "booking" = paid-traffic entry (?start=booking) — opens directly on
+// Step 1, no hero, no click required.
+export type EntryMode = "landing" | "booking";
+
 export type PackageType = "single" | "four" | "six";
 
 export interface TreatmentArea {
