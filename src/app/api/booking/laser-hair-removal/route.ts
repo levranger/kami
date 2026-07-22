@@ -1,36 +1,12 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
+import { saveBooking, markEmailResults } from "./db";
+import type { BookingPayload } from "./types";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const FROM = process.env.BOOKING_FROM_EMAIL ?? "bookings@kamiaesthetics.com";
 const NOTIFY = process.env.BOOKING_NOTIFICATION_EMAIL ?? "shk.lab.fl@gmail.com";
-
-// ── Types ────────────────────────────────────────────────────────────────────
-
-interface BookingPayload {
-  bookingRequestId: string;
-  selectedAreas: { id: string; name: string; price: number }[];
-  selectedPackage: "single" | "four" | "six";
-  contactInfo: {
-    fullName: string;
-    phone: string;
-    email: string;
-    isNewPatient: boolean;
-  };
-  selectedDate: string;
-  selectedTime: string;
-  pricingSummary: {
-    baseSessionPrice: number;
-    sessionCount: number;
-    discountPercentage: number;
-    discountedSessionPrice: number;
-    packageTotal: number;
-    savings: number;
-    depositAmount: number;
-  };
-  attribution?: Record<string, string | undefined>;
-}
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -225,6 +201,18 @@ export async function POST(req: NextRequest) {
 
     const { fullName, email } = payload.contactInfo;
 
+    // Persist first — the DB row is the durable record of the booking.
+    // Everything after this point (email) is best-effort notification on top of it.
+    try {
+      await saveBooking(payload);
+    } catch (dbErr) {
+      console.error("[LHR API] Failed to save booking:", dbErr);
+      return NextResponse.json(
+        { success: false, error: "Failed to save booking" },
+        { status: 500 }
+      );
+    }
+
     const [clientResult, staffResult] = await Promise.allSettled([
       resend.emails.send({
         from: `Kami Aesthetics <${FROM}>`,
@@ -240,6 +228,9 @@ export async function POST(req: NextRequest) {
       }),
     ]);
 
+    const clientSent = clientResult.status === "fulfilled" && !clientResult.value.error;
+    const staffSent = staffResult.status === "fulfilled" && !staffResult.value.error;
+
     if (clientResult.status === "rejected") {
       console.error("[LHR API] Client email failed:", clientResult.reason);
     } else if (clientResult.value.error) {
@@ -252,7 +243,14 @@ export async function POST(req: NextRequest) {
       console.error("[LHR API] Staff email Resend error:", staffResult.value.error);
     }
 
-    // Always return success — email failure should not block the booking confirmation
+    try {
+      await markEmailResults(payload.bookingRequestId, { clientSent, staffSent });
+    } catch (statusErr) {
+      console.error("[LHR API] Failed to update email status:", statusErr);
+    }
+
+    // Always return success — email failure should not block the booking confirmation,
+    // the booking itself is already saved above.
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {
     console.error("[LHR API] Unexpected error:", err);

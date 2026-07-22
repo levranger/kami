@@ -14,7 +14,7 @@ import TechnologySection from "@/components/sections/TechnologySection";
 import ProcessStepsSection from "@/components/sections/ProcessStepsSection";
 import ResultsGallerySection from "@/components/sections/ResultsGallerySection";
 import AnnouncementBar from "@/components/AnnouncementBar";
-import { servicePages, newClientOffer, BOOKING_URL, PHONE_NUMBER, PHONE_HREF, localBusinessSchema } from "@/data/content";
+import { servicePages, newClientOffer, BOOKING_URL, PHONE_NUMBER, PHONE_HREF, localBusinessSchema, blogPosts, relatedBlogMap } from "@/data/content";
 import { ADDRESS_SHORT, CITY_STATE, MAPS_URL } from "@/data/constants";
 import { buildFAQSchema, buildServiceSchema, buildBreadcrumbSchema, buildPageMetadata } from "@/lib/seo";
 import { categoryDefs, SLUG_TO_CATEGORY } from "@/data/categories";
@@ -43,6 +43,8 @@ export default function ServicePage({ params }: Props) {
   if (!service || !cat || SLUG_TO_CATEGORY[params.slug] !== params.category) notFound();
 
   const relatedServices = servicePages.filter((s) => service.relatedSlugs.includes(s.slug));
+  const relatedBlogSlugs = relatedBlogMap[service.slug] ?? [];
+  const relatedBlogPosts = blogPosts.filter((p) => relatedBlogSlugs.includes(p.slug));
   const isLaserService = ["laser-hair-removal", "arm-hair-removal", "back-hair-removal", "bikini-hair-removal", "chest-hair-removal", "ear-hair-removal", "eyebrow-hair-removal", "facial-hair-removal", "leg-hair-removal", "upper-lip-hair-removal", "neck-hair-removal", "stomach-hair-removal", "underarm-hair-removal", "laser-hair-removal-dark-skin"].includes(service.slug);
 
   const faqSchema = buildFAQSchema(service.faq.map((f) => ({ question: f.q, answer: f.a })));
@@ -296,6 +298,33 @@ export default function ServicePage({ params }: Props) {
                     </Link>
                   );
                 })}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* From Our Blog */}
+        {relatedBlogPosts.length > 0 && (
+          <section className="section-padding bg-white">
+            <div className="container mx-auto px-4 md:px-8">
+              <div className="text-center mb-12">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <div className="h-px w-8 bg-gold" />
+                  <span className="font-inter text-xs tracking-[0.3em] uppercase text-gold font-medium">From Our Blog</span>
+                  <div className="h-px w-8 bg-gold" />
+                </div>
+                <p className="font-playfair text-3xl font-bold text-[#1A1A1A]">Learn More About {service.title}</p>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                {relatedBlogPosts.map((post) => (
+                  <Link key={post.slug} href={`/blog/${post.slug}`} aria-label={`Read: ${post.title}`} className="bg-warm-white border border-warm-border p-6 rounded-sm hover-lift group block">
+                    <h3 className="font-playfair text-lg font-semibold text-[#1A1A1A] mb-2 group-hover:text-gold transition-colors duration-200">{post.title}</h3>
+                    <p className="font-inter text-sm text-warm-gray leading-relaxed mb-4">{post.excerpt}</p>
+                    <span className="font-inter text-xs tracking-wider uppercase text-gold flex items-center gap-1" aria-hidden="true">
+                      Read Article <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform duration-200" />
+                    </span>
+                  </Link>
+                ))}
               </div>
             </div>
           </section>

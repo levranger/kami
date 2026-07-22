@@ -38,6 +38,10 @@ import { underEyeFillerBody } from "./blog/under-eye-filler";
 import { jawlineFillerBody } from "./blog/jawline-filler";
 import { howLongLipFillerBody } from "./blog/how-long-does-lip-filler-last";
 import { cheekFillerBody } from "./blog/cheek-filler-before-and-after";
+import { earHairRemovalBody } from "./blog/ear-hair-removal";
+import { laserVsWaxingEarHairBody } from "./blog/laser-vs-waxing-ear-hair";
+import { eyebrowLaserHairRemovalBody } from "./blog/eyebrow-laser-hair-removal";
+import { laserUnibrowBody } from "./blog/laser-unibrow";
 import { getServiceUrl } from "./categories";
 
 
@@ -175,6 +179,11 @@ const seoMap: Record<string, { title: string; description: string; keywords: str
       "Medically supervised weight loss in Aventura FL. Personalized protocols, GLP-1 support, and ongoing guidance. Book your consultation at Kami Aesthetics.",
     keywords: ["medical weight loss aventura", "glp-1 aventura fl", "weight management miami", "medically supervised weight loss aventura"],
   },
+};
+
+export const relatedBlogMap: Record<string, string[]> = {
+  "ear-hair-removal": ["ear-hair-removal", "laser-vs-waxing-ear-hair"],
+  "eyebrow-hair-removal": ["eyebrow-laser-hair-removal-shaping-vs-full-removal", "laser-unibrow-stray-brow-hairs"],
 };
 
 const relatedMap: Record<string, string[]> = {
@@ -1071,6 +1080,70 @@ export const blogPosts: BlogPost[] = [
       description: "Learn how IPL photofacial with the Stellar M22 reverses sun damage, age spots, and rosacea. Aventura's premier skin rejuvenation clinic.",
       canonical: `${BASE_URL}/blog/ipl-photofacial-sun-damage`,
       keywords: ["ipl photofacial sun damage", "stellar m22 aventura", "sun spots treatment miami", "rosacea treatment aventura"],
+    },
+  },
+  {
+    slug: "ear-hair-removal",
+    title: "Ear Hair Removal: Causes and How Laser Helps",
+    excerpt: "Ear hair is common and driven by hormones, not hygiene. Learn why it grows and how laser hair removal offers longer-lasting results.",
+    category: "Laser Hair Removal",
+    date: "2026-07-22",
+    readTime: "6 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1784739883/julia-d-3O0TczFgBe4-unsplash_dovqcm.jpg",
+    body: earHairRemovalBody,
+    seo: {
+      title: "Ear Hair Removal: Causes and How Laser Helps",
+      description: "Ear hair is common and driven by hormones, not hygiene. Learn why it grows and how laser hair removal offers longer-lasting results.",
+      canonical: `${BASE_URL}/blog/ear-hair-removal`,
+      keywords: ["ear hair removal", "laser ear hair removal", "why does ear hair grow", "ear hair removal aventura"],
+    },
+  },
+  {
+    slug: "laser-vs-waxing-ear-hair",
+    title: "Laser vs. Waxing for Ear Hair: What Works Best",
+    excerpt: "Trimming and waxing offer quick fixes for ear hair. See how they compare to laser hair removal for lasting, low-maintenance results.",
+    category: "Laser Hair Removal",
+    date: "2026-07-24",
+    readTime: "6 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1784739959/maryam-shittu-dFAdCxeJmwo-unsplash_pdw8pj.jpg",
+    body: laserVsWaxingEarHairBody,
+    seo: {
+      title: "Laser vs. Waxing for Ear Hair",
+      description: "Trimming and waxing offer quick fixes for ear hair. See how they compare to laser hair removal for lasting, low-maintenance results.",
+      canonical: `${BASE_URL}/blog/laser-vs-waxing-ear-hair`,
+      keywords: ["laser vs waxing ear hair", "ear hair removal options", "trimming vs laser ear hair", "ear hair removal aventura"],
+    },
+  },
+  {
+    slug: "eyebrow-laser-hair-removal-shaping-vs-full-removal",
+    title: "Eyebrow Laser Hair Removal: Shaping vs. Full Removal",
+    excerpt: "Laser can shape stray brow hairs or reduce them fully. Learn the difference, the safety factors, and what's realistic for your brows.",
+    category: "Laser Hair Removal",
+    date: "2026-07-26",
+    readTime: "6 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1784739988/takwa-abdo-2IK78QZhkfo-unsplash_xnfeox.jpg",
+    body: eyebrowLaserHairRemovalBody,
+    seo: {
+      title: "Eyebrow Laser Hair Removal: Shaping vs. Removal",
+      description: "Laser can shape stray brow hairs or reduce them fully. Learn the difference, the safety factors, and what's realistic for your brows.",
+      canonical: `${BASE_URL}/blog/eyebrow-laser-hair-removal-shaping-vs-full-removal`,
+      keywords: ["eyebrow laser hair removal", "brow hair removal", "eyebrow shaping laser", "eyebrow hair removal aventura"],
+    },
+  },
+  {
+    slug: "laser-unibrow-stray-brow-hairs",
+    title: "Laser for Unibrow and Stray Brow Hairs",
+    excerpt: "Tired of tweezing your unibrow or stray brow hairs daily? See how laser hair removal offers a longer-lasting alternative.",
+    category: "Laser Hair Removal",
+    date: "2026-07-28",
+    readTime: "6 min read",
+    image: "https://res.cloudinary.com/dnuxtgg11/image/upload/q_auto/f_auto/v1784740026/laura-cukaj-0KBldNt0zEA-unsplash_l4v1ll.jpg",
+    body: laserUnibrowBody,
+    seo: {
+      title: "Laser for Unibrow and Stray Brow Hairs",
+      description: "Tired of tweezing your unibrow or stray brow hairs daily? See how laser hair removal offers a longer-lasting alternative.",
+      canonical: `${BASE_URL}/blog/laser-unibrow-stray-brow-hairs`,
+      keywords: ["laser unibrow removal", "stray brow hair removal", "unibrow laser treatment", "eyebrow hair removal aventura"],
     },
   },
 ];
