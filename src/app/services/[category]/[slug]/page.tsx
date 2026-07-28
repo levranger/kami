@@ -95,7 +95,7 @@ export default function ServicePage({ params }: Props) {
                 <span className="font-inter text-xs tracking-[0.3em] uppercase text-gold">{service.locationTag}</span>
               </div>
               <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
-                {service.title}
+                {service.title}{" "}
                 <span className="block text-gold text-2xl md:text-3xl mt-2 font-normal">{service.locationTag}</span>
               </h1>
               <p className="font-inter text-base md:text-lg text-white/80 leading-relaxed mb-8 max-w-xl">
