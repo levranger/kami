@@ -90,7 +90,7 @@ export default function ReviewBooking({
         </ReviewSection>
 
         {/* Appointment */}
-        <ReviewSection title="Appointment" onEdit={() => onEdit(4)}>
+        <ReviewSection title="Appointment" onEdit={() => onEdit(3)}>
           <p className="font-inter text-sm text-[#1A1A1A]">
             {formatDate(selectedDate)}
           </p>
@@ -100,7 +100,7 @@ export default function ReviewBooking({
         </ReviewSection>
 
         {/* Contact */}
-        <ReviewSection title="Contact" onEdit={() => onEdit(3)}>
+        <ReviewSection title="Contact" onEdit={() => onEdit(4)}>
           <p className="font-inter text-sm text-[#1A1A1A]">{contactInfo.fullName}</p>
           <p className="font-inter text-sm text-warm-gray">{formatPhoneUS(contactInfo.phone)}</p>
           <p className="font-inter text-sm text-warm-gray">{contactInfo.email}</p>
@@ -122,6 +122,14 @@ export default function ReviewBooking({
         {/* Pricing Summary */}
         <div className="pt-2">
           <PriceSummary summary={pricingSummary} />
+        </div>
+
+        {/* Free-request reassurance */}
+        <div className="p-4 bg-green-50 border border-green-200 rounded-sm" role="status">
+          <p className="font-inter text-sm text-green-800">
+            No payment is required now. This is a free appointment request. Our team will contact
+            you to confirm your appointment and discuss any deposit requirements.
+          </p>
         </div>
       </div>
     </div>

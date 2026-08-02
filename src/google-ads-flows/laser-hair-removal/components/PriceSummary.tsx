@@ -36,7 +36,7 @@ export default function PriceSummary({ summary, compact = false }: PriceSummaryP
         </span>
       </div>
       <div className="flex justify-between font-inter text-sm">
-        <span className="text-warm-gray">Sessions</span>
+        <span className="text-warm-gray">Number of sessions</span>
         <span className="text-[#1A1A1A] font-medium">× {summary.sessionCount}</span>
       </div>
       <div className="h-px bg-warm-border" />
@@ -52,17 +52,6 @@ export default function PriceSummary({ summary, compact = false }: PriceSummaryP
           </span>
         </div>
       )}
-      <div className="h-px bg-warm-border" />
-      <div className="flex justify-between font-inter text-sm">
-        <span className="text-warm-gray">Due today (deposit)</span>
-        <span className="text-[#1A1A1A] font-semibold">
-          {formatCurrency(summary.depositAmount)}
-        </span>
-      </div>
-      <div className="flex justify-between font-inter text-sm">
-        <span className="text-warm-gray">Remaining balance</span>
-        <span className="text-[#1A1A1A]">{formatCurrency(summary.remainingBalance)}</span>
-      </div>
     </div>
   );
 }

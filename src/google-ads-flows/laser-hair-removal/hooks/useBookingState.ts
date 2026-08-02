@@ -69,8 +69,11 @@ export function useBookingState(): BookingState {
   const [selectedAreas, setSelectedAreas] = useState<TreatmentArea[]>(
     persisted?.selectedAreas || []
   );
+  // Single Session is preselected by default so the package step never
+  // implies a selection the user hasn't visibly made — Continue always
+  // reflects a concrete, highlighted choice.
   const [selectedPackage, setSelectedPackage] = useState<PackageType | null>(
-    persisted?.selectedPackage || null
+    persisted?.selectedPackage || "single"
   );
   const [selectedDate, setSelectedDate] = useState<string | null>(
     persisted?.selectedDate || null
@@ -129,7 +132,7 @@ export function useBookingState(): BookingState {
   const resetBooking = useCallback(() => {
     setCurrentStep(1);
     setSelectedAreas([]);
-    setSelectedPackage(null);
+    setSelectedPackage("single");
     setSelectedDate(null);
     setSelectedTime(null);
     setContactInfo(defaultContactInfo);

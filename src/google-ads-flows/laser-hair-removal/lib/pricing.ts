@@ -67,7 +67,6 @@ export function calculatePricingSummary(
   const packageTotal = roundCurrency(discountedSessionPrice * sessionCount);
   const fullPrice = baseSessionPrice * sessionCount;
   const savings = roundCurrency(fullPrice - packageTotal);
-  const remainingBalance = roundCurrency(packageTotal - DEPOSIT_AMOUNT);
 
   return {
     baseSessionPrice,
@@ -77,7 +76,6 @@ export function calculatePricingSummary(
     packageTotal,
     savings,
     depositAmount: DEPOSIT_AMOUNT,
-    remainingBalance: Math.max(0, remainingBalance),
   };
 }
 
@@ -94,5 +92,21 @@ export function calculatePackagePrice(
     total: summary.packageTotal,
     savings: summary.savings,
     sessionCount: summary.sessionCount,
+  };
+}
+
+/**
+ * Lowest advertisable prices for marketing copy (landing page, trust header),
+ * derived from the cheapest treatment area rather than a hardcoded figure —
+ * so the copy can't drift out of sync with the actual area/package pricing.
+ */
+export function getStartingPrices(areas: TreatmentArea[]): {
+  singleSessionFrom: number;
+  packageSessionFrom: number;
+} {
+  const cheapestArea = areas.reduce((min, area) => (area.price < min.price ? area : min), areas[0]);
+  return {
+    singleSessionFrom: cheapestArea.price,
+    packageSessionFrom: calculatePackagePrice([cheapestArea], "six").perSession,
   };
 }

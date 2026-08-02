@@ -1,7 +1,10 @@
 import type { TreatmentArea, PackageType, AttributionData } from "../types/booking";
 
 const STORAGE_KEY = "kami_laser_booking_state_v1";
-const SCHEMA_VERSION = 1;
+// Bumped from 1 -> 2: step 3/4 swapped meaning (Appointment/Contact reorder),
+// so a persisted currentStep from before this change must be discarded
+// rather than resumed onto the wrong screen.
+const SCHEMA_VERSION = 2;
 const EXPIRATION_HOURS = 24;
 
 interface PersistedState {

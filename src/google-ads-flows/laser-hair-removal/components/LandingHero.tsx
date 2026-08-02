@@ -1,12 +1,16 @@
 import { ArrowRight, Star } from "lucide-react";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 import TrustSection from "./TrustSection";
+import { treatmentAreas } from "./AreaSelector";
+import { getStartingPrices, formatCurrency } from "../lib/pricing";
 
 interface LandingHeroProps {
   onStartBooking: () => void;
 }
 
 export default function LandingHero({ onStartBooking }: LandingHeroProps) {
+  const { singleSessionFrom, packageSessionFrom } = getStartingPrices(treatmentAreas);
+
   return (
     <section className="bg-[#1A1A1A] relative overflow-hidden" aria-labelledby="hero-heading">
       <div className="max-w-4xl mx-auto px-4 py-12 md:py-20">
@@ -41,7 +45,8 @@ export default function LandingHero({ onStartBooking }: LandingHeroProps) {
 
             {/* Starting price */}
             <p className="font-inter text-sm text-gold font-medium mb-6">
-              Starting at $49/session · Packages available
+              Single sessions from {formatCurrency(singleSessionFrom)} · Packages from{" "}
+              {formatCurrency(packageSessionFrom)}/session
             </p>
 
             {/* Social proof placeholder */}

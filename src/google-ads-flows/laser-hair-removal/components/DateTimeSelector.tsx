@@ -217,16 +217,20 @@ export default function DateTimeSelector({
       )}
 
       {/* Summary */}
-      {selectedDate && selectedTime && (
-        <div className="mt-6 p-4 bg-gold/5 border border-gold/20 rounded-sm" aria-live="polite">
-          <p className="font-inter text-sm text-[#1A1A1A]">
-            <span className="font-medium">Selected:</span>{" "}
-            {dates.find((d) => d.date === selectedDate)?.displayDate},{" "}
-            {dates.find((d) => d.date === selectedDate)?.dayOfWeek} at{" "}
-            {times.find((t) => t.time === selectedTime)?.displayTime} ET
-          </p>
-        </div>
-      )}
+      {(() => {
+        const selectedDateInfo = dates.find((d) => d.date === selectedDate);
+        const selectedTimeInfo = times.find((t) => t.time === selectedTime);
+        if (!selectedDateInfo || !selectedTimeInfo) return null;
+        return (
+          <div className="mt-6 p-4 bg-gold/5 border border-gold/20 rounded-sm" aria-live="polite">
+            <p className="font-inter text-sm text-[#1A1A1A]">
+              <span className="font-medium">Selected:</span>{" "}
+              {selectedDateInfo.displayDate}, {selectedDateInfo.dayOfWeek} at{" "}
+              {selectedTimeInfo.displayTime} ET
+            </p>
+          </div>
+        );
+      })()}
     </div>
   );
 }

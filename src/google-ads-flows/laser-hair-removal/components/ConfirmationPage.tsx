@@ -88,11 +88,12 @@ export default function ConfirmationPage({
 
       {/* Heading */}
       <h2 className="font-playfair text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-2">
-        Appointment Request Received
+        Your appointment request has been received.
       </h2>
       <p className="font-inter text-sm text-warm-gray mb-8 max-w-md mx-auto">
-        We&apos;ll contact you shortly to confirm your appointment.
-        Your appointment is not finalized until availability and deposit are confirmed.
+        This is not a confirmed booking yet. Kami Aesthetics will follow up by phone or text to
+        confirm your requested date and time. No payment was collected — the date and time below
+        reflect your requested slot.
       </p>
 
       {/* Booking Details Card */}
@@ -152,7 +153,7 @@ export default function ConfirmationPage({
           <div className="h-px bg-warm-border" />
 
           <p className="font-inter text-xs text-warm-gray italic">
-            We&apos;ll text or call you shortly to confirm availability and send the deposit link.
+            We&apos;ll text or call you shortly to confirm availability for your requested slot.
           </p>
         </div>
       </div>

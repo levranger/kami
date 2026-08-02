@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import type { ContactInfo, ScreeningFlags } from "../types/booking";
 import { formatPhoneUS, normalizePhone } from "../lib/phone";
 import type { ValidationError } from "../lib/validation";
@@ -40,8 +41,12 @@ export default function ContactForm({
       <h2 className="font-playfair text-xl md:text-2xl font-bold text-[#1A1A1A] mb-2">
         Your Contact Details
       </h2>
-      <p className="font-inter text-sm text-warm-gray mb-6">
+      <p className="font-inter text-sm text-warm-gray mb-2">
         We&apos;ll use this to confirm your appointment.
+      </p>
+      <p className="font-inter text-sm text-warm-gray mb-6">
+        We&apos;ll use your information to confirm your requested appointment. Your request is
+        free and you won&apos;t be charged online.
       </p>
 
       <div className="space-y-5">
@@ -133,50 +138,52 @@ export default function ContactForm({
         {/* Divider */}
         <div className="h-px bg-gray-100 my-2" />
 
-        {/* Optional: New Patient */}
-        <label className="flex items-center gap-3 cursor-pointer min-h-[48px]">
-          <input
-            type="checkbox"
-            checked={contactInfo.isNewPatient}
-            onChange={(e) => onContactChange({ ...contactInfo, isNewPatient: e.target.checked })}
-            className="w-5 h-5 rounded border-gray-300 text-gold focus:ring-gold"
-          />
-          <span className="font-inter text-sm text-[#1A1A1A]">I&apos;m a new patient</span>
-        </label>
+        {/* Optional: New patient + screening, collapsed by default */}
+        <details className="group rounded-sm border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+          <summary className="flex cursor-pointer select-none list-none items-center justify-between px-4 py-3 font-inter text-sm font-medium text-[#1A1A1A] min-h-[48px]">
+            Help us prepare — optional
+            <ChevronDown className="h-4 w-4 text-warm-gray transition-transform duration-200 group-open:rotate-180" aria-hidden="true" />
+          </summary>
 
-        {/* Optional: Screening */}
-        <div className="space-y-3">
-          <p className="font-inter text-xs font-medium text-warm-gray uppercase tracking-wider">
-            Optional — helps us prepare
-          </p>
-          <label className="flex items-center gap-3 cursor-pointer min-h-[44px]">
-            <input
-              type="checkbox"
-              checked={screeningFlags.sensitiveSkin}
-              onChange={(e) => onScreeningChange({ ...screeningFlags, sensitiveSkin: e.target.checked })}
-              className="w-5 h-5 rounded border-gray-300 text-gold focus:ring-gold"
-            />
-            <span className="font-inter text-sm text-[#1A1A1A]">I have sensitive skin</span>
-          </label>
-          <label className="flex items-center gap-3 cursor-pointer min-h-[44px]">
-            <input
-              type="checkbox"
-              checked={screeningFlags.recentlyTanned}
-              onChange={(e) => onScreeningChange({ ...screeningFlags, recentlyTanned: e.target.checked })}
-              className="w-5 h-5 rounded border-gray-300 text-gold focus:ring-gold"
-            />
-            <span className="font-inter text-sm text-[#1A1A1A]">I&apos;ve had significant sun exposure recently</span>
-          </label>
-        </div>
+          <div className="space-y-3 border-t border-gray-100 px-4 py-4">
+            <label className="flex items-center gap-3 cursor-pointer min-h-[44px]">
+              <input
+                type="checkbox"
+                checked={contactInfo.isNewPatient}
+                onChange={(e) => onContactChange({ ...contactInfo, isNewPatient: e.target.checked })}
+                className="w-5 h-5 rounded border-gray-300 text-gold focus:ring-gold"
+              />
+              <span className="font-inter text-sm text-[#1A1A1A]">I&apos;m a new patient</span>
+            </label>
+            <label className="flex items-center gap-3 cursor-pointer min-h-[44px]">
+              <input
+                type="checkbox"
+                checked={screeningFlags.sensitiveSkin}
+                onChange={(e) => onScreeningChange({ ...screeningFlags, sensitiveSkin: e.target.checked })}
+                className="w-5 h-5 rounded border-gray-300 text-gold focus:ring-gold"
+              />
+              <span className="font-inter text-sm text-[#1A1A1A]">I have sensitive skin</span>
+            </label>
+            <label className="flex items-center gap-3 cursor-pointer min-h-[44px]">
+              <input
+                type="checkbox"
+                checked={screeningFlags.recentlyTanned}
+                onChange={(e) => onScreeningChange({ ...screeningFlags, recentlyTanned: e.target.checked })}
+                className="w-5 h-5 rounded border-gray-300 text-gold focus:ring-gold"
+              />
+              <span className="font-inter text-sm text-[#1A1A1A]">I&apos;ve had significant sun exposure recently</span>
+            </label>
 
-        {/* Screening warning */}
-        {showScreeningWarning && (
-          <div className="p-3 bg-amber-50 border border-amber-200 rounded-sm" role="alert">
-            <p className="font-inter text-sm text-amber-700">
-              A consultation or test spot may be required before treatment.
-            </p>
+            {/* Screening warning */}
+            {showScreeningWarning && (
+              <div className="p-3 bg-amber-50 border border-amber-200 rounded-sm" role="alert">
+                <p className="font-inter text-sm text-amber-700">
+                  A consultation or test spot may be required before treatment.
+                </p>
+              </div>
+            )}
           </div>
-        )}
+        </details>
 
         {/* Divider */}
         <div className="h-px bg-gray-100 my-2" />

@@ -102,6 +102,7 @@ export default function LaserHairRemovalBookingFlow({
 
   const handleStartBooking = useCallback(() => {
     setShowFunnel(true);
+    laserAnalytics.trackCtaClicked(entryMode);
     laserAnalytics.trackFlowStarted(state.attribution, entryMode);
     setTimeout(() => {
       funnelRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -133,6 +134,12 @@ export default function LaserHairRemovalBookingFlow({
         }
         break;
       case 3:
+        stepErrors = validateDateTime(state.selectedDate, state.selectedTime);
+        if (stepErrors.length === 0) {
+          laserAnalytics.trackDateTimeSelected(state.selectedDate!, state.selectedTime!);
+        }
+        break;
+      case 4:
         stepErrors = validateContact(state.contactInfo);
         if (stepErrors.length === 0) {
           laserAnalytics.trackContactInfoEntered(
@@ -159,12 +166,6 @@ export default function LaserHairRemovalBookingFlow({
           } finally {
             setIsLeadSaving(false);
           }
-        }
-        break;
-      case 4:
-        stepErrors = validateDateTime(state.selectedDate, state.selectedTime);
-        if (stepErrors.length === 0) {
-          laserAnalytics.trackDateTimeSelected(state.selectedDate!, state.selectedTime!);
         }
         break;
       case 5:
@@ -275,7 +276,15 @@ export default function LaserHairRemovalBookingFlow({
     }
   };
 
+  const isNextDisabled = (): boolean => {
+    if (state.currentStep === 3) {
+      return !state.selectedDate || !state.selectedTime;
+    }
+    return false;
+  };
+
   const getPriceLabel = (): string | undefined => {
+    if (state.currentStep === 5) return undefined;
     if (state.selectedAreas.length === 0) return undefined;
     if (state.currentStep <= 2 && !state.selectedPackage) {
       return `${formatCurrency(state.pricingSummary.baseSessionPrice)}/session`;
@@ -344,6 +353,16 @@ export default function LaserHairRemovalBookingFlow({
               )}
 
               {state.currentStep === 3 && (
+                <DateTimeSelector
+                  selectedDate={state.selectedDate}
+                  selectedTime={state.selectedTime}
+                  onDateChange={state.setSelectedDate}
+                  onTimeChange={state.setSelectedTime}
+                  errors={errors.filter((e) => e.field === "date" || e.field === "time").map((e) => e.message)}
+                />
+              )}
+
+              {state.currentStep === 4 && (
                 <ContactForm
                   contactInfo={state.contactInfo}
                   screeningFlags={state.screeningFlags}
@@ -352,16 +371,6 @@ export default function LaserHairRemovalBookingFlow({
                   onScreeningChange={state.setScreeningFlags}
                   onMarketingConsentChange={state.setMarketingConsent}
                   errors={errors}
-                />
-              )}
-
-              {state.currentStep === 4 && (
-                <DateTimeSelector
-                  selectedDate={state.selectedDate}
-                  selectedTime={state.selectedTime}
-                  onDateChange={state.setSelectedDate}
-                  onTimeChange={state.setSelectedTime}
-                  errors={errors.filter((e) => e.field === "date" || e.field === "time").map((e) => e.message)}
                 />
               )}
 
@@ -386,7 +395,7 @@ export default function LaserHairRemovalBookingFlow({
             ctaLabel={getCtaLabel()}
             priceLabel={getPriceLabel()}
             onClick={handleNext}
-            disabled={isSubmitting || isLeadSaving}
+            disabled={isSubmitting || isLeadSaving || isNextDisabled()}
             loading={isSubmitting || isLeadSaving}
             showBack={state.currentStep > 1}
             onBack={handleBack}

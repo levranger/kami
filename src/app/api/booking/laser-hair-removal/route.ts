@@ -81,7 +81,7 @@ function clientEmailHtml(p: BookingPayload): string {
             </table>
 
             <p style="margin:0 0 8px;color:#3a3a3a;font-size:14px;line-height:1.6;">
-              <strong>What happens next:</strong> A member of our team will call or text you at <strong>${p.contactInfo.phone}</strong> to confirm your slot and send a deposit link to hold your appointment.
+              <strong>What happens next:</strong> A member of our team will call or text you at <strong>${p.contactInfo.phone}</strong> to confirm your requested slot. No payment has been collected — this is a free appointment request, and any deposit will be discussed separately.
             </p>
 
             <p style="margin:24px 0 0;color:#888;font-size:13px;line-height:1.6;">

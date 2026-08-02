@@ -3,7 +3,7 @@ import type { AttributionData, PackageType, EntryMode } from "../types/booking";
 
 // Centralized experiment metadata for the current laser funnel A/B test.
 export const LASER_EXPERIMENT_ID = "laser_step_order_v1";
-export const LASER_VARIANT_ID = "contact_before_datetime";
+export const LASER_VARIANT_ID = "datetime_before_contact";
 
 // Funnel events read the variant through this function rather than the
 // constant directly, so a future dynamic assignment (cookie, experiment
@@ -37,8 +37,8 @@ function entryExperimentParams(entryMode: EntryMode) {
 export const STEP_VIEW_NAMES: Record<number, string> = {
   1: "areas",
   2: "package",
-  3: "contact",
-  4: "datetime",
+  3: "datetime",
+  4: "contact",
   5: "review",
   6: "confirmation",
 };
@@ -63,9 +63,22 @@ export const laserAnalytics = {
     });
   },
 
+  // Secondary funnel event — fired only for an actual in-page CTA click
+  // (not the auto-start effect for ?start=booking direct entry, which has
+  // no click to report). Diagnostic only, not the primary conversion.
+  trackCtaClicked: (entryMode: EntryMode) => {
+    track("booking_cta_clicked", { ...entryExperimentParams(entryMode) });
+  },
+
   trackAreaSelected: (areaIds: string[]) => {
     track("laser_area_selected", {
       // Pipe-delimited so GA4 can report on it as a plain string dimension.
+      area_ids: areaIds.join("|"),
+      number_of_areas: areaIds.length,
+      ...experimentParams(),
+    });
+    // Secondary funnel event, same trigger/payload, generic naming.
+    track("treatment_area_selected", {
       area_ids: areaIds.join("|"),
       number_of_areas: areaIds.length,
       ...experimentParams(),
@@ -74,6 +87,13 @@ export const laserAnalytics = {
 
   trackPackageSelected: (packageType: PackageType, sessionsCount: number, totalPrice: number) => {
     track("laser_package_selected", {
+      package_type: packageType,
+      sessions: sessionsCount,
+      total_price: totalPrice,
+      ...experimentParams(),
+    });
+    // Secondary funnel event, same trigger/payload, generic naming.
+    track("package_selected", {
       package_type: packageType,
       sessions: sessionsCount,
       total_price: totalPrice,
@@ -91,10 +111,22 @@ export const laserAnalytics = {
       screening_review_required: screeningReviewRequired,
       ...experimentParams(),
     });
+    // Secondary funnel event, same trigger/payload, generic naming.
+    track("contact_step_completed", {
+      is_new_patient: isNewPatient,
+      screening_review_required: screeningReviewRequired,
+      ...experimentParams(),
+    });
   },
 
   trackDateTimeSelected: (date: string, time: string) => {
     track("laser_datetime_selected", {
+      appointment_date: date,
+      appointment_time: time,
+      ...experimentParams(),
+    });
+    // Secondary funnel event, same trigger/payload, generic naming.
+    track("appointment_slot_selected", {
       appointment_date: date,
       appointment_time: time,
       ...experimentParams(),
@@ -108,6 +140,9 @@ export const laserAnalytics = {
     areaIds: string[];
     isNewPatient: boolean;
   }) => {
+    // Primary conversion — the only event carrying value/currency. Fired
+    // exclusively on a successful submit, never on review-page view or
+    // Continue clicks.
     track("laser_booking_completed", {
       package_type: data.packageType,
       sessions: data.sessions,
@@ -115,6 +150,17 @@ export const laserAnalytics = {
       // Requested package price at submit time, not confirmed/collected revenue.
       value: data.packageTotal,
       currency: "USD",
+      area_ids: data.areaIds.join("|"),
+      number_of_areas: data.areaIds.length,
+      is_new_patient: data.isNewPatient,
+      ...experimentParams(),
+    });
+    // Secondary funnel event mirroring the same trigger, deliberately
+    // without value/currency — this must never be read as a completed,
+    // paid, or confirmed appointment; the business only confirms later.
+    track("appointment_request_submitted", {
+      package_type: data.packageType,
+      sessions: data.sessions,
       area_ids: data.areaIds.join("|"),
       number_of_areas: data.areaIds.length,
       is_new_patient: data.isNewPatient,

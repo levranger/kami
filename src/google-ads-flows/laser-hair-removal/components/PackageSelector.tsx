@@ -15,6 +15,7 @@ interface PackageOption {
   sessions: string;
   badge?: string;
   badgeColor?: string;
+  note?: string;
 }
 
 const packageOptions: PackageOption[] = [
@@ -34,8 +35,9 @@ const packageOptions: PackageOption[] = [
     type: "six",
     label: "6 Sessions",
     sessions: "6 sessions",
-    badge: "Best Value",
+    badge: "Recommended Plan",
     badgeColor: "bg-green-600 text-white",
+    note: "Most clients need multiple treatments for lasting results.",
   },
 ];
 
@@ -75,7 +77,7 @@ export default function PackageSelector({
               key={option.type}
               onClick={() => onPackageChange(option.type)}
               aria-pressed={isSelected}
-              aria-label={`${option.label} — ${formatCurrency(pricing.perSession)} per session, ${formatCurrency(pricing.total)} total${pricing.savings > 0 ? `, save ${formatCurrency(pricing.savings)}` : ""}${isSelected ? " (selected)" : ""}`}
+              aria-label={`${option.label} — ${formatCurrency(pricing.perSession)} per session, ${formatCurrency(pricing.total)} total${pricing.savings > 0 ? `, save ${formatCurrency(pricing.savings)}` : ""}${option.note ? `. ${option.note}` : ""}${isSelected ? " (selected)" : ""}`}
               className={`relative w-full text-left p-5 rounded-sm border-2 transition-all duration-150 min-h-[52px] ${
                 isSelected
                   ? "border-gold bg-gold/5 card-selected-pulse"
@@ -110,6 +112,11 @@ export default function PackageSelector({
                     <p className="font-inter text-xs text-warm-gray mt-0.5">
                       {option.sessions}
                     </p>
+                    {option.note && (
+                      <p className="font-inter text-xs text-warm-gray mt-1.5 max-w-[220px]">
+                        {option.note}
+                      </p>
+                    )}
                   </div>
                 </div>
 

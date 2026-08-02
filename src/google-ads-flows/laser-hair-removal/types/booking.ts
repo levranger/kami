@@ -48,8 +48,9 @@ export interface PricingSummary {
   discountedSessionPrice: number;
   packageTotal: number;
   savings: number;
+  // Retained for staff-facing use only (e.g. internal notification email) —
+  // not surfaced to the customer, who is never charged during this flow.
   depositAmount: number;
-  remainingBalance: number;
 }
 
 export interface AvailableDate {
@@ -114,7 +115,7 @@ export const DEPOSIT_AMOUNT = 50;
 export const STEP_NAMES: Record<BookingStep, string> = {
   1: "Areas",
   2: "Package",
-  3: "Contact",
-  4: "Appointment",
+  3: "Appointment",
+  4: "Contact",
   5: "Review",
 };
