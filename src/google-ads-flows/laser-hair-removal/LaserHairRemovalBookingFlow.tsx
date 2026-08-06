@@ -11,6 +11,7 @@ import { formatCurrency } from "./lib/pricing";
 import type { BookingStep, PackageType, EntryMode } from "./types/booking";
 import type { ValidationError } from "./lib/validation";
 
+import StickyCallButton from "./components/StickyCallButton";
 import LandingHero from "./components/LandingHero";
 import CompactTrustHeader from "./components/CompactTrustHeader";
 import ProgressIndicator from "./components/ProgressIndicator";
@@ -299,6 +300,8 @@ export default function LaserHairRemovalBookingFlow({
     <div className="min-h-screen bg-white">
       {/* Landing Hero — only for normal/direct traffic that hasn't started the funnel yet */}
       {!showFunnel && <LandingHero onStartBooking={handleStartBooking} />}
+
+      <StickyCallButton liftForStickyFooter={showFunnel} />
 
       {/* Funnel */}
       {showFunnel && (

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Star, Zap, ShieldCheck, Tag } from "lucide-react";
 import { treatmentAreas } from "./AreaSelector";
 import { getStartingPrices, formatCurrency } from "../lib/pricing";
@@ -20,11 +21,19 @@ export default function CompactTrustHeader() {
       className="mb-6 rounded-sm border border-warm-border bg-warm-white px-4 py-3"
       aria-label="Why choose Kami Aesthetics"
     >
-      <div className="mb-2 flex items-baseline gap-1.5">
-        <span className="font-playfair text-sm font-bold text-[#1A1A1A] tracking-tight">KAMI</span>
-        <span className="font-inter text-[9px] font-normal tracking-[0.25em] uppercase text-warm-gray">
-          Aesthetics
-        </span>
+      <div className="mb-2 flex items-baseline gap-3">
+        <Link href="/" className="flex items-baseline gap-1.5" aria-label="Kami Aesthetics — Home">
+          <span className="font-playfair text-sm font-bold text-[#1A1A1A] tracking-tight">KAMI</span>
+          <span className="font-inter text-[9px] font-normal tracking-[0.25em] uppercase text-warm-gray">
+            Aesthetics
+          </span>
+        </Link>
+        <Link
+          href="/services"
+          className="font-inter text-[10px] text-warm-gray/70 hover:text-gold underline underline-offset-2 transition-colors"
+        >
+          Explore our services
+        </Link>
       </div>
       <ul className="flex flex-wrap gap-x-4 gap-y-1.5">
         {trustItems.map((item) => (

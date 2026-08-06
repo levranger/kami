@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 import TrustSection from "./TrustSection";
@@ -18,13 +19,21 @@ export default function LandingHero({ onStartBooking }: LandingHeroProps) {
           {/* Left: Content */}
           <div>
             {/* Branding */}
-            <div className="mb-6">
-              <span className="font-playfair text-2xl font-bold text-white tracking-tight">
-                KAMI
-              </span>
-              <span className="font-inter text-[10px] tracking-[0.3em] uppercase text-white/50 ml-2">
-                Aesthetics
-              </span>
+            <div className="mb-6 flex items-baseline gap-3">
+              <Link href="/" aria-label="Kami Aesthetics — Home">
+                <span className="font-playfair text-2xl font-bold text-white tracking-tight">
+                  KAMI
+                </span>
+                <span className="font-inter text-[10px] tracking-[0.3em] uppercase text-white/50 ml-2">
+                  Aesthetics
+                </span>
+              </Link>
+              <Link
+                href="/services"
+                className="font-inter text-[11px] text-white/40 hover:text-white/70 underline underline-offset-2 transition-colors"
+              >
+                Explore our services
+              </Link>
             </div>
 
             {/* Headline */}
