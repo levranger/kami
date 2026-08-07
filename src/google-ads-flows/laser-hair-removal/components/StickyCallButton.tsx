@@ -38,7 +38,7 @@ export default function StickyCallButton({ liftForStickyFooter }: StickyCallButt
   return (
     <a
       href={PHONE_HREF}
-      data-track="phone_click"
+      data-track="booking_call_clicked"
       data-track-location="laser_funnel_sticky"
       className={`${positionClasses} ${PILL_CLASSES}`}
       aria-label={`Questions? Call us at ${PHONE_NUMBER}`}

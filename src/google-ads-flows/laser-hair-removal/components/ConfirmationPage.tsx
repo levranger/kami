@@ -3,6 +3,7 @@ import { useState } from "react";
 import type { TreatmentArea, PackageType, PricingSummary } from "../types/booking";
 import { formatCurrency } from "../lib/pricing";
 import { formatPhoneUS } from "../lib/phone";
+import { MAPS_URL } from "@/data/content";
 
 interface ConfirmationPageProps {
   bookingRequestId: string;
@@ -158,8 +159,20 @@ export default function ConfirmationPage({
         </div>
       </div>
 
-      {/* Action Buttons */}
+      {/* Action Buttons — Get Directions leads as the primary (gold-filled)
+          action since clients need to know how to actually get here. */}
       <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <a
+          href={MAPS_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 flex items-center justify-center gap-2 bg-gold hover:bg-gold-dark text-white font-inter text-sm font-semibold py-3.5 rounded-sm transition-colors min-h-[48px]"
+          data-track="booking_directions_clicked"
+          data-track-location="confirmation"
+        >
+          <MapPin className="h-4 w-4" aria-hidden="true" />
+          Get Directions
+        </a>
         <button
           onClick={() => setShowPrepGuide(true)}
           className="flex-1 flex items-center justify-center gap-2 bg-warm-white border border-warm-border text-[#1A1A1A] font-inter text-sm font-medium py-3.5 rounded-sm hover:border-gold transition-colors min-h-[48px]"
@@ -167,15 +180,6 @@ export default function ConfirmationPage({
           <FileText className="h-4 w-4" aria-hidden="true" />
           Preparation Guide
         </button>
-        <a
-          href="https://maps.app.goo.gl/KVmjcmSCnA3Mpfqw8"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 flex items-center justify-center gap-2 bg-warm-white border border-warm-border text-[#1A1A1A] font-inter text-sm font-medium py-3.5 rounded-sm hover:border-gold transition-colors min-h-[48px]"
-        >
-          <MapPin className="h-4 w-4" aria-hidden="true" />
-          Get Directions
-        </a>
       </div>
 
       <button
@@ -231,7 +235,12 @@ export default function ConfirmationPage({
               <div className="pt-2 pb-1">
                 <p className="font-inter text-xs text-warm-gray italic text-center">
                   Questions? Call or text us at{" "}
-                  <a href="tel:+19544697153" className="text-gold hover:underline">
+                  <a
+                    href="tel:+19544697153"
+                    className="text-gold hover:underline"
+                    data-track="booking_call_clicked"
+                    data-track-location="confirmation_prep_guide"
+                  >
                     (954) 469-7153
                   </a>
                 </p>

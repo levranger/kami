@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { RefreshCw } from "lucide-react";
 import type { AvailableDate, AvailableTime } from "../types/booking";
 import { availabilityProvider } from "../lib/mockAvailability";
+import LocationCard from "./LocationCard";
 
 interface DateTimeSelectorProps {
   selectedDate: string | null;
@@ -87,6 +88,10 @@ export default function DateTimeSelector({
           <p className="font-inter text-sm text-red-600">{errors[0]}</p>
         </div>
       )}
+
+      {/* Location — immediately above the calendar so clients know where
+          they're headed before they pick a slot. */}
+      <LocationCard trackLocation="step3_datetime" />
 
       {/* Date Selection */}
       <div className="mb-8">

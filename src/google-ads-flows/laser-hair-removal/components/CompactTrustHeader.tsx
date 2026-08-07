@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Star, Zap, ShieldCheck, Tag } from "lucide-react";
 import { treatmentAreas } from "./AreaSelector";
 import { getStartingPrices, formatCurrency } from "../lib/pricing";
@@ -7,6 +6,8 @@ import { getStartingPrices, formatCurrency } from "../lib/pricing";
 // traffic, replacing the full-screen LandingHero. Claims match what's
 // already published elsewhere on the site (LandingHero, WhyChoose, etc.) —
 // kept short so it never pushes the area selector below the fold on mobile.
+// The brand/logo row lives in FunnelBrandHeader, rendered above this on
+// every step, so it isn't duplicated here.
 export default function CompactTrustHeader() {
   const { packageSessionFrom } = getStartingPrices(treatmentAreas);
   const trustItems = [
@@ -21,20 +22,6 @@ export default function CompactTrustHeader() {
       className="mb-6 rounded-sm border border-warm-border bg-warm-white px-4 py-3"
       aria-label="Why choose Kami Aesthetics"
     >
-      <div className="mb-2 flex items-baseline gap-3">
-        <Link href="/" className="flex items-baseline gap-1.5" aria-label="Kami Aesthetics — Home">
-          <span className="font-playfair text-sm font-bold text-[#1A1A1A] tracking-tight">KAMI</span>
-          <span className="font-inter text-[9px] font-normal tracking-[0.25em] uppercase text-warm-gray">
-            Aesthetics
-          </span>
-        </Link>
-        <Link
-          href="/services"
-          className="font-inter text-[10px] text-warm-gray/70 hover:text-gold underline underline-offset-2 transition-colors"
-        >
-          Explore our services
-        </Link>
-      </div>
       <ul className="flex flex-wrap gap-x-4 gap-y-1.5">
         {trustItems.map((item) => (
           <li key={item.text} className="flex items-center gap-1.5 font-inter text-xs text-warm-gray">

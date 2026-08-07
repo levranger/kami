@@ -3,6 +3,7 @@ import type { BookingStep, TreatmentArea, PackageType, ContactInfo, ScreeningFla
 import { formatCurrency } from "../lib/pricing";
 import { formatPhoneUS } from "../lib/phone";
 import PriceSummary from "./PriceSummary";
+import LocationCard from "./LocationCard";
 
 interface ReviewBookingProps {
   selectedAreas: TreatmentArea[];
@@ -98,6 +99,10 @@ export default function ReviewBooking({
             {formatTime(selectedTime)} Eastern Time
           </p>
         </ReviewSection>
+
+        {/* Location — repeated here so it's the last thing clients see
+            before confirming, not just something shown back on Step 3. */}
+        <LocationCard trackLocation="step5_review" />
 
         {/* Contact */}
         <ReviewSection title="Contact" onEdit={() => onEdit(4)}>

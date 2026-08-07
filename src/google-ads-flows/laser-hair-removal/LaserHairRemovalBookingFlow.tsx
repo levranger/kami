@@ -13,6 +13,7 @@ import type { ValidationError } from "./lib/validation";
 
 import StickyCallButton from "./components/StickyCallButton";
 import LandingHero from "./components/LandingHero";
+import FunnelBrandHeader from "./components/FunnelBrandHeader";
 import CompactTrustHeader from "./components/CompactTrustHeader";
 import ProgressIndicator from "./components/ProgressIndicator";
 import AreaSelector from "./components/AreaSelector";
@@ -307,6 +308,11 @@ export default function LaserHairRemovalBookingFlow({
       {showFunnel && (
         <div ref={funnelRef} className="pb-24">
           <div className="max-w-2xl mx-auto px-4 py-8">
+            {/* Compact, persistent brand bar — visible on every step so
+                users can always find their way back to the main site
+                without losing their in-progress booking. */}
+            <FunnelBrandHeader />
+
             {/* Compact reassurance header — replaces the large hero for paid
                 traffic entering directly at Step 1, so the area selector
                 stays near the top of the viewport. */}
