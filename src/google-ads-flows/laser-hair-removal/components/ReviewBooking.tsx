@@ -1,13 +1,11 @@
 import { Pencil } from "lucide-react";
-import type { BookingStep, TreatmentArea, PackageType, ContactInfo, ScreeningFlags, PricingSummary } from "../types/booking";
+import type { BookingStep, TreatmentArea, ContactInfo, ScreeningFlags, PricingSummary } from "../types/booking";
 import { formatCurrency } from "../lib/pricing";
 import { formatPhoneUS } from "../lib/phone";
-import PriceSummary from "./PriceSummary";
 import LocationCard from "./LocationCard";
 
 interface ReviewBookingProps {
   selectedAreas: TreatmentArea[];
-  selectedPackage: PackageType;
   contactInfo: ContactInfo;
   screeningFlags: ScreeningFlags;
   marketingConsent: boolean;
@@ -19,7 +17,6 @@ interface ReviewBookingProps {
 
 export default function ReviewBooking({
   selectedAreas,
-  selectedPackage,
   contactInfo,
   screeningFlags,
   marketingConsent,
@@ -28,12 +25,6 @@ export default function ReviewBooking({
   pricingSummary,
   onEdit,
 }: ReviewBookingProps) {
-  const packageLabels: Record<PackageType, string> = {
-    single: "Single Session",
-    four: "4 Sessions",
-    six: "6 Sessions",
-  };
-
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr + "T00:00:00");
     return date.toLocaleDateString("en-US", {
@@ -63,35 +54,27 @@ export default function ReviewBooking({
       </p>
 
       <div className="space-y-5">
-        {/* Treatment Areas */}
+        {/* Treatment Areas — package selection happens in person, so this
+            shows the transparent single-session price rather than a
+            package total. */}
         <ReviewSection title="Treatment Areas" onEdit={() => onEdit(1)}>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mb-3">
             {selectedAreas.map((area) => (
               <span key={area.id} className="font-inter text-sm bg-warm-white border border-warm-border px-3 py-1.5 rounded-sm">
                 {area.name}
               </span>
             ))}
           </div>
-        </ReviewSection>
-
-        {/* Package */}
-        <ReviewSection title="Package" onEdit={() => onEdit(2)}>
           <p className="font-inter text-sm text-[#1A1A1A] font-medium">
-            {packageLabels[selectedPackage]} — {pricingSummary.sessionCount} session{pricingSummary.sessionCount > 1 ? "s" : ""}
+            {formatCurrency(pricingSummary.discountedSessionPrice)}/session
           </p>
-          {pricingSummary.discountPercentage > 0 && (
-            <p className="font-inter text-xs text-warm-gray mt-1">
-              {formatCurrency(pricingSummary.baseSessionPrice)}/session →{" "}
-              <span className="text-green-600 font-medium">
-                {formatCurrency(pricingSummary.discountedSessionPrice)}/session
-              </span>{" "}
-              ({pricingSummary.discountPercentage}% off)
-            </p>
-          )}
+          <p className="font-inter text-xs text-warm-gray mt-1">
+            Multi-session packages and savings are available at your appointment.
+          </p>
         </ReviewSection>
 
         {/* Appointment */}
-        <ReviewSection title="Appointment" onEdit={() => onEdit(3)}>
+        <ReviewSection title="Appointment" onEdit={() => onEdit(2)}>
           <p className="font-inter text-sm text-[#1A1A1A]">
             {formatDate(selectedDate)}
           </p>
@@ -102,10 +85,10 @@ export default function ReviewBooking({
 
         {/* Location — repeated here so it's the last thing clients see
             before confirming, not just something shown back on Step 3. */}
-        <LocationCard trackLocation="step5_review" />
+        <LocationCard trackLocation="step4_review" />
 
         {/* Contact */}
-        <ReviewSection title="Contact" onEdit={() => onEdit(4)}>
+        <ReviewSection title="Contact" onEdit={() => onEdit(3)}>
           <p className="font-inter text-sm text-[#1A1A1A]">{contactInfo.fullName}</p>
           <p className="font-inter text-sm text-warm-gray">{formatPhoneUS(contactInfo.phone)}</p>
           <p className="font-inter text-sm text-warm-gray">{contactInfo.email}</p>
@@ -123,11 +106,6 @@ export default function ReviewBooking({
             SMS marketing: {marketingConsent ? "Opted in" : "Not opted in"}
           </p>
         </ReviewSection>
-
-        {/* Pricing Summary */}
-        <div className="pt-2">
-          <PriceSummary summary={pricingSummary} />
-        </div>
 
         {/* Free-request reassurance */}
         <div className="p-4 bg-green-50 border border-green-200 rounded-sm" role="status">

@@ -4,11 +4,11 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import { useBookingState } from "./hooks/useBookingState";
 import { useAttributionTracking } from "./hooks/useAttributionTracking";
 import { laserAnalytics, STEP_VIEW_NAMES } from "./lib/analytics";
-import { validateAreas, validatePackage, validateContact, validateDateTime, validateReview } from "./lib/validation";
+import { validateAreas, validateContact, validateDateTime, validateReview } from "./lib/validation";
 import { savePartialLead, submitBookingRequest } from "./lib/bookingApi";
 import { clearBookingState } from "./lib/storage";
 import { formatCurrency } from "./lib/pricing";
-import type { BookingStep, PackageType, EntryMode } from "./types/booking";
+import type { BookingStep, EntryMode } from "./types/booking";
 import type { ValidationError } from "./lib/validation";
 
 import StickyCallButton from "./components/StickyCallButton";
@@ -17,7 +17,6 @@ import FunnelBrandHeader from "./components/FunnelBrandHeader";
 import CompactTrustHeader from "./components/CompactTrustHeader";
 import ProgressIndicator from "./components/ProgressIndicator";
 import AreaSelector from "./components/AreaSelector";
-import PackageSelector from "./components/PackageSelector";
 import ContactForm from "./components/ContactForm";
 import DateTimeSelector from "./components/DateTimeSelector";
 import ReviewBooking from "./components/ReviewBooking";
@@ -95,7 +94,7 @@ export default function LaserHairRemovalBookingFlow({
   // React 18 StrictMode's dev-only double effect invocation).
   useEffect(() => {
     if (!showFunnel) return;
-    const stepNumber = state.bookingRequestId ? 6 : state.currentStep;
+    const stepNumber = state.bookingRequestId ? 5 : state.currentStep;
     const stepName = STEP_VIEW_NAMES[stepNumber];
     if (lastViewedStepRef.current === stepName) return;
     lastViewedStepRef.current = stepName;
@@ -126,22 +125,12 @@ export default function LaserHairRemovalBookingFlow({
         }
         break;
       case 2:
-        stepErrors = validatePackage(state.selectedPackage);
-        if (stepErrors.length === 0) {
-          laserAnalytics.trackPackageSelected(
-            state.selectedPackage!,
-            state.pricingSummary.sessionCount,
-            state.pricingSummary.packageTotal
-          );
-        }
-        break;
-      case 3:
         stepErrors = validateDateTime(state.selectedDate, state.selectedTime);
         if (stepErrors.length === 0) {
           laserAnalytics.trackDateTimeSelected(state.selectedDate!, state.selectedTime!);
         }
         break;
-      case 4:
+      case 3:
         stepErrors = validateContact(state.contactInfo);
         if (stepErrors.length === 0) {
           laserAnalytics.trackContactInfoEntered(
@@ -170,10 +159,9 @@ export default function LaserHairRemovalBookingFlow({
           }
         }
         break;
-      case 5:
+      case 4:
         stepErrors = validateReview(
           state.selectedAreas,
-          state.selectedPackage,
           state.contactInfo,
           state.selectedDate,
           state.selectedTime
@@ -273,28 +261,24 @@ export default function LaserHairRemovalBookingFlow({
       case 1: return "Continue";
       case 2: return "Continue";
       case 3: return "Continue";
-      case 4: return "Continue";
-      case 5: return "Request Appointment";
+      case 4: return "Request Appointment";
     }
   };
 
   const isNextDisabled = (): boolean => {
-    if (state.currentStep === 3) {
+    if (state.currentStep === 2) {
       return !state.selectedDate || !state.selectedTime;
     }
     return false;
   };
 
+  // Package selection was removed from the flow — selectedPackage stays
+  // fixed at "single", so the sticky-footer price always reflects the
+  // transparent single-session total for the selected areas.
   const getPriceLabel = (): string | undefined => {
-    if (state.currentStep === 5) return undefined;
+    if (state.currentStep === 4) return undefined;
     if (state.selectedAreas.length === 0) return undefined;
-    if (state.currentStep <= 2 && !state.selectedPackage) {
-      return `${formatCurrency(state.pricingSummary.baseSessionPrice)}/session`;
-    }
-    if (state.selectedPackage) {
-      return `${formatCurrency(state.pricingSummary.discountedSessionPrice)}/session`;
-    }
-    return undefined;
+    return `${formatCurrency(state.pricingSummary.discountedSessionPrice)}/session`;
   };
 
   return (
@@ -346,22 +330,13 @@ export default function LaserHairRemovalBookingFlow({
                   title={entryMode === "booking" ? "How much does laser hair removal cost?" : undefined}
                   description={
                     entryMode === "booking"
-                      ? "Select the areas you would like treated to see your package options and pricing."
+                      ? "Select the areas you would like treated to see your pricing."
                       : undefined
                   }
                 />
               )}
 
               {state.currentStep === 2 && (
-                <PackageSelector
-                  selectedAreas={state.selectedAreas}
-                  selectedPackage={state.selectedPackage}
-                  onPackageChange={(pkg: PackageType) => state.setSelectedPackage(pkg)}
-                  errors={errors.filter((e) => e.field === "package").map((e) => e.message)}
-                />
-              )}
-
-              {state.currentStep === 3 && (
                 <DateTimeSelector
                   selectedDate={state.selectedDate}
                   selectedTime={state.selectedTime}
@@ -371,7 +346,7 @@ export default function LaserHairRemovalBookingFlow({
                 />
               )}
 
-              {state.currentStep === 4 && (
+              {state.currentStep === 3 && (
                 <ContactForm
                   contactInfo={state.contactInfo}
                   screeningFlags={state.screeningFlags}
@@ -383,10 +358,9 @@ export default function LaserHairRemovalBookingFlow({
                 />
               )}
 
-              {state.currentStep === 5 && state.selectedPackage && state.selectedDate && state.selectedTime && (
+              {state.currentStep === 4 && state.selectedDate && state.selectedTime && (
                 <ReviewBooking
                   selectedAreas={state.selectedAreas}
-                  selectedPackage={state.selectedPackage}
                   contactInfo={state.contactInfo}
                   screeningFlags={state.screeningFlags}
                   marketingConsent={state.marketingConsent}

@@ -119,6 +119,16 @@ export default function AreaSelector({
         })}
       </div>
 
+      {/* Reassurance — package/upsell decisions now happen in person at the
+          appointment, not online, so this is shown before the user moves on
+          to picking a date/time. */}
+      <div className="mt-6 space-y-1.5">
+        <p className="font-inter text-xs text-warm-gray">No payment required today.</p>
+        <p className="font-inter text-xs text-warm-gray">
+          Multi-session packages and savings are available at your appointment.
+        </p>
+      </div>
+
       {/* Expose setShowError for parent validation trigger */}
       <input type="hidden" data-show-error={showError} ref={(el) => {
         if (el) (el as HTMLInputElement & { triggerError: () => void }).triggerError = () => setShowError(true);

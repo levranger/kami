@@ -103,12 +103,11 @@ laser-hair-removal/
 ├── index.ts                        — Public export
 ├── components/
 │   ├── LandingHero.tsx            — Google Ads landing section
-│   ├── ProgressIndicator.tsx      — Step 1-5 progress bar
+│   ├── ProgressIndicator.tsx      — Step 1-4 progress bar
 │   ├── AreaSelector.tsx           — Step 1: Treatment area selection
-│   ├── PackageSelector.tsx        — Step 2: Package selection
+│   ├── DateTimeSelector.tsx       — Step 2: Date/time selection
 │   ├── ContactForm.tsx            — Step 3: Contact details
-│   ├── DateTimeSelector.tsx       — Step 4: Date/time selection
-│   ├── ReviewBooking.tsx          — Step 5: Review and submit
+│   ├── ReviewBooking.tsx          — Step 4: Review and submit (package/upsell handled in person)
 │   ├── ConfirmationPage.tsx       — Post-submission confirmation
 │   ├── PriceSummary.tsx           — Reusable pricing display
 │   ├── BeforeAfterSlider.tsx      — Before/after comparison slider

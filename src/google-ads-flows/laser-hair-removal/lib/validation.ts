@@ -1,4 +1,4 @@
-import type { TreatmentArea, PackageType, ContactInfo } from "../types/booking";
+import type { TreatmentArea, ContactInfo } from "../types/booking";
 import { isValidUSPhone } from "./phone";
 
 export interface ValidationError {
@@ -21,17 +21,6 @@ export function validateAreas(selectedAreas: TreatmentArea[]): ValidationError[]
   const errors: ValidationError[] = [];
   if (selectedAreas.length === 0) {
     errors.push({ field: "areas", message: "Please select at least one treatment area." });
-  }
-  return errors;
-}
-
-/**
- * Validate Step 2: Package selection.
- */
-export function validatePackage(selectedPackage: PackageType | null): ValidationError[] {
-  const errors: ValidationError[] = [];
-  if (!selectedPackage) {
-    errors.push({ field: "package", message: "Please select a package option." });
   }
   return errors;
 }
@@ -62,7 +51,7 @@ export function validateContact(contactInfo: ContactInfo): ValidationError[] {
 }
 
 /**
- * Validate Step 4: Date and time selection.
+ * Validate Step 2: Date and time selection.
  */
 export function validateDateTime(
   selectedDate: string | null,
@@ -79,18 +68,16 @@ export function validateDateTime(
 }
 
 /**
- * Validate Step 5: All prior data must still be valid.
+ * Validate Step 4: All prior data must still be valid.
  */
 export function validateReview(
   selectedAreas: TreatmentArea[],
-  selectedPackage: PackageType | null,
   contactInfo: ContactInfo,
   selectedDate: string | null,
   selectedTime: string | null
 ): ValidationError[] {
   return [
     ...validateAreas(selectedAreas),
-    ...validatePackage(selectedPackage),
     ...validateContact(contactInfo),
     ...validateDateTime(selectedDate, selectedTime),
   ];

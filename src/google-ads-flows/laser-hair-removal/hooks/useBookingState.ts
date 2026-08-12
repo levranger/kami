@@ -14,6 +14,10 @@ import { saveBookingState, loadBookingState, clearBookingState } from "../lib/st
 export interface BookingState {
   currentStep: BookingStep;
   selectedAreas: TreatmentArea[];
+  // Package selection was removed from the online flow (upsell now happens
+  // in person) — this stays fixed at "single" so pricing math and the
+  // booking submission payload are unaffected. No setter is exposed; there
+  // is no UI that changes it anymore.
   selectedPackage: PackageType | null;
   selectedDate: string | null;
   selectedTime: string | null;
@@ -27,7 +31,6 @@ export interface BookingState {
   funnelStartedAt: string | null;
 
   setSelectedAreas: (areas: TreatmentArea[]) => void;
-  setSelectedPackage: (pkg: PackageType) => void;
   setSelectedDate: (date: string | null) => void;
   setSelectedTime: (time: string | null) => void;
   setContactInfo: (info: ContactInfo) => void;
@@ -118,7 +121,7 @@ export function useBookingState(): BookingState {
   const nextStep = useCallback(() => {
     setCurrentStep((prev) => {
       const next = prev + 1;
-      return (next <= 5 ? next : prev) as BookingStep;
+      return (next <= 4 ? next : prev) as BookingStep;
     });
   }, []);
 
@@ -159,7 +162,6 @@ export function useBookingState(): BookingState {
     funnelStartedAt,
 
     setSelectedAreas,
-    setSelectedPackage,
     setSelectedDate,
     setSelectedTime,
     setContactInfo,

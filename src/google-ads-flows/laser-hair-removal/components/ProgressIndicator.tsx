@@ -6,14 +6,14 @@ interface ProgressIndicatorProps {
 }
 
 export default function ProgressIndicator({ currentStep }: ProgressIndicatorProps) {
-  const progress = (currentStep / 5) * 100;
+  const progress = (currentStep / 4) * 100;
 
   return (
-    <div className="w-full" role="progressbar" aria-valuenow={currentStep} aria-valuemin={1} aria-valuemax={5} aria-label={`Step ${currentStep} of 5: ${STEP_NAMES[currentStep]}`}>
+    <div className="w-full" role="progressbar" aria-valuenow={currentStep} aria-valuemin={1} aria-valuemax={4} aria-label={`Step ${currentStep} of 4: ${STEP_NAMES[currentStep]}`}>
       {/* Step indicator text */}
       <div className="flex items-center justify-between mb-2 px-1">
         <span className="font-inter text-xs font-medium text-[#1A1A1A]">
-          Step {currentStep} of 5
+          Step {currentStep} of 4
         </span>
         <span className="font-inter text-xs text-warm-gray">
           {STEP_NAMES[currentStep]}
@@ -30,7 +30,7 @@ export default function ProgressIndicator({ currentStep }: ProgressIndicatorProp
 
       {/* Step dots */}
       <div className="flex justify-between mt-2 px-1">
-        {([1, 2, 3, 4, 5] as BookingStep[]).map((step) => (
+        {([1, 2, 3, 4] as BookingStep[]).map((step) => (
           <div
             key={step}
             className={`w-2 h-2 rounded-full transition-colors duration-200 ${

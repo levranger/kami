@@ -1,10 +1,13 @@
 import type { TreatmentArea, PackageType, AttributionData } from "../types/booking";
 
 const STORAGE_KEY = "kami_laser_booking_state_v1";
-// Bumped from 1 -> 2: step 3/4 swapped meaning (Appointment/Contact reorder),
-// so a persisted currentStep from before this change must be discarded
-// rather than resumed onto the wrong screen.
-const SCHEMA_VERSION = 2;
+// Bumped from 2 -> 3: the package-selection step was removed, so every step
+// after Areas shifted down by one (old Appointment=3 is now 2, old Contact=4
+// is now 3, old Review=5 is now 4). A persisted currentStep or
+// selectedPackage from before this change must be discarded — resuming it
+// would either land on the wrong screen or reintroduce a multi-session
+// package total the new flow no longer shows.
+const SCHEMA_VERSION = 3;
 const EXPIRATION_HOURS = 24;
 
 interface PersistedState {

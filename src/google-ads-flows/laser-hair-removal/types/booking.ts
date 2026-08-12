@@ -1,4 +1,4 @@
-export type BookingStep = 1 | 2 | 3 | 4 | 5;
+export type BookingStep = 1 | 2 | 3 | 4;
 
 // "landing" = marketing hero shown first, user clicks "Start Booking".
 // "booking" = paid-traffic entry (?start=booking) — opens directly on
@@ -114,8 +114,7 @@ export const DEPOSIT_AMOUNT = 50;
 
 export const STEP_NAMES: Record<BookingStep, string> = {
   1: "Areas",
-  2: "Package",
-  3: "Appointment",
-  4: "Contact",
-  5: "Review",
+  2: "Appointment",
+  3: "Contact",
+  4: "Review",
 };

@@ -91,7 +91,7 @@ export default function DateTimeSelector({
 
       {/* Location — immediately above the calendar so clients know where
           they're headed before they pick a slot. */}
-      <LocationCard trackLocation="step3_datetime" />
+      <LocationCard trackLocation="step2_datetime" />
 
       {/* Date Selection */}
       <div className="mb-8">

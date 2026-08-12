@@ -32,15 +32,16 @@ function entryExperimentParams(entryMode: EntryMode) {
   };
 }
 
-// Names/numbers used for laser_step_viewed, keyed by BookingStep (1-5) plus
-// a synthetic step 6 for the post-submit confirmation screen.
+// Names/numbers used for laser_step_viewed, keyed by BookingStep (1-4) plus
+// a synthetic step 5 for the post-submit confirmation screen. Package
+// selection was removed from the funnel, so this no longer has a "package"
+// entry — do not re-add one just to keep old reports looking familiar.
 export const STEP_VIEW_NAMES: Record<number, string> = {
   1: "areas",
-  2: "package",
-  3: "datetime",
-  4: "contact",
-  5: "review",
-  6: "confirmation",
+  2: "datetime",
+  3: "contact",
+  4: "review",
+  5: "confirmation",
 };
 
 export const laserAnalytics = {
@@ -81,22 +82,6 @@ export const laserAnalytics = {
     track("treatment_area_selected", {
       area_ids: areaIds.join("|"),
       number_of_areas: areaIds.length,
-      ...experimentParams(),
-    });
-  },
-
-  trackPackageSelected: (packageType: PackageType, sessionsCount: number, totalPrice: number) => {
-    track("laser_package_selected", {
-      package_type: packageType,
-      sessions: sessionsCount,
-      total_price: totalPrice,
-      ...experimentParams(),
-    });
-    // Secondary funnel event, same trigger/payload, generic naming.
-    track("package_selected", {
-      package_type: packageType,
-      sessions: sessionsCount,
-      total_price: totalPrice,
       ...experimentParams(),
     });
   },
