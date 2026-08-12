@@ -98,12 +98,15 @@ export default function AreaSelector({
               Offer applied
             </span>
           ) : (
-            <button
-              onClick={handleSelectMustHaveOffer}
-              className="font-inter text-sm font-semibold text-white bg-gold hover:bg-gold-dark px-4 py-2.5 rounded-sm transition-colors min-h-[44px]"
-            >
-              Get This Offer
-            </button>
+            <div className="flex flex-col items-end gap-1.5">
+              <p className="font-inter text-[11px] text-warm-gray">No payment required today.</p>
+              <button
+                onClick={handleSelectMustHaveOffer}
+                className="font-inter text-sm font-semibold text-white bg-gold hover:bg-gold-dark px-4 py-2.5 rounded-sm transition-colors min-h-[44px]"
+              >
+                Get This Offer
+              </button>
+            </div>
           )}
         </div>
       </div>
@@ -140,11 +143,6 @@ export default function AreaSelector({
                           : "border-gray-200 bg-white hover:border-gray-300"
                       }`}
                     >
-                      {MUST_HAVE_OFFER_AREA_IDS.includes(area.id) && (
-                        <span className="absolute -top-2.5 left-3 bg-gold text-white text-[9px] font-inter font-semibold tracking-wider uppercase px-2 py-0.5 rounded-sm">
-                          Must-Have
-                        </span>
-                      )}
                       <div className="flex items-center gap-3">
                         <div
                           className={`w-5 h-5 rounded-sm border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
