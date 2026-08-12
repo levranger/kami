@@ -1,5 +1,6 @@
 import type { TreatmentArea, PackageType, PricingSummary } from "../types/booking";
 import { DEPOSIT_AMOUNT } from "../types/booking";
+import { isMustHaveOfferCombo, MUST_HAVE_OFFER_PRICE } from "./offers";
 
 /**
  * Round a currency amount to the nearest whole dollar.
@@ -17,9 +18,12 @@ export function formatCurrency(amount: number): string {
 }
 
 /**
- * Calculate the base single-session price from selected areas.
+ * Calculate the base single-session price from selected areas. Selecting
+ * exactly the Must-Have bundle (Bikini + Underarms + Half Legs) overrides
+ * the per-area sum with the flat $149 offer price.
  */
 export function calculateBaseSessionPrice(selectedAreas: TreatmentArea[]): number {
+  if (isMustHaveOfferCombo(selectedAreas)) return MUST_HAVE_OFFER_PRICE;
   return selectedAreas.reduce((sum, area) => sum + area.price, 0);
 }
 

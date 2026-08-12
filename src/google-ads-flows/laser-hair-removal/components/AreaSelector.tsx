@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Check } from "lucide-react";
+import { Check, Sparkles } from "lucide-react";
 import type { TreatmentArea } from "../types/booking";
 import { formatCurrency } from "../lib/pricing";
+import { MUST_HAVE_OFFER_AREA_IDS, MUST_HAVE_OFFER_PRICE, isMustHaveOfferCombo } from "../lib/offers";
 
 const treatmentAreas: TreatmentArea[] = [
   { id: "underarms",  name: "Underarms",      category: "Body", price: 60  },
@@ -53,6 +54,15 @@ export default function AreaSelector({
 
   const hasErrors = errors.length > 0 && showError;
 
+  const mustHaveAreas = treatmentAreas.filter((a) => MUST_HAVE_OFFER_AREA_IDS.includes(a.id));
+  const mustHaveRegularPrice = mustHaveAreas.reduce((sum, a) => sum + a.price, 0);
+  const hasMustHaveOffer = isMustHaveOfferCombo(selectedAreas);
+
+  const handleSelectMustHaveOffer = () => {
+    setShowError(false);
+    onAreasChange(mustHaveAreas);
+  };
+
   return (
     <div>
       <h2 className="font-playfair text-xl md:text-2xl font-bold text-[#1A1A1A] mb-2">
@@ -61,6 +71,42 @@ export default function AreaSelector({
       <p className="font-inter text-sm text-warm-gray mb-6">
         {description}
       </p>
+
+      {/* Must-Have offer — a real, flat $149 price for this exact combo
+          (not a marketing teaser), so it's surfaced before the area grid. */}
+      <div
+        className={`mb-6 rounded-sm border-2 p-4 transition-colors ${
+          hasMustHaveOffer ? "border-green-500 bg-green-50" : "border-gold bg-gold/5"
+        }`}
+      >
+        <div className="flex items-start justify-between gap-4 flex-wrap">
+          <div>
+            <p className="flex items-center gap-1.5 font-inter text-[10px] font-semibold uppercase tracking-wider text-gold">
+              <Sparkles className="h-3 w-3" aria-hidden="true" />
+              New Client Must-Have
+            </p>
+            <p className="font-playfair text-lg font-bold text-[#1A1A1A] mt-1">
+              Bikini + Underarms + Half Legs — {formatCurrency(MUST_HAVE_OFFER_PRICE)}
+            </p>
+            <p className="font-inter text-xs text-warm-gray mt-1">
+              {formatCurrency(mustHaveRegularPrice)} value when booked separately.
+            </p>
+          </div>
+          {hasMustHaveOffer ? (
+            <span className="inline-flex items-center gap-1.5 font-inter text-sm font-semibold text-green-700 min-h-[44px]">
+              <Check className="h-4 w-4" aria-hidden="true" />
+              Offer applied
+            </span>
+          ) : (
+            <button
+              onClick={handleSelectMustHaveOffer}
+              className="font-inter text-sm font-semibold text-white bg-gold hover:bg-gold-dark px-4 py-2.5 rounded-sm transition-colors min-h-[44px]"
+            >
+              Get This Offer
+            </button>
+          )}
+        </div>
+      </div>
 
       {/* Error message */}
       {hasErrors && (
@@ -94,6 +140,11 @@ export default function AreaSelector({
                           : "border-gray-200 bg-white hover:border-gray-300"
                       }`}
                     >
+                      {MUST_HAVE_OFFER_AREA_IDS.includes(area.id) && (
+                        <span className="absolute -top-2.5 left-3 bg-gold text-white text-[9px] font-inter font-semibold tracking-wider uppercase px-2 py-0.5 rounded-sm">
+                          Must-Have
+                        </span>
+                      )}
                       <div className="flex items-center gap-3">
                         <div
                           className={`w-5 h-5 rounded-sm border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
