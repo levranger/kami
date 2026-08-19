@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ArrowLeft, Check, Clock, Calendar, Sparkles, Timer, MapPin } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check, Clock, Calendar, Sparkles, Timer, MapPin, ClipboardCheck, FlaskConical, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -13,6 +13,8 @@ import BeforeAfterSection from "@/components/sections/BeforeAfterSection";
 import TechnologySection from "@/components/sections/TechnologySection";
 import ProcessStepsSection from "@/components/sections/ProcessStepsSection";
 import ResultsGallerySection from "@/components/sections/ResultsGallerySection";
+import WhatToExpectSection from "@/components/sections/WhatToExpectSection";
+import IVMenuSection from "@/components/sections/IVMenuSection";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import { servicePages, newClientOffer, BOOKING_URL, PHONE_NUMBER, PHONE_HREF, localBusinessSchema, blogPosts, relatedBlogMap } from "@/data/content";
 import { ADDRESS_SHORT, CITY_STATE, MAPS_URL } from "@/data/constants";
@@ -47,6 +49,14 @@ export default function ServicePage({ params }: Props) {
   const relatedBlogPosts = blogPosts.filter((p) => relatedBlogSlugs.includes(p.slug));
   const isLaserService = ["laser-hair-removal", "arm-hair-removal", "back-hair-removal", "bikini-hair-removal", "chest-hair-removal", "ear-hair-removal", "eyebrow-hair-removal", "facial-hair-removal", "leg-hair-removal", "upper-lip-hair-removal", "neck-hair-removal", "stomach-hair-removal", "underarm-hair-removal", "laser-hair-removal-dark-skin"].includes(service.slug);
 
+  const statItems = service.heroStats ?? [
+    { icon: "duration" as const, label: "Duration", value: service.duration },
+    { icon: "downtime" as const, label: "Downtime", value: service.downtime },
+    { icon: "results" as const, label: "Results", value: service.resultsTimeline },
+    { icon: "sessions" as const, label: "Sessions", value: service.sessionsNeeded },
+  ];
+  const ctaLabel = service.heroCtaLabel ?? "Book Now";
+
   const faqSchema = buildFAQSchema(service.faq.map((f) => ({ question: f.q, answer: f.a })));
   const serviceSchema = buildServiceSchema(service);
   const breadcrumbSchema = buildBreadcrumbSchema([
@@ -69,11 +79,12 @@ export default function ServicePage({ params }: Props) {
           <div className="absolute inset-0" aria-hidden="true">
             <Image
               src={service.heroImage}
-              alt={`${service.title} at Kami Aesthetics Aventura`}
+              alt={service.heroImageAlt ?? `${service.title} at Kami Aesthetics Aventura`}
               fill
               priority
               quality={90}
               className="object-cover"
+              style={{ objectPosition: service.heroImagePosition ?? "center" }}
               sizes="100vw"
             />
             <div className={`absolute inset-0 bg-gradient-to-r ${service.heroGradient}`} />
@@ -92,27 +103,30 @@ export default function ServicePage({ params }: Props) {
             <div className="max-w-2xl">
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-px w-12 bg-gold" aria-hidden="true" />
-                <span className="font-inter text-xs tracking-[0.3em] uppercase text-gold">{service.locationTag}</span>
+                <span className="font-inter text-xs tracking-[0.3em] uppercase text-gold">{service.heroEyebrow ?? service.locationTag}</span>
               </div>
               <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
-                {service.title}{" "}
-                <span className="block text-gold text-2xl md:text-3xl mt-2 font-normal">{service.locationTag}</span>
+                {service.heroH1 ?? (
+                  <>
+                    {service.title}{" "}
+                    <span className="block text-gold text-2xl md:text-3xl mt-2 font-normal">{service.locationTag}</span>
+                  </>
+                )}
               </h1>
               <p className="font-inter text-base md:text-lg text-white/80 leading-relaxed mb-8 max-w-xl">
-                {service.shortDescription}
+                {service.heroDescription ?? service.shortDescription}
               </p>
 
               <div className="flex flex-wrap gap-6 mb-10">
-                <QuickStat icon={<Timer className="h-4 w-4" />} label="Duration" value={service.duration} />
-                <QuickStat icon={<Clock className="h-4 w-4" />} label="Downtime" value={service.downtime} />
-                <QuickStat icon={<Sparkles className="h-4 w-4" />} label="Results" value={service.resultsTimeline} />
-                <QuickStat icon={<Calendar className="h-4 w-4" />} label="Sessions" value={service.sessionsNeeded} />
+                {statItems.map((stat) => (
+                  <QuickStat key={stat.label} icon={<StatIcon iconKey={stat.icon} className="h-4 w-4" />} label={stat.label} value={stat.value} />
+                ))}
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-gold hover:bg-gold-dark text-white font-inter text-sm tracking-wider px-8 py-6 rounded-none transition-all duration-300 group">
-                    Book Now
+                    {ctaLabel}
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
                   </Button>
                 </a>
@@ -163,13 +177,13 @@ export default function ServicePage({ params }: Props) {
               {/* Left: Description + Benefits */}
               <div className="lg:col-span-2">
                 <h2 className="font-playfair text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-6">
-                  About {service.title} in {service.locationTag}
+                  {service.aboutHeading ?? `About ${service.title} in ${service.locationTag}`}
                 </h2>
                 <p className="font-inter text-sm md:text-base text-warm-gray leading-relaxed mb-10">
                   {service.fullDescription}
                 </p>
 
-                <h3 className="font-playfair text-xl font-bold text-[#1A1A1A] mb-6">Key Benefits</h3>
+                <h3 className="font-playfair text-xl font-bold text-[#1A1A1A] mb-6">{service.benefitsHeading ?? "Key Benefits"}</h3>
                 <div className="grid sm:grid-cols-2 gap-4 mb-12">
                   {service.benefits.map((benefit) => (
                     <div key={benefit} className="flex items-start gap-3">
@@ -181,14 +195,18 @@ export default function ServicePage({ params }: Props) {
                   ))}
                 </div>
 
-                <h3 className="font-playfair text-xl font-bold text-[#1A1A1A] mb-6">Treatment Areas</h3>
-                <div className="flex flex-wrap gap-3 mb-12">
-                  {service.areas.map((area) => (
-                    <span key={area} className="font-inter text-sm px-4 py-2 bg-warm-white border border-warm-border rounded-sm text-[#1A1A1A]">
-                      {area}
-                    </span>
-                  ))}
-                </div>
+                {!service.hideTreatmentAreas && (
+                  <>
+                    <h3 className="font-playfair text-xl font-bold text-[#1A1A1A] mb-6">Treatment Areas</h3>
+                    <div className="flex flex-wrap gap-3 mb-12">
+                      {service.areas.map((area) => (
+                        <span key={area} className="font-inter text-sm px-4 py-2 bg-warm-white border border-warm-border rounded-sm text-[#1A1A1A]">
+                          {area}
+                        </span>
+                      ))}
+                    </div>
+                  </>
+                )}
 
                 <h3 className="font-playfair text-xl font-bold text-[#1A1A1A] mb-6">Frequently Asked Questions</h3>
                 <ServiceFAQ items={service.faq} />
@@ -222,11 +240,11 @@ export default function ServicePage({ params }: Props) {
                   <div className="bg-warm-white border border-warm-border p-8 rounded-sm">
                     <h3 className="font-playfair text-xl font-bold text-[#1A1A1A] mb-2">Ready to Get Started?</h3>
                     <p className="font-inter text-sm text-warm-gray leading-relaxed mb-6">
-                      Book your {service.title.toLowerCase()} consultation today.
+                      {service.sidebarCtaSubtext ?? `Book your ${service.title.toLowerCase()} consultation today.`}
                     </p>
                     <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-track="booking_click" data-track-location="service_page" data-track-service={params.slug} className="block">
                       <Button className="w-full bg-gold hover:bg-gold-dark text-white font-inter text-sm tracking-wider rounded-none py-6 transition-all duration-300 group">
-                        Book Now
+                        {ctaLabel}
                         <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
                       </Button>
                     </a>
@@ -239,10 +257,9 @@ export default function ServicePage({ params }: Props) {
                     </div>
                     <div className="border-t border-warm-border my-6" />
                     <div className="space-y-3">
-                      <SidebarStat label="Duration" value={service.duration} />
-                      <SidebarStat label="Downtime" value={service.downtime} />
-                      <SidebarStat label="Results" value={service.resultsTimeline} />
-                      <SidebarStat label="Sessions" value={service.sessionsNeeded} />
+                      {statItems.map((stat) => (
+                        <SidebarStat key={stat.label} label={stat.label} value={stat.value} />
+                      ))}
                     </div>
                   </div>
 
@@ -270,6 +287,15 @@ export default function ServicePage({ params }: Props) {
           if (section.type === "technology") return <TechnologySection key={idx} title={section.title} subtitle={section.subtitle} content={section.content} items={section.items ?? []} />;
           if (section.type === "process-steps") return <ProcessStepsSection key={idx} title={section.title} subtitle={section.subtitle} items={section.items ?? []} />;
           if (section.type === "results-gallery") return <ResultsGallerySection key={idx} title={section.title} subtitle={section.subtitle} items={section.items ?? []} />;
+          if (section.type === "what-to-expect") return <WhatToExpectSection key={idx} title={section.title} subtitle={section.subtitle} items={section.items ?? []} image={section.image} imageAlt={section.imageAlt} />;
+          if (section.type === "iv-menu") return <IVMenuSection key={idx} title={section.title} subtitle={section.subtitle} />;
+          if (section.type === "disclaimer") return (
+            <section key={idx} className="bg-white border-t border-warm-border">
+              <div className="container mx-auto px-4 md:px-8 py-8">
+                <p className="font-inter text-xs text-warm-gray leading-relaxed max-w-3xl mx-auto text-center">{section.content}</p>
+              </div>
+            </section>
+          );
           return null;
         })}
 
@@ -337,7 +363,7 @@ export default function ServicePage({ params }: Props) {
             <p className="font-inter text-white/60 text-sm mb-8 max-w-md mx-auto">{service.ctaSubtext}</p>
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-track="booking_click" data-track-location="service_page_bottom" data-track-service={params.slug}>
               <Button size="lg" className="bg-gold hover:bg-gold-dark text-white font-inter text-sm tracking-wider px-10 py-6 rounded-none transition-all duration-300">
-                Book Now <ArrowRight className="ml-2 h-4 w-4" />
+                {ctaLabel} <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </a>
           </div>
@@ -346,6 +372,21 @@ export default function ServicePage({ params }: Props) {
       <Footer />
     </div>
   );
+}
+
+const STAT_ICON_MAP = {
+  duration: Timer,
+  downtime: Clock,
+  results: Sparkles,
+  sessions: Calendar,
+  evaluation: ClipboardCheck,
+  formulation: FlaskConical,
+  administration: Stethoscope,
+} as const;
+
+function StatIcon({ iconKey, className }: { iconKey: keyof typeof STAT_ICON_MAP; className?: string }) {
+  const Icon = STAT_ICON_MAP[iconKey];
+  return <Icon className={className} />;
 }
 
 function QuickStat({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {

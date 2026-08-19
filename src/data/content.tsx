@@ -170,7 +170,7 @@ const seoMap: Record<string, { title: string; description: string; keywords: str
   "iv-therapy": {
     title: "IV Therapy in Aventura FL | Kami Aesthetics",
     description:
-      "Customized IV vitamin drip therapy in Aventura FL. Boost energy, immunity, and skin radiance with 100% bioavailable nutrients. Book at Kami Aesthetics.",
+      "Provider-guided IV therapy in Aventura FL, featuring individualized vitamin, mineral, and hydration formulations. Evaluation and provider authorization required. Request a consultation at Kami Aesthetics.",
     keywords: ["iv therapy aventura", "iv drip aventura fl", "vitamin infusion miami", "iv wellness aventura"],
   },
   "weight-loss": {
@@ -288,8 +288,8 @@ const ctaMap: Record<string, { headline: string; subtext: string }> = {
     subtext: "Experience the power of PRP therapy — the safest, most natural approach to skin and hair rejuvenation.",
   },
   "iv-therapy": {
-    headline: "Recharge From the Inside Out",
-    subtext: "Book your IV therapy session and feel the difference that 100% bioavailable nutrients can make.",
+    headline: "Personalized IV Therapy, By Evaluation",
+    subtext: "Request a consultation to discuss individualized IV formulations with a provider at Kami Aesthetics.",
   },
   "weight-loss": {
     headline: "Start Your Medical Weight Loss Journey",
