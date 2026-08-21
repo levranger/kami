@@ -48,7 +48,7 @@ export function HeaderNav({
 
   const categoryServices: Record<string, readonly NavService[]> = {
     lasers: navServices.filter((s) => ["laser-hair-removal", "ipl-treatments", "resurfx"].includes(s.slug)),
-    injectables: navServices.filter((s) => ["botox", "dermal-fillers"].includes(s.slug)),
+    injectables: navServices.filter((s) => ["botox", "dermal-fillers", "radiesse", "biorevitalization"].includes(s.slug)),
     wellness: navServices.filter((s) => ["prp-therapy", "iv-therapy", "weight-loss"].includes(s.slug)),
   };
 
@@ -156,7 +156,7 @@ export function HeaderMobile({
 
   const categoryServices: Record<string, readonly NavService[]> = {
     lasers: navServices.filter((s) => ["laser-hair-removal", "ipl-treatments", "resurfx"].includes(s.slug)),
-    injectables: navServices.filter((s) => ["botox", "dermal-fillers"].includes(s.slug)),
+    injectables: navServices.filter((s) => ["botox", "dermal-fillers", "radiesse", "biorevitalization"].includes(s.slug)),
     wellness: navServices.filter((s) => ["prp-therapy", "iv-therapy", "weight-loss"].includes(s.slug)),
   };
 

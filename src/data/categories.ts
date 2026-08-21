@@ -66,7 +66,7 @@ export const categoryDefs: CategoryDef[] = [
       canonical: `${BASE}/services/injectables`,
       keywords: ["botox aventura", "dermal fillers aventura", "injectables aventura fl", "lip filler aventura"],
     },
-    serviceSlugs: ["botox", "dermal-fillers"],
+    serviceSlugs: ["botox", "dermal-fillers", "radiesse", "biorevitalization"],
   },
   {
     slug: "wellness",
@@ -108,6 +108,8 @@ export const SLUG_TO_CATEGORY: Record<string, CategorySlug> = {
   resurfx: "lasers",
   botox: "injectables",
   "dermal-fillers": "injectables",
+  radiesse: "injectables",
+  biorevitalization: "injectables",
   "prp-therapy": "wellness",
   "iv-therapy": "wellness",
   "weight-loss": "wellness",

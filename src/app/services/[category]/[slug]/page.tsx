@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ArrowLeft, Check, Clock, Calendar, Sparkles, Timer, MapPin, ClipboardCheck, FlaskConical, Stethoscope } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check, Clock, Calendar, Sparkles, Timer, MapPin, ClipboardCheck, FlaskConical, Stethoscope, ClipboardList, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -15,6 +15,10 @@ import ProcessStepsSection from "@/components/sections/ProcessStepsSection";
 import ResultsGallerySection from "@/components/sections/ResultsGallerySection";
 import WhatToExpectSection from "@/components/sections/WhatToExpectSection";
 import IVMenuSection from "@/components/sections/IVMenuSection";
+import ComparisonSection from "@/components/sections/ComparisonSection";
+import ExpectGroupsSection from "@/components/sections/ExpectGroupsSection";
+import InfoListSection from "@/components/sections/InfoListSection";
+import SafetyInfoSection from "@/components/sections/SafetyInfoSection";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import { servicePages, newClientOffer, BOOKING_URL, PHONE_NUMBER, PHONE_HREF, localBusinessSchema, blogPosts, relatedBlogMap } from "@/data/content";
 import { ADDRESS_SHORT, CITY_STATE, MAPS_URL } from "@/data/constants";
@@ -56,6 +60,7 @@ export default function ServicePage({ params }: Props) {
     { icon: "sessions" as const, label: "Sessions", value: service.sessionsNeeded },
   ];
   const ctaLabel = service.heroCtaLabel ?? "Book Now";
+  const bottomCtaLabel = service.bottomCtaLabel ?? ctaLabel;
 
   const faqSchema = buildFAQSchema(service.faq.map((f) => ({ question: f.q, answer: f.a })));
   const serviceSchema = buildServiceSchema(service);
@@ -137,6 +142,14 @@ export default function ServicePage({ params }: Props) {
                     </Button>
                   </a>
                 )}
+                {service.heroShowPhoneCta && (
+                  <a href={PHONE_HREF} data-track="phone_click" data-track-location="hero" aria-label={`Call us at ${PHONE_NUMBER}`}>
+                    <Button size="lg" variant="outline" className="!bg-transparent border-white/40 text-white hover:bg-white hover:text-[#1A1A1A] font-inter text-sm tracking-wider px-8 py-6 rounded-none transition-all duration-300 group">
+                      <Phone className="mr-2 h-4 w-4" />
+                      Call {PHONE_NUMBER}
+                    </Button>
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -198,13 +211,14 @@ export default function ServicePage({ params }: Props) {
                 {!service.hideTreatmentAreas && (
                   <>
                     <h3 className="font-playfair text-xl font-bold text-[#1A1A1A] mb-6">Treatment Areas</h3>
-                    <div className="flex flex-wrap gap-3 mb-12">
+                    <div className={`flex flex-wrap gap-3 ${service.areasNote ? "mb-4" : "mb-12"}`}>
                       {service.areas.map((area) => (
                         <span key={area} className="font-inter text-sm px-4 py-2 bg-warm-white border border-warm-border rounded-sm text-[#1A1A1A]">
                           {area}
                         </span>
                       ))}
                     </div>
+                    {service.areasNote && <p className="font-inter text-xs text-warm-gray leading-relaxed mb-12">{service.areasNote}</p>}
                   </>
                 )}
 
@@ -289,6 +303,10 @@ export default function ServicePage({ params }: Props) {
           if (section.type === "results-gallery") return <ResultsGallerySection key={idx} title={section.title} subtitle={section.subtitle} items={section.items ?? []} />;
           if (section.type === "what-to-expect") return <WhatToExpectSection key={idx} title={section.title} subtitle={section.subtitle} items={section.items ?? []} image={section.image} imageAlt={section.imageAlt} />;
           if (section.type === "iv-menu") return <IVMenuSection key={idx} title={section.title} subtitle={section.subtitle} />;
+          if (section.type === "comparison") return <ComparisonSection key={idx} title={section.title} subtitle={section.subtitle} columns={section.comparisonColumns ?? []} content={section.content} />;
+          if (section.type === "expect-groups") return <ExpectGroupsSection key={idx} title={section.title} subtitle={section.subtitle} groups={section.groups ?? []} />;
+          if (section.type === "info-list") return <InfoListSection key={idx} title={section.title} subtitle={section.subtitle} points={section.points ?? []} note={section.note} />;
+          if (section.type === "safety-info") return <SafetyInfoSection key={idx} title={section.title} content={section.content} points={section.points ?? []} points2={section.points2} points2Label={section.points2Label} note={section.note} link={section.link} />;
           if (section.type === "disclaimer") return (
             <section key={idx} className="bg-white border-t border-warm-border">
               <div className="container mx-auto px-4 md:px-8 py-8">
@@ -363,7 +381,7 @@ export default function ServicePage({ params }: Props) {
             <p className="font-inter text-white/60 text-sm mb-8 max-w-md mx-auto">{service.ctaSubtext}</p>
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-track="booking_click" data-track-location="service_page_bottom" data-track-service={params.slug}>
               <Button size="lg" className="bg-gold hover:bg-gold-dark text-white font-inter text-sm tracking-wider px-10 py-6 rounded-none transition-all duration-300">
-                {ctaLabel} <ArrowRight className="ml-2 h-4 w-4" />
+                {bottomCtaLabel} <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </a>
           </div>
@@ -382,6 +400,7 @@ const STAT_ICON_MAP = {
   evaluation: ClipboardCheck,
   formulation: FlaskConical,
   administration: Stethoscope,
+  plan: ClipboardList,
 } as const;
 
 function StatIcon({ iconKey, className }: { iconKey: keyof typeof STAT_ICON_MAP; className?: string }) {

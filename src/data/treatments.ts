@@ -265,6 +265,7 @@ export const treatments: Treatment[] = [
       { q: "What's the recovery like?", a: "You may experience mild swelling and bruising for 2–5 days. Most clients return to normal activities immediately. We recommend avoiding strenuous exercise for 24 hours." },
       { q: "What is the difference between Botox and fillers?", a: "Botox relaxes the muscles that cause wrinkles from facial expressions. Fillers add volume to areas that have lost fullness — such as lips, cheeks, and under-eye hollows. They can be used together for a more complete result." },
       { q: "Are dermal fillers safe?", a: "Yes, when administered by a trained professional. We use FDA-approved hyaluronic acid fillers which are biocompatible and reversible with hyaluronidase if needed." },
+      { q: "Is Radiesse a hyaluronic-acid filler like the ones described above?", a: "No. Radiesse is a calcium hydroxylapatite (CaHA) biostimulator — a different category from the hyaluronic-acid fillers on this page, selected for structural support and collagen stimulation rather than pure volume. It's not dissolved with hyaluronidase and isn't used in the lips or under the eyes. See our Radiesse page or ask during your consultation to find out which option fits your goals." },
     ],
     uniqueSections: [
       {
@@ -1242,6 +1243,396 @@ export const treatments: Treatment[] = [
           { label: "4. Application", description: "PRP is applied via micro-needling (Vampire Facial) or injected directly into the scalp for hair restoration." },
           { label: "5. Regeneration", description: "Growth factors stimulate collagen production and cellular renewal over the following weeks and months." },
         ],
+      },
+    ],
+  },
+  {
+    slug: "radiesse",
+    title: "Radiesse",
+    shortDescription:
+      "A calcium hydroxylapatite biostimulator that restores structural support and contour while encouraging your skin's own collagen production.",
+    fullDescription:
+      "Radiesse is an injectable biostimulator made of calcium hydroxylapatite (CaHA) microspheres suspended in a smooth gel carrier — a different category of treatment than hyaluronic-acid fillers. Once placed, it provides structural support in areas that have lost volume while encouraging your body to produce its own collagen and elastin over time, so improvement continues to develop after your visit. Radiesse is FDA-approved for correcting moderate to severe facial folds and wrinkles such as nasolabial folds, restoring volume loss in the back of the hands, contouring the jawline as Radiesse (+), and smoothing décolleté wrinkles using a specific saline-dilution protocol. Because it works differently than HA-based fillers, Radiesse is not dissolved with hyaluronidase and is not used to treat the lips or the area around the eyes. Whether it's the right choice for your goals is something we determine together during an individual consultation. We welcome clients from Aventura and nearby communities, including Sunny Isles Beach, Hallandale Beach, Golden Beach, North Miami, and the greater Miami area.",
+    heroImage: "/images/services/radiesse/radiesse-hero.webp",
+    heroImageAlt: "Woman with naturally defined jawline representing Radiesse treatment in Aventura",
+    heroImagePosition: "65% center",
+    heroGradient: "from-[#1A1A2A]/90 via-[#1A1A2A]/65 to-[#1A1A2A]/10",
+    heroEyebrow: "Aventura, Florida",
+    heroH1: "Radiesse in Aventura, FL",
+    heroDescription:
+      "A regenerative calcium hydroxylapatite treatment designed to restore structure, refine contours, and support your skin's natural collagen production.",
+    heroCtaLabel: "Book Consultation",
+    heroShowPhoneCta: true,
+    bottomCtaLabel: "Book Your Radiesse Consultation",
+    sidebarCtaSubtext: "Book your Radiesse consultation today.",
+    heroStats: [
+      { icon: "duration", label: "Duration", value: "Approximately 30–60 minutes" },
+      { icon: "downtime", label: "Downtime", value: "Usually minimal" },
+      { icon: "results", label: "Results", value: "Visible immediately; builds over time" },
+      { icon: "plan", label: "Treatment Plan", value: "Customized during consultation" },
+    ],
+    duration: "30–60 min",
+    downtime: "Usually minimal",
+    resultsTimeline: "Visible immediately; builds over time",
+    sessionsNeeded: "Customized during consultation",
+    benefits: [
+      "Restores structural support and volume",
+      "Improves facial contours",
+      "Supports collagen and elastin production",
+      "Produces natural-looking, progressive improvement",
+      "Can improve jawline definition",
+      "Can address eligible facial folds and wrinkles",
+      "Treatment is customized to facial anatomy and goals",
+    ],
+    areas: ["Jawline Contour (Radiesse (+))", "Facial Folds & Nasolabial Folds", "Hand Volume Restoration", "Décolleté Wrinkles (Saline-Diluted Protocol)"],
+    faq: [
+      {
+        q: "What is Radiesse?",
+        a: "Radiesse is an injectable biostimulator containing calcium hydroxylapatite (CaHA) microspheres suspended in a gel carrier. It provides structural support where volume has been lost while stimulating your body's own collagen and elastin production over time.",
+      },
+      {
+        q: "How is Radiesse different from hyaluronic-acid filler?",
+        a: "Hyaluronic-acid fillers are made from a substance naturally found in skin and primarily add volume. Radiesse is made from calcium hydroxylapatite, a different material that provides structural support and actively stimulates collagen production. The two are selected for different goals, and your injector will help determine which is appropriate for you.",
+      },
+      {
+        q: "Can Radiesse be dissolved?",
+        a: "No. Unlike hyaluronic-acid fillers, Radiesse cannot be dissolved with hyaluronidase. This is an important consideration when choosing between filler types, and your provider will discuss it with you during your consultation.",
+      },
+      {
+        q: "When will I see results?",
+        a: "Some structural correction may be visible immediately after treatment, while the collagen- and elastin-related improvement from biostimulation develops gradually over the following weeks and months.",
+      },
+      {
+        q: "How long can Radiesse results last?",
+        a: "Radiesse results have been reported to last up to two years in some patients, though individual results vary based on the treatment area, technique, amount used, and your own metabolism. Your provider can discuss realistic expectations for your specific treatment plan.",
+      },
+      {
+        q: "Is there downtime after Radiesse?",
+        a: "Downtime is usually minimal. You may experience temporary swelling, redness, tenderness, bruising, or small bumps at the injection sites, which typically resolve on their own. Your provider will give you specific aftercare instructions.",
+      },
+      {
+        q: "Can Radiesse be used in the lips or under the eyes?",
+        a: "No. The safety and effectiveness of Radiesse has not been established for use in the lips or around the eyes, so we do not use it in these areas.",
+      },
+      {
+        q: "Is Radiesse suitable for jawline contouring?",
+        a: "Yes. Radiesse (+) is FDA-approved for subdermal and/or supraperiosteal injection to improve moderate-to-severe loss of jawline contour, and it's one of our most requested uses of the product.",
+      },
+      {
+        q: "How many treatments will I need?",
+        a: "This depends on your anatomy, goals, and the areas being treated. Your provider will recommend a treatment plan after evaluating you in person — we don't promise a specific number of sessions before that assessment.",
+      },
+      {
+        q: "How much does Radiesse cost in Aventura?",
+        a: "Cost depends on the treatment area, your anatomy, your goals, and the amount of product recommended for your plan. We don't publish a flat rate because every treatment plan is individualized — book a consultation and we'll provide a personalized quote.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "process-steps",
+        title: "How Radiesse Works",
+        subtitle: "A structured, evaluation-first approach to biostimulation",
+        items: [
+          { label: "1. Consultation", description: "The provider evaluates your anatomy, medical history, skin quality, and aesthetic goals." },
+          { label: "2. Treatment", description: "Radiesse is placed in carefully selected areas using a treatment plan tailored to you." },
+          { label: "3. Progressive Improvement", description: "Some correction may be visible immediately, while collagen- and elastin-related improvement develops gradually." },
+        ],
+      },
+      {
+        type: "comparison",
+        title: "Radiesse vs. Hyaluronic-Acid Fillers",
+        subtitle: "Two different categories of injectable, selected for different goals",
+        comparisonColumns: [
+          {
+            title: "Radiesse",
+            points: [
+              "Calcium hydroxylapatite",
+              "Structural support and biostimulation",
+              "Commonly selected for facial contour, jawline, folds, hands, and certain skin-quality goals",
+              "Not dissolved with hyaluronidase",
+              "Generally not selected for the lips or under the eyes",
+            ],
+          },
+          {
+            title: "HA Fillers",
+            points: [
+              "Hyaluronic acid",
+              "Primarily adds or restores volume",
+              "Frequently used for the lips and selected facial areas",
+              "Can generally be dissolved with hyaluronidase",
+              "Product choice depends on anatomy and desired result",
+            ],
+          },
+        ],
+        content: "Your injector will recommend the most appropriate product after evaluating your anatomy and goals.",
+      },
+      {
+        type: "expect-groups",
+        title: "What to Expect",
+        subtitle: "A guided process from consultation through aftercare",
+        groups: [
+          {
+            label: "Before",
+            points: [
+              "Consultation and medical-history review",
+              "Discuss medications, supplements, allergies, previous filler, recent dental work, infections, and any planned procedures",
+              "Continue taking prescribed medication as directed by your prescribing clinician unless they advise otherwise",
+            ],
+          },
+          {
+            label: "During",
+            points: [
+              "Skin cleansing and preparation",
+              "Individualized placement based on your treatment plan",
+              "Approximately 30–60 minutes, depending on the areas treated",
+            ],
+          },
+          {
+            label: "After",
+            points: [
+              "Temporary swelling, redness, tenderness, bruising, itching, or small bumps may occur",
+              "Avoid strenuous activity and extensive heat or sun exposure for about 24 hours and until swelling or redness resolves",
+              "Follow your provider's specific aftercare instructions",
+              "Contact your provider promptly for unusual pain, skin discoloration, vision changes, or neurologic symptoms",
+            ],
+          },
+        ],
+      },
+      {
+        type: "info-list",
+        title: "Results and Longevity",
+        subtitle: "What to realistically expect over time",
+        points: [
+          "Initial volume correction can be visible immediately after treatment",
+          "Collagen- and elastin-related support develops gradually over the following weeks and months",
+          "Results vary by anatomy, treatment area, technique, amount of product used, metabolism, and your individualized treatment plan",
+          "Official Radiesse materials report that results have been shown to last up to two years — though this is not guaranteed for every patient",
+        ],
+        note: "Individual results vary.",
+      },
+      {
+        type: "safety-info",
+        title: "Is Radiesse Right for You?",
+        content: "Candidacy for Radiesse is determined during an individual consultation, where your provider reviews your health history and goals. A few important safety considerations:",
+        points: [
+          "Radiesse and Radiesse (+) should not be used in patients with a relevant product allergy, a history of severe allergies, or bleeding disorders.",
+          "Radiesse (+) should not be used in patients allergic to lidocaine or similar anesthetics.",
+          "Treatment should be postponed in the presence of an active skin infection.",
+          "The safety and effectiveness of Radiesse has not been established for use in the lips or around the eyes, or during pregnancy or breastfeeding.",
+        ],
+        note: "Rare but serious complications can occur if filler unintentionally enters a blood vessel, including skin injury, visual impairment or blindness, and stroke. If you experience unusual pain, blanching or whitening of the skin, vision changes, or signs of stroke, seek immediate medical attention.",
+        link: { label: "View Official Radiesse Patient Information", href: "https://radiesse.com/discover/" },
+      },
+    ],
+  },
+  {
+    slug: "biorevitalization",
+    title: "Biorevitalization",
+    shortDescription:
+      "A personalized injectable treatment — also known as a skin booster treatment — designed to improve skin hydration, texture, and overall radiance.",
+    fullDescription:
+      "Biorevitalization — also known as a skin booster treatment — focuses on skin quality rather than facial reshaping. Small amounts of a selected hydrating formulation are placed strategically within the skin to support a fresher, smoother, and more luminous appearance. It is not primarily intended to create facial volume or dramatically reshape facial contours the way traditional dermal filler does. The exact formulation depends on the product selected for your treatment plan, and every plan is customized according to your skin, medical history, and goals during an individual consultation. We welcome clients from Aventura and nearby communities, including Sunny Isles Beach, Hallandale Beach, Golden Beach, North Miami, Hollywood, and the greater Miami area.",
+    heroImage: "/images/services/biorevitalization/biorevitalization-hero.webp",
+    heroImageAlt: "Woman with hydrated, radiant skin representing biorevitalization treatment in Aventura",
+    heroImagePosition: "68% center",
+    heroGradient: "from-[#1A1A2A]/90 via-[#1A1A2A]/65 to-[#1A1A2A]/10",
+    heroEyebrow: "Aventura, Florida",
+    heroH1: "Biorevitalization in Aventura, FL",
+    heroDescription:
+      "A personalized injectable treatment designed to improve skin hydration, texture, and overall radiance from within.",
+    heroCtaLabel: "Book Consultation",
+    heroShowPhoneCta: true,
+    bottomCtaLabel: "Book Your Biorevitalization Consultation",
+    sidebarCtaSubtext: "Book your Biorevitalization consultation today.",
+    heroStats: [
+      { icon: "duration", label: "Duration", value: "Approximately 30–60 minutes" },
+      { icon: "downtime", label: "Downtime", value: "Usually minimal; redness or bumps possible" },
+      { icon: "results", label: "Results", value: "Develop gradually after treatment" },
+      { icon: "plan", label: "Treatment Plan", value: "Customized during consultation" },
+    ],
+    duration: "30–60 min",
+    downtime: "Usually minimal; temporary redness or small injection-site bumps may occur",
+    resultsTimeline: "Develop gradually after treatment",
+    sessionsNeeded: "Customized during consultation",
+    benefits: [
+      "Improves the appearance of dehydrated skin",
+      "Supports smoother-looking texture",
+      "Promotes a fresher, more radiant appearance",
+      "Softens the appearance of fine lines",
+      "Focuses on skin quality without dramatic volumization",
+      "Can be customized for different skin concerns",
+      "Minimal interruption to most daily activities",
+    ],
+    areas: ["Face", "Neck", "Décolleté", "Backs of the Hands"],
+    areasNote: "Treatment areas depend on the selected product, provider assessment, and individual treatment plan.",
+    faq: [
+      {
+        q: "What is biorevitalization?",
+        a: "Biorevitalization is an injectable skin-quality treatment designed to improve the appearance of hydration, texture, elasticity, and radiance. It focuses on how your skin looks and feels rather than adding facial volume.",
+      },
+      {
+        q: "What is injected during biorevitalization?",
+        a: "The exact formulation depends on the specific product your provider selects for your treatment plan. We'll walk you through the product being used and what it contains during your consultation.",
+      },
+      {
+        q: "Is biorevitalization the same as dermal filler?",
+        a: "No. While both are injectable treatments, biorevitalization is focused on skin quality — hydration, texture, and radiance — using small, distributed treatment points. Traditional dermal filler is primarily used to restore volume or reshape contours. Your provider can help you decide which approach fits your goals.",
+      },
+      {
+        q: "Does biorevitalization add facial volume?",
+        a: "It's not primarily designed to. Biorevitalization is intended to support skin quality and a refreshed appearance rather than create significant facial volume the way traditional filler does.",
+      },
+      {
+        q: "When will I see results?",
+        a: "Some patients notice improved hydration and radiance after the initial treatment, while changes in texture and overall skin quality tend to develop gradually. Individual timelines vary.",
+      },
+      {
+        q: "How many treatments will I need?",
+        a: "This depends on the formulation used, the treatment area, your skin condition, and your goals. Your provider will recommend a treatment plan during your consultation — we don't promise a fixed number of sessions before that assessment.",
+      },
+      {
+        q: "How long do results last?",
+        a: "Longevity varies by product, treatment area, and individual factors. Your provider can discuss realistic expectations for your specific treatment plan, and maintenance sessions may be recommended over time.",
+      },
+      {
+        q: "Is there downtime?",
+        a: "Downtime is usually minimal, but not zero. You may notice temporary redness, swelling, tenderness, or small bumps at the injection sites, which typically settle over the following days. Your provider will give you specific aftercare guidance.",
+      },
+      {
+        q: "Are small bumps normal after treatment?",
+        a: "Yes, small raised bumps at the injection sites are a common and typically temporary effect, especially in the hours immediately after treatment. They usually settle as the product distributes within the skin.",
+      },
+      {
+        q: "Which areas can be treated?",
+        a: "Commonly treated areas include the face, neck, décolleté, and backs of the hands, depending on the product used and your individual treatment plan.",
+      },
+      {
+        q: "Is biorevitalization painful?",
+        a: "Most patients describe mild discomfort during the injections. Your provider can discuss comfort options as part of your treatment plan.",
+      },
+      {
+        q: "How much does biorevitalization cost in Aventura?",
+        a: "Cost depends on the product used, the treatment area, and the treatment plan your provider recommends. We don't publish a flat rate because every plan is individualized — book a consultation for a personalized quote.",
+      },
+      {
+        q: "Can biorevitalization be combined with Botox, IPL, or ResurFX?",
+        a: "Combining treatments is something your provider evaluates during consultation, based on your skin, goals, and treatment timeline. We don't automatically schedule combination treatments on the same day — your provider will determine the appropriate sequencing for you.",
+      },
+    ],
+    uniqueSections: [
+      {
+        type: "info-list",
+        title: "What Biorevitalization Can Address",
+        subtitle: "A skin-quality treatment for common signs of dehydration and tired-looking skin",
+        points: [
+          "Dull or tired-looking skin",
+          "Dehydrated appearance",
+          "Rough or uneven-looking texture",
+          "Early visible signs of skin aging",
+          "Fine lines caused or emphasized by dehydration",
+          "Loss of visible radiance",
+          "Skin that appears less supple",
+        ],
+      },
+      {
+        type: "process-steps",
+        title: "How the Treatment Works",
+        subtitle: "A personalized, consultation-first approach to skin quality",
+        items: [
+          { label: "1. Consultation", description: "The provider reviews your medical history, skin condition, previous injectable treatments, and aesthetic goals." },
+          { label: "2. Personalized Treatment", description: "The skin is prepared, and small amounts of the selected formulation are administered using a technique appropriate for the treatment area and product." },
+          { label: "3. Gradual Refresh", description: "Temporary injection-site bumps may initially be visible. As they settle, the skin may appear more hydrated, smooth, and refreshed." },
+        ],
+      },
+      {
+        type: "comparison",
+        title: "Biorevitalization vs. Dermal Fillers",
+        subtitle: "Two different approaches to injectable treatment, selected for different goals",
+        comparisonColumns: [
+          {
+            title: "Biorevitalization",
+            points: [
+              "Primarily focused on hydration and skin quality",
+              "Generally uses small, distributed treatment points",
+              "Intended to create subtle, progressive improvement",
+              "Not primarily designed to add significant facial volume",
+              "Product composition varies",
+            ],
+          },
+          {
+            title: "Traditional Dermal Fillers",
+            points: [
+              "Primarily used to restore volume or enhance contours",
+              "Can address lips, cheeks, chin, jawline, and folds depending on product",
+              "Usually create more immediate structural correction",
+              "Product selection depends on anatomy and goals",
+            ],
+          },
+        ],
+        content: "Your provider will recommend the most appropriate treatment after evaluating your skin, anatomy, and desired result.",
+      },
+      {
+        type: "expect-groups",
+        title: "What to Expect",
+        subtitle: "A guided process from consultation through aftercare",
+        groups: [
+          {
+            label: "Before",
+            points: [
+              "Medical history and candidacy review",
+              "Discussion of allergies, medications, supplements, previous filler, active infections, and recent dental or cosmetic procedures",
+              "Continue taking prescribed medication as directed by your prescribing clinician unless they advise otherwise",
+              "Arrive with clean skin when possible",
+            ],
+          },
+          {
+            label: "During",
+            points: [
+              "Skin cleansing and preparation",
+              "Personalized placement of the selected formulation",
+              "Approximately 30–60 minutes, depending on the area and treatment plan",
+            ],
+          },
+          {
+            label: "After",
+            points: [
+              "Temporary redness, swelling, tenderness, bruising, itching, or small raised injection points may occur",
+              "Small bumps may remain visible temporarily depending on technique",
+              "Follow your provider's individualized aftercare instructions",
+              "Avoid strenuous exercise, excessive heat, and significant sun exposure for the period recommended by your provider",
+              "Do not massage or manipulate treated areas unless specifically instructed",
+            ],
+          },
+        ],
+      },
+      {
+        type: "info-list",
+        title: "Results and Treatment Plan",
+        subtitle: "Some patients notice improved hydration and radiance after the initial treatment, while changes in texture and overall skin quality may develop gradually. The recommended number and frequency of treatments depend on the selected formulation, treatment area, skin condition, and individual goals.",
+        points: [
+          "Results vary from patient to patient",
+          "Maintenance treatments may be recommended over time",
+          "No fixed outcome or duration is guaranteed",
+          "A consultation is required to establish an appropriate treatment plan",
+        ],
+        note: "Individual results vary.",
+      },
+      {
+        type: "safety-info",
+        title: "Is Biorevitalization Right for You?",
+        content: "Biorevitalization is not appropriate for everyone and requires a consultation to confirm candidacy. You may need to postpone or avoid treatment due to:",
+        points: [
+          "Pregnancy or breastfeeding",
+          "Active infection or inflammation in the treatment area",
+          "Known allergy to any ingredient in the selected product",
+          "Certain bleeding or clotting conditions",
+          "Use of medications that may increase bleeding or bruising",
+          "Previous adverse reactions to injectable products",
+          "Other medical conditions identified during consultation",
+        ],
+        points2Label: "Common Temporary Effects",
+        points2: ["Redness", "Swelling", "Bruising", "Tenderness", "Itching", "Small bumps or papules at injection sites"],
+        note: "As with other injectable treatments, uncommon but potentially serious complications can occur, including infection, nodules, tissue injury, allergic reaction, and unintended injection into a blood vessel. Seek immediate medical attention for unusual or worsening pain, white or blotchy skin discoloration, vision changes, facial weakness, difficulty speaking, or other concerning symptoms.",
       },
     ],
   },

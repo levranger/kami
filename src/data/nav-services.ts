@@ -12,6 +12,8 @@ export const navServices = [
   { slug: "resurfx", title: "ResurFX", href: "/services/lasers/resurfx" },
   { slug: "botox", title: "Botox", href: "/services/injectables/botox" },
   { slug: "dermal-fillers", title: "Dermal Fillers", href: "/services/injectables/dermal-fillers" },
+  { slug: "radiesse", title: "Radiesse", href: "/services/injectables/radiesse" },
+  { slug: "biorevitalization", title: "Biorevitalization", href: "/services/injectables/biorevitalization" },
   { slug: "prp-therapy", title: "PRP Therapy", href: "/services/wellness/prp-therapy" },
   { slug: "iv-therapy", title: "IV Therapy", href: "/services/wellness/iv-therapy" },
   { slug: "weight-loss", title: "Medical Weight Loss", href: "/services/wellness/weight-loss" },

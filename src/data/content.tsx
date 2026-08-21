@@ -161,6 +161,37 @@ const seoMap: Record<string, { title: string; description: string; keywords: str
       "Premium dermal fillers in Aventura, FL. Restore volume, enhance contours, and rejuvenate your look with hyaluronic acid fillers. Immediate results.",
     keywords: ["dermal fillers aventura", "lip filler miami", "cheek filler aventura", "juvederm aventura"],
   },
+  biorevitalization: {
+    title: "Biorevitalization Aventura, FL | Skin Hydration Treatment",
+    description:
+      "Refresh dull, dehydrated-looking skin with personalized biorevitalization treatments at Kami Aesthetics in Aventura. Book your consultation today.",
+    keywords: [
+      "biorevitalization aventura",
+      "biorevitalization aventura fl",
+      "biorevitalization treatment near me",
+      "skin booster aventura",
+      "injectable skin hydration aventura",
+      "skin rejuvenation injections aventura",
+      "facial hydration treatment aventura",
+      "biorevitalization miami",
+      "skin quality treatment aventura",
+    ],
+  },
+  radiesse: {
+    title: "Radiesse Aventura, FL | Collagen Biostimulator",
+    description:
+      "Discover Radiesse in Aventura for natural-looking volume, improved facial contours, and collagen stimulation. Book a consultation at Kami Aesthetics.",
+    keywords: [
+      "radiesse aventura",
+      "radiesse injections aventura fl",
+      "radiesse filler aventura",
+      "collagen biostimulator aventura",
+      "radiesse jawline",
+      "calcium hydroxylapatite filler",
+      "biostimulator treatment miami",
+      "radiesse north miami",
+    ],
+  },
   "prp-therapy": {
     title: "PRP Therapy Aventura | Vampire Facial",
     description:
@@ -201,11 +232,13 @@ const relatedMap: Record<string, string[]> = {
   "stomach-hair-removal": ["chest-hair-removal", "back-hair-removal", "laser-hair-removal"],
   "underarm-hair-removal": ["laser-hair-removal", "bikini-hair-removal", "arm-hair-removal"],
   "laser-hair-removal-dark-skin": ["laser-hair-removal", "bikini-hair-removal", "leg-hair-removal"],
-  "ipl-treatments": ["resurfx", "laser-hair-removal"],
-  resurfx: ["ipl-treatments", "prp-therapy"],
-  botox: ["dermal-fillers", "prp-therapy"],
-  "dermal-fillers": ["botox", "prp-therapy"],
-  "prp-therapy": ["botox", "iv-therapy"],
+  "ipl-treatments": ["resurfx", "biorevitalization", "laser-hair-removal"],
+  resurfx: ["ipl-treatments", "biorevitalization", "prp-therapy"],
+  botox: ["dermal-fillers", "radiesse", "prp-therapy"],
+  "dermal-fillers": ["botox", "radiesse", "biorevitalization", "prp-therapy"],
+  radiesse: ["dermal-fillers", "botox", "prp-therapy"],
+  biorevitalization: ["dermal-fillers", "radiesse", "botox", "prp-therapy", "ipl-treatments", "resurfx"],
+  "prp-therapy": ["botox", "biorevitalization", "iv-therapy"],
   "iv-therapy": ["prp-therapy", "weight-loss"],
   "weight-loss": ["iv-therapy", "prp-therapy"],
 };
@@ -282,6 +315,14 @@ const ctaMap: Record<string, { headline: string; subtext: string }> = {
   "dermal-fillers": {
     headline: "Restore Volume, Enhance Your Natural Beauty",
     subtext: "Discover how premium dermal fillers can rejuvenate your appearance with immediate, natural-looking results.",
+  },
+  radiesse: {
+    headline: "Restore Structure. Support Your Skin.",
+    subtext: "Discover whether Radiesse is the right treatment for your facial contours, skin quality, and long-term aesthetic goals.",
+  },
+  biorevitalization: {
+    headline: "Refresh Your Skin From Within",
+    subtext: "Discover whether biorevitalization is the right approach for your hydration, texture, and skin-quality goals.",
   },
   "prp-therapy": {
     headline: "Rejuvenate Naturally With Your Own Growth Factors",
