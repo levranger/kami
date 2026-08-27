@@ -1206,9 +1206,9 @@ export const treatments: Treatment[] = [
     slug: "prp-therapy",
     title: "PRP Therapy",
     shortDescription:
-      "Harness your body's natural healing power for skin rejuvenation, hair restoration, and collagen boost.",
+      "A treatment that uses a concentrate prepared from your own blood, applied by a licensed provider to the face or scalp as part of an individualized treatment plan.",
     fullDescription:
-      "Platelet-Rich Plasma (PRP) therapy uses your body's own growth factors to stimulate healing and regeneration. We draw a small amount of your blood, process it to concentrate the platelets, and then apply the PRP to target areas. This natural approach stimulates collagen production, accelerates healing, and promotes cellular renewal — making it ideal for facial rejuvenation, hair restoration, and enhancing other treatments.",
+      "Platelet-Rich Plasma (PRP) therapy is performed by a licensed provider using platelets concentrated from a small sample of your own blood. We draw a small amount of blood, process it to concentrate the platelets, and then apply the PRP to the treatment area — commonly the face or scalp — as part of an individualized treatment plan. PRP can also be used alongside other treatments.",
     heroImage: "/images/service-prp-therapy.png",
     heroGradient: "from-[#1A1A1A]/85 via-[#1A1A1A]/60 to-[#1A1A1A]/30",
     duration: "45–60 min",
@@ -1216,32 +1216,31 @@ export const treatments: Treatment[] = [
     resultsTimeline: "4–6 weeks progressive",
     sessionsNeeded: "3–4 sessions",
     benefits: [
-      "100% natural — uses your own blood",
+      "Uses a concentrate prepared from your own blood",
       "Stimulates collagen and elastin production",
       "Improves skin texture and tone",
       "Promotes hair regrowth",
       "Enhances results of other treatments",
-      "Minimal risk of allergic reaction",
     ],
     areas: ["Full Face (Vampire Facial)", "Scalp (Hair Restoration)", "Under Eyes", "Neck & Décolletage", "Hands"],
     faq: [
       { q: "How does PRP work?", a: "PRP contains concentrated growth factors that signal your body to repair and regenerate tissue. When applied to the skin or scalp, these growth factors stimulate new collagen, blood vessels, and cellular renewal." },
-      { q: "How many sessions do I need?", a: "For facial rejuvenation, 3 sessions spaced 4–6 weeks apart is recommended. For hair restoration, 3–4 sessions with monthly maintenance. Results improve progressively over several months." },
-      { q: "Is PRP safe?", a: "PRP is one of the safest aesthetic treatments available since it uses your own blood. There's virtually no risk of allergic reaction or rejection. Mild redness and swelling are normal for 1–2 days." },
-      { q: "What is PRP used for at Kami Aesthetics?", a: "We offer PRP for facial rejuvenation (the Vampire Facial), under-eye treatment, and hair loss restoration." },
+      { q: "How many sessions do I need?", a: "For facial treatment, 3 sessions spaced 4–6 weeks apart is recommended. For scalp treatment, 3–4 sessions with monthly maintenance. Results improve progressively over several months." },
+      { q: "Is PRP safe?", a: "PRP is performed using a concentrate prepared from your own blood. As with any injectable or micro-needling treatment, mild redness and swelling are common for 1–2 days after treatment. Your provider can discuss what to expect based on your treatment plan." },
+      { q: "What is PRP used for at Kami Aesthetics?", a: "We offer PRP for the face (the Vampire Facial), the under-eye area, and the scalp for hair loss." },
       { q: "Is PRP painful?", a: "A topical numbing cream is applied before the procedure to minimize discomfort. Most clients find it very tolerable." },
     ],
     uniqueSections: [
       {
         type: "process-steps",
         title: "The PRP Process",
-        subtitle: "A natural approach to rejuvenation using your body's own healing power",
+        subtitle: "A treatment using platelets concentrated from your own blood",
         items: [
           { label: "1. Blood Draw", description: "A small amount of blood is drawn from your arm — similar to a routine blood test." },
           { label: "2. Centrifuge Processing", description: "Your blood is placed in a centrifuge that separates the platelet-rich plasma from other blood components." },
           { label: "3. PRP Activation", description: "The concentrated PRP — rich in growth factors — is prepared for application to your treatment area." },
-          { label: "4. Application", description: "PRP is applied via micro-needling (Vampire Facial) or injected directly into the scalp for hair restoration." },
-          { label: "5. Regeneration", description: "Growth factors stimulate collagen production and cellular renewal over the following weeks and months." },
+          { label: "4. Application", description: "PRP is applied via micro-needling (Vampire Facial) or injected directly into the scalp." },
+          { label: "5. Follow-Up", description: "Your provider may recommend follow-up care in the weeks following treatment." },
         ],
       },
     ],
@@ -1250,9 +1249,9 @@ export const treatments: Treatment[] = [
     slug: "radiesse",
     title: "Radiesse",
     shortDescription:
-      "A calcium hydroxylapatite biostimulator that restores structural support and contour while encouraging your skin's own collagen production.",
+      "A calcium hydroxylapatite biostimulator commonly used to add structural support and contour to the treated area.",
     fullDescription:
-      "Radiesse is an injectable biostimulator made of calcium hydroxylapatite (CaHA) microspheres suspended in a smooth gel carrier — a different category of treatment than hyaluronic-acid fillers. Once placed, it provides structural support in areas that have lost volume while encouraging your body to produce its own collagen and elastin over time, so improvement continues to develop after your visit. Radiesse is FDA-approved for correcting moderate to severe facial folds and wrinkles such as nasolabial folds, restoring volume loss in the back of the hands, contouring the jawline as Radiesse (+), and smoothing décolleté wrinkles using a specific saline-dilution protocol. Because it works differently than HA-based fillers, Radiesse is not dissolved with hyaluronidase and is not used to treat the lips or the area around the eyes. Whether it's the right choice for your goals is something we determine together during an individual consultation. We welcome clients from Aventura and nearby communities, including Sunny Isles Beach, Hallandale Beach, Golden Beach, North Miami, and the greater Miami area.",
+      "Radiesse is an injectable biostimulator made of calcium hydroxylapatite (CaHA) microspheres suspended in a smooth gel carrier — a different category of treatment than hyaluronic-acid fillers. It is a treatment used to add structural support in areas that have lost volume, and is associated with collagen and elastin production in the treated tissue. Radiesse is FDA-approved for correcting moderate to severe facial folds and wrinkles such as nasolabial folds, restoring volume loss in the back of the hands, contouring the jawline as Radiesse (+), and smoothing décolleté wrinkles using a specific saline-dilution protocol. Because it works differently than HA-based fillers, Radiesse is not dissolved with hyaluronidase and is not used to treat the lips or the area around the eyes. Whether it's the right choice for your goals is something we determine together during an individual consultation. We welcome clients from Aventura and nearby communities, including Sunny Isles Beach, Hallandale Beach, Golden Beach, North Miami, and the greater Miami area.",
     heroImage: "/images/services/radiesse/radiesse-hero.webp",
     heroImageAlt: "Woman with naturally defined jawline representing Radiesse treatment in Aventura",
     heroImagePosition: "65% center",
@@ -1260,7 +1259,7 @@ export const treatments: Treatment[] = [
     heroEyebrow: "Aventura, Florida",
     heroH1: "Radiesse in Aventura, FL",
     heroDescription:
-      "A regenerative calcium hydroxylapatite treatment designed to restore structure, refine contours, and support your skin's natural collagen production.",
+      "A calcium hydroxylapatite treatment used to add structure and refine contours, commonly associated with collagen production in the treated area.",
     heroCtaLabel: "Book Consultation",
     heroShowPhoneCta: true,
     bottomCtaLabel: "Book Your Radiesse Consultation",
@@ -1276,9 +1275,9 @@ export const treatments: Treatment[] = [
     resultsTimeline: "Visible immediately; builds over time",
     sessionsNeeded: "Customized during consultation",
     benefits: [
-      "Restores structural support and volume",
+      "Adds structural support and volume",
       "Improves facial contours",
-      "Supports collagen and elastin production",
+      "Associated with collagen and elastin production in the treated area",
       "Produces natural-looking, progressive improvement",
       "Can improve jawline definition",
       "Can address eligible facial folds and wrinkles",
@@ -1288,11 +1287,11 @@ export const treatments: Treatment[] = [
     faq: [
       {
         q: "What is Radiesse?",
-        a: "Radiesse is an injectable biostimulator containing calcium hydroxylapatite (CaHA) microspheres suspended in a gel carrier. It provides structural support where volume has been lost while stimulating your body's own collagen and elastin production over time.",
+        a: "Radiesse is an injectable biostimulator containing calcium hydroxylapatite (CaHA) microspheres suspended in a gel carrier. It is used to add structural support where volume has been lost, and is associated with collagen and elastin production in the treated area.",
       },
       {
         q: "How is Radiesse different from hyaluronic-acid filler?",
-        a: "Hyaluronic-acid fillers are made from a substance naturally found in skin and primarily add volume. Radiesse is made from calcium hydroxylapatite, a different material that provides structural support and actively stimulates collagen production. The two are selected for different goals, and your injector will help determine which is appropriate for you.",
+        a: "Hyaluronic-acid fillers are made from a substance naturally found in skin and primarily add volume. Radiesse is made from calcium hydroxylapatite, a different material that is used to add structural support and is associated with collagen production. The two are selected for different goals, and your injector will help determine which is appropriate for you.",
       },
       {
         q: "Can Radiesse be dissolved?",

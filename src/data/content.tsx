@@ -4,6 +4,7 @@ import type {
   BlogPost,
   FAQEntry,
 } from "@/types";
+import Link from "next/link";
 import { treatments } from "./treatments";
 import { BOOKING_URL, SPLENDOR_X_IMAGE, DEFAULT_OG_IMAGE, INSTAGRAM_URL, FACEBOOK_URL, TIKTOK_URL } from "./constants";
 import { laserVsWaxingBody } from "./blog/laser-vs-waxing";
@@ -195,7 +196,7 @@ const seoMap: Record<string, { title: string; description: string; keywords: str
   "prp-therapy": {
     title: "PRP Therapy Aventura | Vampire Facial",
     description:
-      "PRP therapy and Vampire Facial in Aventura, FL. Natural growth factors for skin rejuvenation and hair restoration. 100% natural, minimal downtime.",
+      "PRP therapy and Vampire Facial in Aventura, FL, using a concentrate prepared from your own blood. Book a consultation at Kami Aesthetics.",
     keywords: ["prp therapy aventura", "vampire facial miami", "prp hair restoration aventura", "platelet rich plasma miami"],
   },
   "iv-therapy": {
@@ -317,7 +318,7 @@ const ctaMap: Record<string, { headline: string; subtext: string }> = {
     subtext: "Discover how premium dermal fillers can rejuvenate your appearance with immediate, natural-looking results.",
   },
   radiesse: {
-    headline: "Restore Structure. Support Your Skin.",
+    headline: "Consider Radiesse for Facial Contour",
     subtext: "Discover whether Radiesse is the right treatment for your facial contours, skin quality, and long-term aesthetic goals.",
   },
   biorevitalization: {
@@ -325,8 +326,8 @@ const ctaMap: Record<string, { headline: string; subtext: string }> = {
     subtext: "Discover whether biorevitalization is the right approach for your hydration, texture, and skin-quality goals.",
   },
   "prp-therapy": {
-    headline: "Rejuvenate Naturally With Your Own Growth Factors",
-    subtext: "Experience the power of PRP therapy — the safest, most natural approach to skin and hair rejuvenation.",
+    headline: "PRP Therapy, Using Your Own Blood",
+    subtext: "Book a consultation to discuss whether PRP therapy is a fit for your skin or hair goals.",
   },
   "iv-therapy": {
     headline: "Personalized IV Therapy, By Evaluation",
@@ -336,6 +337,48 @@ const ctaMap: Record<string, { headline: string; subtext: string }> = {
     headline: "Start Your Medical Weight Loss Journey",
     subtext: "Book a consultation and get a personalized protocol designed around your body and your goals.",
   },
+};
+
+// ─── About-section body overrides ───
+// Rich-content replacements for the plain-string fullDescription, used only where
+// we need real inline <Link> cross-links within the existing About paragraph copy.
+const ABOUT_BODY_OVERRIDES: Record<string, React.ReactNode> = {
+  "iv-therapy": (
+    <p className="font-inter text-sm md:text-base text-warm-gray leading-relaxed mb-10">
+      IV therapy is a medical service in which fluids and selected nutrients are administered intravenously after an individual evaluation. At Kami Aesthetics, your goals begin the conversation, while an authorized provider determines whether treatment is appropriate and selects the formulation and dosing for you. Many clients pair IV therapy with treatments like{" "}
+      <Link href="/services/wellness/prp-therapy" className="text-gold hover:text-gold-dark transition-colors">PRP therapy</Link>,{" "}
+      <Link href="/services/injectables/radiesse" className="text-gold hover:text-gold-dark transition-colors">Radiesse</Link>, or{" "}
+      <Link href="/services/injectables/biorevitalization" className="text-gold hover:text-gold-dark transition-colors">Biorevitalization</Link> as part of a broader wellness plan — explore our full range of{" "}
+      <Link href="/services/wellness" className="text-gold hover:text-gold-dark transition-colors">wellness treatments</Link> to see what fits your goals.
+    </p>
+  ),
+  "prp-therapy": (
+    <p className="font-inter text-sm md:text-base text-warm-gray leading-relaxed mb-10">
+      Platelet-Rich Plasma (PRP) therapy is performed by a licensed provider using platelets concentrated from a small sample of your own blood. We draw a small amount of blood, process it to concentrate the platelets, and then apply the PRP to the treatment area — commonly the face or scalp — as part of an individualized treatment plan. PRP can also be used alongside other treatments, such as{" "}
+      <Link href="/services/wellness/iv-therapy" className="text-gold hover:text-gold-dark transition-colors">IV therapy</Link>,{" "}
+      <Link href="/services/injectables/radiesse" className="text-gold hover:text-gold-dark transition-colors">Radiesse</Link>, or{" "}
+      <Link href="/services/injectables/biorevitalization" className="text-gold hover:text-gold-dark transition-colors">Biorevitalization</Link>, and is one of several options in our{" "}
+      <Link href="/services/wellness" className="text-gold hover:text-gold-dark transition-colors">wellness treatments</Link> lineup.
+    </p>
+  ),
+  radiesse: (
+    <p className="font-inter text-sm md:text-base text-warm-gray leading-relaxed mb-10">
+      Radiesse is an injectable biostimulator made of calcium hydroxylapatite (CaHA) microspheres suspended in a smooth gel carrier — a different category of treatment than hyaluronic-acid fillers. It is a treatment used to add structural support in areas that have lost volume, and is associated with collagen and elastin production in the treated tissue. Radiesse is FDA-approved for correcting moderate to severe facial folds and wrinkles such as nasolabial folds, restoring volume loss in the back of the hands, contouring the jawline as Radiesse (+), and smoothing décolleté wrinkles using a specific saline-dilution protocol. Because it works differently than HA-based fillers, Radiesse is not dissolved with hyaluronidase and is not used to treat the lips or the area around the eyes. Whether it's the right choice for your goals is something we determine together during an individual consultation. We welcome clients from Aventura and nearby communities, including Sunny Isles Beach, Hallandale Beach, Golden Beach, North Miami, and the greater Miami area. Radiesse is one of several options within our{" "}
+      <Link href="/services/injectables" className="text-gold hover:text-gold-dark transition-colors">injectable treatments</Link> — some clients also explore{" "}
+      <Link href="/services/wellness/prp-therapy" className="text-gold hover:text-gold-dark transition-colors">PRP therapy</Link>,{" "}
+      <Link href="/services/wellness/iv-therapy" className="text-gold hover:text-gold-dark transition-colors">IV therapy</Link>, or{" "}
+      <Link href="/services/injectables/biorevitalization" className="text-gold hover:text-gold-dark transition-colors">Biorevitalization</Link> as part of a broader wellness routine.
+    </p>
+  ),
+  biorevitalization: (
+    <p className="font-inter text-sm md:text-base text-warm-gray leading-relaxed mb-10">
+      Biorevitalization — also known as a skin booster treatment — focuses on skin quality rather than facial reshaping. Small amounts of a selected hydrating formulation are placed strategically within the skin to support a fresher, smoother, and more luminous appearance. It is not primarily intended to create facial volume or dramatically reshape facial contours the way traditional dermal filler does. The exact formulation depends on the product selected for your treatment plan, and every plan is customized according to your skin, medical history, and goals during an individual consultation. We welcome clients from Aventura and nearby communities, including Sunny Isles Beach, Hallandale Beach, Golden Beach, North Miami, Hollywood, and the greater Miami area. Biorevitalization is one of several options within our{" "}
+      <Link href="/services/injectables" className="text-gold hover:text-gold-dark transition-colors">injectable treatments</Link> — some clients also explore{" "}
+      <Link href="/services/injectables/radiesse" className="text-gold hover:text-gold-dark transition-colors">Radiesse</Link> for structural support,{" "}
+      <Link href="/services/wellness/prp-therapy" className="text-gold hover:text-gold-dark transition-colors">PRP therapy</Link>, or{" "}
+      <Link href="/services/wellness/iv-therapy" className="text-gold hover:text-gold-dark transition-colors">IV therapy</Link> for broader wellness goals.
+    </p>
+  ),
 };
 
 export const servicePages: ServicePageContent[] = treatments.map((t) => {
@@ -349,6 +392,7 @@ export const servicePages: ServicePageContent[] = treatments.map((t) => {
       canonical: `${BASE_URL}${canonicalPath}`,
       keywords: seo?.keywords,
     },
+    aboutBodyOverride: ABOUT_BODY_OVERRIDES[t.slug] ?? t.aboutBodyOverride,
     locationTag: "Aventura, FL",
     relatedSlugs: relatedMap[t.slug] ?? [],
     ctaHeadline: ctaMap[t.slug]?.headline ?? `Ready for ${t.title}?`,

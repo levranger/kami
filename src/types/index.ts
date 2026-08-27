@@ -79,6 +79,8 @@ export interface Treatment {
   heroStats?: { icon: StatIconKey; label: string; value: string }[];
   /** Overrides the "About {title} in {locationTag}" heading. */
   aboutHeading?: string;
+  /** Overrides the About-section body paragraph with rich content (e.g. inline internal links). Falls back to a plain <p> of fullDescription when absent. */
+  aboutBodyOverride?: React.ReactNode;
   /** Overrides the "Key Benefits" heading. */
   benefitsHeading?: string;
   /** Overrides the sidebar CTA subtext. Defaults to "Book your {title} consultation today." */

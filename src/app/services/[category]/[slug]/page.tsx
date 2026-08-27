@@ -192,9 +192,11 @@ export default function ServicePage({ params }: Props) {
                 <h2 className="font-playfair text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-6">
                   {service.aboutHeading ?? `About ${service.title} in ${service.locationTag}`}
                 </h2>
-                <p className="font-inter text-sm md:text-base text-warm-gray leading-relaxed mb-10">
-                  {service.fullDescription}
-                </p>
+                {service.aboutBodyOverride ?? (
+                  <p className="font-inter text-sm md:text-base text-warm-gray leading-relaxed mb-10">
+                    {service.fullDescription}
+                  </p>
+                )}
 
                 <h3 className="font-playfair text-xl font-bold text-[#1A1A1A] mb-6">{service.benefitsHeading ?? "Key Benefits"}</h3>
                 <div className="grid sm:grid-cols-2 gap-4 mb-12">
