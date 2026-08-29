@@ -4,6 +4,7 @@ import BeforeAfterSlider from "./BeforeAfterSlider";
 import TrustSection from "./TrustSection";
 import { treatmentAreas } from "./AreaSelector";
 import { getStartingPrices, formatCurrency } from "../lib/pricing";
+import { SHOW_PRICING } from "../lib/config";
 
 interface LandingHeroProps {
   onStartBooking: () => void;
@@ -52,11 +53,13 @@ export default function LandingHero({ onStartBooking }: LandingHeroProps) {
               Comfortable treatments. Lasting results.
             </p>
 
-            {/* Starting price */}
-            <p className="font-inter text-sm text-gold font-medium mb-6">
-              Single sessions from {formatCurrency(singleSessionFrom)} · Packages from{" "}
-              {formatCurrency(packageSessionFrom)}/session
-            </p>
+            {/* Starting price — hidden while SHOW_PRICING is false (see lib/config.ts) */}
+            {SHOW_PRICING && (
+              <p className="font-inter text-sm text-gold font-medium mb-6">
+                Single sessions from {formatCurrency(singleSessionFrom)} · Packages from{" "}
+                {formatCurrency(packageSessionFrom)}/session
+              </p>
+            )}
 
             {/* Social proof placeholder */}
             <div className="flex items-center gap-2 mb-8">
@@ -75,7 +78,7 @@ export default function LandingHero({ onStartBooking }: LandingHeroProps) {
               onClick={onStartBooking}
               className="w-full sm:w-auto bg-gold hover:bg-gold-dark text-white font-inter text-sm font-semibold tracking-wider px-8 py-4 rounded-sm transition-all duration-200 group flex items-center justify-center gap-2 min-h-[52px]"
             >
-              Check Price &amp; Availability
+              {SHOW_PRICING ? "Check Price & Availability" : "Check Availability"}
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </button>
 

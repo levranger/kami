@@ -1,6 +1,7 @@
 import { Star, Zap, ShieldCheck, Tag } from "lucide-react";
 import { treatmentAreas } from "./AreaSelector";
 import { getStartingPrices, formatCurrency } from "../lib/pricing";
+import { SHOW_PRICING } from "../lib/config";
 
 // Reassurance strip shown above Step 1 for direct-entry (?start=booking)
 // traffic, replacing the full-screen LandingHero. Claims match what's
@@ -14,7 +15,7 @@ export default function CompactTrustHeader() {
     { icon: Star, text: "5.0 · 50+ Google Reviews" },
     { icon: Zap, text: "Medical-grade Splendor X technology" },
     { icon: ShieldCheck, text: "Free consultation" },
-    { icon: Tag, text: `Packages from ${formatCurrency(packageSessionFrom)}/session` },
+    ...(SHOW_PRICING ? [{ icon: Tag, text: `Packages from ${formatCurrency(packageSessionFrom)}/session` }] : []),
   ];
 
   return (

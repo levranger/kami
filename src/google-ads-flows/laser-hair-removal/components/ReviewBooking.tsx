@@ -2,6 +2,7 @@ import { Pencil } from "lucide-react";
 import type { BookingStep, TreatmentArea, ContactInfo, ScreeningFlags, PricingSummary } from "../types/booking";
 import { formatCurrency } from "../lib/pricing";
 import { formatPhoneUS } from "../lib/phone";
+import { SHOW_PRICING } from "../lib/config";
 import LocationCard from "./LocationCard";
 
 interface ReviewBookingProps {
@@ -65,9 +66,11 @@ export default function ReviewBooking({
               </span>
             ))}
           </div>
-          <p className="font-inter text-sm text-[#1A1A1A] font-medium">
-            {formatCurrency(pricingSummary.discountedSessionPrice)}/session
-          </p>
+          {SHOW_PRICING && (
+            <p className="font-inter text-sm text-[#1A1A1A] font-medium">
+              {formatCurrency(pricingSummary.discountedSessionPrice)}/session
+            </p>
+          )}
           <p className="font-inter text-xs text-warm-gray mt-1">
             Multi-session packages and savings are available at your appointment.
           </p>

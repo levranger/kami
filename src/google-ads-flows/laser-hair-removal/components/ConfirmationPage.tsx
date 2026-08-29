@@ -4,6 +4,7 @@ import type { TreatmentArea, PackageType, PricingSummary } from "../types/bookin
 import { formatCurrency } from "../lib/pricing";
 import { formatPhoneUS } from "../lib/phone";
 import { MAPS_URL } from "@/data/content";
+import { SHOW_PRICING } from "../lib/config";
 
 interface ConfirmationPageProps {
   bookingRequestId: string;
@@ -129,7 +130,8 @@ export default function ConfirmationPage({
               Package
             </p>
             <p className="font-inter text-sm text-[#1A1A1A] mt-0.5">
-              {packageLabels[selectedPackage]} — {formatCurrency(pricingSummary.packageTotal)}
+              {packageLabels[selectedPackage]}
+              {SHOW_PRICING && <> — {formatCurrency(pricingSummary.packageTotal)}</>}
             </p>
           </div>
 

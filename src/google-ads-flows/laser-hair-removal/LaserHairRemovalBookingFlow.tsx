@@ -8,6 +8,7 @@ import { validateAreas, validateContact, validateDateTime, validateReview } from
 import { savePartialLead, submitBookingRequest } from "./lib/bookingApi";
 import { clearBookingState } from "./lib/storage";
 import { formatCurrency } from "./lib/pricing";
+import { SHOW_PRICING } from "./lib/config";
 import type { BookingStep, EntryMode } from "./types/booking";
 import type { ValidationError } from "./lib/validation";
 
@@ -276,6 +277,7 @@ export default function LaserHairRemovalBookingFlow({
   // fixed at "single", so the sticky-footer price always reflects the
   // transparent single-session total for the selected areas.
   const getPriceLabel = (): string | undefined => {
+    if (!SHOW_PRICING) return undefined;
     if (state.currentStep === 4) return undefined;
     if (state.selectedAreas.length === 0) return undefined;
     return `${formatCurrency(state.pricingSummary.discountedSessionPrice)}/session`;
@@ -327,10 +329,12 @@ export default function LaserHairRemovalBookingFlow({
                   selectedAreas={state.selectedAreas}
                   onAreasChange={state.setSelectedAreas}
                   errors={errors.filter((e) => e.field === "areas").map((e) => e.message)}
-                  title={entryMode === "booking" ? "How much does laser hair removal cost?" : undefined}
+                  title={entryMode === "booking" ? (SHOW_PRICING ? "How much does laser hair removal cost?" : "Select Your Treatment Areas") : undefined}
                   description={
                     entryMode === "booking"
-                      ? "Select the areas you would like treated to see your pricing."
+                      ? (SHOW_PRICING
+                          ? "Select the areas you would like treated to see your pricing."
+                          : "Select the areas you would like treated for your appointment.")
                       : undefined
                   }
                 />
