@@ -57,4 +57,22 @@ export const botoxAnalytics = {
   trackFormError: (fieldName: string, error: string) => {
     track("botox_form_error", { field_name: fieldName, error_message: error });
   },
+
+  // ─── $10/unit promo landing page ───
+
+  trackOfferCtaClick: (placement: string) => {
+    track("botox_offer_cta_click", { placement });
+  },
+
+  trackBookingOpened: (bookingUrl: string) => {
+    track("botox_booking_opened", { booking_url: bookingUrl });
+  },
+
+  trackProviderViewed: () => {
+    track("botox_provider_viewed");
+  },
+
+  trackReviewsClicked: () => {
+    track("botox_reviews_clicked");
+  },
 };

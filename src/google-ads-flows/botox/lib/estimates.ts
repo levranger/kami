@@ -9,9 +9,12 @@ import type {
   DepositConfig,
   AppointmentType,
 } from "../types/booking";
+import { botoxOffer } from "./botoxOffer";
 
 export const products: ProductConfig[] = [
-  { id: "botox", name: "Botox Cosmetic", pricingModel: "per-unit", pricePerUnit: 14 },
+  // Botox price comes from the central promo config so it stays in sync with the
+  // advertised $10/unit offer everywhere on this landing page.
+  { id: "botox", name: "Botox Cosmetic", pricingModel: "per-unit", pricePerUnit: botoxOffer.pricePerUnit },
   { id: "dysport", name: "Dysport", pricingModel: "per-unit", pricePerUnit: 5 },
   { id: "xeomin", name: "Xeomin", pricingModel: "per-unit", pricePerUnit: 13 },
 ];

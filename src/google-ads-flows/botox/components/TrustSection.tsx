@@ -1,9 +1,10 @@
 import { Shield, Heart, UserCheck, MapPin, Clock, Phone } from "lucide-react";
+import { provider } from "../lib/botoxOffer";
 
 const trustItems = [
   { icon: Heart, label: "Personalized dosing" },
   { icon: Shield, label: "Natural-looking approach" },
-  { icon: UserCheck, label: "Qualified medical provider" },
+  { icon: UserCheck, label: `Care from ${provider.name}, ${provider.credential}` },
   { icon: MapPin, label: "Serving Aventura & Miami" },
   { icon: Clock, label: "Quick appointment times" },
   { icon: Phone, label: "Follow-up support" },

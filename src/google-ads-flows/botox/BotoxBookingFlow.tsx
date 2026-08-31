@@ -6,6 +6,10 @@ import { botoxAnalytics } from "./lib/analytics";
 import { getBookingApi } from "./lib/bookingApi";
 import { clearState } from "./lib/storage";
 import { LandingHero } from "./components/LandingHero";
+import { OfferSection } from "./components/OfferSection";
+import { ProviderCredibility } from "./components/ProviderCredibility";
+import { SafetyInformation } from "./components/SafetyInformation";
+import { ClinicInfo } from "./components/ClinicInfo";
 import { ProgressIndicator } from "./components/ProgressIndicator";
 import { ConcernSelector } from "./components/ConcernSelector";
 import { TreatmentGoalSelector } from "./components/TreatmentGoalSelector";
@@ -109,17 +113,33 @@ export function BotoxBookingFlow() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Landing Hero */}
-      <LandingHero onGetEstimate={startFunnel} />
+    <div className="min-h-screen bg-slate-50 pb-28 md:pb-0">
+      {/* Landing Hero — primary CTA books the $10/unit promo directly in Mangomint */}
+      <LandingHero onEstimate={startFunnel} />
+
+      {/* Offer card */}
+      <OfferSection />
 
       {/* Before/After Gallery */}
       <BeforeAfterGallery />
 
+      {/* Provider credibility */}
+      <ProviderCredibility />
+
       {/* Trust Section */}
       <TrustSection />
 
-      {/* Funnel */}
+      {/* Prescription-product safety / fair-balance */}
+      <SafetyInformation />
+
+      {/* Bottom CTA + clinic trust / legal info */}
+      <ClinicInfo />
+
+      {/*
+        Legacy in-page unit/cost estimate funnel. It is NOT the primary path for
+        paid traffic (the campaign CTA books the $10/unit promo in Mangomint);
+        it stays available only via the small "estimate first" link in the hero.
+      */}
       {showFunnel && (
         <div ref={funnelRef} className="mx-auto max-w-[840px] px-4 py-8">
           <ProgressIndicator currentStep={booking.currentStep} />
@@ -215,8 +235,12 @@ export function BotoxBookingFlow() {
         </div>
       )}
 
-      {/* Mobile Sticky Footer */}
-      <MobileStickyFooter show={showFunnel && booking.currentStep >= 3} estimateText={estimateText} />
+      {/* Mobile Sticky Footer — promo CTA on the landing page, estimate total inside the funnel */}
+      <MobileStickyFooter
+        show={!showFunnel || booking.currentStep >= 3}
+        offerCta={!showFunnel}
+        estimateText={estimateText}
+      />
     </div>
   );
 }
