@@ -52,3 +52,44 @@ const adapter: BookingApiAdapter = {
 export function getBookingApi(): BookingApiAdapter {
   return adapter;
 }
+
+// ─── $10/unit promo appointment request ──────────────────────────────────────
+// Lead-capture-first, manual confirmation — mirrors the LHR submitBookingRequest
+// contract. Posts to the shared /api/booking/botox endpoint (Resend emails +
+// Postgres row); Kami staff confirm availability and add the appointment to
+// Mangomint by hand. This never touches Mangomint directly.
+
+export interface BotoxRequestContact {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+}
+
+export interface BotoxRequestInput {
+  contact: BotoxRequestContact;
+  preferredDate: string; // ISO YYYY-MM-DD
+  preferredTime: string; // window label, e.g. "Morning (9am–12pm)"
+  treatmentArea: string | null; // option id, optional
+  treatmentAreaLabel: string | null;
+  marketingConsent: boolean;
+  offer: { pricePerUnit: number; label: string };
+  meta: { service: string; offer: string; source: string; campaign: string };
+  attribution: AttributionData;
+}
+
+export async function submitBotoxRequest(
+  input: BotoxRequestInput,
+): Promise<{ requestId: string }> {
+  const requestId = generateId("btxreq");
+
+  const res = await fetch("/api/booking/botox", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ kind: "promo_request", requestId, ...input }),
+  });
+
+  if (!res.ok) throw new Error(`Botox request API error: ${res.status}`);
+
+  return { requestId };
+}

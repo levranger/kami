@@ -11,11 +11,11 @@ import { PrimaryOfferCta } from "./PrimaryOfferCta";
 import { PromoTerms } from "./PromoTerms";
 
 interface LandingHeroProps {
-  /** Optional secondary path into the legacy in-page unit/cost estimate tool. */
-  onEstimate?: () => void;
+  /** Starts the on-site appointment-request flow. */
+  onRequest: (placement: string) => void;
 }
 
-export function LandingHero({ onEstimate }: LandingHeroProps) {
+export function LandingHero({ onRequest }: LandingHeroProps) {
   const reviewText =
     GOOGLE_REVIEW_COUNT != null
       ? `${GOOGLE_RATING.toFixed(1)} ★ on Google · ${GOOGLE_REVIEW_COUNT}+ reviews`
@@ -65,17 +65,11 @@ export function LandingHero({ onEstimate }: LandingHeroProps) {
 
         {/* Primary CTA + promotion fine print */}
         <div className="flex flex-col items-center gap-3">
-          <PrimaryOfferCta placement="hero" />
+          <PrimaryOfferCta placement="hero" onStart={onRequest} />
+          <p className="text-xs text-slate-400">
+            Request your appointment — our team confirms your time by text or call.
+          </p>
           <PromoTerms variant="compact" />
-          {onEstimate && (
-            <button
-              type="button"
-              onClick={onEstimate}
-              className="text-xs text-slate-500 underline underline-offset-2 hover:text-slate-700"
-            >
-              Prefer to estimate your units and cost first?
-            </button>
-          )}
         </div>
 
         {/* Trust Items */}

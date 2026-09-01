@@ -18,23 +18,27 @@ function PolicyLink({ href, label }: { href: string; label: string }) {
   );
 }
 
+interface ClinicInfoProps {
+  onRequest: (placement: string) => void;
+}
+
 /**
  * Bottom-of-page CTA + clinic trust / legal information.
  */
-export function ClinicInfo() {
+export function ClinicInfo({ onRequest }: ClinicInfoProps) {
   return (
     <section className="border-t border-slate-100 bg-white px-4 py-14">
       <div className="mx-auto max-w-xl text-center">
         <h2 className="text-2xl font-bold tracking-tight text-slate-900">
-          Ready when you are
+          Request your Botox appointment
         </h2>
         <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-600">
-          Book your {botoxOffer.productName} treatment at {formatOfferPrice()} and see how
-          subtle a refresh can look.
+          Tell us your preferred time for {botoxOffer.productName} at {formatOfferPrice()} — our team
+          confirms availability with you and books it in.
         </p>
 
         <div className="mt-6 flex justify-center">
-          <PrimaryOfferCta placement="page_bottom" />
+          <PrimaryOfferCta placement="page_bottom" onStart={onRequest} />
         </div>
 
         <PromoTerms variant="compact" className="mt-4" />

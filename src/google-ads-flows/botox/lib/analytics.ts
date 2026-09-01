@@ -1,5 +1,15 @@
 import { track } from "@/lib/track";
 import type { AttributionData } from "../types/booking";
+import { BOTOX_REQUEST_META } from "./botoxOffer";
+
+function campaignMeta() {
+  return {
+    service: BOTOX_REQUEST_META.service,
+    offer: BOTOX_REQUEST_META.offer,
+    source: BOTOX_REQUEST_META.source,
+    campaign: BOTOX_REQUEST_META.campaign,
+  };
+}
 
 export const botoxAnalytics = {
   trackFlowStarted: (attribution: AttributionData) => {
@@ -64,15 +74,57 @@ export const botoxAnalytics = {
     track("botox_offer_cta_click", { placement });
   },
 
-  trackBookingOpened: (bookingUrl: string) => {
-    track("botox_booking_opened", { booking_url: bookingUrl });
-  },
-
   trackProviderViewed: () => {
     track("botox_provider_viewed");
   },
 
   trackReviewsClicked: () => {
     track("botox_reviews_clicked");
+  },
+
+  trackCallClicked: (location: string) => {
+    track("botox_call_clicked", { location, ...campaignMeta() });
+  },
+
+  trackMainSiteClicked: (location: string) => {
+    track("botox_main_site_clicked", { location });
+  },
+
+  // ─── On-site appointment-request flow (manual confirmation) ───
+
+  trackRequestStarted: (placement: string, attribution: AttributionData) => {
+    track("botox_request_started", {
+      placement,
+      gclid: attribution.gclid,
+      gbraid: attribution.gbraid,
+      wbraid: attribution.wbraid,
+      ...campaignMeta(),
+    });
+  },
+
+  trackRequestStepCompleted: (step: number, stepName: string) => {
+    track("botox_request_step_completed", { step, step_name: stepName, ...campaignMeta() });
+  },
+
+  trackRequestSubmitted: (data: { treatmentArea?: string | null; attribution: AttributionData }) => {
+    track("botox_request_submitted", {
+      treatment_area: data.treatmentArea || "not_specified",
+      gclid: data.attribution.gclid,
+      gbraid: data.attribution.gbraid,
+      wbraid: data.attribution.wbraid,
+      utm_source: data.attribution.utmSource,
+      utm_medium: data.attribution.utmMedium,
+      utm_campaign: data.attribution.utmCampaign,
+      utm_content: data.attribution.utmContent,
+      ...campaignMeta(),
+    });
+  },
+
+  trackRequestSuccess: (requestId: string) => {
+    track("botox_request_success", { request_id: requestId, ...campaignMeta() });
+  },
+
+  trackRequestError: (errorMessage: string) => {
+    track("botox_request_error", { error_message: errorMessage, ...campaignMeta() });
   },
 };

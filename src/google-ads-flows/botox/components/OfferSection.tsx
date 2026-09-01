@@ -7,7 +7,11 @@ import { PromoTerms } from "./PromoTerms";
  * banners, fake scarcity, spinning animations, red warning colors or coupon
  * chrome. Just a clear price and a clear action.
  */
-export function OfferSection() {
+interface OfferSectionProps {
+  onRequest: (placement: string) => void;
+}
+
+export function OfferSection({ onRequest }: OfferSectionProps) {
   return (
     <section id="offer" className="scroll-mt-6 bg-white px-4 py-12">
       <div className="mx-auto max-w-md rounded-2xl border border-amber-100 bg-gradient-to-b from-amber-50/60 to-white p-6 text-center shadow-sm md:p-8">
@@ -29,8 +33,11 @@ export function OfferSection() {
         </p>
 
         <div className="mt-6">
-          <PrimaryOfferCta placement="offer_section" fullWidth />
+          <PrimaryOfferCta placement="offer_section" onStart={onRequest} fullWidth />
         </div>
+        <p className="mt-2 text-xs text-slate-400">
+          Sends an appointment request — not an instant booking. We confirm your time with you.
+        </p>
 
         <PromoTerms variant="block" className="mt-5" />
       </div>

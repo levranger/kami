@@ -1,4 +1,4 @@
-import { BOOKING_URL, PHONE_NUMBER, PHONE_HREF, MAPS_URL } from "@/data/constants";
+import { PHONE_NUMBER, PHONE_HREF, MAPS_URL } from "@/data/constants";
 
 /**
  * ─────────────────────────────────────────────────────────────────────────────
@@ -47,17 +47,41 @@ export const botoxOffer: BotoxOfferConfig = {
 };
 
 /**
- * Dedicated Mangomint booking destination for the $10/unit promo.
+ * Paid Botox traffic no longer goes straight to Mangomint. The CTA opens an
+ * on-site appointment-request flow (BotoxRequestFlow); Kami staff review the
+ * requested time and create the confirmed appointment in Mangomint manually.
+ * Same lead-capture-first philosophy as the laser-hair-removal (LHR) flow.
  *
- * TODO: create a dedicated "$10/unit Botox Promotion" service / deep link inside
- * Mangomint and paste its URL here. Until then this falls back to the shared
- * clinic booking link (BOOKING_URL), which lands on Mangomint's generic
- * "Book for one person / Book for a group" screen — not ideal for paid traffic.
+ * Campaign metadata attached to every Botox request so the lead is identifiable
+ * in the staff notification / CRM.
  */
-export const BOTOX_PROMO_BOOKING_URL: string = BOOKING_URL;
+export const BOTOX_REQUEST_META = {
+  service: "Botox Cosmetic",
+  offer: "$10/unit Botox Promotion",
+  source: "botox_landing_page",
+  campaign: "botox_10_unit",
+} as const;
 
-/** Open the booking destination in a new tab (keeps the landing page + pixels alive). */
-export const BOOKING_OPENS_IN_NEW_TAB = true;
+/** Optional "what would you like to treat?" options for request step 3. Optional field. */
+export const TREATMENT_AREA_OPTIONS = [
+  { id: "forehead-lines", label: "Forehead lines" },
+  { id: "frown-lines", label: "Frown lines / 11s" },
+  { id: "crows-feet", label: "Crow's feet" },
+  { id: "multiple-areas", label: "Multiple areas" },
+  { id: "not-sure", label: "Not sure yet" },
+] as const;
+
+/**
+ * Preferred-time windows for request step 1. Intentionally windows, not exact
+ * real-time slots — the appointment is confirmed manually, so we only need the
+ * visitor's preference, not live Mangomint availability.
+ */
+export const PREFERRED_TIME_WINDOWS = [
+  { id: "morning", label: "Morning (9am–12pm)" },
+  { id: "midday", label: "Midday (12pm–3pm)" },
+  { id: "afternoon", label: "Afternoon (3pm–6pm)" },
+  { id: "evening", label: "Evening (6pm–8pm)" },
+] as const;
 
 /**
  * Treating provider. Sourced from Kami's clinical delegation documentation:

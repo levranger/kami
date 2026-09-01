@@ -1,15 +1,21 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { AttributionData } from "../types/booking";
 
+/**
+ * Capture Google Ads + UTM attribution from the URL, once per session.
+ * Returns state (not a ref) so consumers re-render when it populates and never
+ * submit a stale/empty attribution object.
+ */
 export function useAttributionTracking(): AttributionData {
-  const attributionRef = useRef<AttributionData>({});
+  const [attribution, setAttribution] = useState<AttributionData>({});
+  const captured = useRef(false);
 
   useEffect(() => {
-    if (attributionRef.current.funnelStartedAt) return;
+    if (captured.current) return;
+    captured.current = true;
 
     const params = new URLSearchParams(window.location.search);
-
-    attributionRef.current = {
+    setAttribution({
       gclid: params.get("gclid") || undefined,
       gbraid: params.get("gbraid") || undefined,
       wbraid: params.get("wbraid") || undefined,
@@ -21,8 +27,8 @@ export function useAttributionTracking(): AttributionData {
       landingPageUrl: window.location.href,
       referrer: document.referrer || undefined,
       funnelStartedAt: new Date().toISOString(),
-    };
+    });
   }, []);
 
-  return attributionRef.current;
+  return attribution;
 }
