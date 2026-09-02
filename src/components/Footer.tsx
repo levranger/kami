@@ -6,6 +6,7 @@ import { navServices } from "@/data/nav-services";
 
 const companyLinks = [
   { label: "About Us", href: "#why-choose" },
+  { label: "Our Team", href: "/team" },
   { label: "Specials", href: "#specials" },
   { label: "Results", href: "#gallery" },
   { label: "FAQ", href: "/faq" },

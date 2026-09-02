@@ -114,6 +114,9 @@ export function HeaderNav({
         </a>
       ))}
 
+      <Link href="/team" className="font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold transition-colors duration-200 tracking-wide">
+        Team
+      </Link>
       <Link href="/faq" className="font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold transition-colors duration-200 tracking-wide">
         FAQ
       </Link>
@@ -215,6 +218,9 @@ export function HeaderMobile({
                 {link.label}
               </a>
             ))}
+            <Link href="/team" onClick={() => setIsOpen(false)} className="block py-3 px-2 font-inter text-base text-[#1A1A1A] hover:text-gold border-b border-warm-border/50 transition-colors duration-200">
+              Team
+            </Link>
             <Link href="/faq" onClick={() => setIsOpen(false)} className="block py-3 px-2 font-inter text-base text-[#1A1A1A] hover:text-gold border-b border-warm-border/50 transition-colors duration-200">
               FAQ
             </Link>
