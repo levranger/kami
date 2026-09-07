@@ -1,5 +1,6 @@
 import type { RequestContact } from "../hooks/useBotoxRequestState";
 import { formatPhoneUS, normalizePhone } from "../lib/phone";
+import { botoxAnalytics } from "../lib/analytics";
 
 interface RequestContactStepProps {
   contact: RequestContact;
@@ -48,6 +49,7 @@ export function RequestContactStep({
               autoComplete="given-name"
               value={contact.firstName}
               onChange={(e) => onContactChange({ ...contact, firstName: e.target.value })}
+              onFocus={() => botoxAnalytics.trackFormFieldFocus("first_name")}
               className={inputClass}
               placeholder="Jane"
             />
@@ -62,6 +64,7 @@ export function RequestContactStep({
               autoComplete="family-name"
               value={contact.lastName}
               onChange={(e) => onContactChange({ ...contact, lastName: e.target.value })}
+              onFocus={() => botoxAnalytics.trackFormFieldFocus("last_name")}
               className={inputClass}
               placeholder="Smith"
             />
@@ -79,6 +82,7 @@ export function RequestContactStep({
             autoComplete="tel"
             value={formatPhoneUS(contact.phone)}
             onChange={(e) => onContactChange({ ...contact, phone: normalizePhone(e.target.value) })}
+            onFocus={() => botoxAnalytics.trackFormFieldFocus("phone")}
             className={inputClass}
             placeholder="(555) 555-5555"
           />
@@ -96,6 +100,7 @@ export function RequestContactStep({
             autoComplete="email"
             value={contact.email}
             onChange={(e) => onContactChange({ ...contact, email: e.target.value.trim() })}
+            onFocus={() => botoxAnalytics.trackFormFieldFocus("email")}
             className={inputClass}
             placeholder="jane@example.com"
           />

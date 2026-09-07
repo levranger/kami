@@ -3,61 +3,41 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useBookingState } from "./hooks/useBookingState";
 import { useAttributionTracking } from "./hooks/useAttributionTracking";
-import { laserAnalytics, STEP_VIEW_NAMES } from "./lib/analytics";
-import { validateAreas, validateContact, validateDateTime, validateReview } from "./lib/validation";
-import { savePartialLead, submitBookingRequest } from "./lib/bookingApi";
+import { laserAnalytics } from "./lib/analytics";
+import { validateContact, validateDateTime } from "./lib/validation";
+import { submitBookingRequest } from "./lib/bookingApi";
 import { clearBookingState } from "./lib/storage";
-import { formatCurrency } from "./lib/pricing";
-import { SHOW_PRICING } from "./lib/config";
-import type { BookingStep, EntryMode } from "./types/booking";
+import { offerSummary } from "./lib/offers";
 import type { ValidationError } from "./lib/validation";
 
 import StickyCallButton from "./components/StickyCallButton";
 import LandingHero from "./components/LandingHero";
 import FunnelBrandHeader from "./components/FunnelBrandHeader";
-import CompactTrustHeader from "./components/CompactTrustHeader";
 import ProgressIndicator from "./components/ProgressIndicator";
-import AreaSelector from "./components/AreaSelector";
+import OfferReminder from "./components/OfferReminder";
 import ContactForm from "./components/ContactForm";
 import DateTimeSelector from "./components/DateTimeSelector";
-import ReviewBooking from "./components/ReviewBooking";
 import ConfirmationPage from "./components/ConfirmationPage";
 import MobileStickyFooter from "./components/MobileStickyFooter";
 
 import "./styles/booking.css";
 
-interface LaserHairRemovalBookingFlowProps {
-  // Set at the page level from the `?start=booking` query param, before the
-  // client ever renders — this is what lets Step 1 be the first paint for
-  // paid traffic with no hero flash. Defaults to "landing" for any other
-  // consumer that doesn't pass it explicitly.
-  initialEntryMode?: EntryMode;
-}
-
-export default function LaserHairRemovalBookingFlow({
-  initialEntryMode = "landing",
-}: LaserHairRemovalBookingFlowProps) {
-  // Entry mode is fixed for the lifetime of this mount — it's derived once
-  // from the URL at the page/server level, not re-derived on the client.
-  const [entryMode] = useState<EntryMode>(initialEntryMode);
+export default function LaserHairRemovalBookingFlow() {
   const state = useBookingState();
-  const [showFunnel, setShowFunnel] = useState(entryMode === "booking");
+  const [showFunnel, setShowFunnel] = useState(false);
   const [errors, setErrors] = useState<ValidationError[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [isLeadSaving, setIsLeadSaving] = useState(false);
   const funnelRef = useRef<HTMLDivElement>(null);
-  const lastViewedStepRef = useRef<string | null>(null);
   const hasFiredLandingViewRef = useRef(false);
-  const hasAutoStartedRef = useRef(false);
 
-  // Attribution tracking
+  // Attribution tracking — captures GCLID / GBRAID / WBRAID / UTMs once per
+  // funnel session and preserves them across refreshes.
   useAttributionTracking(state.attribution, state.setAttribution);
 
-  // Fire laser_landing_view exactly once on mount — before the user can
-  // click the CTA. Reads gclid/gbraid/wbraid straight from the URL instead
-  // of state.attribution, since that's set asynchronously by the effect
-  // above and wouldn't be populated yet on this same first render.
+  // Fire laser_landing_view exactly once on mount, before the CTA can be
+  // clicked. Reads the ad params straight from the URL since state.attribution
+  // is populated asynchronously by the effect above.
   useEffect(() => {
     if (hasFiredLandingViewRef.current) return;
     hasFiredLandingViewRef.current = true;
@@ -66,189 +46,99 @@ export default function LaserHairRemovalBookingFlow({
       gclid: params.get("gclid") || undefined,
       gbraid: params.get("gbraid") || undefined,
       wbraid: params.get("wbraid") || undefined,
+      utmSource: params.get("utm_source") || undefined,
+      utmMedium: params.get("utm_medium") || undefined,
+      utmCampaign: params.get("utm_campaign") || undefined,
+      utmTerm: params.get("utm_term") || undefined,
+      utmContent: params.get("utm_content") || undefined,
     });
   }, []);
 
-  // For paid traffic entering directly at Step 1 (?start=booking), there's
-  // no "Start Booking" click to fire laser_booking_flow_started from — so
-  // fire it automatically, exactly once, right after the landing view.
-  // Reads attribution straight from the URL for the same reason as the
-  // landing-view effect above: state.attribution is set asynchronously by
-  // useAttributionTracking's effect and isn't populated yet on this same
-  // first render.
-  useEffect(() => {
-    if (entryMode !== "booking") return;
-    if (hasAutoStartedRef.current) return;
-    hasAutoStartedRef.current = true;
-    const params = new URLSearchParams(window.location.search);
-    laserAnalytics.trackFlowStarted(
-      {
-        gclid: params.get("gclid") || undefined,
-        gbraid: params.get("gbraid") || undefined,
-        wbraid: params.get("wbraid") || undefined,
-      },
-      entryMode
-    );
-  }, [entryMode]);
-
-  // Fire laser_step_viewed once per distinct step (dedupes re-renders and
-  // React 18 StrictMode's dev-only double effect invocation).
-  useEffect(() => {
-    if (!showFunnel) return;
-    const stepNumber = state.bookingRequestId ? 5 : state.currentStep;
-    const stepName = STEP_VIEW_NAMES[stepNumber];
-    if (lastViewedStepRef.current === stepName) return;
-    lastViewedStepRef.current = stepName;
-    laserAnalytics.trackStepViewed(stepName, stepNumber, stepNumber === 1 ? entryMode : undefined);
-  }, [showFunnel, state.currentStep, state.bookingRequestId, entryMode]);
-
+  // "Redeem This Offer" on the landing page → straight into date selection.
   const handleStartBooking = useCallback(() => {
     setShowFunnel(true);
-    laserAnalytics.trackCtaClicked(entryMode);
-    laserAnalytics.trackFlowStarted(state.attribution, entryMode);
+    laserAnalytics.trackOfferRedeemClicked(state.attribution);
+    laserAnalytics.trackFlowStarted(state.attribution);
     setTimeout(() => {
       funnelRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
-  }, [state.attribution, entryMode]);
+  }, [state.attribution]);
 
-  const handleNext = useCallback(async () => {
-    setErrors([]);
-    setSubmitError(null);
-
-    // Validate current step
-    let stepErrors: ValidationError[] = [];
-
-    switch (state.currentStep) {
-      case 1:
-        stepErrors = validateAreas(state.selectedAreas);
-        if (stepErrors.length === 0) {
-          laserAnalytics.trackAreaSelected(state.selectedAreas.map((a) => a.id));
-        }
-        break;
-      case 2:
-        stepErrors = validateDateTime(state.selectedDate, state.selectedTime);
-        if (stepErrors.length === 0) {
-          laserAnalytics.trackDateTimeSelected(state.selectedDate!, state.selectedTime!);
-        }
-        break;
-      case 3:
-        stepErrors = validateContact(state.contactInfo);
-        if (stepErrors.length === 0) {
-          laserAnalytics.trackContactInfoEntered(
-            state.contactInfo.isNewPatient,
-            state.screeningFlags.sensitiveSkin || state.screeningFlags.recentlyTanned
-          );
-
-          // Save partial lead
-          setIsLeadSaving(true);
-          try {
-            const result = await savePartialLead({
-              fullName: state.contactInfo.fullName,
-              phone: state.contactInfo.phone,
-              email: state.contactInfo.email.trim().toLowerCase(),
-              isNewPatient: state.contactInfo.isNewPatient,
-              selectedAreas: state.selectedAreas.map((a) => a.id),
-              selectedPackage: state.selectedPackage!,
-              attribution: state.attribution,
-            });
-            state.setLeadId(result.leadId);
-          } catch {
-            // Non-blocking — show recoverable error but allow proceeding
-            console.warn("Lead capture failed — non-blocking");
-          } finally {
-            setIsLeadSaving(false);
-          }
-        }
-        break;
-      case 4:
-        stepErrors = validateReview(
-          state.selectedAreas,
-          state.contactInfo,
-          state.selectedDate,
-          state.selectedTime
-        );
-        if (stepErrors.length === 0) {
-          // Submit booking
-          await handleSubmit();
-          return;
-        }
-        break;
-    }
-
-    if (stepErrors.length > 0) {
-      setErrors(stepErrors);
-      return;
-    }
-
-    state.nextStep();
-    window.scrollTo({ top: funnelRef.current?.offsetTop || 0, behavior: "smooth" });
-  }, [state]);
-
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
     setIsSubmitting(true);
     setSubmitError(null);
 
     try {
+      const email = state.contactInfo.email.trim().toLowerCase();
       const result = await submitBookingRequest({
-        selectedAreas: state.selectedAreas,
-        selectedPackage: state.selectedPackage!,
+        offer: offerSummary(),
         contactInfo: {
-          ...state.contactInfo,
-          email: state.contactInfo.email.trim().toLowerCase(),
+          fullName: state.contactInfo.fullName.trim(),
+          phone: state.contactInfo.phone,
+          email,
         },
-        screeningFlags: state.screeningFlags,
         marketingConsent: state.marketingConsent,
         selectedDate: state.selectedDate!,
         selectedTime: state.selectedTime!,
-        pricingSummary: state.pricingSummary,
         attribution: state.attribution,
       });
 
       state.setBookingRequestId(result.bookingRequestId);
       clearBookingState();
-
-      laserAnalytics.trackBookingCompleted({
-        packageType: state.selectedPackage!,
-        sessions: state.pricingSummary.sessionCount,
-        packageTotal: state.pricingSummary.packageTotal,
-        areaIds: state.selectedAreas.map((a) => a.id),
-        isNewPatient: state.contactInfo.isNewPatient,
-      });
+      laserAnalytics.trackBookingCompleted();
     } catch {
-      setSubmitError("We couldn't submit your request. Your selections are still saved. Please try again.");
+      setSubmitError("We couldn't submit your request. Your requested time is still saved — please try again.");
       laserAnalytics.trackBookingError("submission_failed");
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [state]);
+
+  const handleNext = useCallback(async () => {
+    setErrors([]);
+    setSubmitError(null);
+
+    if (state.currentStep === 1) {
+      const stepErrors = validateDateTime(state.selectedDate, state.selectedTime);
+      if (stepErrors.length > 0) {
+        setErrors(stepErrors);
+        return;
+      }
+      laserAnalytics.trackDateTimeSelected(state.selectedDate!, state.selectedTime!);
+      state.nextStep();
+      window.scrollTo({ top: funnelRef.current?.offsetTop || 0, behavior: "smooth" });
+      return;
+    }
+
+    // Step 2 — Contact → submit
+    const stepErrors = validateContact(state.contactInfo);
+    if (stepErrors.length > 0) {
+      setErrors(stepErrors);
+      return;
+    }
+    laserAnalytics.trackContactInfoEntered(state.marketingConsent);
+    await handleSubmit();
+  }, [state, handleSubmit]);
 
   const handleBack = useCallback(() => {
     setErrors([]);
     state.previousStep();
   }, [state]);
 
-  const handleEdit = useCallback((step: BookingStep) => {
-    setErrors([]);
-    state.goToStep(step);
-  }, [state]);
-
   const handleReturnHome = () => {
     window.location.href = "/";
   };
 
-  // If booking is complete, show confirmation
+  // Confirmation — not a numbered step.
   if (state.bookingRequestId) {
     return (
       <div className="min-h-screen bg-white">
         <div className="max-w-2xl mx-auto px-4 py-8">
           <ConfirmationPage
             bookingRequestId={state.bookingRequestId}
-            selectedAreas={state.selectedAreas}
-            selectedPackage={state.selectedPackage!}
             selectedDate={state.selectedDate!}
             selectedTime={state.selectedTime!}
             contactPhone={state.contactInfo.phone}
-            pricingSummary={state.pricingSummary}
             onReturnHome={handleReturnHome}
           />
         </div>
@@ -256,60 +146,30 @@ export default function LaserHairRemovalBookingFlow({
     );
   }
 
-  // CTA labels for sticky footer
-  const getCtaLabel = (): string => {
-    switch (state.currentStep) {
-      case 1: return "Continue";
-      case 2: return "Continue";
-      case 3: return "Continue";
-      case 4: return "Request Appointment";
-    }
-  };
+  const ctaLabel = state.currentStep === 1 ? "Continue" : "Request Appointment";
+  const nextDisabled =
+    state.currentStep === 1 && (!state.selectedDate || !state.selectedTime);
 
-  const isNextDisabled = (): boolean => {
-    if (state.currentStep === 2) {
-      return !state.selectedDate || !state.selectedTime;
-    }
-    return false;
-  };
-
-  // Package selection was removed from the flow — selectedPackage stays
-  // fixed at "single", so the sticky-footer price always reflects the
-  // transparent single-session total for the selected areas.
-  const getPriceLabel = (): string | undefined => {
-    if (!SHOW_PRICING) return undefined;
-    if (state.currentStep === 4) return undefined;
-    if (state.selectedAreas.length === 0) return undefined;
-    return `${formatCurrency(state.pricingSummary.discountedSessionPrice)}/session`;
-  };
+  // Keep the floating call pill off the Contact step so it can never overlap
+  // the consent text or the primary CTA on small screens.
+  const showCallButton = !showFunnel || state.currentStep === 1;
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Landing Hero — only for normal/direct traffic that hasn't started the funnel yet */}
+      {/* Landing hero — for traffic that hasn't started the funnel yet */}
       {!showFunnel && <LandingHero onStartBooking={handleStartBooking} />}
 
-      <StickyCallButton liftForStickyFooter={showFunnel} />
+      {showCallButton && <StickyCallButton liftForStickyFooter={showFunnel} />}
 
-      {/* Funnel */}
       {showFunnel && (
         <div ref={funnelRef} className="pb-24">
           <div className="max-w-2xl mx-auto px-4 py-8">
-            {/* Compact, persistent brand bar — visible on every step so
-                users can always find their way back to the main site
-                without losing their in-progress booking. */}
             <FunnelBrandHeader />
 
-            {/* Compact reassurance header — replaces the large hero for paid
-                traffic entering directly at Step 1, so the area selector
-                stays near the top of the viewport. */}
-            {entryMode === "booking" && <CompactTrustHeader />}
-
-            {/* Progress */}
             <div className="mb-8">
               <ProgressIndicator currentStep={state.currentStep} />
             </div>
 
-            {/* Submit error */}
             {submitError && (
               <div role="alert" aria-live="assertive" className="mb-6 p-4 bg-red-50 border border-red-200 rounded-sm">
                 <p className="font-inter text-sm text-red-600">{submitError}</p>
@@ -322,68 +182,37 @@ export default function LaserHairRemovalBookingFlow({
               </div>
             )}
 
-            {/* Step Content */}
             <div className="step-enter step-enter-active">
               {state.currentStep === 1 && (
-                <AreaSelector
-                  selectedAreas={state.selectedAreas}
-                  onAreasChange={state.setSelectedAreas}
-                  errors={errors.filter((e) => e.field === "areas").map((e) => e.message)}
-                  title={entryMode === "booking" ? (SHOW_PRICING ? "How much does laser hair removal cost?" : "Select Your Treatment Areas") : undefined}
-                  description={
-                    entryMode === "booking"
-                      ? (SHOW_PRICING
-                          ? "Select the areas you would like treated to see your pricing."
-                          : "Select the areas you would like treated for your appointment.")
-                      : undefined
-                  }
-                />
+                <>
+                  <OfferReminder />
+                  <DateTimeSelector
+                    selectedDate={state.selectedDate}
+                    selectedTime={state.selectedTime}
+                    onDateChange={state.setSelectedDate}
+                    onTimeChange={state.setSelectedTime}
+                    errors={errors.filter((e) => e.field === "date" || e.field === "time").map((e) => e.message)}
+                  />
+                </>
               )}
 
               {state.currentStep === 2 && (
-                <DateTimeSelector
-                  selectedDate={state.selectedDate}
-                  selectedTime={state.selectedTime}
-                  onDateChange={state.setSelectedDate}
-                  onTimeChange={state.setSelectedTime}
-                  errors={errors.filter((e) => e.field === "date" || e.field === "time").map((e) => e.message)}
-                />
-              )}
-
-              {state.currentStep === 3 && (
                 <ContactForm
                   contactInfo={state.contactInfo}
-                  screeningFlags={state.screeningFlags}
                   marketingConsent={state.marketingConsent}
                   onContactChange={state.setContactInfo}
-                  onScreeningChange={state.setScreeningFlags}
                   onMarketingConsentChange={state.setMarketingConsent}
                   errors={errors}
-                />
-              )}
-
-              {state.currentStep === 4 && state.selectedDate && state.selectedTime && (
-                <ReviewBooking
-                  selectedAreas={state.selectedAreas}
-                  contactInfo={state.contactInfo}
-                  screeningFlags={state.screeningFlags}
-                  marketingConsent={state.marketingConsent}
-                  selectedDate={state.selectedDate}
-                  selectedTime={state.selectedTime}
-                  pricingSummary={state.pricingSummary}
-                  onEdit={handleEdit}
                 />
               )}
             </div>
           </div>
 
-          {/* Sticky Footer */}
           <MobileStickyFooter
-            ctaLabel={getCtaLabel()}
-            priceLabel={getPriceLabel()}
+            ctaLabel={ctaLabel}
             onClick={handleNext}
-            disabled={isSubmitting || isLeadSaving || isNextDisabled()}
-            loading={isSubmitting || isLeadSaving}
+            disabled={isSubmitting || nextDisabled}
+            loading={isSubmitting}
             showBack={state.currentStep > 1}
             onBack={handleBack}
           />

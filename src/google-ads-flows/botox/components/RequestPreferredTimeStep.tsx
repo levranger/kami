@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { Calendar, Clock, Info } from "lucide-react";
 import { PREFERRED_TIME_WINDOWS } from "../lib/botoxOffer";
+import { botoxAnalytics } from "../lib/analytics";
 
 interface RequestPreferredTimeStepProps {
   preferredDate: string | null;
@@ -78,7 +79,10 @@ export function RequestPreferredTimeStep({
               <button
                 key={d.date}
                 type="button"
-                onClick={() => onDateChange(d.date)}
+                onClick={() => {
+                    onDateChange(d.date);
+                    botoxAnalytics.trackDateSelected(d.date);
+                  }}
                 aria-pressed={isSelected}
                 className={`flex min-h-[52px] flex-col items-center justify-center rounded-lg border-2 p-2 text-center transition ${
                   isSelected ? "border-amber-600 bg-amber-50" : "border-slate-200 hover:border-slate-300"
@@ -106,7 +110,10 @@ export function RequestPreferredTimeStep({
               <button
                 key={w.id}
                 type="button"
-                onClick={() => onTimeChange(w.label)}
+                onClick={() => {
+                    onTimeChange(w.label);
+                    botoxAnalytics.trackTimeSelected(w.label);
+                  }}
                 aria-pressed={isSelected}
                 className={`min-h-[48px] rounded-lg border-2 px-3 py-2 text-sm font-medium transition ${
                   isSelected

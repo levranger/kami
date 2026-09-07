@@ -12,63 +12,7 @@ function campaignMeta() {
 }
 
 export const botoxAnalytics = {
-  trackFlowStarted: (attribution: AttributionData) => {
-    track("botox_booking_flow_started", {
-      gclid: attribution.gclid,
-      gbraid: attribution.gbraid,
-      wbraid: attribution.wbraid,
-    });
-  },
-
-  trackConcernSelected: (concernIds: string[]) => {
-    track("botox_concern_selected", { concernIds, concernCount: concernIds.length });
-  },
-
-  trackGoalSelected: (goal: string) => {
-    track("botox_goal_selected", { goal });
-  },
-
-  trackStepCompleted: (step: number, timeSeconds: number, data?: Record<string, string | number | boolean>) => {
-    track("botox_step_completed", { step, time_on_step_seconds: timeSeconds, ...data });
-  },
-
-  trackContactInfoEntered: () => {
-    track("botox_contact_info_entered");
-  },
-
-  trackDateTimeSelected: (date: string, time: string) => {
-    track("botox_datetime_selected", { appointment_date: date, appointment_time: time });
-  },
-
-  trackBookingCompleted: (data: { appointmentType: string; depositAmount: number }) => {
-    track("botox_booking_completed", { ...data });
-  },
-
-  trackBookingError: (errorMessage: string) => {
-    track("botox_booking_error", { error_message: errorMessage });
-  },
-
-  trackPageExit: (step: number, timeOnPageSeconds: number) => {
-    track("botox_page_exit", { step, time_on_page_seconds: timeOnPageSeconds });
-  },
-
-  trackScrollDepth: (depth: number) => {
-    track("botox_scroll_depth", { depth_percent: depth });
-  },
-
-  trackFormFieldFocus: (fieldName: string) => {
-    track("botox_form_field_focus", { field_name: fieldName });
-  },
-
-  trackFormFieldChange: (fieldName: string) => {
-    track("botox_form_field_change", { field_name: fieldName });
-  },
-
-  trackFormError: (fieldName: string, error: string) => {
-    track("botox_form_error", { field_name: fieldName, error_message: error });
-  },
-
-  // ─── $10/unit promo landing page ───
+  // ─── Landing page ───────────────────────────────────────────────────────────
 
   trackOfferCtaClick: (placement: string) => {
     track("botox_offer_cta_click", { placement });
@@ -90,7 +34,7 @@ export const botoxAnalytics = {
     track("botox_main_site_clicked", { location });
   },
 
-  // ─── On-site appointment-request flow (manual confirmation) ───
+  // ─── Request flow ────────────────────────────────────────────────────────────
 
   trackRequestStarted: (placement: string, attribution: AttributionData) => {
     track("botox_request_started", {
@@ -102,8 +46,20 @@ export const botoxAnalytics = {
     });
   },
 
+  trackDateSelected: (date: string) => {
+    track("botox_date_selected", { preferred_date: date, ...campaignMeta() });
+  },
+
+  trackTimeSelected: (timeWindow: string) => {
+    track("botox_time_selected", { preferred_time: timeWindow, ...campaignMeta() });
+  },
+
   trackRequestStepCompleted: (step: number, stepName: string) => {
     track("botox_request_step_completed", { step, step_name: stepName, ...campaignMeta() });
+  },
+
+  trackFormFieldFocus: (fieldName: string) => {
+    track("botox_form_field_focus", { field_name: fieldName });
   },
 
   trackRequestSubmitted: (data: { treatmentArea?: string | null; attribution: AttributionData }) => {
@@ -126,5 +82,11 @@ export const botoxAnalytics = {
 
   trackRequestError: (errorMessage: string) => {
     track("botox_request_error", { error_message: errorMessage, ...campaignMeta() });
+  },
+
+  // ─── Success page ────────────────────────────────────────────────────────────
+
+  trackSuccessCtaClicked: (action: "main_site" | "call") => {
+    track("botox_success_cta_clicked", { action, ...campaignMeta() });
   },
 };

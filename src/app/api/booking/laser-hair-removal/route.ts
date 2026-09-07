@@ -10,12 +10,6 @@ const NOTIFY = process.env.BOOKING_NOTIFICATION_EMAIL ?? "shk.lab.fl@gmail.com";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-const PACKAGE_LABELS: Record<string, string> = {
-  single: "Single Session",
-  four:   "4-Session Package",
-  six:    "6-Session Package",
-};
-
 function formatCurrency(n: number) {
   return `$${n.toLocaleString("en-US", { minimumFractionDigits: 0 })}`;
 }
@@ -32,10 +26,13 @@ function formatTime(timeStr: string) {
   return `${h > 12 ? h - 12 : h}:${m.toString().padStart(2, "0")} ${period}`;
 }
 
+function offerLine(p: BookingPayload) {
+  return `${p.offer.name} — ${p.offer.areasLabel} — ${formatCurrency(p.offer.price)}`;
+}
+
 // ── Email: client confirmation ────────────────────────────────────────────────
 
 function clientEmailHtml(p: BookingPayload): string {
-  const areas = p.selectedAreas.map((a) => a.name).join(", ");
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -66,11 +63,11 @@ function clientEmailHtml(p: BookingPayload): string {
             <!-- Summary box -->
             <table width="100%" cellpadding="0" cellspacing="0" style="background:#f9f7f5;border:1px solid #e8e0d8;border-radius:4px;margin-bottom:24px;">
               <tr><td style="padding:24px;">
-                <p style="margin:0 0 4px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;font-weight:600;">Treatment Areas</p>
-                <p style="margin:0 0 16px;font-size:14px;color:#1a1a1a;">${areas}</p>
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;font-weight:600;">Offer</p>
+                <p style="margin:0 0 16px;font-size:14px;color:#1a1a1a;">${p.offer.name} &mdash; ${formatCurrency(p.offer.price)}</p>
 
-                <p style="margin:0 0 4px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;font-weight:600;">Package</p>
-                <p style="margin:0 0 16px;font-size:14px;color:#1a1a1a;">${PACKAGE_LABELS[p.selectedPackage]} &mdash; ${formatCurrency(p.pricingSummary.packageTotal)}</p>
+                <p style="margin:0 0 4px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;font-weight:600;">Included</p>
+                <p style="margin:0 0 16px;font-size:14px;color:#1a1a1a;">${p.offer.areasLabel}</p>
 
                 <p style="margin:0 0 4px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;font-weight:600;">Requested Date &amp; Time</p>
                 <p style="margin:0 0 16px;font-size:14px;color:#1a1a1a;">${formatDate(p.selectedDate)} at ${formatTime(p.selectedTime)}</p>
@@ -81,7 +78,7 @@ function clientEmailHtml(p: BookingPayload): string {
             </table>
 
             <p style="margin:0 0 8px;color:#3a3a3a;font-size:14px;line-height:1.6;">
-              <strong>What happens next:</strong> A member of our team will call or text you at <strong>${p.contactInfo.phone}</strong> to confirm your requested slot. No payment has been collected — this is a free appointment request, and any deposit will be discussed separately.
+              <strong>What happens next:</strong> A member of our team will call or text you at <strong>${p.contactInfo.phone}</strong> to confirm your requested time. No payment has been collected — this is a free appointment request. Selecting a time does not confirm the appointment.
             </p>
 
             <p style="margin:24px 0 0;color:#888;font-size:13px;line-height:1.6;">
@@ -107,7 +104,6 @@ function clientEmailHtml(p: BookingPayload): string {
 // ── Email: staff notification ─────────────────────────────────────────────────
 
 function staffEmailHtml(p: BookingPayload): string {
-  const areas = p.selectedAreas.map((a) => `${a.name} (${formatCurrency(a.price)})`).join(", ");
   const attribution = p.attribution
     ? Object.entries(p.attribution)
         .filter(([, v]) => v)
@@ -127,7 +123,7 @@ function staffEmailHtml(p: BookingPayload): string {
         <tr>
           <td style="background:#1a1a1a;padding:20px 32px;">
             <p style="margin:0;color:#c9a96e;font-size:11px;letter-spacing:2px;text-transform:uppercase;">New Booking Request</p>
-            <p style="margin:4px 0 0;color:#fff;font-size:18px;">Laser Hair Removal</p>
+            <p style="margin:4px 0 0;color:#fff;font-size:18px;">Laser Hair Removal — ${formatCurrency(p.offer.price)} Offer</p>
           </td>
         </tr>
 
@@ -146,13 +142,13 @@ function staffEmailHtml(p: BookingPayload): string {
                 </td>
                 <td width="50%" style="padding-bottom:16px;vertical-align:top;">
                   <p style="margin:0 0 2px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;">Email</p>
-                  <p style="margin:0;font-size:14px;color:#1a1a1a;">${p.contactInfo.email}</p>
+                  <p style="margin:0;font-size:14px;color:#1a1a1a;">${p.contactInfo.email || "—"}</p>
                 </td>
               </tr>
               <tr>
                 <td width="50%" style="padding-bottom:16px;vertical-align:top;">
-                  <p style="margin:0 0 2px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;">New Patient</p>
-                  <p style="margin:0;font-size:14px;color:#1a1a1a;">${p.contactInfo.isNewPatient ? "Yes" : "No"}</p>
+                  <p style="margin:0 0 2px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;">Marketing Consent</p>
+                  <p style="margin:0;font-size:14px;color:#1a1a1a;">${p.marketingConsent ? "Yes" : "No"}</p>
                 </td>
                 <td width="50%" style="padding-bottom:16px;vertical-align:top;">
                   <p style="margin:0 0 2px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;">Requested Slot</p>
@@ -163,17 +159,11 @@ function staffEmailHtml(p: BookingPayload): string {
 
             <hr style="border:none;border-top:1px solid #eee;margin:8px 0 20px;">
 
-            <p style="margin:0 0 4px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;">Treatment Areas</p>
-            <p style="margin:0 0 16px;font-size:14px;color:#1a1a1a;">${areas}</p>
+            <p style="margin:0 0 4px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;">Offer</p>
+            <p style="margin:0 0 4px;font-size:14px;color:#1a1a1a;"><strong>${offerLine(p)}</strong></p>
+            <p style="margin:0 0 16px;font-size:12px;color:#888;">${formatCurrency(p.offer.value)} regular combined value · offer_id: ${p.offer.id}</p>
 
-            <p style="margin:0 0 4px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;">Package</p>
-            <p style="margin:0 0 16px;font-size:14px;color:#1a1a1a;">
-              ${PACKAGE_LABELS[p.selectedPackage]} &mdash; <strong>${formatCurrency(p.pricingSummary.packageTotal)}</strong>
-              ${p.pricingSummary.savings > 0 ? ` (saves ${formatCurrency(p.pricingSummary.savings)})` : ""}
-            </p>
-
-            <p style="margin:0 0 4px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#888;">Deposit</p>
-            <p style="margin:0 0 20px;font-size:14px;color:#1a1a1a;">${formatCurrency(p.pricingSummary.depositAmount)} to collect</p>
+            <p style="margin:0 0 20px;font-size:13px;color:#888;">No payment collected — lead-capture request only. Selecting a time does not confirm the appointment.</p>
 
             <hr style="border:none;border-top:1px solid #eee;margin:8px 0 20px;">
 
@@ -200,6 +190,7 @@ export async function POST(req: NextRequest) {
     const payload = (await req.json()) as BookingPayload;
 
     const { fullName, email } = payload.contactInfo;
+    const hasEmail = typeof email === "string" && email.trim().length > 0;
 
     // Persist first — the DB row is the durable record of the booking.
     // Everything after this point (email) is best-effort notification on top of it.
@@ -214,12 +205,14 @@ export async function POST(req: NextRequest) {
     }
 
     const [clientResult, staffResult] = await Promise.allSettled([
-      resend.emails.send({
-        from: `Kami Aesthetics <${FROM}>`,
-        to: email,
-        subject: "Your Laser Hair Removal Request — Kami Aesthetics",
-        html: clientEmailHtml(payload),
-      }),
+      hasEmail
+        ? resend.emails.send({
+            from: `Kami Aesthetics <${FROM}>`,
+            to: email,
+            subject: "Your Laser Hair Removal Request — Kami Aesthetics",
+            html: clientEmailHtml(payload),
+          })
+        : Promise.resolve(null),
       resend.emails.send({
         from: `Kami Bookings <${FROM}>`,
         to: NOTIFY,
@@ -228,12 +221,20 @@ export async function POST(req: NextRequest) {
       }),
     ]);
 
-    const clientSent = clientResult.status === "fulfilled" && !clientResult.value.error;
+    const clientSent =
+      hasEmail &&
+      clientResult.status === "fulfilled" &&
+      !!clientResult.value &&
+      !clientResult.value.error;
     const staffSent = staffResult.status === "fulfilled" && !staffResult.value.error;
 
-    if (clientResult.status === "rejected") {
+    if (hasEmail && clientResult.status === "rejected") {
       console.error("[LHR API] Client email failed:", clientResult.reason);
-    } else if (clientResult.value.error) {
+    } else if (
+      hasEmail &&
+      clientResult.status === "fulfilled" &&
+      clientResult.value?.error
+    ) {
       console.error("[LHR API] Client email Resend error:", clientResult.value.error);
     }
 

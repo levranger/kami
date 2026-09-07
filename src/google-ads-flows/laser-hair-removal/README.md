@@ -2,6 +2,61 @@
 
 A production-ready, mobile-first Google Ads booking funnel for laser hair removal.
 
+## Offer
+
+The funnel sells one fixed offer, defined once in `lib/offers.ts` and read
+everywhere from there (`OFFER_ID = "lhr_must_have_149"`):
+
+```
+NEW CLIENT MUST-HAVE
+Full Brazilian + Underarms + Half Legs — $149
+$289 regular combined value   (Full Brazilian $109 + Underarms $60 + Half Legs $120)
+On the Lumenis Splendor X
+```
+
+Use the phrase **Full Brazilian + Underarms + Half Legs** verbatim. Do not
+substitute "Bikini" or "Legs" anywhere (landing page, funnel, confirmation,
+analytics, booking payload, emails).
+
+There is no treatment-area or package selection. The visible flow is:
+
+```
+Landing page  →  Step 1 of 2 · Appointment  →  Step 2 of 2 · Contact  →  Confirmation
+```
+
+"Redeem This Offer" on the landing page goes straight to date selection.
+Confirmation is not a numbered step. Submission is lead-capture only (no
+payment) — staff confirm the requested slot by phone/text and book it manually.
+
+### Contact step
+
+Required: full name, mobile phone. Email is optional (validated for format only
+if provided). Promotional SMS consent is optional and separate — a request can
+be submitted without it.
+
+### Analytics
+
+Offer-specific canonical events, each carrying `offer_id`:
+
+```
+laser_landing_view · laser_offer_redeem_clicked · laser_booking_flow_started
+laser_datetime_selected · laser_contact_info_entered
+laser_booking_completed (primary conversion, value/currency) · laser_booking_error
+```
+
+GCLID / GBRAID / WBRAID and UTMs are preserved on the entry events. There are no
+area- or package-selection events. GTM/GA4 triggers that referenced the old
+`laser_area_selected`, `laser_step_viewed`, `booking_cta_clicked`, or the
+`laser_step_order_v1` / `laser_entry_page_v1` experiment params must be updated.
+
+### Booking payload
+
+`POST /api/booking/laser-hair-removal` expects `{ offer, contactInfo, marketingConsent,
+selectedDate, selectedTime, attribution }` — no `selectedAreas` / `selectedPackage` /
+`pricingSummary`. The DB keeps those legacy columns filled with constants for
+backward compatibility (see `api/booking/laser-hair-removal/db.ts`); the `offer`
+and `offer_id` columns are the source of truth going forward.
+
 ## Setup
 
 ```bash
@@ -34,16 +89,6 @@ No additional third-party packages required.
 
 ## Configuration
 
-### Mock vs Production Mode
-
-The funnel operates in `mock` mode by default. Change in `lib/bookingApi.ts`:
-
-```ts
-const FUNNEL_MODE: FunnelMode = "mock"; // Change to "production" when ready
-```
-
-In production mode, unimplemented integrations will throw clear errors instead of pretending to work.
-
 ### Image Replacement
 
 Replace placeholder before/after images in `components/BeforeAfterSlider.tsx`:
@@ -51,20 +96,19 @@ Replace placeholder before/after images in `components/BeforeAfterSlider.tsx`:
 - `/images/laser/underarms-after.webp`
 - etc.
 
-### Pricing Configuration
+### Offer Configuration
 
-All pricing is centralized in `components/AreaSelector.tsx` (treatment areas) and `lib/pricing.ts` (package calculations).
+Everything about the offer — wording, `$149` price, `$289` value, the three
+areas, the Splendor X positioning, promotional terms — lives in `lib/offers.ts`.
+`lib/pricing.ts` is now just currency formatting.
 
 ### Integration Adapters
 
 | Adapter | File | Status |
 |---------|------|--------|
 | Availability (Mangomint) | `lib/mockAvailability.ts` | Mock |
-| Lead Capture | `lib/bookingApi.ts` | Mock |
-| Booking Submission | `lib/bookingApi.ts` | Mock |
-| Stripe Deposit | `lib/bookingApi.ts` | Interface only |
-| Analytics (GA4) | `lib/analytics.ts` | Dev logger |
-| Zapier Webhook | `lib/bookingApi.ts` | Interface only |
+| Booking Submission | `lib/bookingApi.ts` → `api/booking/laser-hair-removal` | Live (Postgres + Resend email) |
+| Analytics (GA4 via GTM dataLayer) | `lib/analytics.ts` | Live |
 
 ### Privacy/Terms Links
 
@@ -82,14 +126,12 @@ Update placeholder links in `components/ContactForm.tsx`:
 
 - [ ] Replace placeholder before/after images
 - [ ] Confirm patient photo consent
-- [ ] Validate package pricing with business
+- [ ] Confirm the offer terms in `lib/offers.ts` are the ones legal/marketing intend
 - [ ] Connect real Mangomint availability
-- [ ] Connect Stripe deposit ($50)
-- [ ] Connect booking creation API
-- [ ] Connect transactional SMS/email notifications
+- [ ] Point GTM/GA4 + Google Ads conversions at `laser_booking_completed` and drop the old event triggers
 - [ ] Add real privacy and SMS terms pages
-- [ ] Test Google Ads conversion events (gclid, gbraid, wbraid)
-- [ ] Test all mobile breakpoints (375px, 390px, 430px)
+- [ ] Test Google Ads conversion events (gclid, gbraid, wbraid, UTMs) end to end
+- [ ] Test all mobile breakpoints (375px, 390px, 430px) — incl. call pill vs CTA/consent
 - [ ] Test stale-slot handling
 - [ ] Verify no PII is sent to analytics
 - [ ] Test keyboard navigation and screen reader
@@ -102,27 +144,27 @@ laser-hair-removal/
 ├── LaserHairRemovalBookingFlow.tsx  — Main orchestrator
 ├── index.ts                        — Public export
 ├── components/
-│   ├── LandingHero.tsx            — Google Ads landing section
-│   ├── ProgressIndicator.tsx      — Step 1-4 progress bar
-│   ├── AreaSelector.tsx           — Step 1: Treatment area selection
-│   ├── DateTimeSelector.tsx       — Step 2: Date/time selection
-│   ├── ContactForm.tsx            — Step 3: Contact details
-│   ├── ReviewBooking.tsx          — Step 4: Review and submit (package/upsell handled in person)
+│   ├── LandingHero.tsx            — Google Ads landing section (offer-focused)
+│   ├── ProgressIndicator.tsx      — Step 1-2 progress bar
+│   ├── OfferReminder.tsx          — Compact offer summary atop the Appointment step
+│   ├── DateTimeSelector.tsx       — Step 1: Date/time selection
+│   ├── ContactForm.tsx           — Step 2: Contact details (submits the request)
 │   ├── ConfirmationPage.tsx       — Post-submission confirmation
-│   ├── PriceSummary.tsx           — Reusable pricing display
 │   ├── BeforeAfterSlider.tsx      — Before/after comparison slider
 │   ├── MobileStickyFooter.tsx     — Sticky CTA bar
+│   ├── StickyCallButton.tsx       — Floating "call us" pill (hidden on Contact step)
 │   └── TrustSection.tsx           — Trust indicators
 ├── hooks/
 │   ├── useBookingState.ts         — Central state management
 │   └── useAttributionTracking.ts  — Google Ads attribution
 ├── lib/
-│   ├── pricing.ts                 — Centralized pricing logic
+│   ├── offers.ts                  — Single source of truth for the $149 offer
+│   ├── pricing.ts                 — Currency formatting
 │   ├── validation.ts              — Form validation rules
 │   ├── phone.ts                   — Phone formatting/validation
-│   ├── analytics.ts               — Typed analytics wrapper
+│   ├── analytics.ts               — Offer-specific canonical events
 │   ├── storage.ts                 — localStorage persistence
-│   ├── bookingApi.ts              — API adapters (mock + interfaces)
+│   ├── bookingApi.ts              — Booking submission
 │   └── mockAvailability.ts        — Mock availability provider
 ├── types/
 │   └── booking.ts                 — All TypeScript interfaces

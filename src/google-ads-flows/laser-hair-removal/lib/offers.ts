@@ -1,15 +1,68 @@
-import type { TreatmentArea } from "../types/booking";
+// ─────────────────────────────────────────────────────────────────────────────
+//  The single source of truth for the paid-search laser hair removal offer.
+//  Every surface — landing page, funnel, confirmation, analytics metadata and
+//  the submitted booking payload — reads the offer from here so the wording,
+//  price and value can never drift apart.
+//
+//  Canonical wording (use verbatim, do NOT substitute "Bikini" / "Legs"):
+//
+//    NEW CLIENT MUST-HAVE
+//    Full Brazilian + Underarms + Half Legs — $149
+//    $289 regular combined value
+// ─────────────────────────────────────────────────────────────────────────────
 
-// New-client "Must-Have" bundle: Bikini (Full Brazilian) + Underarms + Half
-// Legs for a flat $149. This is a real, bookable price — not a marketing
-// teaser — so calculateBaseSessionPrice (lib/pricing.ts) overrides the
-// per-area total whenever exactly these three areas are selected, and that
-// override price is what's shown and submitted everywhere downstream.
-export const MUST_HAVE_OFFER_AREA_IDS: readonly string[] = ["underarms", "brazilian", "half-legs"];
-export const MUST_HAVE_OFFER_PRICE = 149;
+/** Stable, non-PII identifier so this offer can be analysed on its own. */
+export const OFFER_ID = "lhr_must_have_149";
 
-export function isMustHaveOfferCombo(selectedAreas: TreatmentArea[]): boolean {
-  if (selectedAreas.length !== MUST_HAVE_OFFER_AREA_IDS.length) return false;
-  const ids = new Set(selectedAreas.map((a) => a.id));
-  return MUST_HAVE_OFFER_AREA_IDS.every((id) => ids.has(id));
+export interface OfferArea {
+  name: string;
+  /** Individual single-session price — the $289 value is the sum of these. */
+  price: number;
+}
+
+export const MUST_HAVE_OFFER = {
+  id: OFFER_ID,
+  name: "New Client Must-Have",
+  /** Canonical areas phrase. Render this string exactly, everywhere. */
+  areasLabel: "Full Brazilian + Underarms + Half Legs",
+  price: 149,
+  value: 289,
+  laser: "Lumenis Splendor X",
+  areas: [
+    { name: "Full Brazilian", price: 109 },
+    { name: "Underarms", price: 60 },
+    { name: "Half Legs", price: 120 },
+  ] as OfferArea[],
+  /**
+   * Subtle promotional terms shown near the landing-page offer CTA. Only
+   * terms actually intended to apply — no expiration date unless one is
+   * configured here.
+   */
+  terms: [
+    "New clients only.",
+    "One promotional treatment.",
+    "Cannot be combined with other offers.",
+    "Appointment subject to availability.",
+  ],
+} as const;
+
+/** Compact canonical price string, e.g. "$149". */
+export function formatOfferPrice(): string {
+  return `$${MUST_HAVE_OFFER.price}`;
+}
+
+/** Compact canonical value string, e.g. "$289". */
+export function formatOfferValue(): string {
+  return `$${MUST_HAVE_OFFER.value}`;
+}
+
+/** The offer summary attached to analytics events and the booking payload. */
+export function offerSummary() {
+  return {
+    id: MUST_HAVE_OFFER.id,
+    name: MUST_HAVE_OFFER.name,
+    areasLabel: MUST_HAVE_OFFER.areasLabel,
+    price: MUST_HAVE_OFFER.price,
+    value: MUST_HAVE_OFFER.value,
+  };
 }

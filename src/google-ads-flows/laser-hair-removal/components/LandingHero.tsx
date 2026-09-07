@@ -1,18 +1,15 @@
 import Link from "next/link";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Star, Check } from "lucide-react";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 import TrustSection from "./TrustSection";
-import { treatmentAreas } from "./AreaSelector";
-import { getStartingPrices, formatCurrency } from "../lib/pricing";
-import { SHOW_PRICING } from "../lib/config";
+import { MUST_HAVE_OFFER } from "../lib/offers";
+import { formatCurrency } from "../lib/pricing";
 
 interface LandingHeroProps {
   onStartBooking: () => void;
 }
 
 export default function LandingHero({ onStartBooking }: LandingHeroProps) {
-  const { singleSessionFrom, packageSessionFrom } = getStartingPrices(treatmentAreas);
-
   return (
     <section className="bg-[#1A1A1A] relative overflow-hidden" aria-labelledby="hero-heading">
       <div className="max-w-4xl mx-auto px-4 py-12 md:py-20">
@@ -37,29 +34,45 @@ export default function LandingHero({ onStartBooking }: LandingHeroProps) {
               </Link>
             </div>
 
-            {/* Headline */}
+            {/* Offer eyebrow */}
+            <p className="font-inter text-[11px] font-semibold tracking-[0.2em] uppercase text-gold mb-3">
+              New Client Must-Have
+            </p>
+
+            {/* Headline — canonical offer wording */}
             <h1
               id="hero-heading"
               className="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.15] mb-4"
             >
-              Smooth skin
+              {MUST_HAVE_OFFER.areasLabel}
               <br />
-              <span className="text-gold">starts here</span>
+              <span className="text-gold">{formatCurrency(MUST_HAVE_OFFER.price)}</span>
             </h1>
 
             {/* Supporting copy */}
             <p className="font-inter text-sm md:text-base text-white/70 leading-relaxed mb-4 max-w-md">
-              Premium laser hair removal with the Lumenis Splendor X. Safe for all skin types.
-              Comfortable treatments. Lasting results.
+              Premium laser hair removal on the Lumenis Splendor X. Designed for a wide range of
+              skin tones, with comfortable treatments and long-lasting results for most clients.
             </p>
 
-            {/* Starting price — hidden while SHOW_PRICING is false (see lib/config.ts) */}
-            {SHOW_PRICING && (
-              <p className="font-inter text-sm text-gold font-medium mb-6">
-                Single sessions from {formatCurrency(singleSessionFrom)} · Packages from{" "}
-                {formatCurrency(packageSessionFrom)}/session
-              </p>
-            )}
+            {/* What's included */}
+            <ul className="mb-5 space-y-1.5">
+              {MUST_HAVE_OFFER.areas.map((area) => (
+                <li key={area.name} className="flex items-center gap-2 font-inter text-sm text-white/80">
+                  <Check className="h-4 w-4 text-gold flex-shrink-0" aria-hidden="true" />
+                  {area.name}
+                </li>
+              ))}
+            </ul>
+
+            <p className="font-inter text-xs text-white/50 mb-2">
+              {formatCurrency(MUST_HAVE_OFFER.value)} regular combined value · No payment today — request only
+            </p>
+
+            {/* Offer terms — visually secondary */}
+            <p className="font-inter text-[11px] text-white/35 leading-relaxed mb-6 max-w-md">
+              {MUST_HAVE_OFFER.terms.join(" ")}
+            </p>
 
             {/* Social proof placeholder */}
             <div className="flex items-center gap-2 mb-8">
@@ -78,7 +91,7 @@ export default function LandingHero({ onStartBooking }: LandingHeroProps) {
               onClick={onStartBooking}
               className="w-full sm:w-auto bg-gold hover:bg-gold-dark text-white font-inter text-sm font-semibold tracking-wider px-8 py-4 rounded-sm transition-all duration-200 group flex items-center justify-center gap-2 min-h-[52px]"
             >
-              {SHOW_PRICING ? "Check Price & Availability" : "Check Availability"}
+              Redeem This Offer
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </button>
 

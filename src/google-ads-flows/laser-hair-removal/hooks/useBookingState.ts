@@ -1,46 +1,24 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import type {
-  BookingStep,
-  TreatmentArea,
-  PackageType,
-  ContactInfo,
-  ScreeningFlags,
-  AttributionData,
-  PricingSummary,
-} from "../types/booking";
-import { calculatePricingSummary } from "../lib/pricing";
+import type { BookingStep, ContactInfo, AttributionData } from "../types/booking";
 import { saveBookingState, loadBookingState, clearBookingState } from "../lib/storage";
 
 export interface BookingState {
   currentStep: BookingStep;
-  selectedAreas: TreatmentArea[];
-  // Package selection was removed from the online flow (upsell now happens
-  // in person) — this stays fixed at "single" so pricing math and the
-  // booking submission payload are unaffected. No setter is exposed; there
-  // is no UI that changes it anymore.
-  selectedPackage: PackageType | null;
   selectedDate: string | null;
   selectedTime: string | null;
   contactInfo: ContactInfo;
-  screeningFlags: ScreeningFlags;
   marketingConsent: boolean;
   attribution: AttributionData;
-  leadId: string | null;
   bookingRequestId: string | null;
-  pricingSummary: PricingSummary;
   funnelStartedAt: string | null;
 
-  setSelectedAreas: (areas: TreatmentArea[]) => void;
   setSelectedDate: (date: string | null) => void;
   setSelectedTime: (time: string | null) => void;
   setContactInfo: (info: ContactInfo) => void;
-  setScreeningFlags: (flags: ScreeningFlags) => void;
   setMarketingConsent: (consent: boolean) => void;
   setAttribution: (data: AttributionData) => void;
-  setLeadId: (id: string) => void;
   setBookingRequestId: (id: string) => void;
 
-  goToStep: (step: BookingStep) => void;
   nextStep: () => void;
   previousStep: () => void;
   resetBooking: () => void;
@@ -50,12 +28,6 @@ const defaultContactInfo: ContactInfo = {
   fullName: "",
   phone: "",
   email: "",
-  isNewPatient: false,
-};
-
-const defaultScreeningFlags: ScreeningFlags = {
-  sensitiveSkin: false,
-  recentlyTanned: false,
 };
 
 const defaultAttribution: AttributionData = {};
@@ -67,16 +39,8 @@ export function useBookingState(): BookingState {
   const persisted = !initialized.current ? loadBookingState() : null;
 
   const [currentStep, setCurrentStep] = useState<BookingStep>(
-    (persisted?.currentStep as BookingStep) || 1
-  );
-  const [selectedAreas, setSelectedAreas] = useState<TreatmentArea[]>(
-    persisted?.selectedAreas || []
-  );
-  // Single Session is preselected by default so the package step never
-  // implies a selection the user hasn't visibly made — Continue always
-  // reflects a concrete, highlighted choice.
-  const [selectedPackage, setSelectedPackage] = useState<PackageType | null>(
-    persisted?.selectedPackage || "single"
+    // Clamp a persisted step into the current 1–2 range.
+    (Math.min(Math.max(Number(persisted?.currentStep) || 1, 1), 2) as BookingStep)
   );
   const [selectedDate, setSelectedDate] = useState<string | null>(
     persisted?.selectedDate || null
@@ -85,12 +49,10 @@ export function useBookingState(): BookingState {
     persisted?.selectedTime || null
   );
   const [contactInfo, setContactInfo] = useState<ContactInfo>(defaultContactInfo);
-  const [screeningFlags, setScreeningFlags] = useState<ScreeningFlags>(defaultScreeningFlags);
   const [marketingConsent, setMarketingConsent] = useState(false);
   const [attribution, setAttribution] = useState<AttributionData>(
     persisted?.attribution || defaultAttribution
   );
-  const [leadId, setLeadId] = useState<string | null>(null);
   const [bookingRequestId, setBookingRequestId] = useState<string | null>(null);
   const [funnelStartedAt] = useState<string | null>(
     persisted?.funnelStartedAt || null
@@ -98,80 +60,52 @@ export function useBookingState(): BookingState {
 
   initialized.current = true;
 
-  // Calculate pricing summary reactively
-  const pricingSummary = calculatePricingSummary(selectedAreas, selectedPackage);
-
-  // Persist non-sensitive state on changes
+  // Persist non-sensitive scheduling state on changes
   useEffect(() => {
     saveBookingState({
       currentStep,
-      selectedAreas,
-      selectedPackage,
       selectedDate,
       selectedTime,
       attribution,
       funnelStartedAt,
     });
-  }, [currentStep, selectedAreas, selectedPackage, selectedDate, selectedTime, attribution, funnelStartedAt]);
-
-  const goToStep = useCallback((step: BookingStep) => {
-    setCurrentStep(step);
-  }, []);
+  }, [currentStep, selectedDate, selectedTime, attribution, funnelStartedAt]);
 
   const nextStep = useCallback(() => {
-    setCurrentStep((prev) => {
-      const next = prev + 1;
-      return (next <= 4 ? next : prev) as BookingStep;
-    });
+    setCurrentStep((prev) => (prev < 2 ? ((prev + 1) as BookingStep) : prev));
   }, []);
 
   const previousStep = useCallback(() => {
-    setCurrentStep((prev) => {
-      const next = prev - 1;
-      return (next >= 1 ? next : prev) as BookingStep;
-    });
+    setCurrentStep((prev) => (prev > 1 ? ((prev - 1) as BookingStep) : prev));
   }, []);
 
   const resetBooking = useCallback(() => {
     setCurrentStep(1);
-    setSelectedAreas([]);
-    setSelectedPackage("single");
     setSelectedDate(null);
     setSelectedTime(null);
     setContactInfo(defaultContactInfo);
-    setScreeningFlags(defaultScreeningFlags);
     setMarketingConsent(false);
-    setLeadId(null);
     setBookingRequestId(null);
     clearBookingState();
   }, []);
 
   return {
     currentStep,
-    selectedAreas,
-    selectedPackage,
     selectedDate,
     selectedTime,
     contactInfo,
-    screeningFlags,
     marketingConsent,
     attribution,
-    leadId,
     bookingRequestId,
-    pricingSummary,
     funnelStartedAt,
 
-    setSelectedAreas,
     setSelectedDate,
     setSelectedTime,
     setContactInfo,
-    setScreeningFlags,
     setMarketingConsent,
     setAttribution,
-    setLeadId,
     setBookingRequestId,
 
-    goToStep,
     nextStep,
     previousStep,
     resetBooking,

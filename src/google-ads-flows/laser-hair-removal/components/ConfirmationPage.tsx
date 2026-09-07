@@ -1,19 +1,15 @@
 import { CheckCircle, MapPin, FileText, ArrowLeft, X } from "lucide-react";
 import { useState } from "react";
-import type { TreatmentArea, PackageType, PricingSummary } from "../types/booking";
 import { formatCurrency } from "../lib/pricing";
 import { formatPhoneUS } from "../lib/phone";
+import { MUST_HAVE_OFFER } from "../lib/offers";
 import { MAPS_URL } from "@/data/content";
-import { SHOW_PRICING } from "../lib/config";
 
 interface ConfirmationPageProps {
   bookingRequestId: string;
-  selectedAreas: TreatmentArea[];
-  selectedPackage: PackageType;
   selectedDate: string;
   selectedTime: string;
   contactPhone: string;
-  pricingSummary: PricingSummary;
   onReturnHome: () => void;
 }
 
@@ -46,21 +42,12 @@ const prepGuideItems = [
 
 export default function ConfirmationPage({
   bookingRequestId,
-  selectedAreas,
-  selectedPackage,
   selectedDate,
   selectedTime,
   contactPhone,
-  pricingSummary,
   onReturnHome,
 }: ConfirmationPageProps) {
   const [showPrepGuide, setShowPrepGuide] = useState(false);
-
-  const packageLabels: Record<PackageType, string> = {
-    single: "Single Session",
-    four: "4 Sessions",
-    six: "6 Sessions",
-  };
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr + "T00:00:00");
@@ -114,24 +101,16 @@ export default function ConfirmationPage({
 
           <div>
             <p className="font-inter text-[10px] tracking-wider uppercase text-warm-gray font-semibold">
-              Treatment Areas
-            </p>
-            <div className="flex flex-wrap gap-1.5 mt-1">
-              {selectedAreas.map((area) => (
-                <span key={area.id} className="font-inter text-xs bg-white border border-warm-border px-2 py-1 rounded-sm">
-                  {area.name}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <p className="font-inter text-[10px] tracking-wider uppercase text-warm-gray font-semibold">
-              Package
+              Offer
             </p>
             <p className="font-inter text-sm text-[#1A1A1A] mt-0.5">
-              {packageLabels[selectedPackage]}
-              {SHOW_PRICING && <> — {formatCurrency(pricingSummary.packageTotal)}</>}
+              {MUST_HAVE_OFFER.name} — {formatCurrency(MUST_HAVE_OFFER.price)}
+            </p>
+            <p className="font-inter text-xs text-warm-gray mt-1">
+              {MUST_HAVE_OFFER.areasLabel}
+            </p>
+            <p className="font-inter text-xs text-warm-gray mt-1">
+              On the {MUST_HAVE_OFFER.laser}
             </p>
           </div>
 

@@ -1,106 +1,64 @@
 import { track } from "@/lib/track";
-import type { AttributionData, PackageType, EntryMode } from "../types/booking";
+import type { AttributionData } from "../types/booking";
+import { MUST_HAVE_OFFER, OFFER_ID } from "./offers";
 
-// Centralized experiment metadata for the current laser funnel A/B test.
-export const LASER_EXPERIMENT_ID = "laser_step_order_v1";
-export const LASER_VARIANT_ID = "datetime_before_contact";
+// ─────────────────────────────────────────────────────────────────────────────
+//  Analytics for the $149 New Client Must-Have laser hair removal funnel.
+//
+//  This is an offer-specific funnel. Every event carries `offer_id` so it can
+//  be analysed independently. Google Ads attribution (GCLID / GBRAID / WBRAID)
+//  and UTM parameters are preserved on the entry events. There are no
+//  area-selection or package-selection events — the offer is fixed.
+//
+//  Canonical events, in the order they fire:
+//    laser_landing_view
+//    laser_offer_redeem_clicked
+//    laser_booking_flow_started
+//    laser_datetime_selected
+//    laser_contact_info_entered
+//    laser_booking_completed   ← primary conversion (carries value/currency)
+//    laser_booking_error
+// ─────────────────────────────────────────────────────────────────────────────
 
-// Funnel events read the variant through this function rather than the
-// constant directly, so a future dynamic assignment (cookie, experiment
-// SDK, etc.) only needs to change this one place.
-function getVariantId(): string {
-  return LASER_VARIANT_ID;
-}
+const OFFER_PARAMS = { offer_id: OFFER_ID } as const;
 
-function experimentParams() {
-  return { experiment_id: LASER_EXPERIMENT_ID, variant_id: getVariantId() };
-}
+type PartialAttribution = Partial<AttributionData>;
 
-// Separate, independent A/B test: does paid traffic convert better skipping
-// straight to Step 1 (?start=booking) vs. seeing the marketing hero first?
-// Kept distinct from LASER_EXPERIMENT_ID above (that one tests step order
-// *within* the funnel) — this one only tags the entry-point events.
-export const ENTRY_EXPERIMENT_ID = "laser_entry_page_v1";
-export const ENTRY_VARIANT_DIRECT_TO_AREA_SELECTION = "direct_to_area_selection";
-export const ENTRY_VARIANT_HERO_BEFORE_BOOKING = "hero_before_booking";
-
-function entryExperimentParams(entryMode: EntryMode) {
+function attributionParams(a: PartialAttribution) {
   return {
-    experiment_id: ENTRY_EXPERIMENT_ID,
-    variant_id:
-      entryMode === "booking" ? ENTRY_VARIANT_DIRECT_TO_AREA_SELECTION : ENTRY_VARIANT_HERO_BEFORE_BOOKING,
+    gclid: a.gclid,
+    gbraid: a.gbraid,
+    wbraid: a.wbraid,
+    utm_source: a.utmSource,
+    utm_medium: a.utmMedium,
+    utm_campaign: a.utmCampaign,
+    utm_term: a.utmTerm,
+    utm_content: a.utmContent,
+    entry_source: a.utmSource || a.referrer || undefined,
   };
 }
 
-// Names/numbers used for laser_step_viewed, keyed by BookingStep (1-4) plus
-// a synthetic step 5 for the post-submit confirmation screen. Package
-// selection was removed from the funnel, so this no longer has a "package"
-// entry — do not re-add one just to keep old reports looking familiar.
-export const STEP_VIEW_NAMES: Record<number, string> = {
-  1: "areas",
-  2: "datetime",
-  3: "contact",
-  4: "review",
-  5: "confirmation",
-};
-
 export const laserAnalytics = {
-  trackLandingView: (attribution: { gclid?: string; gbraid?: string; wbraid?: string }) => {
+  trackLandingView: (attribution: PartialAttribution) => {
     track("laser_landing_view", {
       landing_page: "laser_hair_removal",
-      gclid: attribution.gclid,
-      gbraid: attribution.gbraid,
-      wbraid: attribution.wbraid,
-      ...experimentParams(),
+      ...OFFER_PARAMS,
+      ...attributionParams(attribution),
     });
   },
 
-  trackFlowStarted: (attribution: AttributionData, entryMode: EntryMode) => {
+  // Fired on the single "Redeem This Offer" CTA click on the landing page.
+  trackOfferRedeemClicked: (attribution: PartialAttribution) => {
+    track("laser_offer_redeem_clicked", {
+      ...OFFER_PARAMS,
+      ...attributionParams(attribution),
+    });
+  },
+
+  trackFlowStarted: (attribution: PartialAttribution) => {
     track("laser_booking_flow_started", {
-      gclid: attribution.gclid,
-      gbraid: attribution.gbraid,
-      wbraid: attribution.wbraid,
-      ...entryExperimentParams(entryMode),
-    });
-  },
-
-  // Secondary funnel event — fired only for an actual in-page CTA click
-  // (not the auto-start effect for ?start=booking direct entry, which has
-  // no click to report). Diagnostic only, not the primary conversion.
-  trackCtaClicked: (entryMode: EntryMode) => {
-    track("booking_cta_clicked", { ...entryExperimentParams(entryMode) });
-  },
-
-  trackAreaSelected: (areaIds: string[]) => {
-    track("laser_area_selected", {
-      // Pipe-delimited so GA4 can report on it as a plain string dimension.
-      area_ids: areaIds.join("|"),
-      number_of_areas: areaIds.length,
-      ...experimentParams(),
-    });
-    // Secondary funnel event, same trigger/payload, generic naming.
-    track("treatment_area_selected", {
-      area_ids: areaIds.join("|"),
-      number_of_areas: areaIds.length,
-      ...experimentParams(),
-    });
-  },
-
-  trackStepCompleted: (step: number, timeSeconds: number, data?: Record<string, string | number | boolean>) => {
-    track("laser_step_completed", { step, time_on_step_seconds: timeSeconds, ...data });
-  },
-
-  trackContactInfoEntered: (isNewPatient: boolean, screeningReviewRequired: boolean) => {
-    track("laser_contact_info_entered", {
-      is_new_patient: isNewPatient,
-      screening_review_required: screeningReviewRequired,
-      ...experimentParams(),
-    });
-    // Secondary funnel event, same trigger/payload, generic naming.
-    track("contact_step_completed", {
-      is_new_patient: isNewPatient,
-      screening_review_required: screeningReviewRequired,
-      ...experimentParams(),
+      ...OFFER_PARAMS,
+      ...attributionParams(attribution),
     });
   },
 
@@ -108,83 +66,31 @@ export const laserAnalytics = {
     track("laser_datetime_selected", {
       appointment_date: date,
       appointment_time: time,
-      ...experimentParams(),
-    });
-    // Secondary funnel event, same trigger/payload, generic naming.
-    track("appointment_slot_selected", {
-      appointment_date: date,
-      appointment_time: time,
-      ...experimentParams(),
+      ...OFFER_PARAMS,
     });
   },
 
-  trackBookingCompleted: (data: {
-    packageType: PackageType;
-    sessions: number;
-    packageTotal: number;
-    areaIds: string[];
-    isNewPatient: boolean;
-  }) => {
-    // Primary conversion — the only event carrying value/currency. Fired
-    // exclusively on a successful submit, never on review-page view or
-    // Continue clicks.
-    track("laser_booking_completed", {
-      package_type: data.packageType,
-      sessions: data.sessions,
-      package_total: data.packageTotal,
-      // Requested package price at submit time, not confirmed/collected revenue.
-      value: data.packageTotal,
-      currency: "USD",
-      area_ids: data.areaIds.join("|"),
-      number_of_areas: data.areaIds.length,
-      is_new_patient: data.isNewPatient,
-      ...experimentParams(),
+  trackContactInfoEntered: (marketingConsent: boolean) => {
+    track("laser_contact_info_entered", {
+      marketing_consent: marketingConsent,
+      ...OFFER_PARAMS,
     });
-    // Secondary funnel event mirroring the same trigger, deliberately
-    // without value/currency — this must never be read as a completed,
-    // paid, or confirmed appointment; the business only confirms later.
-    track("appointment_request_submitted", {
-      package_type: data.packageType,
-      sessions: data.sessions,
-      area_ids: data.areaIds.join("|"),
-      number_of_areas: data.areaIds.length,
-      is_new_patient: data.isNewPatient,
-      ...experimentParams(),
+  },
+
+  // Primary conversion — fired only on a successful submit. `value` is the
+  // requested offer price at submit time, not confirmed or collected revenue.
+  trackBookingCompleted: () => {
+    track("laser_booking_completed", {
+      value: MUST_HAVE_OFFER.price,
+      currency: "USD",
+      ...OFFER_PARAMS,
     });
   },
 
   trackBookingError: (errorMessage: string) => {
-    track("laser_booking_error", { error_message: errorMessage, ...experimentParams() });
-  },
-
-  // `entryMode` is only meaningful (and only passed) for step 1 — that's the
-  // screen affected by the hero-vs-direct entry test. Later steps keep the
-  // step-order experiment tag via experimentParams(), unchanged.
-  trackStepViewed: (stepName: string, stepNumber: number, entryMode?: EntryMode) => {
-    track("laser_step_viewed", {
-      step_name: stepName,
-      step_number: stepNumber,
-      ...(stepNumber === 1 && entryMode ? entryExperimentParams(entryMode) : experimentParams()),
+    track("laser_booking_error", {
+      error_message: errorMessage,
+      ...OFFER_PARAMS,
     });
-  },
-
-  trackPageExit: (step: number, timeOnPageSeconds: number) => {
-    track("laser_page_exit", { step, time_on_page_seconds: timeOnPageSeconds });
-  },
-
-  trackScrollDepth: (depth: number) => {
-    track("laser_scroll_depth", { depth_percent: depth });
-  },
-
-  trackFormFieldFocus: (fieldName: string) => {
-    track("laser_form_field_focus", { field_name: fieldName });
-  },
-
-  trackFormFieldChange: (fieldName: string) => {
-    track("laser_form_field_change", { field_name: fieldName });
-  },
-
-  trackFormError: (fieldName: string, error: string) => {
-    track("laser_form_error", { field_name: fieldName, error_message: error });
   },
 };

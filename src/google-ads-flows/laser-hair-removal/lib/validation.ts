@@ -1,4 +1,4 @@
-import type { TreatmentArea, ContactInfo } from "../types/booking";
+import type { ContactInfo } from "../types/booking";
 import { isValidUSPhone } from "./phone";
 
 export interface ValidationError {
@@ -6,27 +6,15 @@ export interface ValidationError {
   message: string;
 }
 
-/**
- * Validate email format.
- */
+/** Validate email format. */
 export function isValidEmail(email: string): boolean {
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return pattern.test(email.trim().toLowerCase());
 }
 
 /**
- * Validate Step 1: Treatment area selection.
- */
-export function validateAreas(selectedAreas: TreatmentArea[]): ValidationError[] {
-  const errors: ValidationError[] = [];
-  if (selectedAreas.length === 0) {
-    errors.push({ field: "areas", message: "Please select at least one treatment area." });
-  }
-  return errors;
-}
-
-/**
- * Validate Step 3: Contact details.
+ * Contact step. Full name and mobile phone are required; email is optional
+ * and only validated for format when the visitor chooses to provide it.
  */
 export function validateContact(contactInfo: ContactInfo): ValidationError[] {
   const errors: ValidationError[] = [];
@@ -36,23 +24,19 @@ export function validateContact(contactInfo: ContactInfo): ValidationError[] {
   }
 
   if (!contactInfo.phone.trim()) {
-    errors.push({ field: "phone", message: "Phone number is required." });
+    errors.push({ field: "phone", message: "Mobile phone is required." });
   } else if (!isValidUSPhone(contactInfo.phone)) {
     errors.push({ field: "phone", message: "Please enter a valid 10-digit US phone number." });
   }
 
-  if (!contactInfo.email.trim()) {
-    errors.push({ field: "email", message: "Email address is required." });
-  } else if (!isValidEmail(contactInfo.email)) {
-    errors.push({ field: "email", message: "Please enter a valid email address." });
+  if (contactInfo.email.trim() && !isValidEmail(contactInfo.email)) {
+    errors.push({ field: "email", message: "Please enter a valid email address, or leave it blank." });
   }
 
   return errors;
 }
 
-/**
- * Validate Step 2: Date and time selection.
- */
+/** Appointment step. Both a date and a time slot must be chosen. */
 export function validateDateTime(
   selectedDate: string | null,
   selectedTime: string | null
@@ -65,20 +49,4 @@ export function validateDateTime(
     errors.push({ field: "time", message: "Please select an appointment time." });
   }
   return errors;
-}
-
-/**
- * Validate Step 4: All prior data must still be valid.
- */
-export function validateReview(
-  selectedAreas: TreatmentArea[],
-  contactInfo: ContactInfo,
-  selectedDate: string | null,
-  selectedTime: string | null
-): ValidationError[] {
-  return [
-    ...validateAreas(selectedAreas),
-    ...validateContact(contactInfo),
-    ...validateDateTime(selectedDate, selectedTime),
-  ];
 }

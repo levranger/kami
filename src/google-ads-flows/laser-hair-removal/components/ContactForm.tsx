@@ -1,25 +1,20 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import type { ContactInfo, ScreeningFlags } from "../types/booking";
+import type { ContactInfo } from "../types/booking";
 import { formatPhoneUS, normalizePhone } from "../lib/phone";
 import type { ValidationError } from "../lib/validation";
 
 interface ContactFormProps {
   contactInfo: ContactInfo;
-  screeningFlags: ScreeningFlags;
   marketingConsent: boolean;
   onContactChange: (info: ContactInfo) => void;
-  onScreeningChange: (flags: ScreeningFlags) => void;
   onMarketingConsentChange: (consent: boolean) => void;
   errors: ValidationError[];
 }
 
 export default function ContactForm({
   contactInfo,
-  screeningFlags,
   marketingConsent,
   onContactChange,
-  onScreeningChange,
   onMarketingConsentChange,
   errors,
 }: ContactFormProps) {
@@ -34,19 +29,13 @@ export default function ContactForm({
     setTouched((prev) => ({ ...prev, [field]: true }));
   };
 
-  const showScreeningWarning = screeningFlags.sensitiveSkin || screeningFlags.recentlyTanned;
-
   return (
     <div>
       <h2 className="font-playfair text-xl md:text-2xl font-bold text-[#1A1A1A] mb-2">
         Your Contact Details
       </h2>
-      <p className="font-inter text-sm text-warm-gray mb-2">
-        We&apos;ll use this to confirm your appointment.
-      </p>
       <p className="font-inter text-sm text-warm-gray mb-6">
-        We&apos;ll use your information to confirm your requested appointment. Your request is
-        free and you won&apos;t be charged online.
+        No payment required. Our team will text or call to confirm your requested time.
       </p>
 
       <div className="space-y-5">
@@ -108,10 +97,10 @@ export default function ContactForm({
           )}
         </div>
 
-        {/* Email */}
+        {/* Email — optional */}
         <div>
           <label htmlFor="email" className="block font-inter text-sm font-medium text-[#1A1A1A] mb-1.5">
-            Email Address <span className="text-red-500" aria-hidden="true">*</span>
+            Email Address <span className="font-normal text-warm-gray">(optional)</span>
           </label>
           <input
             id="email"
@@ -120,7 +109,7 @@ export default function ContactForm({
             value={contactInfo.email}
             onChange={(e) => onContactChange({ ...contactInfo, email: e.target.value.trim() })}
             onBlur={() => handleBlur("email")}
-            aria-required="true"
+            aria-required="false"
             aria-invalid={!!getError("email")}
             aria-describedby={getError("email") ? "email-error" : undefined}
             className={`w-full px-4 py-3 rounded-sm border font-inter text-sm transition-colors min-h-[48px] ${
@@ -134,61 +123,11 @@ export default function ContactForm({
             </p>
           )}
         </div>
+      </div>
 
-        {/* Divider */}
-        <div className="h-px bg-gray-100 my-2" />
-
-        {/* Optional: New patient + screening, collapsed by default */}
-        <details className="group rounded-sm border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
-          <summary className="flex cursor-pointer select-none list-none items-center justify-between px-4 py-3 font-inter text-sm font-medium text-[#1A1A1A] min-h-[48px]">
-            Help us prepare — optional
-            <ChevronDown className="h-4 w-4 text-warm-gray transition-transform duration-200 group-open:rotate-180" aria-hidden="true" />
-          </summary>
-
-          <div className="space-y-3 border-t border-gray-100 px-4 py-4">
-            <label className="flex items-center gap-3 cursor-pointer min-h-[44px]">
-              <input
-                type="checkbox"
-                checked={contactInfo.isNewPatient}
-                onChange={(e) => onContactChange({ ...contactInfo, isNewPatient: e.target.checked })}
-                className="w-5 h-5 rounded border-gray-300 text-gold focus:ring-gold"
-              />
-              <span className="font-inter text-sm text-[#1A1A1A]">I&apos;m a new patient</span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer min-h-[44px]">
-              <input
-                type="checkbox"
-                checked={screeningFlags.sensitiveSkin}
-                onChange={(e) => onScreeningChange({ ...screeningFlags, sensitiveSkin: e.target.checked })}
-                className="w-5 h-5 rounded border-gray-300 text-gold focus:ring-gold"
-              />
-              <span className="font-inter text-sm text-[#1A1A1A]">I have sensitive skin</span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer min-h-[44px]">
-              <input
-                type="checkbox"
-                checked={screeningFlags.recentlyTanned}
-                onChange={(e) => onScreeningChange({ ...screeningFlags, recentlyTanned: e.target.checked })}
-                className="w-5 h-5 rounded border-gray-300 text-gold focus:ring-gold"
-              />
-              <span className="font-inter text-sm text-[#1A1A1A]">I&apos;ve had significant sun exposure recently</span>
-            </label>
-
-            {/* Screening warning */}
-            {showScreeningWarning && (
-              <div className="p-3 bg-amber-50 border border-amber-200 rounded-sm" role="alert">
-                <p className="font-inter text-sm text-amber-700">
-                  A consultation or test spot may be required before treatment.
-                </p>
-              </div>
-            )}
-          </div>
-        </details>
-
-        {/* Divider */}
-        <div className="h-px bg-gray-100 my-2" />
-
-        {/* SMS Marketing Consent */}
+      {/* SMS marketing consent — optional, and separate from the appointment
+          request. Leaving it unchecked does not block the request. */}
+      <div className="mt-6 pt-5 border-t border-gray-100">
         <label className="flex items-start gap-3 cursor-pointer">
           <input
             type="checkbox"
@@ -197,7 +136,8 @@ export default function ContactForm({
             className="w-5 h-5 rounded border-gray-300 text-gold focus:ring-gold mt-0.5 flex-shrink-0"
           />
           <span className="font-inter text-xs text-warm-gray leading-relaxed">
-            I agree to receive occasional automated promotional text messages from Kami Aesthetics.
+            <span className="font-medium text-[#1A1A1A]">Optional:</span> send me occasional
+            promotional text messages from Kami Aesthetics. Not required to request your appointment.
             Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to unsubscribe.
             {" "}
             <a href="#" className="text-gold underline">Privacy Policy</a>

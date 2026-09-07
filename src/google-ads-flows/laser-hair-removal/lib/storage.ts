@@ -1,37 +1,27 @@
-import type { TreatmentArea, PackageType, AttributionData } from "../types/booking";
+import type { AttributionData } from "../types/booking";
 
 const STORAGE_KEY = "kami_laser_booking_state_v1";
-// Bumped from 2 -> 3: the package-selection step was removed, so every step
-// after Areas shifted down by one (old Appointment=3 is now 2, old Contact=4
-// is now 3, old Review=5 is now 4). A persisted currentStep or
-// selectedPackage from before this change must be discarded — resuming it
-// would either land on the wrong screen or reintroduce a multi-session
-// package total the new flow no longer shows.
-const SCHEMA_VERSION = 3;
+// Bumped to 5: the funnel is now the fixed $149 Must-Have offer with two
+// steps (1 = Appointment, 2 = Contact). Area / package selection is gone.
+// A persisted currentStep or areas/package from any earlier schema must be
+// discarded rather than resumed.
+const SCHEMA_VERSION = 5;
 const EXPIRATION_HOURS = 24;
 
 interface PersistedState {
   schemaVersion: number;
   savedAt: string;
   currentStep: number;
-  selectedAreas: TreatmentArea[];
-  selectedPackage: PackageType | null;
   selectedDate: string | null;
   selectedTime: string | null;
   attribution: AttributionData;
   funnelStartedAt: string | null;
 }
 
-/**
- * Check if we're in a browser environment.
- */
 function isBrowser(): boolean {
   return typeof window !== "undefined" && typeof localStorage !== "undefined";
 }
 
-/**
- * Check if persisted state has expired (24 hours).
- */
 function isExpired(savedAt: string): boolean {
   const saved = new Date(savedAt).getTime();
   const now = Date.now();
@@ -40,13 +30,11 @@ function isExpired(savedAt: string): boolean {
 }
 
 /**
- * Save booking state to localStorage.
- * Only persists non-sensitive data.
+ * Save booking state to localStorage. Only non-sensitive scheduling data —
+ * contact details are never persisted.
  */
 export function saveBookingState(state: {
   currentStep: number;
-  selectedAreas: TreatmentArea[];
-  selectedPackage: PackageType | null;
   selectedDate: string | null;
   selectedTime: string | null;
   attribution: AttributionData;
@@ -59,8 +47,6 @@ export function saveBookingState(state: {
       schemaVersion: SCHEMA_VERSION,
       savedAt: new Date().toISOString(),
       currentStep: state.currentStep,
-      selectedAreas: state.selectedAreas,
-      selectedPackage: state.selectedPackage,
       selectedDate: state.selectedDate,
       selectedTime: state.selectedTime,
       attribution: state.attribution,
@@ -74,7 +60,7 @@ export function saveBookingState(state: {
 
 /**
  * Load booking state from localStorage.
- * Returns null if expired, corrupted, or unavailable.
+ * Returns null if expired, corrupted, from an old schema, or unavailable.
  */
 export function loadBookingState(): Omit<PersistedState, "schemaVersion" | "savedAt"> | null {
   if (!isBrowser()) return null;
@@ -85,28 +71,18 @@ export function loadBookingState(): Omit<PersistedState, "schemaVersion" | "save
 
     const parsed = JSON.parse(raw) as PersistedState;
 
-    // Schema version check
     if (parsed.schemaVersion !== SCHEMA_VERSION) {
       clearBookingState();
       return null;
     }
 
-    // Expiration check
     if (isExpired(parsed.savedAt)) {
-      clearBookingState();
-      return null;
-    }
-
-    // Validate basic structure
-    if (!Array.isArray(parsed.selectedAreas)) {
       clearBookingState();
       return null;
     }
 
     return {
       currentStep: parsed.currentStep || 1,
-      selectedAreas: parsed.selectedAreas,
-      selectedPackage: parsed.selectedPackage,
       selectedDate: parsed.selectedDate,
       selectedTime: parsed.selectedTime,
       attribution: parsed.attribution || {},
