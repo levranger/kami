@@ -4,6 +4,7 @@ import { BA_IMAGES } from "./constants";
 export const treatments: Treatment[] = [
   {
     slug: "laser-hair-removal",
+    provider: "laser-specialist",
     title: "Laser Hair Removal",
     shortDescription:
       "Permanent hair reduction with the Splendor X — fast, comfortable, and effective for all skin types.",
@@ -68,6 +69,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "ipl-treatments",
+    provider: "injector",
     title: "IPL Stellar M22",
     shortDescription:
       "The gold standard in IPL technology — target sun damage, redness, vascular lesions, and uneven skin tone with the Lumenis Stellar M22.",
@@ -133,6 +135,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "resurfx",
+    provider: "injector",
     title: "ResurFX",
     shortDescription:
       "Non-ablative fractional laser for skin resurfacing, scars, stretch marks, and texture improvement.",
@@ -185,6 +188,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "botox",
+    provider: "injector",
     title: "Botox",
     shortDescription:
       "Smooth fine lines and wrinkles with precision injections for a refreshed, natural appearance.",
@@ -239,6 +243,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "dermal-fillers",
+    provider: "injector",
     title: "Dermal Fillers",
     shortDescription:
       "Restore volume, enhance contours, and rejuvenate your look with premium hyaluronic acid fillers.",
@@ -283,6 +288,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "arm-hair-removal",
+    provider: "laser-specialist",
     title: "Arm Laser Hair Removal",
     shortDescription:
       "Smooth, hair-free arms all year — no more razors, no more stubble. Fast, comfortable sessions with the Lumenis Splendor X.",
@@ -347,6 +353,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "back-hair-removal",
+    provider: "laser-specialist",
     title: "Back Laser Hair Removal",
     shortDescription:
       "A smoother back for beach days, boat days, and everywhere in between. Effective on coarse, dense hair with zero downtime.",
@@ -411,6 +418,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "bikini-hair-removal",
+    provider: "laser-specialist",
     title: "Bikini Laser Hair Removal",
     shortDescription:
       "Swimsuit-ready confidence, every day of Florida's endless summer. Quick, discreet sessions with the Lumenis Splendor X.",
@@ -475,6 +483,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "chest-hair-removal",
+    provider: "laser-specialist",
     title: "Chest Laser Hair Removal",
     shortDescription:
       "Smoother, more confident, with a lot less upkeep. Fast, comfortable sessions with the Lumenis Splendor X.",
@@ -535,6 +544,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "ear-hair-removal",
+    provider: "laser-specialist",
     title: "Laser Ear Hair Removal",
     shortDescription:
       "A cleaner, more permanent solution than tweezers or trimmers. Quick, precise sessions with the Lumenis Splendor X.",
@@ -595,6 +605,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "eyebrow-hair-removal",
+    provider: "laser-specialist",
     title: "Eyebrow Laser Hair Removal",
     shortDescription:
       "Defined brows, with far less tweezing and touch-up work. Fast, precise sessions with the Lumenis Splendor X.",
@@ -655,6 +666,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "facial-hair-removal",
+    provider: "laser-specialist",
     title: "Facial Laser Hair Removal",
     shortDescription:
       "Smoother skin and fewer touch-ups, for a face that's ready for anything. Comfortable sessions with the Lumenis Splendor X.",
@@ -719,6 +731,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "leg-hair-removal",
+    provider: "laser-specialist",
     title: "Leg Laser Hair Removal",
     shortDescription:
       "Smooth, ready-for-anything legs, without the daily razor routine. Fast sessions with the Lumenis Splendor X.",
@@ -783,6 +796,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "upper-lip-hair-removal",
+    provider: "laser-specialist",
     title: "Upper Lip Laser Hair Removal",
     shortDescription:
       "Smoother, more defined, with far less plucking and touch-up. Quick, precise sessions with the Lumenis Splendor X.",
@@ -843,6 +857,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "neck-hair-removal",
+    provider: "laser-specialist",
     title: "Neck Laser Hair Removal",
     shortDescription:
       "A cleaner neckline and beard line, with far less daily upkeep. Fast, precise sessions with the Lumenis Splendor X.",
@@ -903,6 +918,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "stomach-hair-removal",
+    provider: "laser-specialist",
     title: "Stomach Laser Hair Removal",
     shortDescription:
       "Smoother skin, from the happy trail to the full abdomen. Comfortable sessions with the Lumenis Splendor X.",
@@ -963,6 +979,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "underarm-hair-removal",
+    provider: "laser-specialist",
     title: "Underarm Laser Hair Removal",
     shortDescription:
       "Smoother, brighter underarms, with one of our fastest treatment areas. Quick, comfortable sessions with the Lumenis Splendor X.",
@@ -1027,6 +1044,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "laser-hair-removal-dark-skin",
+    provider: "laser-specialist",
     title: "Laser Hair Removal for Brown & Dark Skin",
     shortDescription:
       "Safe, effective hair removal, built for every skin tone. The Lumenis Splendor X — the gold standard for Fitzpatrick IV–VI.",
@@ -1087,6 +1105,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "iv-therapy",
+    provider: "injector",
     title: "IV Therapy",
     shortDescription:
       "Provider-guided IV options featuring hydration, vitamins, minerals, amino acids, and antioxidant-focused ingredients.",
@@ -1166,6 +1185,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "weight-loss",
+    provider: "injector",
     title: "Medical Weight Loss",
     shortDescription:
       "Medically supervised weight management with personalized protocols, GLP-1 support, and ongoing guidance.",
@@ -1204,6 +1224,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "prp-therapy",
+    provider: "injector",
     title: "PRP Therapy",
     shortDescription:
       "A treatment that uses a concentrate prepared from your own blood, applied by a licensed provider to the face or scalp as part of an individualized treatment plan.",
@@ -1247,6 +1268,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "radiesse",
+    provider: "injector",
     title: "Radiesse",
     shortDescription:
       "A calcium hydroxylapatite biostimulator commonly used to add structural support and contour to the treated area.",
@@ -1426,6 +1448,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: "biorevitalization",
+    provider: "injector",
     title: "Biorevitalization",
     shortDescription:
       "A personalized injectable treatment — also known as a skin booster treatment — designed to improve skin hydration, texture, and overall radiance.",

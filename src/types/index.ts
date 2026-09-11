@@ -13,6 +13,13 @@ export interface PageSEO {
 
 export type StatIconKey = "duration" | "downtime" | "results" | "sessions" | "evaluation" | "formulation" | "administration" | "plan";
 
+/**
+ * Which credentialed team member performs this service. Keys map to an
+ * entry in src/data/serviceProviders.ts, which carries the actual name/URL
+ * (kept in sync with the /team pages) — this file stays data-source-agnostic.
+ */
+export type ServiceProviderKey = "injector" | "laser-specialist";
+
 export interface UniqueSection {
   type:
     | "before-after"
@@ -56,6 +63,10 @@ export interface UniqueSection {
 export interface Treatment {
   slug: string;
   title: string;
+  /** Who performs this service — drives the visible credit line and the
+   *  service schema's `performer`. Omit only for a page with no assigned
+   *  provider yet (ask before adding one — see src/data/serviceProviders.ts). */
+  provider?: ServiceProviderKey;
   shortDescription: string;
   heroValueProp?: string;
   fullDescription: string;

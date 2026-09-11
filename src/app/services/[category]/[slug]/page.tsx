@@ -19,6 +19,7 @@ import ComparisonSection from "@/components/sections/ComparisonSection";
 import ExpectGroupsSection from "@/components/sections/ExpectGroupsSection";
 import InfoListSection from "@/components/sections/InfoListSection";
 import SafetyInfoSection from "@/components/sections/SafetyInfoSection";
+import ProviderCredit from "@/components/sections/ProviderCredit";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import { servicePages, newClientOffer, BOOKING_URL, PHONE_NUMBER, PHONE_HREF, localBusinessSchema, blogPosts, relatedBlogMap } from "@/data/content";
 import { ADDRESS_SHORT, CITY_STATE, MAPS_URL } from "@/data/constants";
@@ -192,6 +193,7 @@ export default function ServicePage({ params }: Props) {
                 <h2 className="font-playfair text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-6">
                   {service.aboutHeading ?? `About ${service.title} in ${service.locationTag}`}
                 </h2>
+                {service.provider && <ProviderCredit provider={service.provider} />}
                 {service.aboutBodyOverride ?? (
                   <p className="font-inter text-sm md:text-base text-warm-gray leading-relaxed mb-10">
                     {service.fullDescription}

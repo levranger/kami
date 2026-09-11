@@ -12,18 +12,25 @@ import { Button } from "@/components/ui/button";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "Meet Our Team | Kami Aesthetics Aventura",
-  description:
-    "Meet the team behind Kami Aesthetics in Aventura, including our nurse practitioner, laser and electrolysis technician, and operations team.",
-  canonical: "https://kamiaesthetics.com/team",
-  keywords: [
-    "kami aesthetics team",
-    "nurse practitioner aventura",
-    "laser technician aventura",
-    "medical aesthetics team aventura fl",
-  ],
-});
+export const metadata: Metadata = {
+  ...buildPageMetadata({
+    title: "Meet Our Team | Kami Aesthetics Aventura",
+    description:
+      "Meet the team behind Kami Aesthetics in Aventura, including our nurse practitioner, laser and electrolysis technician, and operations team.",
+    canonical: "https://kamiaesthetics.com/team",
+    keywords: [
+      "kami aesthetics team",
+      "nurse practitioner aventura",
+      "laser technician aventura",
+      "medical aesthetics team aventura fl",
+    ],
+  }),
+  // `title.absolute` opts this page out of the root layout's
+  // "%s | Kami Aesthetics" template — this title already ends in the brand
+  // name, so templating it on top produced a duplicated
+  // "... | Kami Aesthetics Aventura | Kami Aesthetics" tag.
+  title: { absolute: "Meet Our Team | Kami Aesthetics Aventura" },
+};
 
 // ─── JSON-LD Person Schema ─────────────────────────────────────────────────────
 
