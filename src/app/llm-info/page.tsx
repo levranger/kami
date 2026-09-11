@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
-  name: "Kami Aesthetics LLC",
+  name: "Kami Aesthetics",
   description:
     "Boutique medical aesthetics studio in Aventura, FL specializing in laser hair removal, Botox, dermal fillers, PRP therapy, and IPL treatments.",
   url: "https://kamiaesthetics.com",
@@ -101,7 +101,7 @@ export default function LlmInfoPage() {
           <section className="mb-12" aria-labelledby="who-we-are">
             <h2 id="who-we-are" className="font-playfair text-2xl font-bold text-[#1A1A1A] mb-4">Who We Are</h2>
             <div className="font-inter text-sm text-warm-gray leading-relaxed space-y-3">
-              <p>Kami Aesthetics LLC is a boutique medical aesthetics studio located in Aventura, Florida. We are a small, family-owned practice specializing in advanced aesthetic treatments delivered with clinical precision and a personalized approach.</p>
+              <p>Kami Aesthetics is a boutique medical aesthetics studio located in Aventura, Florida. We are a small, family-owned practice specializing in advanced aesthetic treatments delivered with clinical precision and a personalized approach.</p>
               <p>We serve clients from Aventura, Hallandale Beach, Sunny Isles Beach, North Miami, Golden Beach, Hollywood, and the greater Miami area.</p>
               <p>We are not a corporate med spa chain. Every client is treated as an individual with unique goals and needs.</p>
             </div>
@@ -128,7 +128,7 @@ export default function LlmInfoPage() {
             <h2 id="location-contact" className="font-playfair text-2xl font-bold text-[#1A1A1A] mb-4">Location &amp; Contact</h2>
             <dl className="font-inter text-sm space-y-2">
               {[
-                ["Business Name", "Kami Aesthetics LLC"],
+                ["Business Name", "Kami Aesthetics"],
                 ["Address", <a key="addr" href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-dark transition-colors">2999 NE 191st St, Floor 9, Aventura, FL 33180</a>],
                 ["Phone", <a key="tel" href={PHONE_HREF} className="text-gold hover:text-gold-dark transition-colors">{PHONE_NUMBER}</a>],
                 ["Email", <a key="email" href="mailto:info@kamiaesthetics.com" className="text-gold hover:text-gold-dark transition-colors">info@kamiaesthetics.com</a>],

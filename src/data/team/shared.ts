@@ -134,7 +134,7 @@ export function buildTeamMemberPersonSchema(member: TeamMember) {
     // (src/app/team/page.tsx).
     worksFor: {
       "@type": "MedicalBusiness",
-      name: "Kami Aesthetics LLC",
+      name: "Kami Aesthetics",
       url: TEAM_BASE_URL,
       address: {
         "@type": "PostalAddress",
