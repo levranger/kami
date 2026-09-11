@@ -53,8 +53,8 @@ const personSchemas = [
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Valeria",
-    jobTitle: "Laser & Electrolysis Technician",
+    name: "Valeriia Polshkova",
+    jobTitle: "Aesthetic Specialist",
     worksFor: {
       "@type": "MedicalBusiness",
       name: "Kami Aesthetics",
@@ -68,7 +68,7 @@ const personSchemas = [
       },
     },
     description:
-      "Valeria specializes in laser hair removal, electrolysis, and energy-based aesthetic treatments at Kami Aesthetics in Aventura.",
+      "Valeriia Polshkova is an aesthetic specialist at Kami Aesthetics, specializing in laser hair removal, electrolysis, and energy-based aesthetic treatments in Aventura.",
     image:
       "https://res.cloudinary.com/dnuxtgg11/image/upload/v1788296325/valeria-laser-tech_ppyn56.jpg",
   },
@@ -123,7 +123,7 @@ const personSchemas = [
 const treatments = [
   {
     name: "Laser treatments & electrolysis",
-    provider: "Valeria Polshkova",
+    provider: "Valeriia Polshkova",
     href: "/services/lasers",
   },
   {
@@ -283,9 +283,14 @@ export default function TeamPage() {
                     <div className="h-px w-8 bg-gold" aria-hidden="true" />
                     <span className="font-inter text-xs tracking-[0.3em] uppercase text-gold font-medium">Operations</span>
                   </div>
-                  <h3 id="yeva-heading" className="font-playfair text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-1">
-                    Yeva
-                  </h3>
+                  <Link href="/team/yeva-polshkova" className="inline-block group">
+                    <h3
+                      id="yeva-heading"
+                      className="font-playfair text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-1 group-hover:text-gold transition-colors duration-200"
+                    >
+                      Yeva
+                    </h3>
+                  </Link>
                   <p className="font-inter text-xs text-warm-gray tracking-widest uppercase mb-5">
                     Operations Manager
                   </p>
@@ -296,9 +301,18 @@ export default function TeamPage() {
                     helps make sure every visit feels organized, welcoming, and
                     personal.
                   </p>
-                  <span className="font-inter text-[10px] tracking-[0.2em] uppercase text-warm-gray/60">
-                    Your first point of contact
-                  </span>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+                    <span className="font-inter text-[10px] tracking-[0.2em] uppercase text-warm-gray/60">
+                      Your first point of contact
+                    </span>
+                    <Link
+                      href="/team/yeva-polshkova"
+                      className="inline-flex items-center gap-2 font-inter text-sm text-warm-gray hover:text-gold transition-colors duration-200 group"
+                    >
+                      Full bio &amp; credentials
+                      <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
+                    </Link>
+                  </div>
                 </div>
               </article>
 
@@ -310,31 +324,44 @@ export default function TeamPage() {
                     <div className="h-px w-8 bg-gold" aria-hidden="true" />
                     <span className="font-inter text-xs tracking-[0.3em] uppercase text-gold font-medium">Laser &amp; Skin</span>
                   </div>
-                  <h3 id="valeria-heading" className="font-playfair text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-1">
-                    Valeria
-                  </h3>
+                  <Link href="/team/valeriia-polshkova" className="inline-block group">
+                    <h3
+                      id="valeria-heading"
+                      className="font-playfair text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-1 group-hover:text-gold transition-colors duration-200"
+                    >
+                      Valeriia Polshkova
+                    </h3>
+                  </Link>
                   <p className="font-inter text-xs text-warm-gray tracking-widest uppercase mb-5">
-                    Laser &amp; Electrolysis Technician
+                    Aesthetic Specialist
                   </p>
                   <p className="font-inter text-sm md:text-base text-warm-gray leading-relaxed mb-6">
-                    Valeria specializes in laser hair removal, electrolysis, and
-                    energy-based aesthetic treatments. Her approach is precise,
-                    practical, and focused on helping clients achieve visible
-                    results while keeping treatments comfortable and tailored to
-                    their skin and goals.
+                    Valeriia specializes in laser hair removal, electrolysis, and
+                    energy-based aesthetic treatments. Her approach is precise, practical, and focused
+                    on helping clients achieve visible results while keeping
+                    treatments comfortable and tailored to their skin and goals.
                   </p>
-                  <a
-                    href={BOOKING_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-track="booking_click"
-                    data-track-location="team_valeria"
-                    data-track-service="laser-hair-removal"
-                    className="inline-flex items-center gap-2 font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold transition-colors duration-200 group"
-                  >
-                    Book a laser treatment
-                    <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
-                  </a>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+                    <a
+                      href={BOOKING_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-track="booking_click"
+                      data-track-location="team_valeria"
+                      data-track-service="laser-hair-removal"
+                      className="inline-flex items-center gap-2 font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold transition-colors duration-200 group"
+                    >
+                      Book a laser treatment
+                      <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
+                    </a>
+                    <Link
+                      href="/team/valeriia-polshkova"
+                      className="inline-flex items-center gap-2 font-inter text-sm text-warm-gray hover:text-gold transition-colors duration-200 group"
+                    >
+                      Full bio &amp; credentials
+                      <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Photo — first on mobile */}
@@ -342,7 +369,7 @@ export default function TeamPage() {
                   <div className="relative w-full aspect-[4/5] overflow-hidden">
                     <Image
                       src="https://res.cloudinary.com/dnuxtgg11/image/upload/v1788296325/valeria-laser-tech_ppyn56.jpg"
-                      alt="Valeria, Laser and Electrolysis Technician at Kami Aesthetics"
+                      alt="Valeriia Polshkova, Aesthetic Specialist at Kami Aesthetics"
                       fill
                       className="object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -386,11 +413,19 @@ export default function TeamPage() {
                     <div className="h-px w-8 bg-gold" aria-hidden="true" />
                     <span className="font-inter text-xs tracking-[0.3em] uppercase text-gold font-medium">Injectables &amp; Medical</span>
                   </div>
-                  <h3 id="valeriia-heading" className="font-playfair text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-1">
-                    Valeriia
-                  </h3>
+                  <Link
+                    href="/team/valeriia-tiertyshnikova"
+                    className="inline-block group"
+                  >
+                    <h3
+                      id="valeriia-heading"
+                      className="font-playfair text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-1 group-hover:text-gold transition-colors duration-200"
+                    >
+                      Valeriia
+                    </h3>
+                  </Link>
                   <p className="font-inter text-xs text-warm-gray tracking-widest uppercase mb-5">
-                    Nurse Practitioner
+                    Nurse Practitioner, APRN
                   </p>
                   <p className="font-inter text-sm md:text-base text-warm-gray leading-relaxed mb-6">
                     Valeriia is the medical provider behind Kami Aesthetics&apos;
@@ -399,18 +434,27 @@ export default function TeamPage() {
                     and natural-looking results rather than an overdone
                     appearance.
                   </p>
-                  <a
-                    href={BOOKING_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-track="booking_click"
-                    data-track-location="team_valeriia"
-                    data-track-service="botox"
-                    className="inline-flex items-center gap-2 font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold transition-colors duration-200 group"
-                  >
-                    Book a consultation
-                    <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
-                  </a>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+                    <a
+                      href={BOOKING_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-track="booking_click"
+                      data-track-location="team_valeriia"
+                      data-track-service="botox"
+                      className="inline-flex items-center gap-2 font-inter text-sm font-medium text-[#1A1A1A] hover:text-gold transition-colors duration-200 group"
+                    >
+                      Book a consultation
+                      <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
+                    </a>
+                    <Link
+                      href="/team/valeriia-tiertyshnikova"
+                      className="inline-flex items-center gap-2 font-inter text-sm text-warm-gray hover:text-gold transition-colors duration-200 group"
+                    >
+                      Full bio &amp; credentials
+                      <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
+                    </Link>
+                  </div>
                 </div>
               </article>
 
@@ -422,13 +466,18 @@ export default function TeamPage() {
                     <div className="h-px w-8 bg-gold" aria-hidden="true" />
                     <span className="font-inter text-xs tracking-[0.3em] uppercase text-gold font-medium">Medical Oversight</span>
                   </div>
-                  <h3 id="goldberg-heading" className="font-playfair text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-1">
-                    Dr. Paul Goldberg
-                  </h3>
+                  <Link href="/team/paul-goldberg" className="inline-block group">
+                    <h3
+                      id="goldberg-heading"
+                      className="font-playfair text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-1 group-hover:text-gold transition-colors duration-200"
+                    >
+                      Dr. Paul Goldberg
+                    </h3>
+                  </Link>
                   <p className="font-inter text-xs text-warm-gray tracking-widest uppercase mb-5">
                     Supervising Physician · Plastic Surgeon
                   </p>
-                  <p className="font-inter text-sm md:text-base text-warm-gray leading-relaxed">
+                  <p className="font-inter text-sm md:text-base text-warm-gray leading-relaxed mb-6">
                     Dr. Goldberg serves as the supervising physician at Kami
                     Aesthetics, providing medical oversight for our injectable
                     and advanced aesthetic services. His background in plastic
@@ -436,6 +485,13 @@ export default function TeamPage() {
                     our treatment protocols and ensures the highest standard of
                     patient safety.
                   </p>
+                  <Link
+                    href="/team/paul-goldberg"
+                    className="inline-flex items-center gap-2 font-inter text-sm text-warm-gray hover:text-gold transition-colors duration-200 group"
+                  >
+                    Full bio &amp; credentials
+                    <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
+                  </Link>
                 </div>
 
                 {/* Photo — first on mobile */}

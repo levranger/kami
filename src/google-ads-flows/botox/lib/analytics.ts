@@ -14,6 +14,31 @@ function campaignMeta() {
 export const botoxAnalytics = {
   // ─── Landing page ───────────────────────────────────────────────────────────
 
+  // Fired once on landing-page mount, before any interaction. Reads the ad
+  // params from the caller (which pulls them straight off the URL) since the
+  // attribution state populates asynchronously.
+  trackLandingView: (attribution: {
+    gclid?: string;
+    gbraid?: string;
+    wbraid?: string;
+    utmSource?: string;
+    utmMedium?: string;
+    utmCampaign?: string;
+    utmContent?: string;
+  }) => {
+    track("botox_landing_view", {
+      landing_page: "botox",
+      gclid: attribution.gclid,
+      gbraid: attribution.gbraid,
+      wbraid: attribution.wbraid,
+      utm_source: attribution.utmSource,
+      utm_medium: attribution.utmMedium,
+      utm_campaign: attribution.utmCampaign,
+      utm_content: attribution.utmContent,
+      ...campaignMeta(),
+    });
+  },
+
   trackOfferCtaClick: (placement: string) => {
     track("botox_offer_cta_click", { placement });
   },

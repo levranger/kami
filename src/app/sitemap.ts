@@ -2,6 +2,10 @@ import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/content";
 import { categoryDefs, SLUG_TO_CATEGORY } from "@/data/categories";
 import { treatments } from "@/data/treatments";
+import { VALERIIA_SLUG } from "@/data/team/valeriia";
+import { GOLDBERG_SLUG } from "@/data/team/goldberg";
+import { POLSHKOVA_SLUG } from "@/data/team/polshkova";
+import { YEVA_SLUG } from "@/data/team/yeva";
 
 const BASE = "https://kamiaesthetics.com";
 
@@ -12,6 +16,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: BASE, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
     { url: `${BASE}/services`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/team`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/team/${VALERIIA_SLUG}`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/team/${GOLDBERG_SLUG}`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/team/${POLSHKOVA_SLUG}`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/team/${YEVA_SLUG}`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/privacy-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useAttributionTracking } from "./hooks/useAttributionTracking";
 import { botoxAnalytics } from "./lib/analytics";
 import { LandingHero } from "./components/LandingHero";
@@ -25,6 +25,25 @@ import { BotoxRequestFlow } from "./BotoxRequestFlow";
 export function BotoxBookingFlow() {
   const attribution = useAttributionTracking();
   const [showRequest, setShowRequest] = useState(false);
+  const hasFiredLandingViewRef = useRef(false);
+
+  // Fire botox_landing_view exactly once on mount, before the CTA can be
+  // clicked. Reads the ad params straight from the URL since attribution
+  // state is populated asynchronously by useAttributionTracking.
+  useEffect(() => {
+    if (hasFiredLandingViewRef.current) return;
+    hasFiredLandingViewRef.current = true;
+    const params = new URLSearchParams(window.location.search);
+    botoxAnalytics.trackLandingView({
+      gclid: params.get("gclid") || undefined,
+      gbraid: params.get("gbraid") || undefined,
+      wbraid: params.get("wbraid") || undefined,
+      utmSource: params.get("utm_source") || undefined,
+      utmMedium: params.get("utm_medium") || undefined,
+      utmCampaign: params.get("utm_campaign") || undefined,
+      utmContent: params.get("utm_content") || undefined,
+    });
+  }, []);
 
   const startRequest = useCallback(
     (placement: string) => {

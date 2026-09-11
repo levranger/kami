@@ -1,4 +1,5 @@
 import { PHONE_NUMBER, PHONE_HREF, MAPS_URL } from "@/data/constants";
+import { valeriia, VALERIIA_PAGE_URL } from "@/data/team/valeriia";
 
 /**
  * ─────────────────────────────────────────────────────────────────────────────
@@ -92,8 +93,9 @@ export const PREFERRED_TIME_WINDOWS = [
 export const provider = {
   name: "Valeriia Tiertyshnikova",
   credential: "NP", // Nurse Practitioner
-  /** TODO: NP license number / issuing board, if it should be displayed (e.g. "FL APRN #..."). */
-  licenseNumber: null as string | null,
+  // Sourced from src/data/team/valeriia.ts, the single source of truth also
+  // used by her dedicated /team/valeriia-tiertyshnikova bio page.
+  licenseNumber: (valeriia.license ? `FL APRN #${valeriia.license.number}` : null) as string | null,
   /** Approved professional headshot. */
   photoUrl:
     "https://res.cloudinary.com/dnuxtgg11/image/upload/v1788136190/IMG_3256_yloyjg.jpg" as
@@ -107,8 +109,7 @@ export const provider = {
     "Valeriia Tiertyshnikova is a nurse practitioner at Kami Aesthetics who performs " +
     "neuromodulator treatments under the clinic's medical director delegation protocol, " +
     "with dosing tailored to each patient's facial anatomy and goals.",
-  /** TODO: URL of a provider bio page, if one exists. null hides the "Meet your provider" link. */
-  meetProviderUrl: null as string | null,
+  meetProviderUrl: VALERIIA_PAGE_URL as string | null,
 };
 
 /** Google rating already shown on the page. */
