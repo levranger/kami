@@ -69,6 +69,11 @@ export const yeva: TeamMember = {
       label: "@solomarso",
       url: "https://instagram.com/solomarso",
     },
+    {
+      type: "linkedin",
+      label: "LinkedIn Profile",
+      url: "https://www.linkedin.com/in/yeva-polshkova-56b495201/",
+    },
   ],
 
   bookingTrackService: "general",

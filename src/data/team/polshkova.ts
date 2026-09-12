@@ -6,11 +6,10 @@ import { teamMemberPageUrl } from "./shared";
  * team-page card. All facts below (role, specialties) were supplied
  * directly by the business.
  *
- * NOTE: no Sunbiz / LinkedIn / Instagram URL was supplied for her yet, so
- * `authorityLinks` is empty rather than a guessed or placeholder URL — a
- * wrong company-registry or profile link is worse than none. Add the real
- * Sunbiz document URL and any social links here once you have them; the
- * bio page and schema will pick them up automatically.
+ * NOTE: no Sunbiz / Instagram URL was supplied for her yet, so they're not
+ * in `authorityLinks` — a wrong company-registry or profile link is worse
+ * than none. Add the real Sunbiz document URL and Instagram here once you
+ * have them; the bio page and schema will pick them up automatically.
  */
 export const POLSHKOVA_SLUG = "valeriia-polshkova";
 
@@ -47,8 +46,13 @@ export const polshkova: TeamMember = {
     label: "Aesthetic Specialist",
   },
 
-  // Empty on purpose — see the file-level note above.
-  authorityLinks: [],
+  authorityLinks: [
+    {
+      type: "linkedin",
+      label: "LinkedIn Profile",
+      url: "https://www.linkedin.com/in/valeriia-polshkova-80aaaa215/",
+    },
+  ],
 
   bookingTrackService: "laser-hair-removal",
 };
