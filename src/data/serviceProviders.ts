@@ -15,7 +15,8 @@ import { polshkova, POLSHKOVA_PAGE_URL } from "./team/polshkova";
  *                         direction of Dr. Paul Goldberg. Covers all
  *                         injectables, PRP, biostimulators, IV therapy, and
  *                         medical weight loss.
- *    "laser-specialist" → Valeriia Polshkova. Covers laser hair removal only.
+ *    "laser-specialist" → Valeriia Polshkova, under the medical direction of
+ *                         Dr. Paul Goldberg. Covers laser hair removal only.
  *                         (IPL and ResurFX are "injector" — Valeriia
  *                         Tiertyshnikova, APRN, per the business's correction.)
  */
@@ -43,5 +44,6 @@ export const SERVICE_PROVIDERS: Record<ServiceProviderKey, ServiceProviderAttrib
   "laser-specialist": {
     performer: { name: polshkova.name, url: POLSHKOVA_PAGE_URL },
     performerBlurb: "our laser and energy-based treatment specialist",
+    medicalDirector: { name: goldberg.name, url: GOLDBERG_PAGE_URL },
   },
 };
