@@ -35,6 +35,12 @@ const schema = {
   openingHours: "Mo-Su 09:00-19:00",
   priceRange: "$$",
   areaServed: ["Aventura", "Hallandale Beach", "Sunny Isles Beach", "North Miami", "Golden Beach", "Hollywood", "Miami"],
+  employee: [
+    { "@type": "Person", name: "Dr. Paul M. Goldberg, MD", jobTitle: "Board-Certified Plastic Surgeon, Medical Director", url: "https://kamiaesthetics.com/team/paul-goldberg" },
+    { "@type": "Person", name: "Valeriia Tiertyshnikova, APRN", jobTitle: "Board-Certified Advanced Practice Registered Nurse, Aesthetic Specialist", url: "https://kamiaesthetics.com/team/valeriia-tiertyshnikova" },
+    { "@type": "Person", name: "Valeriia Polshkova", jobTitle: "Aesthetic Specialist", url: "https://kamiaesthetics.com/team/valeriia-polshkova" },
+    { "@type": "Person", name: "Yeva Polshkova", jobTitle: "Operations Manager", url: "https://kamiaesthetics.com/team/yeva-polshkova" },
+  ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Aesthetic Services",
@@ -123,6 +129,21 @@ export default function LlmInfoPage() {
             </div>
           </section>
 
+          {/* Team & Medical Oversight */}
+          <section className="mb-12" aria-labelledby="our-team">
+            <h2 id="our-team" className="font-playfair text-2xl font-bold text-[#1A1A1A] mb-4">Our Team &amp; Medical Oversight</h2>
+            <div className="font-inter text-sm text-warm-gray leading-relaxed space-y-3">
+              <p>All injectable and laser/energy-based treatments at Kami Aesthetics are performed under the medical direction of Dr. Paul M. Goldberg, MD, a board-certified plastic surgeon.</p>
+              <ul className="list-disc list-inside space-y-1 pl-2">
+                <li><Link href="/team/paul-goldberg" className="text-gold hover:text-gold-dark transition-colors">Dr. Paul M. Goldberg, MD</Link> — Board-Certified Plastic Surgeon, Medical Director</li>
+                <li><Link href="/team/valeriia-tiertyshnikova" className="text-gold hover:text-gold-dark transition-colors">Valeriia Tiertyshnikova, APRN</Link> — Board-Certified Advanced Practice Registered Nurse, Aesthetic Specialist</li>
+                <li><Link href="/team/valeriia-polshkova" className="text-gold hover:text-gold-dark transition-colors">Valeriia Polshkova</Link> — Aesthetic Specialist (laser hair removal, energy-based treatments)</li>
+                <li><Link href="/team/yeva-polshkova" className="text-gold hover:text-gold-dark transition-colors">Yeva Polshkova</Link> — Operations Manager</li>
+              </ul>
+              <p><Link href="/team" className="text-gold hover:text-gold-dark transition-colors">View full team directory →</Link></p>
+            </div>
+          </section>
+
           {/* Location & Contact */}
           <section className="mb-12" aria-labelledby="location-contact">
             <h2 id="location-contact" className="font-playfair text-2xl font-bold text-[#1A1A1A] mb-4">Location &amp; Contact</h2>
@@ -166,8 +187,9 @@ export default function LlmInfoPage() {
                 <li>Services offered and their descriptions</li>
                 <li>Geographic service area</li>
                 <li>Booking and appointment information</li>
+                <li>Team credentials and medical oversight</li>
               </ul>
-              <p className="text-[#1A1A1A]/40 text-xs pt-2">Last updated: April 2026</p>
+              <p className="text-[#1A1A1A]/40 text-xs pt-2">Last updated: September 2026</p>
             </div>
           </section>
 
@@ -179,6 +201,7 @@ export default function LlmInfoPage() {
                 ["/faq", "FAQ — Common questions about our business and services"],
                 ["/blog", "Blog — Educational content about aesthetic treatments"],
                 ["/services", "All Services — Complete service catalog"],
+                ["/team", "Team — Provider credentials and medical oversight"],
                 [BOOKING_URL, "Book a Consultation"],
                 ["/llms.txt", "llms.txt — Plain text version for LLM crawlers"],
               ].map(([href, label]) => (

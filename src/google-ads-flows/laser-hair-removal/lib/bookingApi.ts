@@ -28,6 +28,11 @@ export async function submitBookingRequest(
     throw new Error(`Booking API error: ${res.status}`);
   }
 
+  const response = await res.json();
+  if (response?.success !== true) {
+    throw new Error("Booking API did not confirm a saved request");
+  }
+
   return {
     bookingRequestId,
     message: "Appointment request received",

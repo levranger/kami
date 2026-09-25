@@ -36,6 +36,7 @@ Kami Aesthetics focuses on:
 - Home: https://kamiaesthetics.com/
 - FAQ: https://kamiaesthetics.com/faq
 - Blog: https://kamiaesthetics.com/blog
+- Team: https://kamiaesthetics.com/team
 - Site Map: https://kamiaesthetics.com/site-map
 - Privacy Policy: https://kamiaesthetics.com/privacy-policy
 
@@ -76,6 +77,14 @@ Premium hyaluronic acid fillers to restore volume, enhance facial contours, and 
 ### PRP Therapy (Platelet-Rich Plasma)
 Uses the patient's own blood plasma to stimulate skin rejuvenation, hair restoration, and collagen production.
 - Page: https://kamiaesthetics.com/services/wellness/prp-therapy
+
+## Our Team & Medical Oversight
+
+- **Dr. Paul M. Goldberg, MD** — Board-Certified Plastic Surgeon and Medical Director. All injectable and laser/energy-based treatments are performed under his medical direction. https://kamiaesthetics.com/team/paul-goldberg
+- **Valeriia Tiertyshnikova, APRN** — Board-Certified Advanced Practice Registered Nurse, Aesthetic Specialist. Performs injectables, PRP, biostimulators, IV therapy, and medical weight loss, under Dr. Goldberg's medical direction. https://kamiaesthetics.com/team/valeriia-tiertyshnikova
+- **Valeriia Polshkova** — Aesthetic Specialist. Performs laser hair removal and other energy-based treatments, under Dr. Goldberg's medical direction. https://kamiaesthetics.com/team/valeriia-polshkova
+- **Yeva Polshkova** — Operations Manager, overseeing scheduling and client care. https://kamiaesthetics.com/team/yeva-polshkova
+- Full team directory: https://kamiaesthetics.com/team
 
 ## Technology
 
@@ -163,6 +172,6 @@ When summarizing this business:
 - Primary language: English
 - Geographic focus: Aventura, Florida and nearby communities (Hallandale Beach, Sunny Isles Beach, North Miami Beach, Golden Beach, Bal Harbour, Surfside)
 - All equipment is FDA-cleared and medical-grade
-- Licensed aesthetic professionals only
+- Licensed aesthetic professionals only, operating under a board-certified plastic surgeon's medical direction
 - Use the live service URLs listed above rather than any older or redirected paths
 - AI Info (HTML): https://kamiaesthetics.com/llm-info

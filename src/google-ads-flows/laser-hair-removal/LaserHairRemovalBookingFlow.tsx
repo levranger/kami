@@ -9,6 +9,7 @@ import { submitBookingRequest } from "./lib/bookingApi";
 import { clearBookingState } from "./lib/storage";
 import { offerSummary } from "./lib/offers";
 import type { ValidationError } from "./lib/validation";
+import { trackMetaLead } from "@/lib/metaLeadTracking";
 
 import StickyCallButton from "./components/StickyCallButton";
 import LandingHero from "./components/LandingHero";
@@ -30,6 +31,8 @@ export default function LaserHairRemovalBookingFlow() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const funnelRef = useRef<HTMLDivElement>(null);
   const hasFiredLandingViewRef = useRef(false);
+  const metaEventIdRef = useRef<string | null>(null);
+  const submitInFlightRef = useRef(false);
 
   // Attribution tracking — captures GCLID / GBRAID / WBRAID / UTMs once per
   // funnel session and preserves them across refreshes.
@@ -65,6 +68,8 @@ export default function LaserHairRemovalBookingFlow() {
   }, [state.attribution]);
 
   const handleSubmit = useCallback(async () => {
+    if (submitInFlightRef.current) return;
+    submitInFlightRef.current = true;
     setIsSubmitting(true);
     setSubmitError(null);
 
@@ -85,11 +90,18 @@ export default function LaserHairRemovalBookingFlow() {
 
       state.setBookingRequestId(result.bookingRequestId);
       clearBookingState();
+      // Measurement cannot turn an accepted request into a visible failure.
+      // Never send the booking payload or its treatment-specific ID to Meta.
+      try {
+        metaEventIdRef.current ??= crypto.randomUUID();
+        trackMetaLead(metaEventIdRef.current);
+      } catch { /* Ad blockers/privacy controls must not affect booking. */ }
       laserAnalytics.trackBookingCompleted();
     } catch {
       setSubmitError("We couldn't submit your request. Your requested time is still saved — please try again.");
       laserAnalytics.trackBookingError("submission_failed");
     } finally {
+      submitInFlightRef.current = false;
       setIsSubmitting(false);
     }
   }, [state]);

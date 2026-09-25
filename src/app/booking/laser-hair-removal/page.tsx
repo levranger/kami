@@ -9,7 +9,8 @@
  */
 
 import { LaserHairRemovalBookingFlow } from "@/google-ads-flows/laser-hair-removal";
+import MetaMeasurementConsent from "@/components/MetaMeasurementConsent";
 
 export default function LaserHairRemovalBookingPage() {
-  return <LaserHairRemovalBookingFlow />;
+  return <><MetaMeasurementConsent /><LaserHairRemovalBookingFlow /></>;
 }
