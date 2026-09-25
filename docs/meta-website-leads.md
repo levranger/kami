@@ -1,4 +1,4 @@
-# Meta website Lead measurement — staged, disabled by default
+# Meta website Lead measurement — consent-controlled activation
 
 This integration is scoped to `/booking/laser-hair-removal`. It is not a site-wide Pixel.
 
@@ -9,7 +9,7 @@ This integration is scoped to `/booking/laser-hair-removal`. It is not a site-wi
 - Disable automatic advanced matching and automatic events in dataset `958339362247309` before activation. The code also sets `autoConfig: false` before initialization.
 - Update/review the site's privacy notice for this new optional data sharing before enabling it.
 - Audit any independently managed GTM tags to avoid a second Pixel or duplicate event outside the consent gate.
-- The current CSP in `next.config.mjs` blocks Meta's SDK/endpoints. Prepare a narrowly scoped policy allowance for the selected route as part of the approved activation; do not disable CSP or add broad wildcards. This has not been changed yet.
+- The baseline CSP in `next.config.mjs` blocks Meta's SDK/endpoints. A prepared allowance is gated by `NEXT_PUBLIC_META_LEAD_TRACKING=true` and scoped only to `/booking/laser-hair-removal`; unrelated routes retain their existing policy. This is not deployed or activated.
 - Enable `NEXT_PUBLIC_META_LEAD_TRACKING=true` only for the deployment approved for verification/rollout; it is off when unset.
 - Confirm a synthetic request reaches Meta Test Events as exactly one standard `Lead`, with no treatment/contact/appointment/custom data. Confirm URL restrictions in the event view. Do not count it as a real business lead or revenue.
 - Confirm the browser request contains no unintended fields before rollout. If the actual SDK transmission exceeds the approved design, leave this disabled and revise.
@@ -51,3 +51,27 @@ Verification on September 24, 2026:
 - No live DB-to-Meta end-to-end test, production deployment, tracking activation, or ad publication has occurred.
 - Draft audience verified: Aventura +12 miles; geographic-interest expansion off; 18–65+, all genders; no custom audience or interest restriction. Existing account placement exclusions are retained, with spending into excluded placements off.
 - Ad creative/destination still need preparation and review before publication.
+
+Verification and preparation on September 25, 2026:
+
+- Completed and saved ad `120250327968810049` as `$149 Must-Have | Website request | Laser equipment`. Accurate single-treatment offer, existing laser-equipment image with automatic crops (no generated images), headline `3 areas. One treatment. $149.`, CTA `Request time`. No publication.
+- Destination normalized to `https://kamiaesthetics.com/booking/laser-hair-removal`; browser add-on set to None; campaign, ad-set and ad IDs added as UTM parameters. Other campaigns/budgets unchanged.
+- Dataset automatic advanced matching switched Off; all displayed customer-information fields Off. Automatic events already Off. Core setup remains On.
+- GTM-NPBMWR8S audited in Tag Manager: live/latest version 29, five Google tags, no Meta/Custom HTML tag; workspace has zero changes. No GTM mutation.
+- Prepared privacy notice updates for Mangomint, Resend and optional Meta measurement. Local only.
+- All 11 isolated tracking/API classification tests passed; TypeScript, production build, diff whitespace check, and CSP gate/route-scope assertions passed.
+- Local production build: privacy notice renders; laser offer and request-date step load; no captured error/warning logs, no error overlay, no Meta SDK script in disabled state. No booking submitted, no notification email sent, no Meta event sent.
+- Event-blocking Review is gated by an `I acknowledge` agreement. Action-time user confirmation requested, not yet received or accepted. This acknowledgment is not evidence that a treatment-derived event is permitted.
+- Still required: finish event eligibility review; establish policy-compatible event criteria; verify actual SDK transmission and exactly one synthetic event in Test Events; approve/perform production activation and final ad publication. Do not claim end-to-end tracking or delivery is verified.
+
+Creative correction, September 25, 2026: User requested retaining the original $149 offer video. Replaced the image with `Kami_Must_Have_149_Cat_Walk.mp4` (720 × 1280, 0:12), verified against source ad `120217528837780049` in campaign `120217528837770049`. Renamed draft `$149 Must-Have | Website request | Original Cat Walk video`. Removed all three related-media selections; uploaded media shows one selected. Website URL, no Messenger add-on, UTM parameters and Request time CTA retained. All edits saved; no publication or tracking activation. Source campaign unmodified. Video itself retains its original embedded 4–6 sessions claim; no video editing was requested or performed.
+
+## Activation work — September 25, 2026
+
+User explicitly authorized Pixel activation and subsequently confirmed the Meta acknowledgment. Accepted the acknowledgment; Event statuses showed Action required (None), Blocked (None), Confirmed (None). This is not affirmative policy clearance for treatment-derived data.
+
+Preview `dpl_2oyWmjLCwK6xFYKngNTx7cmy2wn2` built successfully. Browser verified no SDK before opt-in; Decline persisted through reload; Allow loaded fbevents.js and the configuration script for dataset 958339362247309; no captured browser warnings/errors. Withdrawal returned the interface to Off. No booking or Lead event was submitted during this check.
+
+Production activation uses NEXT_PUBLIC_META_LEAD_TRACKING=true, also saved in Vercel Production environment for subsequent builds. Production candidate: `dpl_4bBUed7Q5Zy8oCVKMD7x5xjq32Fd`. Scope remains only the laser offer page. Automatic matching/events remain off, Core setup on. Consent is revoked when the consent component unmounts.
+
+A successful request-to-Meta Lead transmission, full payload inspection, and attribution remain unverified. Do not represent this as verified conversion optimization or a launched ad campaign. Final production browser verification is recorded in the task review artifact.

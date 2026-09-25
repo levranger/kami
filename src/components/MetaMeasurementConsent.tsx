@@ -31,6 +31,7 @@ export default function MetaMeasurementConsent() {
     return () => {
       window.removeEventListener("storage", sync);
       window.removeEventListener("focus", sync);
+      revokeMetaMeasurement();
     };
   }, []);
 

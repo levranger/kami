@@ -14,7 +14,7 @@ export const metadata: Metadata = buildPageMetadata({
   noIndex: false,
 });
 
-const EFFECTIVE_DATE = "March 25, 2026";
+const EFFECTIVE_DATE = "September 25, 2026";
 const CONTACT_EMAIL = "info@kamiaesthetics.com";
 
 export default function PrivacyPolicyPage() {
@@ -48,7 +48,7 @@ export default function PrivacyPolicyPage() {
               <p>We may collect the following types of information:</p>
               <ul>
                 <li><strong>Contact information</strong> — name, email address, and phone number when you submit a contact or booking inquiry.</li>
-                <li><strong>Booking data</strong> — appointment details collected through our third-party booking provider (Square).</li>
+                <li><strong>Booking data</strong> — contact details, your requested appointment, and advertising attribution submitted through our appointment-request forms or our booking provider, Mangomint.</li>
                 <li><strong>Usage data</strong> — pages visited, browser type, and referring URLs collected automatically via analytics tools.</li>
                 <li><strong>Communications</strong> — messages you send us via email or contact forms.</li>
               </ul>
@@ -74,12 +74,30 @@ export default function PrivacyPolicyPage() {
 
               <h2>4. Third-Party Services</h2>
               <p>
-                Our website uses third-party services including Square (appointment booking) and Google Analytics (website analytics). These services have their own privacy policies governing their use of your data. We encourage you to review them.
+                Our website uses third-party services including Mangomint (appointment booking), Resend (email delivery), and Google Analytics (website analytics). These services have their own privacy policies governing their use of your data. We encourage you to review them.
               </p>
 
               <h2>5. Cookies</h2>
               <p>
                 Our website may use cookies and similar tracking technologies to improve your browsing experience and analyze site traffic. You can control cookie settings through your browser preferences.
+              </p>
+              <h3>Optional Meta advertising measurement</h3>
+              <p>
+                Where offered, Meta measurement is off unless you select “Allow Meta measurement.”
+                If you allow it, Meta&apos;s tracking software may receive browser and cookie identifiers,
+                device and network information (including your IP address), and a signal after an appointment
+                request is successfully submitted. Meta uses this information to measure and optimize our advertising.
+                Our manually configured signal does not include your name, phone number, email address,
+                treatment or offer details, price, or requested appointment time. Meta&apos;s Core setup restrictions remain enabled.
+              </p>
+              <p>
+                You can submit an appointment request without allowing Meta measurement. This choice is separate
+                from consent to promotional texts. Use “Change privacy choice” on the offer page to withdraw
+                permission for future measurement. We store this choice in your browser for up to 90 days;
+                clearing browser storage resets it. Global Privacy Control and Do Not Track signals keep
+                this optional Meta measurement off. See{" "}
+                <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Meta&apos;s Privacy Policy</a>
+                {" "}for information about Meta&apos;s processing and your choices.
               </p>
 
               <h2>6. Data Retention</h2>

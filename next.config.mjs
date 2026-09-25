@@ -23,7 +23,7 @@ const nextConfig = {
   },
 
   async headers() {
-    return [
+    const rules = [
       {
         source: "/(.*)",
         headers: [
@@ -68,6 +68,24 @@ const nextConfig = {
         ],
       },
     ];
+
+    // Permit the optional, consent-controlled SDK only on the tested funnel.
+    // Leave the baseline policy (including all unrelated routes) unchanged.
+    if (process.env.NEXT_PUBLIC_META_LEAD_TRACKING === "true") {
+      const baseline = rules[0].headers.find(h => h.key === "Content-Security-Policy").value;
+      const measurementPolicy = baseline.split("; ").map(directive => {
+        if (directive.startsWith("script-src ")) return `${directive} https://connect.facebook.net`;
+        if (directive.startsWith("img-src ") || directive.startsWith("connect-src ")) {
+          return `${directive} https://www.facebook.com`;
+        }
+        return directive;
+      }).join("; ");
+      rules.push({
+        source: "/booking/laser-hair-removal",
+        headers: [{ key: "Content-Security-Policy", value: measurementPolicy }],
+      });
+    }
+    return rules;
   },
 };
 
